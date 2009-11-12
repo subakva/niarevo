@@ -3,3 +3,4 @@ db/*.sqlite3
 coverage.data
 tmp/*
 coverage/*
+webrat-*.html
