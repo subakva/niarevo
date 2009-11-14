@@ -4,3 +4,4 @@ coverage.data
 tmp/*
 coverage/*
 webrat-*.html
+*.tmproj
