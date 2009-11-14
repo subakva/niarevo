@@ -6,7 +6,9 @@
 
 ## Completed Features ##
 
-  * Nope.
+  * Accounts
+    * Create a dreamer account
+    * Change password
 
 ## Future Features ##
 
@@ -30,8 +32,6 @@
     * For a tag
     * For a date
   * Accounts
-    * Create a dreamer account
-    * Change password
     * Change account preferences
     * Delete a dreamer account
   * Design

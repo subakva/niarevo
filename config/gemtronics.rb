@@ -21,6 +21,7 @@ group(:test, :dependencies => :development, :load => false) do |g|
   g.add('thoughtbot-factory_girl', :version => '1.2.2', :require => 'factory_girl')
   g.add('remarkable_rails', :version => '3.1.11')
   g.add('jscruggs-metric_fu', :version => '1.1.5')
+  g.add('bmabey-email_spec', :version => '0.3.4', :require => 'email_spec')
 end
 
 group(:cucumber, :dependencies => :test) do |g|

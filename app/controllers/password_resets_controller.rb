@@ -42,7 +42,7 @@ class PasswordResetsController < ApplicationController
           "If you are having issues try copying and pasting the URL " +
           "from your email into your browser or restarting the " +
           "reset password process."
-        redirect_to root_url
+        redirect_to new_user_session_url
       end
     end
 end

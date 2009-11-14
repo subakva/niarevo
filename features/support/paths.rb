@@ -16,8 +16,14 @@ module NavigationHelpers
       account_path
     when /the login page/
       new_user_session_path
+    when /the password reset page/
+      new_password_reset_path
+    when /the wrong password reset page/
+      edit_password_reset_path('not-the-real-token')
+    when /my password reset page/
+      @current_user.reload
+      edit_password_reset_path(@current_user.perishable_token)
 
-    
     # Add more mappings here.
     # Here is a more fancy example:
     #

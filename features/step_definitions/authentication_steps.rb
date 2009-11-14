@@ -1,7 +1,6 @@
 Given /^I have created an account for "([^\"]*)"$/ do |login|
-  unless User.exists?(:login => login)
-    Factory.create(:user, :login => login)
-  end
+  @current_user = User.find_by_login(login)
+  @current_user ||= Factory.create(:user, :login => login)
 end
 
 Given /^I am logged in as "([^\"]*)"$/ do |login|
