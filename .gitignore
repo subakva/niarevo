@@ -5,3 +5,4 @@ tmp/*
 coverage/*
 webrat-*.html
 *.tmproj
+config/database.yml
