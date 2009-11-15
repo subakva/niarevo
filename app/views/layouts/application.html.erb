@@ -5,7 +5,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= controller.controller_name %>: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'style', 'moonset' %>
+  <%= stylesheet_link_merged :base %>
+  <%= javascript_include_merged :base %>
 </head>
 <body>
   <div id='horizon'>

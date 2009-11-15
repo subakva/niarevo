@@ -6,3 +6,5 @@ coverage/*
 webrat-*.html
 *.tmproj
 config/database.yml
+*_packaged.css
+*_packaged.js
