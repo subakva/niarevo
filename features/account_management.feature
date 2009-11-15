@@ -32,7 +32,7 @@ Feature: Managing an Account
 
   Scenario: Logging out
     Given I am logged in as "cucumber"
-    When I follow "Logout"
+    When I follow "Sign Out"
     
     Then I should be on the login page
     And I should see "Logout successful!"
@@ -45,7 +45,7 @@ Feature: Managing an Account
     Then I should be on the password reset page
     
     When I fill in "Email" with "cucumber@example.com"
-    And I press "Reset my password"
+    And I press "Reset Password"
 
     Then I should see "Instructions to reset your password have been emailed to you. Please check your email."
     And I should receive an email
@@ -75,7 +75,7 @@ Feature: Managing an Account
     Given I am on the password reset page
 
     When I fill in "Email" with "notauser@example.com"
-    And I press "Reset my password"
+    And I press "Reset Password"
 
     Then I should see "No user was found with that email address"
 

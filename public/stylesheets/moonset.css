@@ -1,0 +1,86 @@
+body {
+  background: #333 url(../images/moonset-bg.png) repeat-x scroll top left;
+  color: #333;
+}
+a { color: #633; text-decoration: none; }
+a:hover { text-decoration: underline; }
+#horizon {
+  background: transparent url(../images/moonset.png) no-repeat scroll 0px 0px;
+}
+#wrapper {
+  background-color: transparent;
+  width: 360px;
+  margin: 0 0 10px 426px;
+}
+#messages {
+  background-color: #EDD;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+ul.message-list { padding: 4px; }
+ul.message-list, ul.errorlist {
+  list-style: none;
+  font-style: italic;
+  color: #333;
+  margin: 0px;
+  padding: 0px;
+}
+ul.message-list li, ul.errorlist li {
+  margin: 0px;
+  padding: 0px;
+}
+#content {
+  background-color: #EDD;
+  color: #333;
+  min-height: 429px;
+  border: none;
+}
+#content h2 {
+  margin: 6px 0;
+  border-bottom: 1px solid #999;
+}
+ul.dream-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.1em;
+  line-height: 1.2em;
+}
+ul.dream-list li {
+  border-bottom: 3px double #633;
+  margin: 10px 0 30px;
+  padding: 0 0 30px;
+}
+ul.dream-list li p {
+  margin: 15px 0;
+}
+.dream-tags {
+  clear: right;
+  padding: 4px;
+  border: 1px solid #999;
+  border-left: 1px solid #999;
+}
+.dream-tags a.add-tags { font-size: 0.9em; }
+.dream-user {
+  font-size: 0.9em;
+  padding: 0 4px 4px;
+  margin: 0 0 4px 4px;
+  text-align: right;
+  float: right;
+}
+.dream-actions {
+  text-align: center;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  margin: 4px 0 0;
+  padding: 4px 0px;
+}
+.dream-actions a { text-decoration: none; }
+.dream-actions a:hover { text-decoration: underline; }
+
+#menu .link-list, #footer .link-list { text-align: center; }
+#menu .link-list { border-bottom: 1px solid #999; background: transparent; color: #EDD;}
+#menu .link-list a { background: transparent; color: #EDD; letter-spacing:0.1em; }
+#footer .link-list { border-top: 1px solid #999; background: #EDD; color: #333; }
+#footer .link-list a { background: #EDD; color: #333; }
