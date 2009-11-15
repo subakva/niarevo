@@ -24,8 +24,8 @@ group(:test, :dependencies => :development, :load => false) do |g|
   g.add('bmabey-email_spec', :version => '0.3.4', :require => 'email_spec')
 end
 
-group(:cucumber, :dependencies => :test) do |g|
+group(:cucumber, :dependencies => :test, :load => false) do |g|
   g.add('cucumber', :version => '0.4.3')
   g.add('webrat', :version => '0.5.3')
-  g.add('nokogiri', :version => '1.3.3')
+  g.add('nokogiri', :version => '1.4.0')
 end
