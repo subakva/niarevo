@@ -9,4 +9,4 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
-task :default => 'rcov:all'
+task :default => ['db:test:prepare', 'rcov:all']
