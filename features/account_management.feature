@@ -30,6 +30,17 @@ Feature: Managing an Account
     Then I should be on the account page
     And I should see "Login successful!"
 
+  Scenario: Logging in with the wrong password
+    Given I have created an account for "cucumber"
+    And I am on the login page
+
+    When I fill in "Login" with "cucumber"
+    And I fill in "Password" with "WRONG!!"
+    And I press "Login"
+
+    Then I should be on the failed login page
+    And I should see "Password is not valid"
+
   Scenario: Logging out
     Given I am logged in as "cucumber"
     When I follow "Sign Out"

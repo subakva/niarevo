@@ -34,4 +34,11 @@ describe User do
   should_validate_uniqueness_of :single_access_token
   should_validate_uniqueness_of :perishable_token
   should_validate_confirmation_of :password
+
+  should_have_many :dreams
+
+  it "should be gravtastic" do
+    @user.email = 'gravatar@example.com'
+    @user.gravatar_url.should == 'http://gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4.png?r=PG'
+  end
 end

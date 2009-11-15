@@ -6,22 +6,31 @@
 
 ## Completed Features ##
 
+  * Dreams
+    * Recording a new dream
+    * Automatic markdown formatting
   * Accounts
     * Create a dreamer account
     * Change password
+  * Infrastructure/Performance
+    * Asset Packaging
 
 ## Future Features ##
 
   * Dreams
-    * Recording a new dream
     * Showing a list of dreams
     * Attach images/files to a dream
-    * Automatic markdown formatting
     * Safe html formatting
+    * Captcha for anonymous dreams
+  * Stickiness
+    * Add badges for
+      * creating 1/10/100/100 dreams
+      * tagging 1/10/100/1000 dreams
   * Tags
     * Editing tags on a dream
     * Browsing dreams by tags
     * Searching for dreams that match tag(s)
+    * Captcha for anonymous tags
   * Searching
     * Finding dreams with certain text
     * Finding with certain tags
@@ -34,6 +43,8 @@
   * Accounts
     * Change account preferences
     * Delete a dreamer account
+    * Send invitations to join
+    * Account activation
   * Design
     * Ported design from dreamtagger
     * iPhone-friendly stylesheet
@@ -45,7 +56,6 @@
     * Submit a dream by email
     * Receive notifications about new dreams for a search term (person/tag/text)
   * Infrastructure/Performance
-    * Asset Packaging
     * Page Caching
     * Cookie-less Media Domains
     * Error Reporting

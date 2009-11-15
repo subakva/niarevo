@@ -1,5 +1,9 @@
-# Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def render_markdown(markdown)
+    markdown = RDiscount.new(markdown, :filter_html)
+    markdown.to_html
+  end
+
   def render_form_errors(errors)
     rendered = ''
     unless errors.blank?

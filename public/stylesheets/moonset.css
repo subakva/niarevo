@@ -69,6 +69,9 @@ ul.dream-list li p {
   text-align: right;
   float: right;
 }
+.dream-text {
+/*  clear:right;*/
+}
 .dream-actions {
   text-align: center;
   border-top: 1px solid #999;

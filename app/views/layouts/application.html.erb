@@ -15,9 +15,9 @@
       <div id='menu'>
         <ul class='link-list'>
           <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Add", 'new_dream_path' %></li>
+          <li><%= link_to "Add", new_dream_path %></li>
           <%- if current_user -%>
-            <li><%= link_to "Your Dreams", 'dreams_for_user_path' %></li>
+            <li><%= link_to "Your Dreams", 'user_dreams_path' %></li>
             <li><%= link_to "Sign Out", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
           <%- else -%>
             <li><%= link_to "Log In", new_user_session_path %></li>

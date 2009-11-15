@@ -11,3 +11,8 @@ Factory.define :user do |u|
   u.single_access_token { |u| "#{u.login}-single_access_token" }
   u.perishable_token { |u| "#{u.login}-perishable_token" }
 end
+
+Factory.define :dream do |d|
+  d.description 'It was a stormy and dark night'
+  d.tag_list 'cliche, storm, night'
+end

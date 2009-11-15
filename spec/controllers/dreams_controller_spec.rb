@@ -1,4 +1,4 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe PasswordResetsController do
+describe DreamsController do
 end

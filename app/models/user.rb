@@ -22,7 +22,11 @@
 #
 
 class User < ActiveRecord::Base
+  is_gravtastic!
   acts_as_authentic
+
+  has_many :dreams
+  
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
