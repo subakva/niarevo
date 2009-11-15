@@ -7,7 +7,9 @@ describe Dream do
 
   should_validate_presence_of :description
   should_belong_to :user
-  
+  should_have_default_scope :order => 'created_at DESC'
+  should_have_scope :with_tag, :with => 'the_tag', :joins => :tags, :conditions => { :tags => { :name => 'the_tag' } }
+
   it "should be taggable" do
     @dream.tag_list = 'one, two, three'
     @dream.tag_list.should == ['one','two', 'three']

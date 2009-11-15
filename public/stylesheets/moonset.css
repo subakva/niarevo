@@ -69,9 +69,6 @@ ul.dream-list li p {
   text-align: right;
   float: right;
 }
-.dream-text {
-/*  clear:right;*/
-}
 .dream-actions {
   text-align: center;
   border-top: 1px solid #999;
@@ -81,7 +78,9 @@ ul.dream-list li p {
 }
 .dream-actions a { text-decoration: none; }
 .dream-actions a:hover { text-decoration: underline; }
-
+.results-meta, .results-nav {
+  text-align:center;
+}
 #menu .link-list, #footer .link-list { text-align: center; }
 #menu .link-list { border-bottom: 1px solid #999; background: transparent; color: #EDD;}
 #menu .link-list a { background: transparent; color: #EDD; letter-spacing:0.1em; }

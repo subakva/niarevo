@@ -4,6 +4,18 @@ class DreamsController < ApplicationController
   before_filter :load_dream, :only => [:show]
   before_filter :load_dream_for_user, :only => [:edit, :update, :destroy]
 
+  def index
+    render_dream_index(Dream)
+  end
+
+  def for_user
+    render_dream_index(Dream.user_login_eq(params[:id]))
+  end
+
+  def for_tag
+    render_dream_index(Dream.with_tag(params[:id]))
+  end
+
   def new
     @dream = Dream.new
   end
@@ -35,6 +47,15 @@ class DreamsController < ApplicationController
   end
 
   protected
+  
+  def render_dream_index(scope)
+    @dreams = scope.paginate(:per_page => 10, :page => params[:page])
+    respond_to do |format|
+      format.html { render :action => :index }
+      format.atom { render :action => :index }
+    end
+  end
+
   def load_dream_for_user
     @dream = current_user.dreams.find_by_id(params[:id])
     unless @dream

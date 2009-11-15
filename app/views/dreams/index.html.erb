@@ -1,0 +1,24 @@
+<h2>Recent Dreams</h2>
+<%- if @dreams.blank? -%>
+  <p>There are no dreams. And if there are no dreams, there is no future. Bummer, dude.</p>
+<%- else -%>
+  <ul class='dream-list'>
+  <%- for dream in @dreams -%>
+    <li>
+      <%= render :partial => "dream", :object => dream %>
+    </li>
+  <%- end -%>
+  </ul>
+  <p class='results-meta'>
+    <%= page_entries_info @dreams %>
+  </p>
+  <p class='results-nav'>
+    <%= will_paginate @dreams, :container => nil %>
+  </p>
+
+  <% link_to({:controller => params[:controller], :action => params[:action], :format => :atom}, :title => 'Subscribe to the feed for this page.', :rel => 'alternate') do %>
+    <%= image_tag 'feed.png', :alt => 'feed-icon' %>
+    Subscribe to the feed for this page.
+  <% end -%>
+
+<%- end -%>

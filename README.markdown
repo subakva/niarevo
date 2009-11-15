@@ -9,6 +9,8 @@
   * Dreams
     * Recording a new dream
     * Automatic markdown formatting
+    * Showing a list of dreams
+  * RSS Feeds
   * Accounts
     * Create a dreamer account
     * Change password
@@ -18,7 +20,7 @@
 ## Future Features ##
 
   * Dreams
-    * Showing a list of dreams
+    * Import data from the previous version
     * Attach images/files to a dream
     * Safe html formatting
     * Captcha for anonymous dreams
