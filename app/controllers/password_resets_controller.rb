@@ -1,6 +1,7 @@
 class PasswordResetsController < ApplicationController
+
+  before_filter :redirect_to_account_if_logged_in
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]
-  before_filter :require_no_user
   
   def new
     render
@@ -34,15 +35,16 @@ class PasswordResetsController < ApplicationController
     end
   end
  
-  private
-    def load_user_using_perishable_token
-      @user = User.find_using_perishable_token(params[:id])
-      unless @user
-        flash[:notice] = "We're sorry, but we could not locate your account." +
-          "If you are having issues try copying and pasting the URL " +
-          "from your email into your browser or restarting the " +
-          "reset password process."
-        redirect_to new_user_session_url
-      end
+  protected
+
+  def load_user_using_perishable_token
+    @user = User.find_using_perishable_token(params[:id])
+    unless @user
+      flash[:notice] = "We're sorry, but we could not locate your account." +
+        "If you are having issues try copying and pasting the URL " +
+        "from your email into your browser or restarting the " +
+        "reset password process."
+      redirect_to new_user_session_url
     end
+  end
 end

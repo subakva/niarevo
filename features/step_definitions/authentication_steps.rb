@@ -1,3 +1,10 @@
+Given /the following users exist:/ do |user_table|
+  user_table.hashes.each do |hash|
+    user = User.find_by_login(hash['login'])
+    user ||= Factory.create(:user, :login => hash['login'])
+  end
+end
+
 Given /^I have created an account for "([^\"]*)"$/ do |login|
   @current_user = User.find_by_login(login)
   @current_user ||= Factory.create(:user, :login => login)

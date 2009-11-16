@@ -34,7 +34,9 @@ ul.message-list li, ul.errorlist li {
   background-color: #EDD;
   color: #333;
   min-height: 429px;
-  border: none;
+  border:none;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 #content h2 {
   margin: 6px 0;
@@ -82,7 +84,12 @@ ul.dream-list li p {
   text-align:center;
 }
 #menu .link-list, #footer .link-list { text-align: center; }
-#menu .link-list { border-bottom: 1px solid #999; background: transparent; color: #EDD;}
+#menu .link-list { background: transparent; color: #EDD;}
 #menu .link-list a { background: transparent; color: #EDD; letter-spacing:0.1em; }
-#footer .link-list { border-top: 1px solid #999; background: #EDD; color: #333; }
+#footer { margin-top:10px; }
+#footer .link-list {
+  background: #EDD; color: #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
 #footer .link-list a { background: #EDD; color: #333; }

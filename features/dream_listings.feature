@@ -20,3 +20,76 @@ Feature:
 
     When I follow "1"
     Then I should see dreams 20 through 11
+
+  Scenario: Listing recent dreams for a user
+    Given the following users exist:
+      | login       |
+      | cucumber    |
+      | melba_toast |
+    And the following dreams exist:
+      | description           | login       |
+      | A cucumbers dream     | cucumber    |
+      | The pickle nightmare  | cucumber    |
+      | Anonymous dream time  |             |
+      | Dazed and Confused..  | melba_toast |
+
+    When I go to the dreams page for the user "cucumber"
+    Then I should see "A cucumbers dream"
+    And I should see "The pickle nightmare"
+    And I should not see "Anonymous dream time"
+    And I should not see "Dazed and Confused.."
+
+  Scenario: Listing recent dreams by tag
+    Given the following dreams exist:
+      | description | tag_list |
+      | Salmon      | fishy    |
+      | Mahi Mahi   | fishy    |
+      | Boorrinngg  |          |
+      | Cows eCows  | landed   |
+
+    When I go to the dreams page for the tag "fishy"
+    Then I should see "Salmon"
+    And I should see "Mahi Mahi"
+    And I should not see "Boorrinngg"
+    And I should not see "Cows eCows"
+
+  Scenario: Listing recent dreams by year
+    Given the following dreams exist:
+      | description | created_at  |
+      | 2009 1  | 2009-10-20  |
+      | 2009 2  | 2009-10-22  |
+      | 2008    | 2008-11-20  |
+      | 2010    | 2010-11-20  |
+    When I go to the dreams page for 2009
+    Then I should see "2009 1"
+    And I should see "2009 2"
+    And I should not see "2008"
+    And I should not see "2010"
+
+  Scenario: Listing recent dreams by month
+    Given the following dreams exist:
+      | description | created_at  |
+      | September   | 2009-09-20  |
+      | October 1   | 2009-10-20  |
+      | October 2   | 2009-10-22  |
+      | November    | 2009-11-20  |
+
+    When I go to the dreams page for 10/2009
+    Then I should see "October 1"
+    And I should see "October 2"
+    And I should not see "September"
+    And I should not see "November"
+
+  Scenario: Listing recent dreams by day
+    Given the following dreams exist:
+      | description | created_at  |
+      | Tuesday 1   | 2009-10-20  |
+      | Tuesday 2   | 2009-10-20  |
+      | Monday      | 2009-10-19  |
+      | Wednesday   | 2009-10-21  |
+
+    When I go to the dreams page for 10/20/2009
+    Then I should see "Tuesday 1"
+    And I should see "Tuesday 2"
+    And I should not see "Monday"
+    And I should not see "Wednesday"

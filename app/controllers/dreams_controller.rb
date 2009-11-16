@@ -16,6 +16,24 @@ class DreamsController < ApplicationController
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
+  def for_date
+    min_date = Time.utc('2009')
+    max_date = Time.now
+    if params[:year]
+      min_date = min_date.change(:year => params[:year].to_i).beginning_of_year
+      max_date = max_date.change(:year => params[:year].to_i).end_of_year
+    end
+    if params[:month]
+      min_date = min_date.change(:month => params[:month].to_i).beginning_of_month
+      max_date = max_date.change(:month => params[:month].to_i).end_of_month
+    end
+    if params[:day]
+      min_date = min_date.change(:day => params[:day].to_i).beginning_of_day
+      max_date = max_date.change(:day => params[:day].to_i).end_of_day
+    end
+    render_dream_index(Dream.created_before(max_date).created_after(min_date))
+  end
+
   def new
     @dream = Dream.new
   end

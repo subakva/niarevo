@@ -25,8 +25,18 @@ module NavigationHelpers
     when /my password reset page/
       @current_user.reload
       edit_password_reset_path(@current_user.perishable_token)
-    when /the dreams page/
+    when /the dreams page$/
       dreams_path
+    when /the dreams page for the user "([^\"]*)"/
+      user_dreams_path($1)
+    when /the dreams page for the tag "([^\"]*)"/
+      tag_dreams_path($1)
+    when /the dreams page for ([0-9]*)$/
+      dreams_by_year_path(:year => $1)
+    when /the dreams page for ([0-9]*)\/([0-9]*)$/
+      dreams_by_month_path(:year => $2, :month => $1)
+    when /the dreams page for ([0-9]*)\/([0-9]*)\/([0-9]*)/
+      dreams_by_day_path(:year => $3, :month => $1, :day => $2)
     when /the new dream page/
       new_dream_path
     when /the new dream error page/

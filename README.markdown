@@ -11,11 +11,16 @@
     * Automatic markdown formatting
     * Showing a list of dreams
   * RSS Feeds
+    * For a user
+    * For a tag
+    * For a date
   * Accounts
     * Create a dreamer account
     * Change password
   * Infrastructure/Performance
     * Asset Packaging
+  * Design
+    * Ported design from dreamtagger
 
 ## Future Features ##
 
@@ -38,17 +43,12 @@
     * Finding with certain tags
     * Finding dreams for a certain user
     * Finding dreams for a date range
-  * RSS Feeds
-    * For a user
-    * For a tag
-    * For a date
   * Accounts
     * Change account preferences
     * Delete a dreamer account
     * Send invitations to join
     * Account activation
   * Design
-    * Ported design from dreamtagger
     * iPhone-friendly stylesheet
   * API
     * Access dream data with an API key
