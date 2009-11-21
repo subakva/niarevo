@@ -1,37 +1,10 @@
 <p>
-  <strong>Login:</strong>
-  <%=h @user.login %>
+  <strong>Username:</strong>
+  <%=h @user.username %>
 </p>
- 
 <p>
-  <strong>Login count:</strong>
-  <%=h @user.login_count %>
+  <strong>Email:</strong>
+  <%=h @user.email %>
 </p>
- 
-<p>
-  <strong>Last request at:</strong>
-  <%=h @user.last_request_at %>
-</p>
- 
-<p>
-  <strong>Last login at:</strong>
-  <%=h @user.last_login_at %>
-</p>
- 
-<p>
-  <strong>Current login at:</strong>
-  <%=h @user.current_login_at %>
-</p>
- 
-<p>
-  <strong>Last login ip:</strong>
-  <%=h @user.last_login_ip %>
-</p>
- 
-<p>
-  <strong>Current login ip:</strong>
-  <%=h @user.current_login_ip %>
-</p>
- 
- 
+
 <%= link_to 'Edit', edit_account_path %>

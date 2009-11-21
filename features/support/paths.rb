@@ -12,7 +12,13 @@ module NavigationHelpers
       '/'
     when /the new account page/
       new_account_path
+    when /the failed new account page/
+      account_path
     when /the account page/
+      account_path
+    when /the edit account page/
+      edit_account_path
+    when /the failed edit account page/
       account_path
     when /the login page/
       new_user_session_path

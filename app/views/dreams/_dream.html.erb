@@ -1,6 +1,6 @@
 <div class='dream-user'>
   <%- if dream.user -%>
-    <%= link_to("#{dream.user.login}", user_dreams_path(dream.user.login), :title => 'Show recent dreams from this user.') %><br/>
+    <%= link_to("#{dream.user.username}", user_dreams_path(dream.user.username), :title => 'Show recent dreams from this user.') %><br/>
     <%= image_tag dream.user.gravatar_url(:size => 40), :alt => 'gravatar' %>
   <%- else -%>
     Anonymous<br/>

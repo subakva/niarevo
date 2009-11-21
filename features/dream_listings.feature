@@ -23,11 +23,11 @@ Feature:
 
   Scenario: Listing recent dreams for a user
     Given the following users exist:
-      | login       |
+      | username       |
       | cucumber    |
       | melba_toast |
     And the following dreams exist:
-      | description           | login       |
+      | description           | username       |
       | A cucumbers dream     | cucumber    |
       | The pickle nightmare  | cucumber    |
       | Anonymous dream time  |             |

@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20091115084820) do
   add_index "tags", ["name", "kind"], :name => "index_tags_on_name_and_kind"
 
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
+    t.string   "username",                              :null => false
     t.string   "email",                              :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20091115084820) do
 
   add_index "users", ["created_at"], :name => "index_users_on_created_at"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
   add_index "users", ["single_access_token"], :name => "index_users_on_single_access_token", :unique => true

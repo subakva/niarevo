@@ -1,6 +1,6 @@
 Given /the following dreams exist:/ do |dream_table|
   dream_table.hashes.each do |hash|
-    user = hash.has_key?('login') ? User.find_by_login(hash['login']) : nil
+    user = hash.has_key?('username') ? User.find_by_username(hash['username']) : nil
     created_at = hash.has_key?('created_at') ? DateTime.parse(hash['created_at']) : Time.now
     tag_list = hash.has_key?('tag_list') ? hash['tag_list'] : ''
     Factory.create(:dream,

@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                  :integer         not null, primary key
-#  login               :string(255)     not null
+#  username               :string(255)     not null
 #  email               :string(255)     not null
 #  crypted_password    :string(255)     not null
 #  password_salt       :string(255)     not null
@@ -28,7 +28,7 @@ describe User do
     @user = Factory.create(:user)
   end
 
-  should_validate_uniqueness_of :login
+  should_validate_uniqueness_of :username
   should_validate_uniqueness_of :email
   should_validate_uniqueness_of :persistence_token
   should_validate_uniqueness_of :single_access_token

@@ -9,7 +9,7 @@ class DreamsController < ApplicationController
   end
 
   def for_user
-    render_dream_index(Dream.user_login_eq(params[:id]))
+    render_dream_index(Dream.user_username_eq(params[:id]))
   end
 
   def for_tag
