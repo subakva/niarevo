@@ -2,7 +2,12 @@
 javascripts: 
 - base: 
   - jquery-1.3.2
+  - shared
 stylesheets: 
 - base: 
-  - style
+  - blueprint/screen
   - moonset
+- print:
+  - blueprint/print
+- ie:
+  - blueprint/ie

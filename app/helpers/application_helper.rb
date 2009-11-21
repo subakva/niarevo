@@ -7,7 +7,7 @@ module ApplicationHelper
   def render_form_errors(errors)
     rendered = ''
     unless errors.blank?
-      rendered << '<ul>'
+      rendered << '<ul class="form-errors">'
       for error in errors.full_messages
         rendered << "<li class='error-line'>#{error}</li>"
       end

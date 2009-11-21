@@ -11,7 +11,7 @@ Feature: Managing an Account
     When I fill in "Username" with "Cucumber"
     And I fill in "Email" with "cucumber@example.com"
     And I fill in "Password" with "password"
-    And I fill in "Password confirmation" with "password"
+    And I fill in "Confirm Password" with "password"
     And I press "Register"
 
     Then I should be on the account page
@@ -23,7 +23,7 @@ Feature: Managing an Account
     When I fill in "Username" with "Cucumber"
     And I fill in "Email" with "cucumber@example.com"
     And I fill in "Password" with "password"
-    And I fill in "Password confirmation" with "WRONG"
+    And I fill in "Confirm Password" with "WRONG"
     And I press "Register"
 
     Then I should be on the failed new account page
@@ -35,7 +35,7 @@ Feature: Managing an Account
     When I fill in "Username" with ""
     And I fill in "Email" with ""
     And I fill in "Password" with ""
-    And I fill in "Password confirmation" with ""
+    And I fill in "Confirm Password" with ""
     And I press "Register"
 
     Then I should be on the failed new account page
@@ -50,7 +50,7 @@ Feature: Managing an Account
   Scenario: Logging into an existing account
     Given I have created an account for "cucumber"
     And I am on the home page
-    And I follow "Log In"
+    And I follow "Sign In"
     Then I should be on the login page
 
     When I fill in "Username" with "cucumber"
@@ -69,7 +69,7 @@ Feature: Managing an Account
     And I press "Sign In"
 
     Then I should be on the failed login page
-    And I should see "Password is not valid"
+    And I should see "Please enter a correct username and password. Note that both fields are case-sensitive."
 
   Scenario: Accessing the login page while logged in
     Given I am logged in as "cucumber"

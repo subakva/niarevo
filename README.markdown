@@ -11,16 +11,23 @@
     * Automatic markdown formatting
     * Showing a list of dreams
   * RSS Feeds
+    * For anonymous dreams
     * For a user
     * For a tag
     * For a date
   * Accounts
     * Create a dreamer account
     * Change password
+    * Change account preferences
   * Infrastructure/Performance
     * Asset Packaging
   * Design
     * Ported design from dreamtagger
+    * Switch base styles to blueprint
+  * Static Content
+    * Import about page from dreamtagger
+    * Import feeds page from dreamtagger
+    * Import terms page from dreamtagger
 
 ## Future Features ##
 
@@ -44,10 +51,10 @@
     * Finding dreams for a certain user
     * Finding dreams for a date range
   * Accounts
-    * Change account preferences
     * Delete a dreamer account
     * Send invitations to join
-    * Account activation
+    * Account activation process
+    * Add time zone support
   * Design
     * iPhone-friendly stylesheet
   * API
@@ -63,4 +70,5 @@
     * Error Reporting
     * SSL Enforcement
     * Analytics
+    * A/B Testing
 

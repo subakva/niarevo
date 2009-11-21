@@ -5,3 +5,12 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+if RAILS_ENV == 'development'
+  User.create!(
+    :username => 'subakva',
+    :password => 'password',
+    :password_confirmation => 'password',
+    :email => 'jdwadsworth@gmail.com'
+  ) unless User.exists?(:username => 'subakva')
+end

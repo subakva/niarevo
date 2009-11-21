@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   acts_as_authentic
 
   has_many :dreams
-  
+  validates_exclusion_of :username, :in => ['admin', 'user', 'anonymous']
 
   def deliver_password_reset_instructions!
     reset_perishable_token!

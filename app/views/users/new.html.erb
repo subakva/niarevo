@@ -3,5 +3,5 @@
 <% form_for @user, :url => account_path do |f| %>
   <%= render_form_errors(@user.errors) %>
   <%= render :partial => "form", :object => f %>
-  <p class='button-line'><%= f.submit "Register", :class => 'submit' %></p>
+  <p class='button-line'><%= f.submit "Register Account", :class => 'submit' %></p>
 <% end %>

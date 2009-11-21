@@ -34,6 +34,7 @@ describe User do
   should_validate_uniqueness_of :single_access_token
   should_validate_uniqueness_of :perishable_token
   should_validate_confirmation_of :password
+  should_validate_exclusion_of :username, :in => ['admin', 'user', 'anonymous']
 
   should_have_many :dreams
 

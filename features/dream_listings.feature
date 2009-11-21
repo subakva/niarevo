@@ -21,6 +21,21 @@ Feature:
     When I follow "1"
     Then I should see dreams 20 through 11
 
+  Scenario: Listing recent anonymous dreams
+    Given the following users exist:
+      | username    |
+      | cucumber    |
+    And the following dreams exist:
+      | description           | username    |
+      | A cucumbers dream     | cucumber    |
+      | Anonymous dream time  |             |
+      | Anonymous dream time 2|             |
+
+    When I go to the dreams page for the user "anonymous"
+    Then I should not see "A cucumbers dream"
+    And I should see "Anonymous dream time"
+    And I should see "Anonymous dream time 2"
+
   Scenario: Listing recent dreams for a user
     Given the following users exist:
       | username       |

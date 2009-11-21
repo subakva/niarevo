@@ -13,6 +13,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Welcome back!"
       redirect_back_or_default account_url
     else
+      flash[:error] = "Please enter a correct username and password. Note that both fields are case-sensitive."
       render :action => :new
     end
   end

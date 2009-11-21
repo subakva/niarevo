@@ -9,7 +9,11 @@ class DreamsController < ApplicationController
   end
 
   def for_user
-    render_dream_index(Dream.user_username_eq(params[:id]))
+    if params[:id] == 'anonymous'
+      render_dream_index(Dream.user_id_null)
+    else
+      render_dream_index(Dream.user_username_eq(params[:id]))
+    end
   end
 
   def for_tag

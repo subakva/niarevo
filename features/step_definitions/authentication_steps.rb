@@ -13,7 +13,7 @@ end
 Given /^I am logged in as "([^\"]*)"$/ do |username|
   Given "I have created an account for \"#{username}\""
   And 'I am on the home page'
-  And 'I follow "Log In"'
+  And 'I follow "Sign In"'
   And "I fill in \"Username\" with \"#{username}\""
   And 'I fill in "Password" with "password"'
   And 'I press "Sign In"'
