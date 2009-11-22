@@ -2,6 +2,7 @@
 
   * __Dreamer__ - The dreamer is a person who has dreams, and wants to record and share them with the world.
   * __Voyeur__ - The voyeur is a person who likes to read about other people's dreams. This person is interested in how dreams affect the world and how the world affects dreams.
+  * __Interpreter__ - The interpreter is a person who likes to read other people's dreams and try to explain them. This person is interested in explaining how dreams reflect reality.
   * __Admin__ - The admin wants to make sure all the recorded dreams are safe and happy.
 
 ## Completed Features ##
@@ -10,6 +11,7 @@
     * Recording a new dream
     * Automatic markdown formatting
     * Showing a list of dreams
+    * Import data from the previous version
   * RSS Feeds
     * For anonymous dreams
     * For a user
@@ -28,11 +30,12 @@
     * Import about page from dreamtagger
     * Import feeds page from dreamtagger
     * Import terms page from dreamtagger
+  * Infrastructure/Performance
+    * foreign key constraints
 
 ## Future Features ##
 
   * Dreams
-    * Import data from the previous version
     * Attach images/files to a dream
     * Safe html formatting
     * Captcha for anonymous dreams
