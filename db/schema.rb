@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091115084820) do
+ActiveRecord::Schema.define(:version => 20091122070337) do
 
   create_table "dreams", :force => true do |t|
     t.text     "description", :null => false
@@ -23,23 +23,30 @@ ActiveRecord::Schema.define(:version => 20091115084820) do
   add_index "dreams", ["user_id"], :name => "index_dreams_on_user_id"
 
   create_table "taggings", :force => true do |t|
-    t.integer "tag_id"
-    t.string  "taggable_type", :default => ""
-    t.integer "taggable_id"
+    t.integer  "tag_id",        :null => false
+    t.string   "taggable_type", :null => false
+    t.integer  "taggable_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
+  add_index "taggings", ["created_at"], :name => "index_taggings_on_created_at"
+  add_index "taggings", ["tag_id", "taggable_type", "taggable_id"], :name => "index_taggings_on_tag_id_and_taggable_type_and_taggable_id", :unique => true
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", :force => true do |t|
-    t.string "name", :default => ""
-    t.string "kind", :default => ""
+    t.string   "name",       :null => false
+    t.string   "kind",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
+  add_index "tags", ["created_at"], :name => "index_tags_on_created_at"
   add_index "tags", ["name", "kind"], :name => "index_tags_on_name_and_kind"
 
   create_table "users", :force => true do |t|
-    t.string   "username",                              :null => false
+    t.string   "username",                           :null => false
     t.string   "email",                              :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false
@@ -59,9 +66,13 @@ ActiveRecord::Schema.define(:version => 20091115084820) do
 
   add_index "users", ["created_at"], :name => "index_users_on_created_at"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :unique => true
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
   add_index "users", ["single_access_token"], :name => "index_users_on_single_access_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  add_foreign_key "dreams", "users", :name => "dreams_user_id_fk", :dependent => :delete
+
+  add_foreign_key "taggings", "tags", :name => "taggings_tag_id_fk", :dependent => :delete
 
 end

@@ -66,7 +66,7 @@
     * Receive notifications about new dreams for a search term (person/tag/text)
   * Infrastructure/Performance
     * Page Caching
-    * Cookie-less Media Domains
+    * Cookie-less Media Domains (config.action_controller.asset_host)
     * Error Reporting
     * SSL Enforcement
     * Analytics
