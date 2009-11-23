@@ -7,16 +7,19 @@ group(:default) do |g|
   g.add('will_paginate', :version => '2.3.11')
   g.add('gravtastic', :version => '2.1.3')
   g.add('rdiscount', :version =>'1.5.5')
-  g.add('json', :version =>'1.2.0')
+end
+
+group(:data_loading) do |g|
   g.add('matthuhiggins-foreigner', :version => '0.3.1', :require => 'foreigner')
+  g.add('json', :version =>'1.2.0')
 end
 
-group(:production, :dependencies => :default) do |g|
-  
+group(:production, :dependencies => [:default,:data_loading]) do |g|
+
 end
 
-group(:development, :dependencies => :default) do |g|
-  
+group(:development, :dependencies => [:default,:data_loading]) do |g|
+
 end
 
 group(:test, :dependencies => :development, :load => false) do |g|
