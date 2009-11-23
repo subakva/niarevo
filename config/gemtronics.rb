@@ -11,11 +11,11 @@ group(:default) do |g|
 end
 
 group(:production, :dependencies => :default) do |g|
-
+  g.add('newrelic_rpm', :version => '2.9.8')
 end
 
 group(:development, :dependencies => :default) do |g|
-
+  g.add('newrelic_rpm', :version => '2.9.8')
 end
 
 group(:test, :dependencies => :development, :load => false) do |g|
