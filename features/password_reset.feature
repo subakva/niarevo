@@ -17,7 +17,7 @@ Feature: Managing an Account
     And I should receive an email
 
     When I open the email
-    Then I should see "http://www.niarevo.com/password_resets/[\w-]*/edit" in the email body
+    Then I should see "http://localhost:3000/password_resets/[\w-]*/edit" in the email body
 
     When I go to my password reset page
     And I fill in "Password" with "newpassword"

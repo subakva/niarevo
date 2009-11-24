@@ -8,6 +8,7 @@ group(:default) do |g|
   g.add('gravtastic', :version => '2.1.3')
   g.add('rdiscount', :version =>'1.5.5')
   g.add('matthuhiggins-foreigner', :version => '0.3.1', :require => 'foreigner')
+  g.add('configatron', :version => '2.5.1')
 end
 
 group(:production, :dependencies => :default) do |g|

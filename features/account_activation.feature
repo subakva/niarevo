@@ -7,7 +7,7 @@ Scenario: Activating by email
   Given I have registered an account
   Then I should receive an email
   When I open the email
-  Then I should see "http://www.niarevo.com/activations/[\w-]*/edit" in the email body
+  Then I should see "http://localhost:3000/activations/[\w-]*/edit" in the email body
   When I go to my activation page
   Then I should see "Your account is now activated! Please sign in."
   When I fill in "Username" with "cucumber"
@@ -37,7 +37,7 @@ Scenario: Attempting to sign in to an inactive account
   And I should receive an email
 
   When I open the email
-  Then I should see "http://www.niarevo.com/activations/[\w-]*/edit" in the email body
+  Then I should see "http://localhost:3000/activations/[\w-]*/edit" in the email body
 
   When I go to my activation page
   Then I should see "Your account is now activated! Please sign in."

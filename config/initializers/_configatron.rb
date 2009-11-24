@@ -1,0 +1,1 @@
+Configatron::Rails.init

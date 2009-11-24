@@ -12,7 +12,6 @@ class UserSessionsController < ApplicationController
     session_saved = @user_session.save
     account_inactive = @user_session.errors && @user_session.errors.full_messages.include?('Your account is not active')
     if session_saved
-      flash[:notice] = "Welcome back!"
       redirect_back_or_default account_url
     else
       if account_inactive

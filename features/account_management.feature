@@ -58,7 +58,6 @@ Feature: Managing an Account
     And I press "Sign In"
 
     Then I should be on the account page
-    And I should see "Welcome back!"
 
   Scenario: Logging in with the wrong password
     Given I have created an account for "cucumber"
@@ -82,7 +81,7 @@ Feature: Managing an Account
     When I follow "Sign Out"
     
     Then I should be on the login page
-    And I should see "Logout successful!"
+    And I should see "You have been logged out."
 
   Scenario: Editing account information
     Given I am logged in as "cucumber"
@@ -94,8 +93,7 @@ Feature: Managing an Account
     
     Then I should be on the account page
     And I should see "Account updated!"
-    And I should see "newemail@example.com"
-    And I should see "newname"
+    And I should see "You haven't recorded any dreams yet."
 
   Scenario: Editing account with bad values
     Given I am logged in as "cucumber"
