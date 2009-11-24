@@ -21,6 +21,7 @@
     * Create a dreamer account
     * Change password
     * Change account preferences
+    * Account activation process
   * Infrastructure/Performance
     * Asset Packaging
   * Design
@@ -32,6 +33,7 @@
     * Import terms page from dreamtagger
   * Infrastructure/Performance
     * foreign key constraints
+    * Error Reporting
 
 ## Future Features ##
 
@@ -56,7 +58,6 @@
   * Accounts
     * Delete a dreamer account
     * Send invitations to join
-    * Account activation process
     * Add time zone support
   * Design
     * iPhone-friendly stylesheet
@@ -70,7 +71,6 @@
   * Infrastructure/Performance
     * Page Caching
     * Cookie-less Media Domains (config.action_controller.asset_host)
-    * Error Reporting
     * SSL Enforcement
     * Analytics
     * A/B Testing

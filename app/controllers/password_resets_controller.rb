@@ -13,10 +13,13 @@ class PasswordResetsController < ApplicationController
   
   def create
     @user = User.find_by_username_or_password(params)
-    if @user
+    if @user && @user.active?
       @user.deliver_password_reset_instructions!
       flash.now[:notice] = "Instructions to reset your password have been emailed to you."
       render :action => :new
+    elsif @user
+      flash[:notice] = "Your account is not yet active. Do you need us to resend your activation key?"
+      redirect_to new_activation_url(:username => @user.username)
     else
       flash.now[:error] = "Sorry, we couldn't find that account. Check for typos and try again."
       render :action => :new

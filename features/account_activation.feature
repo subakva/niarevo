@@ -48,6 +48,16 @@ Scenario: Attempting to activate an account with an invalid key
   Then I should see "Sorry, we couldn't find that account."
   And I should be on the login page
 
+Scenario: Attempting to activate an account that is already active
+  Given I have activated an account for "cucumber"
+  And I am on the activation page
+
+  When I fill in "Username or email" with "cucumber"
+  And I press "Send Activation Email"
+
+  Then I should see "Your account is already active. Maybe you need to reset your password?"
+  And I should be on the password reset page
+
 Scenario: Attempting to reset a password for an account that doesn't exist
   Given I am on the activation page
 

@@ -5,13 +5,18 @@ Given /the following users exist:/ do |user_table|
   end
 end
 
-Given /^I have created an account for "([^\"]*)"$/ do |username|
+Given /^I have activated an account for "([^\"]*)"$/ do |username|
   @current_user = User.find_by_username(username)
   @current_user ||= Factory.create(:user, :username => username, :active => true)
 end
 
+Given /^I have created an account for "([^\"]*)"$/ do |username|
+  @current_user = User.find_by_username(username)
+  @current_user ||= Factory.create(:user, :username => username, :active => false)
+end
+
 Given /^I am logged in as "([^\"]*)"$/ do |username|
-  Given "I have created an account for \"#{username}\""
+  Given "I have activated an account for \"#{username}\""
   And 'I am on the home page'
   And 'I follow "Sign In"'
   And "I fill in \"Username\" with \"#{username}\""

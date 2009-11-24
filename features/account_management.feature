@@ -48,7 +48,7 @@ Feature: Managing an Account
     And I should see "Email should look like an email address."
 
   Scenario: Logging into an existing account
-    Given I have created an account for "cucumber"
+    Given I have activated an account for "cucumber"
     And I am on the home page
     And I follow "Sign In"
     Then I should be on the login page
@@ -60,7 +60,7 @@ Feature: Managing an Account
     Then I should be on the account page
 
   Scenario: Logging in with the wrong password
-    Given I have created an account for "cucumber"
+    Given I have activated an account for "cucumber"
     And I am on the login page
 
     When I fill in "Username" with "cucumber"

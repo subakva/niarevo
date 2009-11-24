@@ -21,7 +21,7 @@
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Add", new_dream_path %></li>
           <%- if current_user -%>
-            <li><%= link_to "Your Dreams", user_dreams_path(current_user.username) %></li>
+            <li><%= link_to "Your Dreams", account_path %></li>
             <li><%= link_to "Sign Out", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
           <%- else -%>
             <li><%= link_to "Sign In", new_user_session_path %></li>

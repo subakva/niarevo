@@ -4,7 +4,7 @@ Feature: Managing an Account
   I want to be able to change my password
 
   Scenario: Resetting a password
-    Given I have created an account for "cucumber"
+    Given I have activated an account for "cucumber"
     And I am on the login page
 
     When I follow "Forgot your password?"
@@ -28,7 +28,7 @@ Feature: Managing an Account
     And I should see "Your password has been updated."
 
   Scenario: Resetting a password with a mismatched password confirmation
-    Given I have created an account for "cucumber"
+    Given I have activated an account for "cucumber"
 
     When I go to my password reset page
     And I fill in "Password" with "newpassword"
@@ -36,6 +36,16 @@ Feature: Managing an Account
     And I press "Update my password and log me in"
     
     Then I should see "Password doesn't match confirmation"
+
+  Scenario: Attempting to reset a password for an account that is not active
+    Given I have created an account for "cucumber"
+    And I am on the password reset page
+
+    When I fill in "Username or email" with "cucumber"
+    And I press "Reset Password"
+
+    Then I should see "Your account is not yet active. Do you need us to resend your activation key?"
+    And I should be on the activation page
 
   Scenario: Attempting to reset a password for an account that doesn't exist
     Given I am on the password reset page
