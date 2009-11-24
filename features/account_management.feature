@@ -14,8 +14,8 @@ Feature: Managing an Account
     And I fill in "Confirm Password" with "password"
     And I press "Register"
 
-    Then I should be on the account page
-    And I should see "Account registered!"
+    Then I should be on the login page
+    And I should see "Thanks! A message has been sent to your email address with a link to activate your account."
 
   Scenario: Creating a new account with a mismatched password
     Given I am on the new account page

@@ -24,6 +24,15 @@ module NavigationHelpers
       new_user_session_path
     when /the failed login page/
       user_session_path
+    when /the activation index page/
+      activations_path
+    when /the activation page/
+      new_activation_path
+    when /the wrong activation page/
+      edit_activation_path('not-the-real-token')
+    when /my activation page/
+      @current_user.reload
+      edit_activation_path(@current_user.perishable_token)
     when /the password reset page/
       new_password_reset_path
     when /the wrong password reset page/

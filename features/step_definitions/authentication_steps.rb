@@ -7,7 +7,7 @@ end
 
 Given /^I have created an account for "([^\"]*)"$/ do |username|
   @current_user = User.find_by_username(username)
-  @current_user ||= Factory.create(:user, :username => username)
+  @current_user ||= Factory.create(:user, :username => username, :active => true)
 end
 
 Given /^I am logged in as "([^\"]*)"$/ do |username|
@@ -18,4 +18,14 @@ Given /^I am logged in as "([^\"]*)"$/ do |username|
   And 'I fill in "Password" with "password"'
   And 'I press "Sign In"'
   Then 'I should be on the account page'
+end
+
+Given /^I have registered an account$/ do
+  Given 'I am on the new account page'
+  And 'I fill in "Username" with "cucumber"'
+  And 'I fill in "Email" with "cucumber@example.com"'
+  And 'I fill in "Password" with "password"'
+  And 'I fill in "Confirm Password" with "password"'
+  And 'I press "Register"'
+  @current_user = User.find_by_username('cucumber')
 end

@@ -1,10 +1,20 @@
-<p>
-  <strong>Username:</strong>
-  <%=h @user.username %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%=h @user.email %>
-</p>
+<h2>Your Account</h2>
 
-<%= link_to 'Edit', edit_account_path %>
+<h3>Recent Dreams</h3>
+<ul>
+  <% if !@user.dreams.recent.blank? %>
+    <% for dream in @user.dreams %>
+      <li><%= link_to truncate(dream.description), dream_path(dream), :title => 'View this dream' %></li>
+    <% end %>
+  <% else %>
+    <li>
+      You haven't recorded any dreams, yet.<br/>
+      <%= link_to "Click here to record one.", new_dream_path, :title => 'Record a new dream.' %>
+    </li>
+  <% end %>
+</ul>
+
+<h3>Account Management</h3>
+<ul>
+  <li><%= link_to 'Edit Profile', edit_account_path, :title => 'Change details about your account.' %></li>
+</ul>

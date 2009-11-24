@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :users
   map.resources :password_resets
+  map.resources :activations
 
   map.resources :dreams
   map.user_dreams '/dreams/user/:id', :controller => :dreams, :action => :for_user
