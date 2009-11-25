@@ -19,7 +19,7 @@ namespace :vlad do
 
   desc 'Installs gems on the server using gemtronics'
   remote_task :install_gems do
-    run "cd #{current_path} && gemtronics install"
+    run "cd #{current_path} && gemtronics install production"
   end
 
   desc 'Create symlinks for config files'
