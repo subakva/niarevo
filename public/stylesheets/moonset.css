@@ -95,6 +95,7 @@ form .help-line { color: #555; }
 form .form-errors { padding-left: 20px; }
 form .error-line { color: #800; }
 form .button-line { text-align: right; }
+.recaptcha iframe { width: 340px; }
 
 /* dream styles */
 ul.dream-list {

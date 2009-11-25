@@ -37,3 +37,7 @@ end
 Then /^I should not see dream ([0-9]*)$/ do |number|
   Then "I should not see \"Dream #{number}\""
 end
+
+Given /^I enter the wrong captcha information$/ do
+  RecaptchaHelpers.report_failure
+end

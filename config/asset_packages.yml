@@ -2,10 +2,12 @@
 javascripts: 
 - base: 
   - jquery-1.3.2
+  - jquery.boxy
   - shared
 stylesheets: 
 - base: 
   - blueprint/screen
+  - boxy
   - moonset
 - print:
   - blueprint/print

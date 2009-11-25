@@ -28,6 +28,7 @@ group(:test, :dependencies => :development, :load => false) do |g|
   g.add('remarkable_rails', :version => '3.1.11')
   g.add('jscruggs-metric_fu', :version => '1.1.5')
   g.add('bmabey-email_spec', :version => '0.3.4', :require => 'email_spec')
+  g.add('fakeweb', :version => '1.2.7')
 end
 
 group(:cucumber, :dependencies => :test, :load => false) do |g|

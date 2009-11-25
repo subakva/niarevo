@@ -53,7 +53,9 @@ class DreamsController < ApplicationController
   def create
     @dream = Dream.new(params[:dream])
     @dream.user = current_user
-    if @dream.save
+    requires_captcha = current_user.blank?
+    captcha_is_valid = !requires_captcha || verify_recaptcha(:model => @dream)
+    if captcha_is_valid && @dream.save
       flash[:notice] = "Your dream has been saved."
       redirect_to dream_url(@dream)
     else

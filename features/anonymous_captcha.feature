@@ -12,6 +12,8 @@ Scenario: Anonymous user creating a dream
 
   When I fill in "Describe your dream" with "It was a stormy and dark night"
   And I fill in "Tag your dream" with "cliche, storm, night"
+  # JDW: Webrat doesn't support iframes or ajax, so testing this properly would require Watir or Selenium or something.
+  # And I fill in "Type the two words:" with "cucumber success"
   And I press "Save"
   
   Then I should be on the newest dream page
@@ -22,6 +24,15 @@ Scenario: Anonymous user creating a dream
   And I should see "storm"
   And I should see "night"
   And I should not see "[Edit]"
+
+Scenario: Anonymous user creating a dream with a bad captcha response
+  Given I am on the new dream page
+
+  When I fill in "Describe your dream" with "It was a stormy and dark night"
+  And I enter the wrong captcha information
+  And I press "Save"
+  Then I should be on the new dream error page
+  And I should see "Word verification response is incorrect, please try again."
 
 Scenario: Anonymous user attempting to edit a dream
   Given I have created a dream "It was a stormy and dark night"

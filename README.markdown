@@ -12,6 +12,7 @@
     * Automatic markdown formatting
     * Showing a list of dreams
     * Import data from the previous version
+    * Captcha for anonymous dreams
   * Tags
     * Browsing dreams by tags
     * Ability to tag for content or context
@@ -43,7 +44,6 @@
   * Dreams
     * Attach images/files to a dream
     * Safe html formatting
-    * Captcha for anonymous dreams
   * Stickiness
     * Add badges for
       * creating 1/10/100/100 dreams
@@ -52,6 +52,8 @@
     * Associate user with tags/taggings
     * Editing tags on a dream
     * Searching for dreams that match tag(s)
+    * Tag cloud
+    * Tag zeitgeist
     * Captcha for anonymous tags
   * Searching
     * Finding dreams with certain text
