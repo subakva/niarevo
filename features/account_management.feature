@@ -80,7 +80,7 @@ Feature: Managing an Account
     Given I am logged in as "cucumber"
     When I follow "Sign Out"
     
-    Then I should be on the login page
+    Then I should be on the home page
     And I should see "You have been logged out."
 
   Scenario: Editing account information
