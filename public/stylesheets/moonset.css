@@ -112,13 +112,17 @@ ul.dream-list li {
 ul.dream-list li p {
   margin: 15px 0;
 }
-.dream-tags {
+.dream-tags, .context-tags {
   clear: right;
+  background-color: #DDD;
   padding: 4px;
+  margin-bottom: 4px;
   border: 1px solid #999;
   border-left: 1px solid #999;
 }
+.context-tags a.add-tags,
 .dream-tags a.add-tags { font-size: 0.9em; }
+
 .dream-user {
   font-size: 0.9em;
   padding: 0 4px 4px;

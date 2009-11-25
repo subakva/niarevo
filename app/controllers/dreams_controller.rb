@@ -20,6 +20,14 @@ class DreamsController < ApplicationController
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
+  def for_dream_tag
+    render_dream_index(Dream.with_dream_tag(params[:id]))
+  end
+
+  def for_context_tag
+    render_dream_index(Dream.with_context_tag(params[:id]))
+  end
+
   def for_date
     min_date = Time.utc('2009')
     max_date = Time.now

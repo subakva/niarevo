@@ -16,15 +16,21 @@
 </div>
 
 <div class='dream-tags'>
-  <% for tag in dream.tag_list %>
-    <%= link_to tag, tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams tagged as #{tag}" %>
+  <% for tag in dream.dream_tag_list %>
+    <%= link_to tag, tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with content: #{tag}" %>
   <% end %>
   <br/>
-  <%# link_to "[Add Tags]", tag_dream_path(dream), :class => 'add-tags', :title => 'Tag this dream.' %>
 </div>
 
-<% if current_user && current_user.id == dream.user_id %>
-  <div class='dream-actions'>
+<div class='context-tags'>
+  <% for tag in dream.context_tag_list %>
+    <%= link_to tag, tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with context: #{tag}" %>
+  <% end %>
+</div>
+
+<div class='dream-actions'>
+  <% if current_user && current_user.id == dream.user_id %>
     <%= link_to "[Edit]", edit_dream_path(dream), :title => 'Edit this dream.' %>
-  </div>
-<% end %>
+    <%# link_to "[Add Tags]", tag_dream_path(dream), :class => 'add-tags', :title => 'Tag this dream.' %>
+  <% end %>
+</div>

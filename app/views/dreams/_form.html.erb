@@ -1,5 +1,10 @@
 <p class='label-line'><%= form.label :description, 'Describe Your Dream' %></p>
 <p class='input-line'><%= form.text_area :description %></p>
-<p class='label-line'><%= form.label :tag_list, 'Tag Your Dream' %></p>
+
+<p class='label-line'><%= form.label :dream_tag_list, 'Tag Your Dream' %></p>
 <p class='help-line'>(Ex. falling, whales, hitchhikers-guide)</p>
-<p class='input-line'><%= form.text_field :tag_list, :class => 'text' %></p>
+<p class='input-line'><%= form.text_field :dream_tag_list, :class => 'text' %></p>
+
+<p class='label-line'><%= form.label :context_tag_list, 'Tag Your Context' %></p>
+<p class='help-line'>(Ex. hammock, spicy-food, pregnancy)</p>
+<p class='input-line'><%= form.text_field :context_tag_list, :class => 'text' %></p>
