@@ -1,5 +1,5 @@
 group(:default) do |g|
-  g.add('gemtronics', :version => '0.7.2')
+  g.add('gemtronics', :version => '>=0.7.2')
   g.add('rails', :version => '2.3.4')
   g.add('is_taggable', :version => '0.1.0')
   g.add('authlogic', :version => '2.1.2')
@@ -9,6 +9,7 @@ group(:default) do |g|
   g.add('rdiscount', :version =>'1.5.5')
   g.add('matthuhiggins-foreigner', :version => '0.3.1', :require => 'foreigner')
   g.add('configatron', :version => '2.5.1')
+  g.add('recaptcha', :version => '0.2.3', :require => 'recaptcha/rails')
 end
 
 group(:production, :dependencies => :default) do |g|

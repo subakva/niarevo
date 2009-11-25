@@ -6,7 +6,7 @@
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
   :key         => '_niarevo_session',
-  :secret      => 'caaab6ce81104398272f53131aa18294d20c766a4338353762f6db89ede834fdb03300cb3a25c39da61c09a02d096e3b96bb1798eab35b35fb88c4340bc76d06'
+  :secret      => configatron.session.secret
 }
 
 # Use the database for sessions instead of the cookie-based default,

@@ -15,7 +15,7 @@ ActionMailer::Base.smtp_settings = {
   :port           => 587,
   :domain         => 'niarevo.com',
   :user_name      => 'outgoing@niarevo.com',
-  :password       => 'BgmibQHf',
+  :password       => configatron.smtp.password,
   :authentication => :login
 }
 

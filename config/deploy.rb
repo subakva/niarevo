@@ -24,7 +24,12 @@ namespace :vlad do
 
   desc 'Create symlinks for config files'
   remote_task :create_symlinks do
-    run "ln -s #{shared_path}/config/database.yml #{current_path}/config/database.yml"
+    %w{
+      config/database.yml
+      config/configatron/production/credentials.rb
+    }.each do |file_path|
+      run "ln -s #{shared_path}/#{file_path} #{current_path}/#{file_path}"
+    end
   end
 
   desc 'Runs all tasks to deploy the latest code'

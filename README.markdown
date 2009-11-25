@@ -49,6 +49,7 @@
       * creating 1/10/100/100 dreams
       * tagging 1/10/100/1000 dreams
   * Tags
+    * Associate user with tags/taggings
     * Editing tags on a dream
     * Searching for dreams that match tag(s)
     * Captcha for anonymous tags

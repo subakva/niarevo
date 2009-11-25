@@ -8,3 +8,5 @@ webrat-*.html
 config/database.yml
 *_packaged.css
 *_packaged.js
+config/configatron/development/credentials.rb
+config/configatron/production/credentials.rb
