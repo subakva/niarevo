@@ -56,12 +56,12 @@ Feature:
 
   Scenario: Listing recent dreams by tag
     Given the following dreams exist:
-      | description | dream_tags  | context_tags  |
-      | Salmon      | fishy       |               |
-      | Mahi Mahi   | fishy       |               |
-      | Perennials  |             | fishy         |
-      | Boorrinngg  |             |               |
-      | Cows eCows  | landed      |               |
+      | description | content_tags  | context_tags  |
+      | Salmon      | fishy         |               |
+      | Mahi Mahi   | fishy         |               |
+      | Perennials  |               | fishy         |
+      | Boorrinngg  |               |               |
+      | Cows eCows  | landed        |               |
 
     When I go to the dreams page for the tag "fishy"
     Then I should see "Salmon"

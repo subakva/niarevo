@@ -1,4 +1,5 @@
 class ActivationsController < ApplicationController
+
   before_filter :redirect_to_account_if_logged_in
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]
 

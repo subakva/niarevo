@@ -12,6 +12,9 @@
     * Automatic markdown formatting
     * Showing a list of dreams
     * Import data from the previous version
+  * Tags
+    * Browsing dreams by tags
+    * Ability to tag for content or context
   * RSS Feeds
     * For anonymous dreams
     * For a user
@@ -47,7 +50,6 @@
       * tagging 1/10/100/1000 dreams
   * Tags
     * Editing tags on a dream
-    * Browsing dreams by tags
     * Searching for dreams that match tag(s)
     * Captcha for anonymous tags
   * Searching

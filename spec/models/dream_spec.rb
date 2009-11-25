@@ -24,22 +24,22 @@ describe Dream do
   should_have_scope :created_after,   :with => Time.local('2009'), :conditions => ['created_at >= ?', Time.local('2009')]
   should_have_scope :with_tag, :with => 'the_tag', :joins => :tags,
     :conditions => { :tags => { :name => 'the_tag' } }
-  should_have_scope :with_dream_tag, :with => 'the_dream_tag', :joins => :tags,
-    :conditions => { :tags => { :name => 'the_dream_tag', :kind => 'dream_tag' } }
+  should_have_scope :with_content_tag, :with => 'the_content_tag', :joins => :tags,
+    :conditions => { :tags => { :name => 'the_content_tag', :kind => 'content_tag' } }
   should_have_scope :with_context_tag, :with => 'the_context_tag', :joins => :tags,
     :conditions => { :tags => { :name => 'the_context_tag', :kind => 'context_tag' } }
 
-  should_allow_mass_assignment_of :description, :dream_tag_list, :context_tag_list
+  should_allow_mass_assignment_of :description, :content_tag_list, :context_tag_list
 
   it "should make all tags accessible as a single list" do
-    @dream.dream_tag_list = 'one, two, three'
+    @dream.content_tag_list = 'one, two, three'
     @dream.context_tag_list = 'uno, dos, tres'
     @dream.tag_list.should == ['one','two', 'three', 'uno','dos', 'tres']
   end
 
   it "should be taggable for dreams" do
-    @dream.dream_tag_list = 'one, two, three'
-    @dream.dream_tag_list.should == ['one','two', 'three']
+    @dream.content_tag_list = 'one, two, three'
+    @dream.content_tag_list.should == ['one','two', 'three']
   end
 
   it "should be taggable for context" do

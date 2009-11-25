@@ -10,7 +10,7 @@
 #
 
 class Dream < ActiveRecord::Base
-  is_taggable :dream_tags, :context_tags
+  is_taggable :content_tags, :context_tags
   validates_presence_of :description
   belongs_to :user
 
@@ -20,18 +20,18 @@ class Dream < ActiveRecord::Base
   named_scope :created_after, lambda { |min_date| { :conditions => ['created_at >= ?', min_date] } }
 
   named_scope :with_tag, lambda { |tag_name| { :joins => :tags, :conditions => { :tags => { :name => tag_name } } } }
-  named_scope :with_dream_tag, lambda { |tag_name| { :joins => :tags,
-    :conditions => { :tags => { :name => tag_name, :kind => 'dream_tag' } }
+  named_scope :with_content_tag, lambda { |tag_name| { :joins => :tags,
+    :conditions => { :tags => { :name => tag_name, :kind => 'content_tag' } }
   }}
   named_scope :with_context_tag, lambda { |tag_name| { :joins => :tags,
     :conditions => { :tags => { :name => tag_name, :kind => 'context_tag' } }
   }}
 
 
-  attr_accessible :description, :dream_tag_list, :context_tag_list
+  attr_accessible :description, :content_tag_list, :context_tag_list
 
   def tag_list
-    self.dream_tag_list + self.context_tag_list
+    self.content_tag_list + self.context_tag_list
   end
   
 end

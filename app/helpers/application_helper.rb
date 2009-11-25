@@ -8,7 +8,7 @@ module ApplicationHelper
     rendered = ''
     unless errors.blank?
       rendered << '<ul class="form-errors">'
-      for error in errors.full_messages
+      errors.full_messages.each do |error|
         rendered << "<li class='error-line'>#{error}</li>"
       end
       rendered << '</ul>'

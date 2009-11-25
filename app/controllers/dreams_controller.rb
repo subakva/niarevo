@@ -20,8 +20,8 @@ class DreamsController < ApplicationController
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
-  def for_dream_tag
-    render_dream_index(Dream.with_dream_tag(params[:id]))
+  def for_content_tag
+    render_dream_index(Dream.with_content_tag(params[:id]))
   end
 
   def for_context_tag

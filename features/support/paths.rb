@@ -44,8 +44,8 @@ module NavigationHelpers
       dreams_path
     when /the dreams page for the user "([^\"]*)"/
       user_dreams_path($1)
-    when /the dreams page for the dream tag "([^\"]*)"/
-      dream_tag_dreams_path($1)
+    when /the dreams page for the content tag "([^\"]*)"/
+      content_tag_dreams_path($1)
     when /the dreams page for the context tag "([^\"]*)"/
       context_tag_dreams_path($1)
     when /the dreams page for the tag "([^\"]*)"/

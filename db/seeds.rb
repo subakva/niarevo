@@ -30,7 +30,7 @@ sources.each do |source|
       record = Dream.new(
         :description => fields['text'],
         :user_id => fields['user'],
-        :dream_tag_list => fields['tags'],
+        :content_tag_list => fields['tags'],
         :created_at => fields['created_on'],
         :updated_at => fields['modified_on']
       )

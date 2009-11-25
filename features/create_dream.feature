@@ -18,9 +18,9 @@ Scenario: Registered user creating a dream
   And I should see "Your dream has been saved."
   And I should see "It was a stormy and dark night"
   And I should see "cucumber" within ".dream-user"
-  And I should see "cliche" within ".dream-tags"
-  And I should see "storm" within ".dream-tags"
-  And I should see "night" within ".dream-tags"
+  And I should see "cliche" within ".content-tags"
+  And I should see "storm" within ".content-tags"
+  And I should see "night" within ".content-tags"
   And I should see "[Edit]"
 
 Scenario: Editing a dream

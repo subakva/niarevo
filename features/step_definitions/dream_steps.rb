@@ -2,12 +2,12 @@ Given /the following dreams exist:/ do |dream_table|
   dream_table.hashes.each do |hash|
     user = hash.has_key?('username') ? User.find_by_username(hash['username']) : nil
     created_at = hash.has_key?('created_at') ? DateTime.parse(hash['created_at']) : Time.now
-    dream_tag_list = hash.has_key?('dream_tags') ? hash['dream_tags'] : ''
+    content_tag_list = hash.has_key?('content_tags') ? hash['content_tags'] : ''
     context_tag_list = hash.has_key?('context_tags') ? hash['context_tags'] : ''
     Factory.create(:dream,
       :description => hash['description'],
       :user => user,
-      :dream_tag_list => dream_tag_list,
+      :content_tag_list => content_tag_list,
       :context_tag_list => context_tag_list,
       :created_at => created_at
     )

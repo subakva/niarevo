@@ -14,6 +14,6 @@ end
 
 Factory.define :dream do |d|
   d.description 'It was a stormy and dark night'
-  d.dream_tag_list 'cliche, storm, night'
+  d.content_tag_list 'cliche, storm, night'
   d.context_tag_list 'in-bed'
 end

@@ -8,7 +8,6 @@ class PasswordResetsController < ApplicationController
   end
 
   def new
-    render
   end
   
   def create
@@ -27,7 +26,6 @@ class PasswordResetsController < ApplicationController
   end
   
   def edit
-    render
   end
  
   def update

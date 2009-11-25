@@ -15,16 +15,16 @@
   <%= render_markdown dream.description %>
 </div>
 
-<div class='dream-tags'>
-  <% for tag in dream.dream_tag_list %>
-    <%= link_to tag, tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with content: #{tag}" %>
+<div class='content-tags'>
+  <% for tag in dream.content_tag_list %>
+    <%= link_to tag, content_tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with content: #{tag}" %>
   <% end %>
   <br/>
 </div>
 
 <div class='context-tags'>
   <% for tag in dream.context_tag_list %>
-    <%= link_to tag, tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with context: #{tag}" %>
+  <%= link_to tag, context_tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with context: #{tag}" %>
   <% end %>
 </div>
 

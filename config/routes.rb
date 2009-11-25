@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :dreams
   map.user_dreams '/dreams/user/:id', :controller => :dreams, :action => :for_user
   map.tag_dreams '/dreams/tagged/:id', :controller => :dreams, :action => :for_tag
-  map.dream_tag_dreams '/dreams/dream_tagged/:id', :controller => :dreams, :action => :for_dream_tag
+  map.content_tag_dreams '/dreams/content_tagged/:id', :controller => :dreams, :action => :for_content_tag
   map.context_tag_dreams '/dreams/context_tagged/:id', :controller => :dreams, :action => :for_context_tag
 
   map.dreams_by_day '/dreams/date/:year/:month/:day', :controller => :dreams, :action => :for_date,
