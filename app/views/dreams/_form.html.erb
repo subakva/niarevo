@@ -1,23 +1,29 @@
-<p class='label-line'><%= form.label :description, 'Describe Your Dream' %></p>
-<!-- <p class='help-line'><a href='#markdown-syntax' rel='boxy'>Markdown</a></p> -->
+<p class='label-line'>
+  <%= form.label :description, 'Describe Your Dream' %>
+  <a href='#description-help' title='Description Help' class='help-popup-link' rel='boxy'></a>
+</p>
 <p class='input-line'><%= form.text_area :description %></p>
+<div id='description-help' class='help-popup'><%= render :partial => "dreams/help/description" %></div>
 
-<p class='label-line'><%= form.label :content_tag_list, 'Tag Your Dream' %></p>
+<p class='label-line'>
+  <%= form.label :content_tag_list, 'Tag Your Dream' %>
+  <a href='#content_tag_list-help' title='About Content Tags' class='help-popup-link' rel='boxy'></a>
+</p>
 <p class='help-line'>(Ex. falling, whales, hitchhikers-guide)</p>
 <p class='input-line'><%= form.text_field :content_tag_list, :class => 'text' %></p>
+<div id='content_tag_list-help' class='help-popup'><%= render :partial => "dreams/help/content_tag_list" %></div>
 
-<p class='label-line'><%= form.label :context_tag_list, 'Tag Your Context' %></p>
-<p class='help-line'>(Ex. hammock, spicy-food, pregnancy)</p>
+<p class='label-line'>
+  <%= form.label :context_tag_list, 'Tag Your Context' %>
+  <a href='#context_tag_list-help' title='About Context Tags' class='help-popup-link' rel='boxy'></a>
+</p>
+<p class='help-line'>(Ex. at home, scary movie)</p>
 <p class='input-line'><%= form.text_field :context_tag_list, :class => 'text' %></p>
+<div id='context_tag_list-help' class='help-popup'><%= render :partial => "dreams/help/context_tag_list" %></div>
 
 <%- unless current_user -%>
-<div class='recaptcha'>
-  <%= recaptcha_tags %>
-</div>
+<div class='recaptcha'><%= recaptcha_tags %></div>
 <%- end -%>
 
-<!--
-<div id='markdown-syntax' style='display:none'>
-  All dots in instances of the letter "i" will be replaced with hearts.
-</div>
--->
+
+

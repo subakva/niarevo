@@ -10,4 +10,5 @@ config/database.yml
 *_packaged.js
 config/configatron/development/credentials.rb
 config/configatron/production/credentials.rb
+db/seeds/dreamtagger-export.json
 .DS_Store

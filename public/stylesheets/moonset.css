@@ -86,7 +86,7 @@ ul.message-list .error-message { color: #800; }
 /* form styles */
 form { width: 340px; margin: 0px auto; padding: 0px; }
 form p { margin: 0; padding: 0; }
-form .label-line label { display: block; margin: 3px 0; font-weight: bold; }
+form .label-line label { /*display: block;*/ margin: 3px 0; font-weight: bold; }
 textarea { width: 330px; margin: 3px 0; padding: 5px; }
 #id_tags, input.text, input.password { width: 326px; margin: 3px 0; padding: 5px; }
 input.submit { margin: 3px 0; }
@@ -96,6 +96,21 @@ form .form-errors { padding-left: 20px; }
 form .error-line { color: #800; }
 form .button-line { text-align: right; }
 .recaptcha iframe { width: 340px; }
+
+/* help dialogs */
+.boxy-wrapper { width: 400px; }
+.help-popup-link {
+  background: transparent url(../images/help.png) no-repeat scroll 0px 0px;
+  padding-right: 16px;
+  margin-left: 4px;
+}
+.help-popup { display:none; }
+.markdown-table {
+/*  table-layout:fixed;*/
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+.markdown-table td { border: 1px solid #999; }
 
 /* dream styles */
 ul.dream-list {

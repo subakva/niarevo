@@ -1,0 +1,34 @@
+<p>
+  Describe your dream here.
+  You might be tired, so don't worry if it doesn't make sense, or if your grammar or spelling aren't quite right.
+  And, really, it's a dream; it doesn't have to make sense.
+</p>
+<h4>Format</h4>
+<p>
+  HTML is not allowed, but you can any use other
+  <a href="http://daringfireball.net/projects/markdown/syntax" title="Daring Fireball: Markdown Syntax Documentation">
+    &quot;markdown&quot; syntax</a>. Here are some common examples:
+  <table class='markdown-table'>
+    <tr>
+      <td>Italic</td>
+      <td><code>*italic*</code></td>
+      <td><%= render_markdown '*italic*' %></td>
+    </tr>
+    <tr>
+      <td>Bold</td>
+      <td><code>**bold**</code></td>
+      <td><%= render_markdown '**bold**' %></td>
+    </tr>
+    <tr>
+      <td>Image</td>
+      <td><code>![Description](/images/avatar.png)</code></td>
+      <td><%= render_markdown '![Description](/images/avatar.png)' %></td>
+    </tr>
+    <tr>
+      <td>Link</td>
+      <td><code>&lt;http://www.google.com&gt;</code></td>
+      <td><%= render_markdown '<http://www.google.com>' %></td>
+    </tr>
+  </table>
+  <a href="http://daringfireball.net/projects/markdown/syntax" title="Daring Fireball: Markdown Syntax Documentation">See Full Documentation</a>
+</p>
