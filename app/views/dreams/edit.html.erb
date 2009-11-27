@@ -1,4 +1,6 @@
-<h2>Edit Dream</h2>
+<% content_for :title do %>Edit Your Dream<% end -%>
+
+<h2>Edit Your Dream</h2>
 <% form_for @dream do |f| -%>
   <%= render_form_errors(@dream.errors) %>
   <%= render :partial => "form", :object => f %>

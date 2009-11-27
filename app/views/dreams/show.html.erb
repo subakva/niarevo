@@ -1,1 +1,3 @@
+<% content_for :title do %><%=h truncate(@dream.description, :length => 40) %><% end -%>
+
 <%= render :partial => "dream", :object => @dream %>

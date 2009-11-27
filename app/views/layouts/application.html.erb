@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
+  <title>
+    DreamTagger - <%= yield :title or "#{controller.action_name} #{controller.controller_name}".titleize %>
+  </title>
   <%= stylesheet_link_merged :base %>
   <%= stylesheet_link_merged :print, :media => 'print' %>
   <!--[if lt IE 8]>

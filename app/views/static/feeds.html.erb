@@ -1,4 +1,7 @@
+<% content_for :title do %>Available Feeds<% end -%>
+
 <h2>Available Feeds</h2>
+
 <ul>
   <li>
     <%= link_to "Recent Dreams", dreams_url(:format => :atom), :title => 'Subscribe to the recent dreams feed.' %>
