@@ -1,5 +1,5 @@
 body {
-  background: #424242 url(../images/moonset-bg.png) repeat-x scroll top left;
+  background: #333 url(../images/moonset-bg.png) repeat-x scroll top left;
   color: #333;
 }
 a { color: #633; text-decoration: none; }
@@ -96,36 +96,49 @@ form .form-errors { padding-left: 20px; }
 form .error-line { color: #800; }
 form .button-line { text-align: right; }
 .recaptcha iframe { width: 340px; }
+.preview-throbber {
+  display: block;
+  width:25px;
+  height:25px;
+  margin: auto;
+}
 
 /* help dialogs */
 .boxy-wrapper { width: 400px; }
-.help-popup-link {
+.boxy-wrapper .title-bar { background-color: #931; }
+.help-icon {
   background: transparent url(../images/help.png) no-repeat scroll 0px 0px;
+  padding-right: 16px;
+  margin-left: 4px;
+}
+.preview-icon {
+  background: transparent url(../images/eye.png) no-repeat scroll 0px 0px;
   padding-right: 16px;
   margin-left: 4px;
 }
 .help-popup { display:none; }
 .markdown-table {
-/*  table-layout:fixed;*/
   border-collapse: collapse;
   font-size: 0.9em;
 }
+.markdown-table th {background-color: #FED;}
+.markdown-table th,
 .markdown-table td { border: 1px solid #999; }
 
 /* dream styles */
-ul.dream-list {
+.dream-list {
   list-style: none;
   margin: 0;
   padding: 0;
   letter-spacing: 0.1em;
   line-height: 1.2em;
 }
-ul.dream-list li {
+.dream-list li {
   border-bottom: 3px double #633;
   margin: 10px 0 30px;
   padding: 0 0 30px;
 }
-ul.dream-list li p {
+.dream-list li p {
   margin: 15px 0;
 }
 .content-tags, .context-tags {

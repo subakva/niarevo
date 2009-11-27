@@ -39,7 +39,9 @@
           <li class='error-message'><%= flash[:error] %></li>
           <%- end -%>
         </ul>
-        <div class='clear-message'><a href='#' class='clearMessage'>Clear Message</a></div>
+        <div class='clear-message'>
+          <%= link_to "Clear Message", '#', :title => 'Remove this message from the page.', :class => 'clearMessage' %>
+        </div>
       </div>
       <%- end -%>
 
@@ -59,5 +61,6 @@
       </div>
     </div>
   </div>
+  <%= yield :script %>
 </body>
 </html>

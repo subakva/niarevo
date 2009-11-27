@@ -1,13 +1,14 @@
 <p class='label-line'>
   <%= form.label :description, 'Describe Your Dream' %>
-  <a href='#description-help' title='Description Help' class='help-popup-link' rel='boxy'></a>
+  <%= link_to "", '#description-help', :title => 'Describing Your Dream', :class => 'help-link help-icon', :rel => 'boxy' %>
+  <%= link_to "", preview_dreams_path, :title => 'Preview', :class => 'preview-link preview-icon', :rel => 'boxy' %>
 </p>
 <p class='input-line'><%= form.text_area :description %></p>
 <div id='description-help' class='help-popup'><%= render :partial => "dreams/help/description" %></div>
 
 <p class='label-line'>
   <%= form.label :content_tag_list, 'Tag Your Dream' %>
-  <a href='#content_tag_list-help' title='About Content Tags' class='help-popup-link' rel='boxy'></a>
+  <%= link_to "", '#content_tag_list-help', :title => 'About Content Tags', :class => 'help-link help-icon', :rel => 'boxy' %>
 </p>
 <p class='help-line'>(Ex. falling, whales, hitchhikers-guide)</p>
 <p class='input-line'><%= form.text_field :content_tag_list, :class => 'text' %></p>
@@ -15,7 +16,7 @@
 
 <p class='label-line'>
   <%= form.label :context_tag_list, 'Tag Your Context' %>
-  <a href='#context_tag_list-help' title='About Context Tags' class='help-popup-link' rel='boxy'></a>
+  <%= link_to "", '#context_tag_list-help', :title => 'About Context Tags', :class => 'help-link help-icon', :rel => 'boxy' %>
 </p>
 <p class='help-line'>(Ex. at home, scary movie)</p>
 <p class='input-line'><%= form.text_field :context_tag_list, :class => 'text' %></p>
@@ -25,5 +26,4 @@
 <div class='recaptcha'><%= recaptcha_tags %></div>
 <%- end -%>
 
-
-
+<%= render :partial => "shared/preview_container" %>

@@ -7,8 +7,8 @@
     <%= image_tag 'avatar.png', :alt => 'gravatar' %>
   <%- end -%>
   <br/>
-  <span><%= dream.created_at.strftime('%d-%b-%Y') %></span><br/>
-  <span><%= dream.created_at.localtime.strftime('%H:%M:%S') %></span>
+  <span><%= (dream.created_at.nil? ? Time.now : dream.created_at).strftime('%d-%b-%Y') %></span><br/>
+  <span><%= (dream.created_at.nil? ? Time.now : dream.created_at).localtime.strftime('%H:%M:%S') %></span>
 </div>
 
 <div class='dream-text'>
@@ -26,6 +26,7 @@
   <% for tag in dream.context_tag_list %>
   <%= link_to tag, context_tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with context: #{tag}" %>
   <% end %>
+  <br/>
 </div>
 
 <div class='dream-actions'>

@@ -3,6 +3,8 @@
   <%= render_form_errors(@dream.errors) %>
   <%= render :partial => "form", :object => f %>
   <p class='button-line'>
+    <%= link_to "Cancel", dream_path(@dream), :title => 'Cancel' %> //
+    <%= link_to "Preview", preview_dreams_path, :title => 'Preview', :class => 'preview-link' %> //
     <%= f.submit "Save", :class => 'submit' %>
   </p>
 <% end -%>

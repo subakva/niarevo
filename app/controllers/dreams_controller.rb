@@ -66,6 +66,11 @@ class DreamsController < ApplicationController
   def show
   end
 
+  def preview
+    @dream = Dream.new(params[:dream])
+    render :partial => 'dream', :layout => false, :object => @dream
+  end
+
   def edit
   end
 

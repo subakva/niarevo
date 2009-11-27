@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.resources :activations
 
-  map.resources :dreams
+  map.resources :dreams, :collection => {:preview => [:get,:post]}
   map.user_dreams '/dreams/user/:id', :controller => :dreams, :action => :for_user
   map.tag_dreams '/dreams/tagged/:id', :controller => :dreams, :action => :for_tag
   map.content_tag_dreams '/dreams/content_tagged/:id', :controller => :dreams, :action => :for_content_tag

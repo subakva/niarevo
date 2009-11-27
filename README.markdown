@@ -13,6 +13,7 @@
     * Showing a list of dreams
     * Import data from the previous version
     * Captcha for anonymous dreams
+    * Preview Dream Description
   * Tags
     * Browsing dreams by tags
     * Ability to tag for content or context
