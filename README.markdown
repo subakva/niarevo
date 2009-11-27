@@ -17,6 +17,7 @@
   * Tags
     * Browsing dreams by tags
     * Ability to tag for content or context
+    * Associate user with tags/taggings
   * RSS Feeds
     * For anonymous dreams
     * For a user
@@ -45,16 +46,15 @@
   * Dreams
     * Attach images/files to a dream
     * Safe html formatting
+    * ? Attach disqus comments to dreams
   * Stickiness
     * Add badges for
       * creating 1/10/100/100 dreams
       * tagging 1/10/100/1000 dreams
   * Tags
-    * Associate user with tags/taggings
+    * !! Tag cloud
+    * !! Tag zeitgeist
     * Editing tags on a dream
-    * Searching for dreams that match tag(s)
-    * Tag cloud
-    * Tag zeitgeist
     * Captcha for anonymous tags
   * Searching
     * Finding dreams with certain text

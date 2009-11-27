@@ -12,9 +12,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Dream do
-  before(:each) do
-    @dream = Factory.create(:dream)
-  end
 
   should_validate_presence_of :description
   should_belong_to :user
@@ -31,19 +28,84 @@ describe Dream do
 
   should_allow_mass_assignment_of :description, :content_tag_list, :context_tag_list
 
-  it "should make all tags accessible as a single list" do
-    @dream.content_tag_list = 'one, two, three'
-    @dream.context_tag_list = 'uno, dos, tres'
-    @dream.tag_list.should == ['one','two', 'three', 'uno','dos', 'tres']
+  describe 'tag kinds' do
+    before(:each) do
+      @dream = Factory.create(:dream)
+    end
+
+    it "should make all tags accessible as a single list" do
+      @dream.content_tag_list = 'one, two, three'
+      @dream.context_tag_list = 'uno, dos, tres'
+      @dream.tag_list.should == ['one','two', 'three', 'uno','dos', 'tres']
+    end
+
+    it "should be taggable for dreams" do
+      @dream.content_tag_list = 'one, two, three'
+      @dream.content_tag_list.should == ['one','two', 'three']
+    end
+
+    it "should be taggable for context" do
+      @dream.context_tag_list = 'uno, dos, tres'
+      @dream.context_tag_list.should == ['uno','dos', 'tres']
+    end
   end
 
-  it "should be taggable for dreams" do
-    @dream.content_tag_list = 'one, two, three'
-    @dream.content_tag_list.should == ['one','two', 'three']
-  end
+  describe 'associating tags with a user' do
+    before(:each) do
+      @dreamer = Factory.create(:user, :username => 'dreamer')
+      @tagger = Factory.create(:user, :username => 'tagger')
+      @preexisting_content_tag = Tag.create(:name => 'preexisting_content', :kind => 'content_tag')
+      @preexisting_context_tag = Tag.create(:name => 'preexisting_context', :kind => 'context_tag')
+      @dream = Factory.build(:dream,
+        :user => @dreamer,
+        :content_tag_list => 'preexisting_content, new_dream_content',
+        :context_tag_list => 'preexisting_context, new_dream_context'
+      )
+    end
 
-  it "should be taggable for context" do
-    @dream.context_tag_list = 'uno, dos, tres'
-    @dream.context_tag_list.should == ['uno','dos', 'tres']
+    it "associates new taggings on an existing dream with the dream tagger" do
+      @dream.save!
+
+      @dream.tagged_by = @tagger
+      @dream.content_tag_list = @dream.content_tag_list + ['addon_content']
+      @dream.context_tag_list = @dream.context_tag_list + ['addon_context']
+      @dream.save!
+      @dream.taggings.each do |tagging|
+        if ['addon_content', 'addon_context'].include?(tagging.tag.name)
+          tagging.user.should == @tagger
+        else
+          tagging.user.should == @dreamer
+        end
+      end
+    end
+
+    it "associates taggings on a new dream with the dream creator" do
+      @dream.save!
+      @dream.taggings.each do |tagging|
+        tagging.user.should == @dreamer
+      end
+    end
+
+    it "associates new tags on a new dream with the dream creator" do
+      @dream.save!
+      ['new_dream_content', 'new_dream_context'].should be_associated_with_user(@dreamer)
+    end
+
+    it "does not change the user association for a tag that already existed" do
+      @dream.save!
+      ['new_dream_content', 'new_dream_context'].should be_associated_with_user(@dreamer)
+      ['preexisting_content', 'preexisting_context'].should be_associated_with_user(nil)
+    end
+
+    it "associates new tags on an existing dream with the dream tagger" do
+      @dream.save!
+      @dream.tagged_by = @tagger
+      @dream.content_tag_list = @dream.content_tag_list + ['addon_content']
+      @dream.context_tag_list = @dream.context_tag_list + ['addon_context']
+      @dream.save!
+      ['new_dream_content', 'new_dream_context'].should be_associated_with_user(@dreamer)
+      ['preexisting_content', 'preexisting_context'].should be_associated_with_user(nil)
+      ['addon_content', 'addon_context'].should be_associated_with_user(@tagger)
+    end
   end
 end

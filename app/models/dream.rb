@@ -11,6 +11,8 @@
 
 class Dream < ActiveRecord::Base
   is_taggable :content_tags, :context_tags
+  include TaggableByUser
+
   validates_presence_of :description
   belongs_to :user
 
@@ -27,11 +29,18 @@ class Dream < ActiveRecord::Base
     :conditions => { :tags => { :name => tag_name, :kind => 'context_tag' } }
   }}
 
-
   attr_accessible :description, :content_tag_list, :context_tag_list
+
+  attr_accessor :tagged_by
+  before_validation_on_create :set_tagged_by_to_user
 
   def tag_list
     self.content_tag_list + self.context_tag_list
   end
-  
+
+  protected
+  def set_tagged_by_to_user
+    self.tagged_by ||= self.user
+    # puts "self.tagged_by.username = #{self.tagged_by.username if self.tagged_by}<br/>"
+  end
 end
