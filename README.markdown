@@ -28,11 +28,13 @@
     * Change password
     * Change account preferences
     * Account activation process
+    * Back end for invitation system
   * Infrastructure/Performance
     * Asset Packaging
   * Design
     * Ported design from dreamtagger
     * Switch base styles to blueprint
+    * Set up HTML title tags
   * Static Content
     * Import about page from dreamtagger
     * Import feeds page from dreamtagger
@@ -45,7 +47,7 @@
 
   * Dreams
     * Attach images/files to a dream
-    * Safe html formatting
+    * . Safe html formatting
     * ? Attach disqus comments to dreams
   * Stickiness
     * Add badges for
@@ -62,8 +64,10 @@
     * Finding dreams for a certain user
     * Finding dreams for a date range
   * Accounts
+    * !! Front-end for invitation system
+    * opt out of invitations
+    * communication preferences
     * Delete a dreamer account
-    * Send invitations to join
     * Add time zone support
   * Design
     * iPhone-friendly stylesheet

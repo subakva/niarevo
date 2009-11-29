@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :password_resets
   map.resources :activations
+  map.resources :invites
 
   map.resources :dreams, :collection => {:preview => [:get,:post]}
   map.user_dreams '/dreams/user/:id', :controller => :dreams, :action => :for_user

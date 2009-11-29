@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation
 
   has_many :dreams
+  has_many :invites
   validates_exclusion_of :username, :in => ['admin', 'user', 'anonymous']
 
   def activate!

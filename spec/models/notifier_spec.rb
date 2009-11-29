@@ -5,17 +5,61 @@ describe Notifier do
     @user = Factory.create(:user)
   end
 
-  describe 'an email to a user', :shared => true do
+  describe 'all emails', :shared => true do
     it "uses the standard setup" do
       @mail.from.should == ['noreply@niarevo.com']
-      @mail.to.should == [@user.email]
       @mail.bcc.should == ['outgoing@niarevo.com']
     end
 
     it "uses the notifier layout" do
-      @mail.body.should =~ Regexp.new("Hello #{@user.username}")
       @mail.body.should =~ /Thanks,\nThe DreamTagger Team/
     end
+  end
+
+  describe 'an email to a user', :shared => true do
+    it_should_behave_like 'all emails'
+
+    it "sends the email to the user" do
+      @mail.to.should == [@user.email]
+    end
+
+    it "includes the greeting" do
+      @mail.body.should =~ Regexp.new("Hello #{@user.username}")
+    end
+  end
+
+  describe 'invitation' do
+    before(:each) do
+      @invite = Factory.create(:invite, :user => @user)
+      @mail = Notifier.create_invitation(@invite)
+    end
+
+    it_should_behave_like 'all emails'
+
+    it "sends the email to the invitee" do
+      @mail.to.should == [@invite.email]
+    end
+
+    it "sets the subject" do
+      @mail.subject.should == "#{@user.username} has invited you to try DreamTagger"
+    end
+
+    it "includes the greeting" do
+      @mail.body.should =~ Regexp.new("Hello #{@invite.recipient_name}")
+    end
+
+    it "includes the message" do
+      @mail.body.should =~ Regexp.new(@invite.message)
+    end
+
+    it "includes the new account link" do
+      @mail.body.should =~ Regexp.new("http://localhost:3000/account/new")
+    end
+
+    it "includes the about link" do
+      @mail.body.should =~ Regexp.new("http://localhost:3000/about")
+    end
+    
   end
 
   describe 'activation_instructions' do

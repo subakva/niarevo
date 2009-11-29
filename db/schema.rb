@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091125185444) do
+ActiveRecord::Schema.define(:version => 20091128200125) do
 
   create_table "dreams", :force => true do |t|
     t.text     "description", :null => false
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(:version => 20091125185444) do
   add_index "dreams", ["created_at"], :name => "index_dreams_on_created_at"
   add_index "dreams", ["updated_at"], :name => "index_dreams_on_updated_at"
   add_index "dreams", ["user_id"], :name => "index_dreams_on_user_id"
+
+  create_table "invites", :force => true do |t|
+    t.string   "message"
+    t.string   "recipient_name", :limit => 32,  :null => false
+    t.string   "email",          :limit => 100, :null => false
+    t.integer  "user_id",                       :null => false
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invites", ["created_at"], :name => "index_invites_on_created_at"
+  add_index "invites", ["email", "user_id"], :name => "index_invites_on_email_and_user_id", :unique => true
+  add_index "invites", ["email"], :name => "index_invites_on_email"
+  add_index "invites", ["sent_at"], :name => "index_invites_on_sent_at"
+  add_index "invites", ["user_id"], :name => "index_invites_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id",        :null => false
@@ -77,6 +93,8 @@ ActiveRecord::Schema.define(:version => 20091125185444) do
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
   add_foreign_key "dreams", "users", :name => "dreams_user_id_fk", :dependent => :delete
+
+  add_foreign_key "invites", "users", :name => "invites_user_id_fk", :dependent => :delete
 
   add_foreign_key "taggings", "tags", :name => "taggings_tag_id_fk", :dependent => :delete
 

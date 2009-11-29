@@ -43,6 +43,7 @@ describe User do
   should_allow_mass_assignment_of :email, :username, :password, :password_confirmation
 
   should_have_many :dreams
+  should_have_many :invites
 
   it "should be gravtastic" do
     @user.email = 'gravatar@example.com'
