@@ -28,6 +28,34 @@ describe Dream do
 
   should_allow_mass_assignment_of :description, :content_tag_list, :context_tag_list
 
+  describe 'tag counts' do
+    before(:each) do
+      @dream = Factory.create(:dream,
+        :content_tag_list => '',
+        :context_tag_list => ''
+      )
+    end
+
+    it "updates the tag count before saving" do
+      @dream.content_tag_count.should == 0
+      @dream.context_tag_count.should == 0
+
+      @dream.content_tag_list = 'one, two, three'
+      @dream.context_tag_list = 'uno, dos'
+      @dream.save!
+
+      @dream.content_tag_count.should == 3
+      @dream.context_tag_count.should == 2
+
+      @dream.content_tag_list = 'one, two'
+      @dream.context_tag_list = 'uno'
+      @dream.save!
+
+      @dream.content_tag_count.should == 2
+      @dream.context_tag_count.should == 1
+    end
+  end
+
   describe 'tag kinds' do
     before(:each) do
       @dream = Factory.create(:dream)

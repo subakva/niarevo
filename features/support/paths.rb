@@ -50,6 +50,12 @@ module NavigationHelpers
       context_tag_dreams_path($1)
     when /the dreams page for the tag "([^\"]*)"/
       tag_dreams_path($1)
+    when /the untagged dreams page/
+      untagged_dreams_path
+    when /the untagged content dreams page/
+      untagged_content_dreams_path
+    when /the untagged context dreams page/
+      untagged_context_dreams_path
     when /the dreams page for ([0-9]*)$/
       dreams_by_year_path(:year => $1)
     when /the dreams page for ([0-9]*)\/([0-9]*)$/
@@ -60,6 +66,8 @@ module NavigationHelpers
       new_dream_path
     when /the new dream error page/
       dreams_path
+    when /the dream page with description "([^\"]*)"/
+      dream_path(Dream.find_by_description($1))
     when /the newest dream page/
       dream_path(Dream.last)
     when /the dream details page for my dream/

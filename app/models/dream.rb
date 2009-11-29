@@ -33,6 +33,7 @@ class Dream < ActiveRecord::Base
 
   attr_accessor :tagged_by
   before_validation_on_create :set_tagged_by_to_user
+  before_save :update_tag_counts
 
   def tag_list
     self.content_tag_list + self.context_tag_list
@@ -41,6 +42,10 @@ class Dream < ActiveRecord::Base
   protected
   def set_tagged_by_to_user
     self.tagged_by ||= self.user
-    # puts "self.tagged_by.username = #{self.tagged_by.username if self.tagged_by}<br/>"
+  end
+
+  def update_tag_counts
+    self.content_tag_count = self.content_tag_list.size
+    self.context_tag_count = self.context_tag_list.size
   end
 end

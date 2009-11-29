@@ -16,13 +16,18 @@
 </div>
 
 <div class='content-tags'>
+  <% if dream.content_tag_list.empty? %>
+    <%= link_to 'untagged', untagged_content_dreams_path, :class => 'tag-link', :title => "Show dreams without content tags" %>
+  <% end %>
   <% for tag in dream.content_tag_list %>
     <%= link_to tag, content_tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with content: #{tag}" %>
   <% end %>
   <br/>
 </div>
-
 <div class='context-tags'>
+  <% if dream.context_tag_list.empty? %>
+    <%= link_to 'untagged', untagged_context_dreams_path, :class => 'tag-link', :title => "Show dreams without context tags" %>
+  <% end %>
   <% for tag in dream.context_tag_list %>
   <%= link_to tag, context_tag_dreams_path(tag), :class => 'tag-link', :title => "Show recent dreams with context: #{tag}" %>
   <% end %>
