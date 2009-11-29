@@ -18,6 +18,7 @@
     * Browsing dreams by tags
     * Ability to tag for content or context
     * Associate user with tags/taggings
+    * Browse untagged dreams
   * RSS Feeds
     * For anonymous dreams
     * For a user

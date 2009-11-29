@@ -1,6 +1,6 @@
-<% content_for :title do %>Recent Dreams<% end -%>
+<% content_for :title do %><%= @page_title || 'Recent Dreams' %><% end -%>
 
-<h2>Recent Dreams</h2>
+<h2><%= @page_title || 'Recent Dreams' %></h2>
 <%- if @dreams.blank? -%>
   <p>There are no dreams that match that criteria.</p>
 <%- else -%>

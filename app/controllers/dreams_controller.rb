@@ -5,38 +5,47 @@ class DreamsController < ApplicationController
   before_filter :load_dream_for_user, :only => [:edit, :update, :destroy]
 
   def index
+    @page_title = "Recent Dreams"
     render_dream_index(Dream)
   end
 
   def for_user
     if params[:id] == 'anonymous'
+      @page_title = "Anonymous Dreams"
       render_dream_index(Dream.user_id_null)
     else
+      @page_title = "Dreams From the Mind of #{params[:id]}"
       render_dream_index(Dream.user_username_eq(params[:id]))
     end
   end
 
   def for_tag
+    @page_title = "Dreams Tagged &quot;#{params[:id]}&quot;"
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
   def for_content_tag
+    @page_title = "Dreams Tagged for Content &quot;#{params[:id]}&quot;"
     render_dream_index(Dream.with_content_tag(params[:id]))
   end
 
   def for_context_tag
+    @page_title = "Dreams Tagged for Context &quot;#{params[:id]}&quot;"
     render_dream_index(Dream.with_context_tag(params[:id]))
   end
 
   def untagged
+    @page_title = "Untagged Dreams"
     render_dream_index(Dream.context_tag_count_or_content_tag_count_eq(0))
   end
 
   def untagged_context
+    @page_title = "Dreams Without Context Tags"
     render_dream_index(Dream.context_tag_count_eq(0))
   end
 
   def untagged_content
+    @page_title = "Dreams Without Content Tags"
     render_dream_index(Dream.content_tag_count_eq(0))
   end
   
@@ -55,6 +64,7 @@ class DreamsController < ApplicationController
       min_date = min_date.change(:day => params[:day].to_i).beginning_of_day
       max_date = max_date.change(:day => params[:day].to_i).end_of_day
     end
+    @page_title = title_for_dates(min_date, max_date)
     render_dream_index(Dream.created_before(max_date).created_after(min_date))
   end
 
@@ -96,7 +106,16 @@ class DreamsController < ApplicationController
   end
 
   protected
-  
+  def title_for_dates(min_date, max_date)
+    start_string = min_date.strftime('%d-%b-%Y')
+    end_string = max_date.strftime('%d-%b-%Y')
+    if start_string == end_string
+      "Dreams On #{start_string}"
+    else
+      "Dreams From #{start_string} To #{end_string}"
+    end
+  end
+
   def render_dream_index(scope)
     @dreams = scope.paginate(:per_page => 10, :page => params[:page])
     respond_to do |format|
