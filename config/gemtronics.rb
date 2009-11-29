@@ -10,6 +10,7 @@ group(:default) do |g|
   g.add('matthuhiggins-foreigner', :version => '0.3.1', :require => 'foreigner')
   g.add('configatron', :version => '2.5.1')
   g.add('recaptcha', :version => '0.2.3', :require => 'recaptcha/rails')
+  g.add('rack-maintenance', :version => '0.3.0', :require => 'rack/maintenance')
 end
 
 group(:production, :dependencies => :default) do |g|

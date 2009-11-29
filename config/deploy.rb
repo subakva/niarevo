@@ -32,12 +32,25 @@ namespace :vlad do
     end
   end
 
+  namespace :maintenance do
+    desc 'Enables the maintenance page'
+    remote_task :enable do
+      run "cp #{current_path}/public/system/maintenance.html #{current_path}/public/maintenance.html"
+    end
+    desc 'Disables the maintenance page'
+    remote_task :disable do
+      run "rm #{current_path}/public/maintenance.html"
+    end
+  end
+
   desc 'Runs all tasks to deploy the latest code'
   remote_task :deploy => [
+    'maintenance:enable',
     :update,
     :install_gems,
     :create_symlinks,
     :migrate,
-    :start_app
+    :start_app,
+    'maintenance:disable',
   ]
 end
