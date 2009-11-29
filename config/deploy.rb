@@ -42,5 +42,6 @@ namespace :vlad do
     :migrate,
     :start_app,
     'maintenance:off',
+    :cleanup
   ]
 end
