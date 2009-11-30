@@ -11,6 +11,17 @@ module TagExtensions
   def self.extended(klass)
     klass.class_eval do
       belongs_to :user
+
+      def self.cloud_for(scope, limit = 20)
+        result = scope.find(:all,
+          :select => 'tags.id as tag_id, tags.name as tag_name, count(taggings.tag_id) as tag_count',
+          :joins => :tags,
+          :group => 'taggings.tag_id',
+          :order => 'tag_count DESC',
+          :limit => limit
+        )
+        result.collect(&:attributes)
+      end
     end
   end
 end

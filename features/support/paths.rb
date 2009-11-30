@@ -76,6 +76,8 @@ module NavigationHelpers
       edit_dream_path(@current_dream)
     when /the edit dream error page for my dream/
       dream_path(@current_dream)
+    when /the zeitgeist page/
+      zeitgeist_path
 
     # Add more mappings here.
     # Here is a more fancy example:

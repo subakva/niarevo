@@ -134,30 +134,31 @@ form .button-line { text-align: right; }
   line-height: 1.2em;
 }
 .dream-list li {
-  border-bottom: 3px double #633;
+  border-bottom: 0.3em double #633;
   margin: 10px 0 30px;
   padding: 0 0 30px;
 }
-.dream-list li p {
-  margin: 15px 0;
-}
-.content-tags, .context-tags {
+
+.content-tags, .context-tags, .tag-cloud {
   clear: right;
-  background-color: #DDD;
-  padding: 4px;
-  margin-bottom: 4px;
+  background-color: #EEE;
+  padding: 0.4em;
+  margin-bottom: 0.4em;
   border: 1px solid #999;
   border-left: 1px solid #999;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
+.tag-cloud a.add-tags,
 .context-tags a.add-tags,
 .content-tags a.add-tags { font-size: 0.9em; }
+.tag-cloud { text-align:center; margin-bottom: 1.5em; }
+.tag-link { margin-right: 0.6em; }
 
 .dream-user {
   font-size: 0.9em;
-  padding: 0 4px 4px;
-  margin: 0 0 4px 4px;
+  padding: 0 0.4em 0.4em;
+  margin: 0 0 0.4em 0.4em;
   text-align: right;
   float: right;
 }
@@ -165,10 +166,9 @@ form .button-line { text-align: right; }
   text-align: center;
   border-top: 1px solid #999;
   border-bottom: 1px solid #999;
-  margin: 4px 0 0;
-  padding: 4px 0px;
+  margin: 0.4em 0 0;
+  padding: 0.4em 0px;
 }
 .dream-actions a { text-decoration: none; }
 .dream-actions a:hover { text-decoration: underline; }
 .results-meta, .results-nav { text-align:center; }
-.tag-link { margin-right: 6px; }

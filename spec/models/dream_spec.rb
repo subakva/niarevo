@@ -15,10 +15,10 @@ describe Dream do
 
   should_validate_presence_of :description
   should_belong_to :user
-  should_have_default_scope :order => 'created_at DESC'
+  should_have_default_scope :order => 'dreams.created_at DESC'
   should_have_scope :recent, :limit => 5
-  should_have_scope :created_before,  :with => Time.local('2009'), :conditions => ['created_at <= ?', Time.local('2009')]
-  should_have_scope :created_after,   :with => Time.local('2009'), :conditions => ['created_at >= ?', Time.local('2009')]
+  should_have_scope :created_before,  :with => Time.local('2009'), :conditions => ['dreams.created_at <= ?', Time.local('2009')]
+  should_have_scope :created_after,   :with => Time.local('2009'), :conditions => ['dreams.created_at >= ?', Time.local('2009')]
   should_have_scope :with_tag, :with => 'the_tag', :joins => :tags,
     :conditions => { :tags => { :name => 'the_tag' } }
   should_have_scope :with_content_tag, :with => 'the_content_tag', :joins => :tags,
@@ -27,6 +27,45 @@ describe Dream do
     :conditions => { :tags => { :name => 'the_context_tag', :kind => 'context_tag' } }
 
   should_allow_mass_assignment_of :description, :content_tag_list, :context_tag_list
+
+  describe 'tag_clouds' do
+    def check_cloud_item(cloud_item, expected_tag_name, expected_count)
+      expected_tag = Tag.find_by_name(expected_tag_name)
+      cloud_item['tag_id'].should == expected_tag.id.to_s
+      cloud_item['tag_name'].should == expected_tag.name
+      cloud_item['tag_count'].should == expected_count.to_s
+    end
+
+    it "gets a cloud for all dreams" do
+      Factory.create(:dream, :context_tag_list => '', :content_tag_list => 'three, two, one')
+      Factory.create(:dream, :context_tag_list => '', :content_tag_list => 'three, two')
+      Factory.create(:dream, :context_tag_list => '', :content_tag_list => 'three')
+
+      cloud = Tag.cloud_for(Dream)
+      cloud.size.should == 3
+      check_cloud_item(cloud.first, 'three', 3)
+      check_cloud_item(cloud.second, 'two', 2)
+      check_cloud_item(cloud.third, 'one', 1)
+    end
+
+    it "gets a cloud for a user" do
+      @user1 = Factory.create(:user)
+      Factory.create(:dream, :user => @user1, :context_tag_list => '', :content_tag_list => 'three, two, one')
+      Factory.create(:dream, :user => @user1, :context_tag_list => '', :content_tag_list => 'three, two')
+      Factory.create(:dream, :user => @user1, :context_tag_list => '', :content_tag_list => 'three')
+
+      @user2 = Factory.create(:user)
+      Factory.create(:dream, :user => @user2, :context_tag_list => '', :content_tag_list => 'tres, dos, uno')
+      Factory.create(:dream, :user => @user2, :context_tag_list => '', :content_tag_list => 'tres, dos')
+      Factory.create(:dream, :user => @user2, :context_tag_list => '', :content_tag_list => 'tres')
+
+      cloud = Tag.cloud_for(Dream.user_username_eq(@user1.username))
+      cloud.size.should == 3
+      check_cloud_item(cloud.first, 'three', 3)
+      check_cloud_item(cloud.second, 'two', 2)
+      check_cloud_item(cloud.third, 'one', 1)
+    end
+  end
 
   describe 'tag counts' do
     before(:each) do

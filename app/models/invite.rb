@@ -33,7 +33,7 @@ class Invite < ActiveRecord::Base
     invited_recently = Invite.email_eq(self.email).sent_after(7.days.ago).exists?
     unless invited_recently
       Notifier.deliver_invitation(self)
-      self.update_attribute(:sent_at, Time.now)
+      self.update_attribute(:sent_at, Time.now.utc)
     end
   end
   

@@ -1,7 +1,11 @@
 Given /the following dreams exist:/ do |dream_table|
   dream_table.hashes.each do |hash|
     user = hash.has_key?('username') ? User.find_by_username(hash['username']) : nil
-    created_at = hash.has_key?('created_at') ? DateTime.parse(hash['created_at']) : Time.now
+    if hash.has_key?('created_at') && hash['created_at'] != 'today'
+      created_at = DateTime.parse(hash['created_at']).utc
+    else
+      created_at = Time.now.utc
+    end
     content_tag_list = hash.has_key?('content_tags') ? hash['content_tags'] : ''
     context_tag_list = hash.has_key?('context_tags') ? hash['context_tags'] : ''
     Factory.create(:dream,

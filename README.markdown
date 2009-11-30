@@ -19,6 +19,8 @@
     * Ability to tag for content or context
     * Associate user with tags/taggings
     * Browse untagged dreams
+    * Tag cloud
+    * Tag zeitgeist
   * RSS Feeds
     * For anonymous dreams
     * For a user
@@ -55,8 +57,6 @@
       * creating 1/10/100/100 dreams
       * tagging 1/10/100/1000 dreams
   * Tags
-    * !! Tag cloud
-    * !! Tag zeitgeist
     * Editing tags on a dream
     * Captcha for anonymous tags
   * Searching

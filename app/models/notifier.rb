@@ -33,7 +33,7 @@ class Notifier < ActionMailer::Base
     from      configatron.notifier.from
     recipients  to_email
     bcc       configatron.notifier.auto_cc
-    sent_on   Time.now
+    sent_on   Time.now.utc
   end
 
   def setup_user_email(user)

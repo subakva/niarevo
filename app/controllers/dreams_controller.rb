@@ -51,7 +51,7 @@ class DreamsController < ApplicationController
   
   def for_date
     min_date = Time.utc('2009')
-    max_date = Time.now
+    max_date = Time.now.utc
     if params[:year]
       min_date = min_date.change(:year => params[:year].to_i).beginning_of_year
       max_date = max_date.change(:year => params[:year].to_i).end_of_year

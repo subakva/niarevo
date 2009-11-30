@@ -7,8 +7,8 @@
     <%= image_tag 'avatar.png', :alt => 'gravatar' %>
   <%- end -%>
   <br/>
-  <span><%= (dream.created_at.nil? ? Time.now : dream.created_at).strftime('%d-%b-%Y') %></span><br/>
-  <span><%= (dream.created_at.nil? ? Time.now : dream.created_at).localtime.strftime('%H:%M:%S') %></span>
+  <span><%= (dream.created_at.nil? ? Time.now.utc : dream.created_at).strftime('%d-%b-%Y') %></span><br/>
+  <span><%= (dream.created_at.nil? ? Time.now.utc : dream.created_at).localtime.strftime('%H:%M:%S') %></span>
 </div>
 
 <div class='dream-text'>

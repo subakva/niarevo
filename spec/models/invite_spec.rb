@@ -48,7 +48,7 @@ describe Invite do
     end
 
     it "should set the sent_at date" do
-      nowish = Time.now
+      nowish = Time.now.utc
       Time.stub!(:now).and_return(nowish)
 
       @invite.sent_at.should be_nil

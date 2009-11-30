@@ -23,7 +23,9 @@ ActionController::Routing::Routes.draw do |map|
   map.dreams_by_year '/dreams/date/:year', :controller => :dreams, :action => :for_date,
     :year => /\d{4}/
 
-  map.resources :dreams, :collection => {:preview => [:get,:post]}
+  map.resources :dreams, :collection => {:preview => [:get, :post]}
+
+  map.resource :zeitgeist, :only => :show
 
   map.about '/about', :controller => 'static', :action => 'about'
   map.feeds '/feeds', :controller => 'static', :action => 'feeds'
