@@ -30,5 +30,6 @@ ActionController::Routing::Routes.draw do |map|
   map.about '/about', :controller => 'static', :action => 'about'
   map.feeds '/feeds', :controller => 'static', :action => 'feeds'
   map.terms '/terms', :controller => 'static', :action => 'terms'
+  map.facebook '/facebook', :controller => 'static', :action => 'facebook'
   map.root :controller => "dreams", :action => "index"
 end

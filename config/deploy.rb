@@ -33,6 +33,11 @@ namespace :vlad do
     end
   end
 
+  desc 'Restart Passenger'
+  remote_task :restart_app do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
   desc 'Runs all tasks to deploy the latest code'
   remote_task :deploy => [
     'maintenance:on',
