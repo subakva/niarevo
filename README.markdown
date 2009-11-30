@@ -45,6 +45,7 @@
   * Infrastructure/Performance
     * foreign key constraints
     * Error Reporting
+    * Cookie-less Media Domains (config.action_controller.asset_host)
 
 ## Future Features ##
 
@@ -56,6 +57,7 @@
     * Add badges for
       * creating 1/10/100/100 dreams
       * tagging 1/10/100/1000 dreams
+    * Favorites
   * Tags
     * Editing tags on a dream
     * Captcha for anonymous tags
@@ -81,7 +83,6 @@
     * Receive notifications about new dreams for a search term (person/tag/text)
   * Infrastructure/Performance
     * Page Caching
-    * Cookie-less Media Domains (config.action_controller.asset_host)
     * SSL Enforcement
     * Analytics
     * A/B Testing
