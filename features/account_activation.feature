@@ -1,5 +1,5 @@
 Feature:
-  As a user of niarevo
+  As a user of DreamTagger
   I want to be able to read dreams without sorting through spam
   So that I can maintain healthy blood pressure
 

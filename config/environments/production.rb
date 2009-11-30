@@ -11,10 +11,10 @@ config.action_view.cache_template_loading            = true
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :address        => 'mail.niarevo.com',
+  :address        => 'mail.dreamtagger.com',
   :port           => 587,
-  :domain         => 'niarevo.com',
-  :user_name      => 'outgoing@niarevo.com',
+  :domain         => 'dreamtagger.com',
+  :user_name      => 'outgoing@dreamtagger.com',
   :password       => configatron.smtp.password,
   :authentication => :login
 }

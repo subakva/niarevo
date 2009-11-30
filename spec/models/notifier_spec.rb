@@ -7,8 +7,8 @@ describe Notifier do
 
   describe 'all emails', :shared => true do
     it "uses the standard setup" do
-      @mail.from.should == ['noreply@niarevo.com']
-      @mail.bcc.should == ['outgoing@niarevo.com']
+      @mail.from.should == ['noreply@dreamtagger.com']
+      @mail.bcc.should == ['outgoing@dreamtagger.com']
     end
 
     it "uses the notifier layout" do

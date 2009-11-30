@@ -1,3 +1,3 @@
-configatron.notifier.url_host = 'www.niarevo.com'
+configatron.notifier.url_host = 'www.dreamtagger.com'
 
-configatron.asset_hosts.asset_host_url = "niarevo.com"
+configatron.asset_hosts.asset_host_url = "dreamtagger.com"

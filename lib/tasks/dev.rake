@@ -2,12 +2,12 @@ namespace :dev do
   desc "Create local domain aliases"
   task :create_host_aliases do
     domains = %w{
-      niarevo.local
-      www.niarevo.local
-      m0.niarevo.local
-      m1.niarevo.local
-      m2.niarevo.local
-      m3.niarevo.local
+      dreamtagger.local
+      www.dreamtagger.local
+      m0.dreamtagger.local
+      m1.dreamtagger.local
+      m2.dreamtagger.local
+      m3.dreamtagger.local
     }
     domains.each do |domain|
       `ghost add #{domain}`

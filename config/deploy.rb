@@ -1,7 +1,7 @@
 require 'vlad/maintenance'
 set :application, 'niarevo'
-set :domain, 'niarevo.com'
-set :deploy_to, "/home/wadsbone/niarevo.com"
+set :domain, 'dreamtagger.com'
+set :deploy_to, "/home/wadsbone/dreamtagger.com"
 set :repository, 'git://github.com/subakva/niarevo.git'
 
 namespace :vlad do
