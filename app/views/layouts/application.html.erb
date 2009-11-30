@@ -48,6 +48,32 @@
       <%- end -%>
 
       <div id='content'>
+
+        <%- if params['enable_fb'] -%>
+        <fb:login-button v="2" size="small">Find Friends</fb:login-button>
+        <fb:profile-pic uid="loggedinuser" size="square" facebook-logo="true"></fb:profile-pic>
+        <div id="profile_pics"></div>
+        <script type="text/javascript">
+        var widget_div = document.getElementById("profile_pics");
+        FB.ensureInit(function () {
+          FB.Facebook.get_sessionState().waitUntilReady(function() {
+          FB.Facebook.apiClient.friends_get(null, function(result) {
+            var markup = "";
+            var num_friends = result ? Math.min(5, result.length) : 0;
+            if (num_friends > 0) {
+              for (var i=0; i<num_friends; i++) {
+                markup += 
+                  '<fb:profile-pic size="square" uid="'+result[i]+'" facebook-logo="true"></fb:profile-pic>';
+              }
+            }
+            widget_div.innerHTML = markup;
+            FB.XFBML.Host.parseDomElement(widget_div);
+          });
+          });
+        });
+        </script>
+        <%- end -%>
+
         <%= yield  %>
       </div>
 
@@ -55,7 +81,7 @@
         <ul class='link-list'>
           <li><%= link_to "About", about_path, :title => 'More information about this site' %></li>
           <li><%= link_to "Feeds", feeds_path, :title => 'An explanation of the feeds available for this site.' %></li>
-          <%- if current_user -%>
+          <%- if false && current_user -%>
           <li><%= link_to "Invite", 'new_invite_path', :title => 'Invite your friends to join.' %></li>
           <%- end -%>
           <li><%= link_to "Terms", terms_path, :title => 'The terms and conditions for use of this site.' %></li>
@@ -64,5 +90,8 @@
     </div>
   </div>
   <%= yield :script %>
+  <%- if params['enable_fb'] -%>
+    <%= render :partial => 'shared/fbml_loader' %>
+  <%- end -%>
 </body>
 </html>
