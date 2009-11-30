@@ -29,13 +29,13 @@
 <% content_for :script do -%>
   <%= render :partial => 'shared/fbml_loader' %>
   <script type="text/javascript">
+  function callPublish(msg, attachment, action_link) {
+    FB.ensureInit(function () {
+      FB.Connect.streamPublish('', attachment, action_link);
+    });
+  }
+
   $(function(){
-    function callPublish(msg, attachment, action_link) {
-      FB.ensureInit(function () {
-        FB.Connect.streamPublish('', attachment, action_link);
-      });
-    }
-    
     var widget_div = document.getElementById("profile_pics");
     FB.ensureInit(function () {
       FB.Facebook.get_sessionState().waitUntilReady(function() {
