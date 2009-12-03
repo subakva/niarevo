@@ -1,7 +1,12 @@
 module ApplicationHelper
   def render_markdown(markdown)
     markdown = RDiscount.new(markdown, :filter_html)
-    markdown.to_html
+    markdown.to_html.html_safe!
+  end
+
+  def strip_markdown(markdown)
+    rendered = render_markdown(markdown)
+    strip_tags(rendered)
   end
 
   def render_form_errors(errors)

@@ -7,12 +7,12 @@
   <title>
     DreamTagger - <%= yield :title or "#{controller.action_name} #{controller.controller_name}".titleize %>
   </title>
-  <%= stylesheet_link_merged :base %>
-  <%= stylesheet_link_merged :print, :media => 'print' %>
+  <%= raw stylesheet_link_merged :base %>
+  <%= raw stylesheet_link_merged :print, :media => 'print' %>
   <!--[if lt IE 8]>
-    <%= stylesheet_link_merged :ie %>
+    <%= raw stylesheet_link_merged :ie %>
   <![endif]-->
-  <%= javascript_include_merged :base %>
+  <%= raw javascript_include_merged :base %>
 </head>
 <body>
   <div id='horizon'>
