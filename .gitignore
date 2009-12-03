@@ -1,3 +1,8 @@
+# bundler branch artifacts
+bin/
+vendor/bundler_gems/
+
+# other ignorables
 log/*
 db/*.sqlite3
 coverage.data
