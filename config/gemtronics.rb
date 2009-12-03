@@ -1,6 +1,6 @@
 group(:default) do |g|
   g.add('gemtronics', :version => '>=0.7.2')
-  g.add('rails', :version => '2.3.4')
+  g.add('rails', :version => '2.3.5')
   g.add('is_taggable', :version => '0.1.0')
   g.add('authlogic', :version => '2.1.2')
   g.add('searchlogic', :version => '2.3.6')
@@ -11,6 +11,10 @@ group(:default) do |g|
   g.add('configatron', :version => '2.5.1')
   g.add('recaptcha', :version => '0.2.3', :require => 'recaptcha/rails')
   g.add('rack-maintenance', :version => '0.3.0', :require => 'rack/maintenance')
+  g.add('erubis', :version => '2.6.5')
+  g.add('libxml-ruby', :version => '1.1.3', :require => 'libxml')
+  g.add('rack', :version => '1.0.1')
+  g.add('mysql', :version => '2.8.1')
 end
 
 group(:production, :dependencies => :default) do |g|

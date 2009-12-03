@@ -46,6 +46,7 @@
     * foreign key constraints
     * Error Reporting
     * Cookie-less Media Domains (config.action_controller.asset_host)
+    * Analytics
 
 ## Future Features ##
 
@@ -72,6 +73,7 @@
     * communication preferences
     * Delete a dreamer account
     * Add time zone support
+    * Add an admin? flag that allows a user to edit anything.
   * Design
     * iPhone-friendly stylesheet
   * API
@@ -84,6 +86,5 @@
   * Infrastructure/Performance
     * Page Caching
     * SSL Enforcement
-    * Analytics
     * A/B Testing
 
