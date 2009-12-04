@@ -47,6 +47,7 @@
     * Error Reporting
     * Cookie-less Media Domains (config.action_controller.asset_host)
     * Analytics
+    * alternate tags for atom feeds
 
 ## Future Features ##
 
@@ -87,4 +88,5 @@
     * Page Caching
     * SSL Enforcement
     * A/B Testing
+    * generate sitemap
 

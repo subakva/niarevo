@@ -23,7 +23,7 @@
 <div id='context_tag_list-help' class='help-popup'><%= render :partial => "dreams/help/context_tag_list" %></div>
 
 <%- unless current_user -%>
-<div class='recaptcha'><%= recaptcha_tags %></div>
+<div class='recaptcha'><%= raw recaptcha_tags %></div>
 <%- end -%>
 
 <%= render :partial => "shared/preview_container" %>

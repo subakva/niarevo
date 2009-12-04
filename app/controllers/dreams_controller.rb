@@ -20,17 +20,17 @@ class DreamsController < ApplicationController
   end
 
   def for_tag
-    @page_title = "Dreams Tagged &quot;#{params[:id]}&quot;"
+    @page_title = "Dreams Tagged '#{params[:id]}'"
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
   def for_content_tag
-    @page_title = "Dreams Tagged for Content &quot;#{params[:id]}&quot;"
+    @page_title = "Dreams Tagged for Content '#{params[:id]}'"
     render_dream_index(Dream.with_content_tag(params[:id]))
   end
 
   def for_context_tag
-    @page_title = "Dreams Tagged for Context &quot;#{params[:id]}&quot;"
+    @page_title = "Dreams Tagged for Context '#{params[:id]}'"
     render_dream_index(Dream.with_context_tag(params[:id]))
   end
 
@@ -118,6 +118,7 @@ class DreamsController < ApplicationController
 
   def render_dream_index(scope)
     @dreams = scope.paginate(:per_page => 10, :page => params[:page])
+    @link_alternate = "#{request.path}?format=atom"
     respond_to do |format|
       format.html { render :action => :index }
       format.atom { render :action => :index }
