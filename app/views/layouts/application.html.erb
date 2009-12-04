@@ -12,7 +12,9 @@
     -%>
     <%= page_title %>
   </title>
-  <link rel="alternate" type="application/atom+xml" title="<%= page_title %> - Atom" href="<%= @link_alternate %>" />
+  <%- if @link_alternate %>
+    <link rel="alternate" type="application/atom+xml" title="<%= page_title %> - Atom" href="<%= @link_alternate %>" />
+  <%- end %>
   <%= raw stylesheet_link_merged :base %>
   <%= raw stylesheet_link_merged :print, :media => 'print' %>
   <!--[if lt IE 8]>
