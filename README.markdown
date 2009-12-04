@@ -76,6 +76,8 @@
     * Add time zone support
     * Add an admin? flag that allows a user to edit anything.
   * Design
+    * !! Cross-browser test the design
+      * fix "Describing your dream" boxy in Safari
     * iPhone-friendly stylesheet
   * API
     * Access dream data with an API key
