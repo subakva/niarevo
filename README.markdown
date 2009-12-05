@@ -87,8 +87,8 @@
     * Submit a dream by email
     * Receive notifications about new dreams for a search term (person/tag/text)
   * Infrastructure/Performance
+    * generate sitemap (http://github.com/adamsalter/sitemap_generator)
     * Page Caching
-    * SSL Enforcement
+    * SSL Enforcement (no ssl on dreamhost...)
     * A/B Testing
-    * generate sitemap
 
