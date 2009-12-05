@@ -5,7 +5,7 @@ authlogic --version '2.1.3'
 searchlogic --version '2.3.9'
 will_paginate --version '2.3.11'
 gravtastic --version '2.1.3'
-rdiscount, :version =>'1.5.5' --source http://gems.rubyforge.org
+rdiscount --version '1.5.5'
 matthuhiggins-foreigner --version '0.3.1'
 configatron --version '2.5.1'
 recaptcha --version '0.2.3'
