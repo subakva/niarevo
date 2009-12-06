@@ -91,4 +91,17 @@
     * Page Caching
     * SSL Enforcement (no ssl on dreamhost...)
     * A/B Testing
-
+    * switch to a proper host
+    * set up memcached
+    * move to linode
+      * set up environment
+        * mysql
+        * nginx
+        * ree
+        * passenger
+      * deploy application to linode
+      * switch dns to linode
+      * setup nginx restart command
+      * setup ssl
+      * setup gmail for smtp
+      * set up reverse dns for linode
