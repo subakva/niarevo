@@ -2,7 +2,11 @@ require 'vlad/maintenance'
 
 set :application, 'niarevo'
 set :repository, 'git://github.com/subakva/niarevo.git'
-set :web_command, '/etc/init.d/nginx'
+# set :web_command, 'sudo /etc/init.d/nginx'
+# set :ssh_flags, ['-t']
+# set :ssh_flags, ['-t','-t']
+# set :sudo_prompt, /\[sudo\] password for [\w]+:/
+# set :sudo_prompt, /\[sudo\] password for [\w]+:/
 
 namespace :vlad do
   desc 'Require an environment'
@@ -17,7 +21,7 @@ namespace :vlad do
   desc 'Sets up tools and sources for ruby gems'
   remote_task :setup_gems => :require_deploy_env do
     sudo "/opt/ruby/bin/gem install gemcutter"
-    sudo "/opt/ruby/bin/gem tumble"
+    sudo "/opt/ruby/bin/gem sources -a http://gemcutter.org"
     sudo "/opt/ruby/bin/gem sources -a http://gems.github.com"
     sudo "/opt/ruby/bin/gem install gemtronics"
   end
@@ -50,14 +54,13 @@ namespace :vlad do
 
   desc 'Generate Sitemap'
   remote_task :generate_sitemap => :require_deploy_env do
-    run "cd #{current_path} && /opt/ruby/bin/rake sitemap:refresh"
-    # run "cp #{current_path}/public/sitemap* #{shared_path}/sitemap/"
+    run "cd #{current_path} && RAILS_ENV=#{ENV['to']} rake sitemap:refresh"
   end
 
-  # desc 'Copy previous sitemap'
-  # remote_task :copy_old_sitemap => :require_deploy_env do
-  #   run "if [ -e #{current_release}/public/sitemap_index.xml.gz ]; then cp #{current_release}/public/sitemap* #{latest_release}/public/; fi"
-  # end
+  desc 'Copy previous sitemap'
+  remote_task :copy_old_sitemap => :require_deploy_env do
+    run "if [ -e #{current_release}/public/sitemap_index.xml.gz ]; then cp #{current_release}/public/sitemap* #{latest_release}/public/; fi"
+  end
 
   desc 'Runs all tasks to deploy the latest code'
   remote_task :deploy => [
@@ -69,6 +72,7 @@ namespace :vlad do
     :migrate,
     :start_app,
     'maintenance:off',
+    :copy_old_sitemap,
     :cleanup
   ]
 end
