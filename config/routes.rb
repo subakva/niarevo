@@ -1,10 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resource :user_session
-  map.resource :account, :controller => "users"
-  map.resources :users
-  map.resources :password_resets
-  map.resources :activations
-  map.resources :invites
+  map.resource :user_session, :only => [:new, :create, :destroy]
+  map.resource :account, :controller => "users", :except => [:destroy]
+  map.resources :users, :except => [:destroy]
+  map.resources :password_resets, :except => [:destroy]
+  map.resources :activations, :except => [:destroy]
+  map.resources :invites, :except => [:destroy]
 
   map.user_dreams '/dreams/user/:id', :controller => :dreams, :action => :for_user
 

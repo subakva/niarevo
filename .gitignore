@@ -17,3 +17,7 @@ config/configatron/development/credentials.rb
 config/configatron/production/credentials.rb
 db/seeds/dreamtagger-export.json
 .DS_Store
+public/sitemap_index.xml
+public/sitemap_index.xml.gz
+public/sitemap*.xml
+public/sitemap*.xml.gz

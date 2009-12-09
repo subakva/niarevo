@@ -1,8 +1,8 @@
 group(:default) do |g|
+  g.add('authlogic', :version => '2.1.3')
   g.add('gemtronics', :version => '>=0.7.2')
   g.add('rails', :version => '2.3.5')
   g.add('is_taggable', :version => '0.1.0')
-  g.add('authlogic', :version => '2.1.3')
   g.add('searchlogic', :version => '2.3.9')
   g.add('will_paginate', :version => '2.3.11')
   g.add('gravtastic', :version => '2.1.3')
@@ -15,6 +15,7 @@ group(:default) do |g|
   g.add('libxml-ruby', :version => '1.1.3', :require => 'libxml')
   g.add('rack', :version => '1.0.1')
   g.add('mysql', :version => '2.8.1')
+  g.add('sitemap_generator', :version => '0.2.2')
 end
 
 group(:production, :dependencies => :default) do |g|

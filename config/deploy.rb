@@ -2,6 +2,7 @@ require 'vlad/maintenance'
 
 set :application, 'niarevo'
 set :repository, 'git://github.com/subakva/niarevo.git'
+set :web_command, '/etc/init.d/nginx'
 
 namespace :vlad do
   desc 'Require an environment'
@@ -24,7 +25,7 @@ namespace :vlad do
   desc 'Loads the seed data into the database'
   remote_task :seed_database => :require_deploy_env do
     run "cp #{shared_path}/config/dreamtagger-export.json #{current_path}/db/seeds/"
-    run "cd #{current_path} && rake db:seed"
+    run "cd #{current_path} && /opt/ruby/bin/rake db:seed"
   end
 
   desc 'Installs gems on the server using gemtronics'
@@ -46,6 +47,17 @@ namespace :vlad do
   remote_task :restart_app => :require_deploy_env do
     run "touch #{current_path}/tmp/restart.txt"
   end
+
+  desc 'Generate Sitemap'
+  remote_task :generate_sitemap => :require_deploy_env do
+    run "cd #{current_path} && /opt/ruby/bin/rake sitemap:refresh"
+    # run "cp #{current_path}/public/sitemap* #{shared_path}/sitemap/"
+  end
+
+  # desc 'Copy previous sitemap'
+  # remote_task :copy_old_sitemap => :require_deploy_env do
+  #   run "if [ -e #{current_release}/public/sitemap_index.xml.gz ]; then cp #{current_release}/public/sitemap* #{latest_release}/public/; fi"
+  # end
 
   desc 'Runs all tasks to deploy the latest code'
   remote_task :deploy => [

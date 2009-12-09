@@ -1,6 +1,5 @@
-if ENV['RAILS_ENV'] == 'production'
-  # ENV['GEM_PATH'] = File.expand_path('~/.gems') + ':/usr/lib/ruby/gems/1.8'
-  RAILS_ENV = 'production'
+if !defined?(RAILS_ENV) && ENV['RAILS_ENV']
+  RAILS_ENV = ENV['RAILS_ENV']
 end
   
 require 'rubygems'
