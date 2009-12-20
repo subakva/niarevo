@@ -3,6 +3,11 @@ class Notifier < ActionMailer::Base
 
   default_url_options[:host] = configatron.notifier.url_host
 
+  def test(email)
+    setup_email(email)
+    subject "Test Message"
+  end
+
   def activation_succeeded(user)
     setup_user_email(user)
     subject "Account Activated!"

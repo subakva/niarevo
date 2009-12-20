@@ -28,6 +28,22 @@ describe Notifier do
     end
   end
 
+  describe 'test' do
+    before(:each) do
+      @mail = Notifier.create_test('test@example.com')
+    end
+    
+    it_should_behave_like 'all emails'
+
+    it "sends the email to the tester" do
+      @mail.to.should == ['test@example.com']
+    end
+
+    it "sets the subject" do
+      @mail.subject.should == "Test Message"
+    end
+  end
+
   describe 'invitation' do
     before(:each) do
       @invite = Factory.create(:invite, :user => @user)
