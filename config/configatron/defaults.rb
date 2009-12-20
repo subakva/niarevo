@@ -1,6 +1,6 @@
 configatron.notifier.url_host = 'localhost:3000'
-configatron.notifier.from = 'DreamTagger <noreply@dreamtagger.com>'
-configatron.notifier.auto_cc = 'outgoing@dreamtagger.com'
+configatron.notifier.from = 'noreply@dreamtagger.com'
+configatron.notifier.auto_cc = 'outgoing@niarevo.com'
 
 configatron.asset_hosts.asset_host_url = "dreamtagger.local:3000"
 
