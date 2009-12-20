@@ -48,6 +48,18 @@
     * Cookie-less Media Domains (config.action_controller.asset_host)
     * Analytics
     * alternate tags for atom feeds
+    * switch to a proper host
+    * generate sitemap (http://github.com/adamsalter/sitemap_generator)
+    * move to linode
+      * set up environment
+        * mysql
+        * nginx
+        * ree
+        * passenger
+      * deploy application to linode
+      * switch dns to linode
+      * set up reverse dns for linode
+      * setup ssl
 
 ## Future Features ##
 
@@ -87,21 +99,11 @@
     * Submit a dream by email
     * Receive notifications about new dreams for a search term (person/tag/text)
   * Infrastructure/Performance
-    * generate sitemap (http://github.com/adamsalter/sitemap_generator)
     * Page Caching
     * SSL Enforcement (no ssl on dreamhost...)
     * A/B Testing
-    * switch to a proper host
     * set up memcached
-    * move to linode
-      * set up environment
-        * mysql
-        * nginx
-        * ree
-        * passenger
-      * deploy application to linode
-      * switch dns to linode
-      * setup nginx restart command
-      * setup ssl
-      * setup gmail for smtp
-      * set up reverse dns for linode
+    * setup gmail for smtp
+    * buy an ssl certificate
+    * setup nginx restart command
+    
