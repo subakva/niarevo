@@ -21,8 +21,8 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,
   :address        => 'smtp.gmail.com',
   :port           => 587,
-  :domain         => 'niarevo.com',
-  :user_name      => 'outgoing@niarevo.com',
+  :domain         => 'dreamtagger.com',
+  :user_name      => 'outgoing@dreamtagger.com',
   :password       => configatron.smtp.password,
   :authentication => :plain
 }

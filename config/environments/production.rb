@@ -10,22 +10,14 @@ config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 
 ActionMailer::Base.delivery_method = :smtp
-# ActionMailer::Base.smtp_settings = {
-#   :address        => 'mail.dreamtagger.com',
-#   :port           => 587,
-#   :domain         => 'dreamtagger.com',
-#   :user_name      => 'outgoing@dreamtagger.com',
-#   :password       => configatron.smtp.password,
-#   :authentication => :login
-# }
 ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,
-  :address              => 'smtp.gmail.com',
-  :port                 => 587,
-  :domain               => 'niarevo.com',
-  :user_name            => 'outgoing@niarevo.com',
-  :password             => configatron.smtp.password,
-  :authentication       => :plain
+  :address        => 'smtp.gmail.com',
+  :port           => 587,
+  :domain         => 'dreamtagger.com',
+  :user_name      => 'outgoing@dreamtagger.com',
+  :password       => configatron.smtp.password,
+  :authentication => :plain
 }
 
 # See everything in the log (default is :info)
