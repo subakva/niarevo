@@ -1,3 +1,25 @@
+Things to port:
+
+* configuration
+* views and controllers
+** tag clouds / zeitgeist
+* recaptcha
+* facebook connection
+* sitemap generation
+* multiple asset hosts
+
+Things to set up:
+
+* test data generation
+* travis
+* code climate
+* simplecov
+* cane
+
+To resurrect:
+
+* record who added which tags to dreams
+
 ## User Personas ##
 
   * __Dreamer__ - The dreamer is a person who has dreams, and wants to record and share them with the world.
@@ -106,4 +128,4 @@
     * setup gmail for smtp
     * buy an ssl certificate
     * setup nginx restart command
-    
+

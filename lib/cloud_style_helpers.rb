@@ -34,7 +34,7 @@ module CloudStyleHelpers
   def cloud_style(count, min_count, max_count, options = {})
     # Modified from: http://snippets.dzone.com/posts/show/2251
     return nil if count.nil? || max_count.nil? || min_count.nil?
-    
+
     size_style = cloud_font(count, min_count, max_count, options = {})
     color_style = cloud_color(count, min_count, max_count, options = {})
 

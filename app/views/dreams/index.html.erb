@@ -15,7 +15,7 @@
     <%= raw page_entries_info @dreams %>
   </p>
   <p class='results-nav'>
-    <%= raw will_paginate @dreams, :container => nil %>
+    <%= raw paginate @dreams, :container => nil %>
   </p>
 
   <% link_to({:controller => params[:controller], :action => params[:action], :format => :atom}, :title => 'Subscribe to the feed for this page.', :rel => 'alternate') do %>

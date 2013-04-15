@@ -1,9 +1,12 @@
+require 'cloud_style_helpers'
+
 module ApplicationHelper
+
   include CloudStyleHelpers
-  
+
   def render_markdown(markdown)
     markdown = RDiscount.new(markdown, :filter_html)
-    markdown.to_html.html_safe!
+    markdown.to_html.html_safe
   end
 
   def strip_markdown(markdown)
@@ -22,5 +25,4 @@ module ApplicationHelper
     end
     rendered
   end
-
 end

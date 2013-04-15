@@ -1,23 +1,7 @@
-# bundler branch artifacts
-bin/
-vendor/bundler_gems/
+/log/*.log
+/tmp
+/coverage
+/rails2
+.env
+.powenv
 
-# other ignorables
-log/*
-db/*.sqlite3
-coverage.data
-tmp/*
-coverage/*
-webrat-*.html
-*.tmproj
-config/database.yml
-*_packaged.css
-*_packaged.js
-config/configatron/development/credentials.rb
-config/configatron/production/credentials.rb
-db/seeds/dreamtagger-export.json
-.DS_Store
-public/sitemap_index.xml
-public/sitemap_index.xml.gz
-public/sitemap*.xml
-public/sitemap*.xml.gz

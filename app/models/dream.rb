@@ -2,47 +2,48 @@
 #
 # Table name: dreams
 #
-#  id          :integer(4)      not null, primary key
-#  description :text            default(""), not null
-#  user_id     :integer(4)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                :integer          not null, primary key
+#  description       :text             not null
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  context_tag_count :integer          default(0), not null
+#  content_tag_count :integer          default(0), not null
+#
+# Indexes
+#
+#  index_dreams_on_content_tag_count  (content_tag_count)
+#  index_dreams_on_context_tag_count  (context_tag_count)
+#  index_dreams_on_created_at         (created_at)
+#  index_dreams_on_updated_at         (updated_at)
+#  index_dreams_on_user_id            (user_id)
 #
 
 class Dream < ActiveRecord::Base
-  is_taggable :content_tags, :context_tags
-  include TaggableByUser
+  acts_as_taggable
+  acts_as_taggable_on :content_tags, :context_tags
 
-  validates_presence_of :description
   belongs_to :user
 
-  default_scope :order => 'dreams.created_at DESC'
-  named_scope :recent, :limit => 5
-  named_scope :created_before, lambda { |max_date| { :conditions => ['dreams.created_at <= ?', max_date.utc] } }
-  named_scope :created_after, lambda { |min_date| { :conditions => ['dreams.created_at >= ?', min_date.utc] } }
+  default_scope order: 'dreams.id DESC'
 
-  named_scope :with_tag, lambda { |tag_name| { :joins => :tags, :conditions => { :tags => { :name => tag_name } } } }
-  named_scope :with_content_tag, lambda { |tag_name| { :joins => :tags,
-    :conditions => { :tags => { :name => tag_name, :kind => 'content_tag' } }
-  }}
-  named_scope :with_context_tag, lambda { |tag_name| { :joins => :tags,
-    :conditions => { :tags => { :name => tag_name, :kind => 'context_tag' } }
-  }}
+  scope :recent, limit: 5
+  scope :created_before, ->(max_date) {
+    where('dreams.created_at <= ?', max_date.utc)
+  }
+  scope :created_since, ->(min_date) {
+    where('dreams.created_at >= ?', min_date.utc)
+  }
 
-  attr_accessible :description, :content_tag_list, :context_tag_list
+  scope :with_tag, ->(tag_name) { tagged_with(tag_name) }
+  scope :with_content_tag, ->(tag_name) { tagged_with(tag_name, on: :content_tags) }
+  scope :with_context_tag, ->(tag_name) { tagged_with(tag_name, on: :context_tags) }
 
-  attr_accessor :tagged_by
-  before_validation_on_create :set_tagged_by_to_user
+  validates_presence_of :description
+
   before_save :update_tag_counts
 
-  def tag_list
-    self.content_tag_list + self.context_tag_list
-  end
-
   protected
-  def set_tagged_by_to_user
-    self.tagged_by ||= self.user
-  end
 
   def update_tag_counts
     self.content_tag_count = self.content_tag_list.size

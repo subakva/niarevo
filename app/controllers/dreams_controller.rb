@@ -6,16 +6,16 @@ class DreamsController < ApplicationController
 
   def index
     @page_title = "Recent Dreams"
-    render_dream_index(Dream)
+    render_dream_index(Dream.scoped)
   end
 
   def for_user
     if params[:id] == 'anonymous'
       @page_title = "Anonymous Dreams"
-      render_dream_index(Dream.user_id_null)
+      render_dream_index(Dream.where(user_id: nil))
     else
       @page_title = "Dreams From the Mind of #{params[:id]}"
-      render_dream_index(Dream.user_username_eq(params[:id]))
+      render_dream_index(Dream.where(user: { username: params[:id] }))
     end
   end
 
@@ -36,22 +36,23 @@ class DreamsController < ApplicationController
 
   def untagged
     @page_title = "Untagged Dreams"
-    render_dream_index(Dream.context_tag_count_or_content_tag_count_eq(0))
+    scope = Dream.where('dreams.context_tag_count = 0 OR dreams.content_tag_count = 0')
+    render_dream_index(scope)
   end
 
   def untagged_context
     @page_title = "Dreams Without Context Tags"
-    render_dream_index(Dream.context_tag_count_eq(0))
+    render_dream_index(Dream.where(context_tag_count: 0))
   end
 
   def untagged_content
     @page_title = "Dreams Without Content Tags"
-    render_dream_index(Dream.content_tag_count_eq(0))
+    render_dream_index(Dream.where(content_tag_count: 0))
   end
-  
+
   def for_date
     min_date = Time.utc('2009')
-    max_date = Time.now.utc
+    max_date = Time.zone.now
     if params[:year]
       min_date = min_date.change(:year => params[:year].to_i).beginning_of_year
       max_date = max_date.change(:year => params[:year].to_i).end_of_year
@@ -65,7 +66,7 @@ class DreamsController < ApplicationController
       max_date = max_date.change(:day => params[:day].to_i).end_of_day
     end
     @page_title = title_for_dates(min_date, max_date)
-    render_dream_index(Dream.created_before(max_date).created_after(min_date))
+    render_dream_index(Dream.created_before(max_date).created_since(min_date))
   end
 
   def new
@@ -73,6 +74,8 @@ class DreamsController < ApplicationController
   end
 
   def create
+    # TODO: strong_parameters
+    # TODO: handle assigning tags properly
     @dream = Dream.new(params[:dream])
     @dream.user = current_user
     requires_captcha = current_user.blank?
@@ -117,7 +120,7 @@ class DreamsController < ApplicationController
   end
 
   def render_dream_index(scope)
-    @dreams = scope.paginate(:per_page => 10, :page => params[:page])
+    @dreams = scope.page(params[:page]).per(10)
     @link_alternate = "#{request.path}?format=atom"
     respond_to do |format|
       format.html { render :action => :index }
@@ -126,7 +129,7 @@ class DreamsController < ApplicationController
   end
 
   def load_dream_for_user
-    @dream = current_user.dreams.find_by_id(params[:id])
+    @dream = current_user.dreams.where(id: params[:id]).first
     unless @dream
       flash[:notice] = 'You are not allowed to edit that dream'
       redirect_to account_url
@@ -136,5 +139,5 @@ class DreamsController < ApplicationController
   def load_dream
     @dream = Dream.find(params[:id])
   end
-  
+
 end

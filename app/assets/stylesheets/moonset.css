@@ -1,0 +1,177 @@
+body {
+  background: #333 url(/assets/moonset-bg.png) repeat-x scroll top left;
+  color: #333;
+}
+a { color: #633; text-decoration: none; }
+a:hover { text-decoration: underline; }
+#horizon {
+  background: transparent url(/assets/moonset.png) no-repeat scroll 0 0;
+}
+#wrapper {
+  background-color: transparent;
+  width: 360px;
+  margin: 0 0 10px 426px;
+  padding: 0;
+}
+
+/* message box styles */
+#messages {
+  background-color: #FFFAFA;
+  color: #333;
+  margin: 0 0 10px;
+  padding: 5px 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+#messages .clear-message { text-align: right; font-size: 0.85em; text-decoration:underline; }
+ul.message-list { padding: 4px; }
+ul.message-list {
+  list-style: none;
+  font-style: italic;
+  color: #333;
+  margin: 0px;
+  padding: 0px;
+}
+ul.message-list li {
+  margin: 0;
+  padding: 0;
+}
+ul.message-list .notice-message { color: #080; }
+ul.message-list .error-message { color: #800; }
+
+/* content styles */
+#content {
+  background-color: #FFFAFA;
+  color: #333;
+  min-height: 429px;
+  border:none;
+  padding: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#content h2 {
+  border-bottom: 1px solid #999;
+}
+
+/* menu styles */
+#menu .link-list {
+  background: transparent;
+  color: #FFFAFA;
+  margin: 0;
+  padding: 4px 0;
+  text-align: center;
+}
+#menu .link-list a { background: transparent; color: #FFFAFA; letter-spacing:0.1em; }
+#menu .link-list li { display: inline; margin: 0; padding: 10px; }
+
+/* footer styles */
+#footer { margin-top:10px; }
+#footer .link-list {
+  background: #FFFAFA;
+  color: #333;
+  margin: 0;
+  padding: 4px 0;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  text-align: center;
+}
+#footer .link-list a {
+  background: #FFFAFA;
+  color: #333;
+  letter-spacing:0.1em;
+}
+#footer .link-list li { display: inline; margin: 0; padding: 10px; }
+
+/* form styles */
+form { width: 340px; margin: 0 auto; padding: 0; }
+form p { margin: 0; padding: 0; }
+form .label-line label { /*display: block;*/ margin: 3px 0; font-weight: bold; }
+textarea { width: 330px; margin: 3px 0; padding: 5px; }
+#id_tags, input.text, input.password { width: 326px; margin: 3px 0; padding: 5px; }
+input.submit { margin: 3px 0; }
+
+form .help-line { color: #555; }
+form .form-errors { padding-left: 20px; }
+form .error-line { color: #800; }
+form .button-line { text-align: right; }
+.recaptcha iframe { width: 340px; }
+.preview-throbber {
+  display: block;
+  width:25px;
+  height:25px;
+  margin: auto;
+}
+
+/* help dialogs */
+.boxy-wrapper { width: 400px; }
+.boxy-wrapper .title-bar { background-color: #931; }
+.help-icon {
+  background: transparent url(/assets/help.png) no-repeat scroll 0 0;
+  padding-right: 16px;
+  margin-left: 4px;
+}
+.preview-icon {
+  background: transparent url(/assets/eye.png) no-repeat scroll 0 0;
+  padding-right: 16px;
+  margin-left: 4px;
+}
+.help-popup { display:none; }
+.markdown-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+.markdown-table th {background-color: #FED;}
+.markdown-table th,
+.markdown-table td { border: 1px solid #999; }
+
+/* dream styles */
+.dream-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.1em;
+  line-height: 1.2em;
+}
+.dream-list li {
+  border-bottom: 0.3em double #633;
+  margin: 10px 0 30px;
+  padding: 0 0 30px;
+}
+
+.content-tags, .context-tags, .tag-cloud {
+  clear: right;
+  background-color: #EEE;
+  padding: 0.4em;
+  margin-bottom: 0.4em;
+  border: 1px solid #999;
+  border-left: 1px solid #999;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.tag-cloud a.add-tags,
+.context-tags a.add-tags,
+.content-tags a.add-tags { font-size: 0.9em; }
+.tag-cloud { text-align:center; margin-bottom: 1.5em; }
+.tag-link { margin-right: 0.6em; }
+
+.dream-user {
+  font-size: 0.9em;
+  padding: 0 0.4em 0.4em;
+  margin: 0 0 0.4em 0.4em;
+  text-align: right;
+  float: right;
+}
+.dream-actions {
+  text-align: center;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  margin: 0.4em 0 0;
+  padding: 0.4em 0;
+}
+.dream-actions a { text-decoration: none; }
+.dream-actions a:hover { text-decoration: underline; }
+.results-meta, .results-nav { text-align:center; }

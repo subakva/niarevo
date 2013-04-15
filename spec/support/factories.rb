@@ -1,30 +1,44 @@
-Factory.sequence :username do |n|
-  "knocker#{n}"
-end
+FactoryGirl.define do
+  factory :dream do
+    description %{
+      In publishing and graphic design, lorem ipsum is placeholder
+      text (filler text) commonly used to demonstrate the graphics elements of a
+      document or visual presentation, such as font, typography, and layout, by
+      removing the distraction of meaningful content. The lorem ipsum text is
+      typically a section of a Latin text by Cicero with words altered, added and
+      removed that make it nonsensical in meaning and not proper Latin.
+    }.squish
+    user
+    content_tag_list ['no-pants', 'crocodiles']
+    context_tag_list ['school', 'math-class']
 
-Factory.sequence :invitee do |n|
-  "invitee#{n}@example.com"
-end
+    trait :untagged do
+      content_tag_list []
+      context_tag_list []
+    end
+  end
 
-Factory.define :user do |u|
-  u.username { Factory.next :username }
-  u.email { |u| "#{u.username}@example.com" }
-  u.password "password"
-  u.password_confirmation "password"
-  u.persistence_token { |u| "#{u.username}-persistence_token" }
-  u.single_access_token { |u| "#{u.username}-single_access_token" }
-  u.perishable_token { |u| "#{u.username}-perishable_token" }
-end
+  factory :user do
+    sequence(:username) {|n| "dreamer-#{n}" }
+    email { "#{username}@example.com" }
+    password 'password'
+    password_confirmation 'password'
+    active true
 
-Factory.define :dream do |d|
-  d.description 'It was a stormy and dark night'
-  d.content_tag_list 'cliche, storm, night'
-  d.context_tag_list 'in-bed'
-end
+    trait :inactive do
+      active false
+    end
+  end
 
-Factory.define :invite do |i|
-  i.message "Lorem ipsum dolor sit amet, consectetur adipisicing elit..."
-  i.recipient_name { (Factory.next :username).upcase }
-  i.email { Factory.next :invitee }
-  i.user { |x| x.association(:user) }
+  factory :invite do
+    user
+    sequence(:recipient_name) { |n| "Muppet #{n}" }
+    email { "#{recipient_name}@example.com".downcase.gsub(/\s/, '') }
+    message "You are invited by anyone to do anything."
+    sent_at 1.day.ago
+
+    trait :unsent do
+      sent_at nil
+    end
+  end
 end

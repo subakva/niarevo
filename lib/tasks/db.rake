@@ -1,10 +1,9 @@
 namespace :db do
-  desc "Configures the database.yml for the current server"
-  task :configure do
-    hostname = `hostname`.strip
-    FileUtils.cp(
-      File.join(RAILS_ROOT, 'config', "database.#{hostname}.yml"),
-      File.join(RAILS_ROOT, 'config', 'database.yml')
-    )
+  desc 'Annotates model files'
+  task :annotate do
+    system("annotate -i -e tests,fixtures --force")
   end
 end
+
+desc 'Runs schema migrations then prepares the test db'
+task m: ['db:migrate', 'db:test:prepare', 'db:annotate']
