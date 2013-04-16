@@ -8,6 +8,8 @@ gem 'pg'
 gem 'foreigner'
 gem 'newrelic_rpm'
 gem 'airbrake'
+gem 'unicorn'
+gem 'rack-timeout'
 
 gem 'jquery-rails'
 gem 'slim-rails'
