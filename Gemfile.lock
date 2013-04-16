@@ -34,6 +34,10 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
+    airbrake (3.1.11)
+      activesupport
+      builder
+      json
     annotate (2.5.0)
       rake
     arel (3.0.2)
@@ -185,6 +189,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-mysql-adapter
   acts-as-taggable-on
+  airbrake
   annotate
   authlogic
   blueprint-rails

@@ -7,6 +7,7 @@ gem 'rails', '~>3.2.13'
 gem 'pg'
 gem 'foreigner'
 gem 'newrelic_rpm'
+gem 'airbrake'
 
 gem 'jquery-rails'
 gem 'slim-rails'
