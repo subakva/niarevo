@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.boxy
+//= require jquery.modal
 //= require jquery.form
 //= require_tree .

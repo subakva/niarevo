@@ -24,7 +24,7 @@ html
               li = link_to "Sign Out", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?"
             - else
               li = link_to "Sign In", new_user_session_path
-              li = link_to "Register", new_account_path
+              li = link_to "Create Account", new_account_path
 
         - if flash[:notice] || flash[:error]
           #messages

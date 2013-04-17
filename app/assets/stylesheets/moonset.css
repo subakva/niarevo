@@ -106,8 +106,16 @@ form .button-line { text-align: right; }
 }
 
 /* help dialogs */
-.boxy-wrapper { width: 400px; }
-.boxy-wrapper .title-bar { background-color: #931; }
+.help-popup { display:none; }
+.help-popup {
+  width: 400px;
+  margin: auto;
+  color: #333;
+  background-color: #EEE;
+  padding: 10px;
+  border-radius: 10px;
+}
+.help-popup .title-bar { background-color: #931; }
 .help-icon {
   background: transparent url(/assets/help.png) no-repeat scroll 0 0;
   padding-right: 16px;
@@ -118,7 +126,6 @@ form .button-line { text-align: right; }
   padding-right: 16px;
   margin-left: 4px;
 }
-.help-popup { display:none; }
 .markdown-table {
   border-collapse: collapse;
   font-size: 0.9em;

@@ -1,8 +1,8 @@
 <% content_for :title do %>Change My Password<% end -%>
 
 <h2>Change My Password</h2>
- 
-<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+
+<%= form_for @user, :url => password_reset_path, :method => :put do |f| %>
   <%= render_form_errors(@user.errors) %>
   <p class='label-line'><%= f.label :password %></p>
   <p class='input-line'><%= f.password_field :password %></p>
