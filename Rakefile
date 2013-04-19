@@ -4,4 +4,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+ActiveSupport::Deprecation.silenced = true if Rails.env.production?
+
 Niarevo::Application.load_tasks
