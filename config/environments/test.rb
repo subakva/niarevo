@@ -28,6 +28,8 @@ Niarevo::Application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  # Set up default url options for mailer
+  config.action_mailer.default_url_options = { host: ENV['NOTIFIER_URL_HOST'] }
 
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
@@ -35,5 +37,4 @@ Niarevo::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
-  config.action_mailer.default_url_options = { host: 'niarevo.dev' }
 end
