@@ -15,7 +15,7 @@ class DreamsController < ApplicationController
       render_dream_index(Dream.where(user_id: nil))
     else
       @page_title = "Dreams From the Mind of #{params[:id]}"
-      render_dream_index(Dream.where(user: { username: params[:id] }))
+      render_dream_index(Dream.joins(:user).where(users: { username: params[:id] }))
     end
   end
 
@@ -79,7 +79,7 @@ class DreamsController < ApplicationController
     @dream = Dream.new(params[:dream])
     @dream.user = current_user
     requires_captcha = current_user.blank?
-    captcha_is_valid = !requires_captcha || verify_recaptcha(:model => @dream)
+    captcha_is_valid = !requires_captcha || verify_recaptcha(model: @dream)
     if captcha_is_valid && @dream.save
       flash[:notice] = "Your dream has been saved."
       redirect_to dream_url(@dream)

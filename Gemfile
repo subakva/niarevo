@@ -20,6 +20,7 @@ gem 'gravtastic'
 gem 'strong_parameters'
 gem 'rdiscount'
 gem 'kaminari'
+gem 'recaptcha', require: 'recaptcha/rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

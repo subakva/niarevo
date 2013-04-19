@@ -139,6 +139,7 @@ GEM
     rdiscount (2.0.7.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.3.5)
     ref (1.0.4)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
@@ -217,6 +218,7 @@ DEPENDENCIES
   rack-timeout
   rails (~> 3.2.13)
   rdiscount
+  recaptcha
   rspec-rails
   simplecov
   slim-rails

@@ -23,6 +23,6 @@ module ApplicationHelper
       end
       rendered << '</ul>'
     end
-    rendered
+    rendered.html_safe
   end
 end
