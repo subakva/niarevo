@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   has_many :invites
   validates_exclusion_of :username, in: ['admin', 'user', 'anonymous']
 
+  scope :active, where(active: true)
+
   def activate!
     unless self.active?
       self.update_attribute(:active, true)
