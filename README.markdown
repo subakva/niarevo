@@ -2,7 +2,6 @@ Things to port:
 
 * tag clouds / zeitgeist
 * facebook connection
-* sitemap generation
 * multiple asset hosts
 
 Things to set up:

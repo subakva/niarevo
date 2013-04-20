@@ -1,6 +1,6 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.dreamtagger.com"
-SitemapGenerator::Sitemap.yahoo_app_id = configatron.yahoo.app_id
+SitemapGenerator::Sitemap.yahoo_app_id = ENV['YAHOO_APP_ID']
 
 SitemapGenerator::Sitemap.add_links do |sitemap|
   # Put links creation logic here.
@@ -21,13 +21,22 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   sitemap.add untagged_context_dreams_path, :changefreq => 'daily'
   sitemap.add untagged_content_dreams_path, :changefreq => 'daily'
 
-  Tag.find_each do |tag|
-    sitemap.add tag_dreams_path(tag.name),  :changefreq => 'weekly'
-    case tag.kind
-    when 'content_tag'
-      sitemap.add content_tag_dreams_path(tag.name),  :changefreq => 'weekly'
-    when 'context_tag'
-      sitemap.add context_tag_dreams_path(tag.name),  :changefreq => 'weekly'
+  tag_sql = <<-SQL.squish
+    select t.name, ts.context
+    from taggings ts
+    inner join tags t on t.id = ts.tag_id
+    group by t.name, ts.context
+  SQL
+
+  ActsAsTaggableOn::Tagging.connection.select_rows(tag_sql).each do |name, context|
+    sitemap.add tag_dreams_path(name),  :changefreq => 'weekly'
+    case context
+    when 'content_tags'
+      sitemap.add content_tag_dreams_path(name),  :changefreq => 'weekly'
+    when 'context_tags'
+      sitemap.add context_tag_dreams_path(name),  :changefreq => 'weekly'
+    else
+      raise "Unknown tag context: #{context}"
     end
   end
 
