@@ -35,8 +35,16 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'simplecov'
   gem 'factory_girl'
+
+  gem 'capybara'
+  gem 'capybara-email'
+  gem 'launchy'
+  gem 'jasminerice'
+
+  gem 'simplecov'
+  gem 'cane'
+  gem 'morecane'
 end
 
 group :test do
@@ -47,6 +55,11 @@ group :development do
   gem 'quiet_assets'
   gem 'annotate'
   gem 'pry-debugger'
+  gem 'awesome_print'
+
+  gem 'guard-rspec'
+  gem 'guard-jasmine'
+  gem 'rb-fsevent'
 end
 
 # Gems used for importing data from MySQL

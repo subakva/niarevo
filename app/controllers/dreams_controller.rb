@@ -51,22 +51,15 @@ class DreamsController < ApplicationController
   end
 
   def for_date
-    min_date = Time.utc('2009')
-    max_date = Time.zone.now
-    if params[:year]
-      min_date = min_date.change(:year => params[:year].to_i).beginning_of_year
-      max_date = max_date.change(:year => params[:year].to_i).end_of_year
-    end
-    if params[:month]
-      min_date = min_date.change(:month => params[:month].to_i).beginning_of_month
-      max_date = max_date.change(:month => params[:month].to_i).end_of_month
-    end
-    if params[:day]
-      min_date = min_date.change(:day => params[:day].to_i).beginning_of_day
-      max_date = max_date.change(:day => params[:day].to_i).end_of_day
-    end
-    @page_title = title_for_dates(min_date, max_date)
-    render_dream_index(Dream.created_before(max_date).created_since(min_date))
+    range = DateRange.new
+    range.apply_year(params[:year])
+    range.apply_month(params[:month])
+    range.apply_day(params[:day])
+
+    @page_title = title_for_dates(range)
+    scope = Dream.created_before(range.max_date)
+    scope = scope.created_since(range.min_date)
+    render_dream_index(scope)
   end
 
   def new
@@ -111,9 +104,9 @@ class DreamsController < ApplicationController
   end
 
   protected
-  def title_for_dates(min_date, max_date)
-    start_string = min_date.strftime('%d-%b-%Y')
-    end_string = max_date.strftime('%d-%b-%Y')
+  def title_for_dates(range)
+    start_string = range.min_date.strftime('%d-%b-%Y')
+    end_string = range.max_date.strftime('%d-%b-%Y')
     if start_string == end_string
       "Dreams On #{start_string}"
     else

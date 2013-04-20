@@ -1,9 +1,6 @@
 Things to port:
 
-* configuration
-* views and controllers
-** tag clouds / zeitgeist
-* recaptcha
+* tag clouds / zeitgeist
 * facebook connection
 * sitemap generation
 * multiple asset hosts

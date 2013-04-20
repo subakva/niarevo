@@ -45,5 +45,5 @@ class ActivationsController < ApplicationController
       redirect_to new_user_session_url
     end
   end
-  
+
 end

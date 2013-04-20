@@ -12,9 +12,9 @@ class FacebookController < ActionController::Base
   def deauthorization
     render :layout => nil, :text => nil
   end
-  
+
   protected
-  
+
   def check_facebook_signature
     unless FacebookSignature.valid?(configatron.fb_connect.secret, params)
       render :status => 401, :text => 'Signature was not valid.'

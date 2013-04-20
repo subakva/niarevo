@@ -2,14 +2,14 @@ class PasswordResetsController < ApplicationController
 
   before_filter :redirect_to_account_if_logged_in
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]
-  
+
   def index
     render :action => :new
   end
 
   def new
   end
-  
+
   def create
     @user = User.find_by_username_or_password(params)
     if @user && @user.active?
@@ -24,10 +24,10 @@ class PasswordResetsController < ApplicationController
       render :action => :new
     end
   end
-  
+
   def edit
   end
- 
+
   def update
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
@@ -38,7 +38,7 @@ class PasswordResetsController < ApplicationController
       render :action => :edit
     end
   end
- 
+
   protected
 
   def load_user_using_perishable_token

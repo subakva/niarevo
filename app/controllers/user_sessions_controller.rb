@@ -2,11 +2,11 @@ class UserSessionsController < ApplicationController
 
   before_filter :redirect_to_account_if_logged_in, :only => [:new, :create, :show]
   before_filter :require_user, :only => [:destroy, :show]
-  
+
   def new
     @user_session = UserSession.new
   end
-  
+
   def create
     @user_session = UserSession.new(params[:user_session])
     session_saved = @user_session.save
@@ -22,7 +22,7 @@ class UserSessionsController < ApplicationController
       render :action => :new
     end
   end
-  
+
   def destroy
     current_user_session.destroy
     flash[:notice] = "You have been logged out."

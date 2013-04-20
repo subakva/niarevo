@@ -11,10 +11,10 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   # Usage: sitemap.add path, options
   #        (default options are used if you don't specify)
   #
-  # Defaults: :priority => 0.5, :changefreq => 'weekly', 
-  #           :lastmod => Time.now, :host => default_host
+  # Defaults: :priority => 0.5, :changefreq => 'weekly',
+  #           :lastmod => Time.zone.now, :host => default_host
 
-  
+
   # Dream Listing Paths
   sitemap.add dreams_path,                  :changefreq => 'daily'
   sitemap.add untagged_dreams_path,         :changefreq => 'daily'
@@ -36,7 +36,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   end
 
   from_date = Dream.find(:first, :order => 'created_at DESC').created_at
-  to_date = Time.now
+  to_date = Time.zone.now
   Range.new(from_date.year, to_date.year).each do |year|
     dreams_by_year_path(:year => year)
     Range.new(1, 12).each do |month|
