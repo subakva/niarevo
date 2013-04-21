@@ -11,7 +11,7 @@ gem 'airbrake'
 gem 'unicorn'
 gem 'rack-timeout'
 
-gem 'jquery-rails'
+# gem 'jquery-rails'
 gem 'slim-rails'
 
 gem 'authlogic'
@@ -29,7 +29,7 @@ gem 'fog'
 group :assets do
   gem 'less-rails'
   gem 'coffee-rails'
-  gem 'blueprint-rails'
+  # gem 'blueprint-rails'
 
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier'

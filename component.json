@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jquery": "1.8.3",
+    "jquery_ujs": "rails/jquery-ujs",
+    "blueprint": "1.0.1",
+    "jquery.form": "malsup/form",
+    "jquery.modal": "kylefox/jquery-modal"
+  }
+}
