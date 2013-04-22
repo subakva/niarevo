@@ -5,4 +5,4 @@
 .env
 .powenv
 /public/sitemap*
-/vendor/assets/components
+

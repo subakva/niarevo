@@ -10,8 +10,8 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery/jquery
-//= require jquery_ujs/src/rails
-//= require jquery.modal/jquery.modal
-//= require jquery.form/jquery.form
+//= require jquery
+//= require jquery_ujs
+//= require jquery.modal
+//= require jquery.form
 //= require_tree .
