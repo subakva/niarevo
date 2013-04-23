@@ -11,6 +11,8 @@ Things to set up:
 * code climate
 * simplecov
 * cane
+* girl friday: http://mperham.github.io/girl_friday/
+
 
 To resurrect:
 
