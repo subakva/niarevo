@@ -1,0 +1,52 @@
+doctype 5
+html lang="en"
+  head
+    - page_title = content_for?(:title) ? yield(:title) : 'DreamTagger'
+    title = page_title
+    - if @link_alternate
+      link rel="alternate" type="application/atom+xml" title="#{page_title}" href="#{@link_alternate}"
+
+    = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = stylesheet_link_tag 'new'
+
+  body id=(controller.controller_name) class=(controller.action_name)
+    .wrapper.container
+      header.moonset
+        .moon
+        / TODO: flash messages
+      .main
+        header
+          ul.inline
+            li = link_to root_path, title: 'Home' do
+              i.icon-home.icon-2x
+            li = link_to new_dream_path, title: 'Add Dream' do
+              i.icon-cloud.icon-2x
+            - if current_user
+              li = link_to account_path, title: 'Your Dreams' do
+                i.icon-list.icon-2x
+              li = link_to user_session_path, title: "Sign Out",
+                    method: :delete, confirm: "Are you sure?" do
+                i.icon-off.icon-2x
+            - else
+              li = link_to new_user_session_path, title: "Sign In" do
+                i.icon-key.icon-2x
+              li = link_to new_account_path, title: "Create Account" do
+                i.icon-asterisk.icon-2x
+          h2 = content_for?(:header_text) ? yield(:header_text) : 'dreams'
+          .clearfix
+        .content = yield
+
+        footer
+          ul.inline
+            li = link_to about_path, title: 'About' do
+                i.icon-question-sign
+            li = link_to feeds_path, title: 'Feeds' do
+                i.icon-rss
+            li = link_to terms_path, title: 'Terms' do
+                i.icon-legal
+
+    = javascript_include_tag 'new'
+    = yield :script
+
+    = render partial: 'shared/tracking'

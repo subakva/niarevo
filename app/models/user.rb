@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   class << self
-    def find_by_username_or_password(params)
+    def find_by_username_or_email(params)
       user = nil
       if params[:username]
         user = User.where(username: params[:username]).first

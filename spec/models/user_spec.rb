@@ -15,10 +15,10 @@ describe User do
   end
 
   it "finds an account by username or email" do
-    User.find_by_username_or_password(:username => user.username).should == user
-    User.find_by_username_or_password(:email => user.email).should == user
-    User.find_by_username_or_password(:username_or_email => user.username).should == user
-    User.find_by_username_or_password(:username_or_email => user.email).should == user
+    User.find_by_username_or_email(:username => user.username).should == user
+    User.find_by_username_or_email(:email => user.email).should == user
+    User.find_by_username_or_email(:username_or_email => user.username).should == user
+    User.find_by_username_or_email(:username_or_email => user.email).should == user
   end
 
   it "sets the active flag to true and send an email when requested" do

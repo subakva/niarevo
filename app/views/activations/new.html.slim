@@ -1,0 +1,12 @@
+- content_for :title do "Request Activation Key"; end
+- content_for :header_text do "Request Activation Key"; end
+
+= form_for @activation, url: activations_path, html: { class: 'form-horizontal' } do |f|
+  .control-group
+    .controls
+      span.help-block
+        ' Enter your <b>username</b> or <b>email address</b> below.
+      span.help-block
+        ' An email will be sent containing a link to activate your account.
+  = dt_text_field(f, :username_or_email, 'Username or email', params[:username])
+  = dt_submit(f, 'Send Activation Email')

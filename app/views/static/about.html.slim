@@ -1,0 +1,26 @@
+- content_for :title do "About This Site"; end
+- content_for :header_text do "About This Site"; end
+
+.static-content
+  h3 What is this?
+  p
+    ' DreamTagger allows you to record and <b>share your dreams</b> with your
+    ' friends and the rest of the world. By adding tags to your dreams (and
+    ' other people's dreams!) you can help to create a <b>network of dreams</b>
+    ' based on what they are about.
+  p
+    ' Once we get a lot dreams on the site, you'll be able to see what people
+    ' dream about on the
+    =' link_to "night before Christmas", dreams_by_day_path(year: 2008, month: 12,day: 25), title: 'Dreams from december 25'
+    '. You'll be able to find out how many people have dreams about
+    =' link_to "zombies", tag_dreams_path('zombies'), title: 'Show dreams about zombies'
+    ' or
+    =' link_to "falling", tag_dreams_path('falling'), title: 'Show dreams about falling'
+    ' (does everybody have that one?).
+  p
+    'The key here is to get <b>a lot of dreams</b> from <b>a lot of people</b>.
+    ' So,
+    =' link_to 'create an account', new_account_path, title: 'Show registration page.'
+    ' for yourself, and then
+    =' link_to 'invite your friends', 'new_invite_path', title: 'Show invitation page.'
+    ' to join in!

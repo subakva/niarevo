@@ -1,0 +1,4 @@
+= dt_text_field(form, :username, 'Username')
+= dt_email_field(form, :email, 'Email Address')
+= dt_password_field(form, :password, form.object.new_record? ? 'Password' : "Change password")
+= dt_password_field(form, :password_confirmation, "Password Again")

@@ -1,0 +1,127 @@
+@import "lesselements.css.less";
+
+html { background: #333; }
+body {
+  height: 500px;
+  background: #333;
+  .gradient(#333, #333, #9b1906);
+  background-repeat: no-repeat;
+  color: #EEE;
+}
+
+.moonset {
+  position: relative;
+  height: 35px;
+
+  .moon {
+    position: absolute;
+    z-index: 0;
+    background-color: #EEE;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    top: -25px;
+    left: 50px;
+  }
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  background-color: #323232;
+  border-radius: 10px;
+  padding: 10px 20px;
+
+  header {
+    ul {
+      float: right;
+      a {
+        color: #AAA;
+        &:hover { text-decoration: none; }
+      }
+    }
+    h2 {
+      float: left;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6em;
+      font-size: 1.6em;
+      color: #AAA;
+      letter-spacing: 0.2em;
+    }
+  }
+  footer {
+    text-align: center;
+    ul a {
+      color: #AAA;
+      &:hover { text-decoration: none; }
+    }
+  }
+  form {
+    background-color: #DDD;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 0 5px;
+  }
+}
+
+.dashboard, .static-content {
+  background-color: #DDD;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 0 5px;
+  h3 {
+    margin-top: 0;
+  }
+}
+
+
+.dream-list {
+  article {
+    margin-bottom: 30px;
+  }
+
+  .dream-head {
+    background-color: #555;
+    color: #EEE;
+    float: left;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .dream-body {
+    background-color: #DDD;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 110px;
+    margin-bottom: 5px;
+
+    .dream-text, .who-when, .content-tags, .context-tags, .dream-actions {
+      background-color: #D9D9D9;
+      border-radius: 5px;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+    .dream-dreamer a {
+      color: #777;
+    }
+    .dream-dreamer, .dream-time {
+      display: inline-block;
+      color: #999;
+    }
+    .dream-time {
+      margin-left: 50px;
+    }
+  }
+  .results-meta, .results-nav {
+    text-align: center;
+    margin-left: 110px;
+    a {
+      color: #EEE;
+    }
+  }
+}

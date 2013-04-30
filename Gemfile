@@ -27,9 +27,10 @@ gem 'fog'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'less-rails'
+  gem 'less-rails-bootstrap'
+  gem 'lesselements-rails'
   gem 'coffee-rails'
-  gem 'blueprint-rails'
+  gem 'font-awesome-rails'
 
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier'

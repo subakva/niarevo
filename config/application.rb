@@ -61,6 +61,7 @@ module Niarevo
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.initialize_on_precompile = false
     config.assets.precompile += ['print.css']
     config.assets.precompile += ['ie.css']

@@ -1,0 +1,20 @@
+- content_for :title do "Dashboard"; end
+- content_for :header_text do "Dashboard"; end
+
+.dashboard
+  h3 Recent Dreams
+  ul
+    - if !@user.dreams.recent.blank?
+      - for dream in @user.dreams
+        li
+          = link_to truncate(dream.description), dream_path(dream), title: 'View this dream'
+    - else
+      li
+        ' You haven't recorded any dreams yet.
+        br
+        = link_to "Add one now", new_dream_path, title: 'Add a new dream.'
+
+  h3 Account Management
+  ul
+    li
+      = link_to 'Edit Profile', edit_account_path, title: 'Change details about your account.'

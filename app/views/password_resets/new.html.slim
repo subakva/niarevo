@@ -1,0 +1,12 @@
+- content_for :title do "Forgot Password"; end
+- content_for :header_text do "Forgot Password"; end
+
+= form_for @reset, url: password_resets_path, html: { class: 'form-horizontal' } do |f|
+  .control-group
+    .controls
+      span.help-block
+        ' Enter your <b>username</b> or <b>email address</b>.
+      span.help-block
+        ' An email message will be sent containing a link to change your password.
+  = dt_text_field(f, :username_or_email, 'Username or email', params[:username])
+  = dt_submit(f, 'Reset Password')

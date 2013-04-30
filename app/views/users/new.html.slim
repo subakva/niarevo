@@ -1,0 +1,10 @@
+- content_for :title do "Create an Account"; end
+- content_for :header_text do "Create an Account"; end
+
+= form_for @user, url: account_path, html: { class: 'form-horizontal' } do |f|
+  = dt_text_field(f, :username, 'Username')
+  = dt_email_field(f, :email, 'Email Address')
+  = dt_password_field(f, :password, f.object.new_record? ? 'Password' : "Change password")
+  = dt_password_field(f, :password_confirmation, "Password Again")
+  = dt_submit(f, 'Create Account') do
+    = render partial: 'shared/session_links'

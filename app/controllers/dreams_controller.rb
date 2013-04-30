@@ -5,48 +5,48 @@ class DreamsController < ApplicationController
   before_filter :load_dream_for_user, :only => [:edit, :update, :destroy]
 
   def index
-    @page_title = "Recent Dreams"
+    @page_title = 'dreams'
     render_dream_index(Dream.scoped)
   end
 
   def for_user
     if params[:id] == 'anonymous'
-      @page_title = "Anonymous Dreams"
+      @page_title = 'anonymous dreams'
       render_dream_index(Dream.where(user_id: nil))
     else
-      @page_title = "Dreams From the Mind of #{params[:id]}"
+      @page_title = "#{params[:id].downcase} dreams"
       render_dream_index(Dream.joins(:user).where(users: { username: params[:id] }))
     end
   end
 
   def for_tag
-    @page_title = "Dreams Tagged '#{params[:id]}'"
+    @page_title = "Tagged '#{params[:id]}'"
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
   def for_content_tag
-    @page_title = "Dreams Tagged for Content '#{params[:id]}'"
+    @page_title = "With content tagged '#{params[:id]}'"
     render_dream_index(Dream.with_content_tag(params[:id]))
   end
 
   def for_context_tag
-    @page_title = "Dreams Tagged for Context '#{params[:id]}'"
+    @page_title = "With context tagged '#{params[:id]}'"
     render_dream_index(Dream.with_context_tag(params[:id]))
   end
 
   def untagged
-    @page_title = "Untagged Dreams"
+    @page_title = "Untagged"
     scope = Dream.where('dreams.context_tag_count = 0 OR dreams.content_tag_count = 0')
     render_dream_index(scope)
   end
 
   def untagged_context
-    @page_title = "Dreams Without Context Tags"
+    @page_title = "Without context tags"
     render_dream_index(Dream.where(context_tag_count: 0))
   end
 
   def untagged_content
-    @page_title = "Dreams Without Content Tags"
+    @page_title = "Without content tags"
     render_dream_index(Dream.where(content_tag_count: 0))
   end
 
@@ -115,7 +115,7 @@ class DreamsController < ApplicationController
   end
 
   def render_dream_index(scope)
-    @dreams = scope.page(params[:page]).per(10)
+    @dreams = scope.page(params[:page]).per(5)
     @link_alternate = "#{request.path}?format=atom"
     respond_to do |format|
       format.html { render :action => :index }
