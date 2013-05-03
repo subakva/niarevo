@@ -14,6 +14,10 @@ Things to set up:
 * girl friday: http://mperham.github.io/girl_friday/
 
 
+Remove:
+
+* recording last_request_at for all user requests
+
 To resurrect:
 
 * record who added which tags to dreams

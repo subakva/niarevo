@@ -7,6 +7,7 @@ class Notifier < ActionMailer::Base
   )
 
   def test(email)
+    @recipient_name = "old friend"
     mail(subject: "Test Message", to: email)
   end
 

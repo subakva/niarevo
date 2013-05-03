@@ -1,3 +1,7 @@
+<%= dt_text_area(form, :description, 'Describe Your Dream') %>
+<%= dt_text_field(form, :content_tag_list, 'Tag Your Dream') %>
+<%= dt_text_field(form, :context_tag_list, 'Tag Your Context') %>
+
 <p class='label-line'>
   <%= form.label :description, 'Describe Your Dream' %>
   <%= link_to "", '#description-help', :title => 'Describing Your Dream', :class => 'help-link help-icon', :rel => 'modal:open' %>
@@ -26,4 +30,4 @@
 <div class='recaptcha'><%= raw recaptcha_tags %></div>
 <%- end -%>
 
-<%= render :partial => "shared/preview_container" %>
+<%= render partial: "shared/preview_container" %>

@@ -14,6 +14,10 @@ module ApplicationHelper
     strip_tags(rendered)
   end
 
+  def dt_text_area(form, symbol, label_text, default_value = nil)
+    dt_form_field(form, :text_area, symbol, label_text)
+  end
+
   def dt_text_field(form, symbol, label_text, default_value = nil)
     dt_form_field(form, :text_field, symbol, label_text)
   end

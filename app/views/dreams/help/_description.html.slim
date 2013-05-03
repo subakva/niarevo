@@ -1,0 +1,42 @@
+p
+  ' Describe your dream here.
+  ' You might be tired, so don't worry if it doesn't make sense, or if your
+  ' grammar or spelling aren't quite right. And, really, it's a dream; it
+  ' doesn't have to make sense.
+
+h4 Format
+p
+  ' HTML is not allowed, but you can any use other
+  a(
+    href="http://daringfireball.net/projects/markdown/syntax"
+    title="Daring Fireball: Markdown Syntax Documentation")
+    | "markdown" syntax
+  |. Here are some common examples:
+
+  table.markdown-table
+    tr
+      th Italic
+      td
+        code
+          | *italic*
+      td = render_markdown '*italic*'
+    tr
+      th Bold
+      td
+        code
+          | **bold**
+      td = render_markdown '**bold**'
+    tr
+      th Image
+      td
+        code ![Description](/assets/avatar.png)
+      td = render_markdown '![Description](/assets/avatar.png)'
+    tr
+      th Link
+      td
+        code &lt;http://www.google.com&gt;
+      td = render_markdown '<http://www.google.com>'
+  a(
+    href="http://daringfireball.net/projects/markdown/syntax"
+    title="Daring Fireball: Markdown Syntax Documentation")
+    | See Full Documentation
