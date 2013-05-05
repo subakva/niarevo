@@ -45,8 +45,8 @@ html lang="en"
                 i.icon-rss
             li = link_to terms_path, title: 'Terms' do
                 i.icon-legal
-
     = javascript_include_tag 'new'
     = yield :script
+    = yield :modals
 
     = render partial: 'shared/tracking'

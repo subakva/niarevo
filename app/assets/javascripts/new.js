@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.form
+//= require twitter/bootstrap/modal
 //= require_tree ./new

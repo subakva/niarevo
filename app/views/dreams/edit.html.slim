@@ -1,0 +1,11 @@
+- content_for :title do "Edit Your Dream"; end
+- content_for :header_text do "Edit Your Dream"; end
+
+= form_for @dream, html: { class: 'form-horizontal' } do |f|
+  = render partial: "form", object: f
+  = dt_submit(f, 'Save') do
+    p.pull-left
+      =' link_to "Cancel", dreams_path, title: 'Cancel'
+      ' //
+      =' link_to "Preview", preview_dreams_path, title: 'Preview', class: 'preview-link'
+      ' //

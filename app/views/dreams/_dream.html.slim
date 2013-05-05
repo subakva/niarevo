@@ -1,0 +1,38 @@
+article
+  div.dream-head
+    - if dream.user
+      = image_tag dream.user.gravatar_url(size: 80), alt: 'gravatar'
+    - else
+      = image_tag 'avatar-80.png', alt: 'gravatar'
+  div.dream-body
+    div.who-when
+      div.dream-dreamer
+        - if dream.user
+          = link_to("#{dream.user.username}", user_dreams_path(dream.user.username), title: 'Show recent dreams from this user.')
+        - else
+          | Anonymous
+      - if dream.created_at
+        div.dream-time
+          span = dream.created_at.strftime('%d-%b-%Y')
+          span = dream.created_at.localtime.strftime('%H:%M:%S')
+
+    div.dream-text
+      = render_markdown dream.description
+
+    div.content-tags
+      - if dream.content_tag_list.empty?
+        = link_to 'untagged', untagged_content_dreams_path, class: 'tag-link', title: "Show dreams without content tags"
+      - for tag in dream.content_tag_list
+        =' link_to tag, content_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with content: #{tag}"
+
+    div.context-tags
+      - if dream.context_tag_list.empty?
+        = link_to 'untagged', untagged_context_dreams_path, class: 'tag-link', title: "Show dreams without context tags"
+      - for tag in dream.context_tag_list
+        =' link_to tag, context_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with context: #{tag}"
+
+    - if current_user && current_user.id == dream.user_id
+      div.dream-actions
+        = link_to "[Edit]", edit_dream_path(dream), title: 'Edit this dream.'
+        / = link_to "[Add Tags]", tag_dream_path(dream), class: 'add-tags', title: 'Tag this dream.'
+

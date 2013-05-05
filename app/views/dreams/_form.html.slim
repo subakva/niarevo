@@ -1,0 +1,19 @@
+= dt_text_area(form, :description, 'Describe Your Dream', nil, help_href:'#description-help')
+= dt_text_field(form, :content_tag_list, 'Tag Your Dream', nil, help_href:'#content-tag-list-help')
+= dt_text_field(form, :context_tag_list, 'Tag Your Context', nil, help_href:'#context-tag-list-help')
+
+a.btn title='Preview' href="#{preview_dreams_path}"
+  i.icon-picture
+
+- unless current_user
+  div.recaptcha
+    = raw recaptcha_tags
+
+- content_for :modals do
+  = help_modal('description-help', 'Describing Your Dream') do
+    = render partial: "dreams/help/description"
+  = help_modal('content-tag-list-help', 'About Content Tags') do
+    = render partial: "dreams/help/content_tag_list"
+  = help_modal('context-tag-list-help', 'About Context Tags') do
+    = render partial: "dreams/help/context_tag_list"
+  = render partial: "shared/preview_container"
