@@ -14,6 +14,14 @@ module ApplicationHelper
     strip_tags(rendered)
   end
 
+  def alert_class(alert_type)
+    alert_type = {
+      alert: 'error',
+      notice: 'info'
+    }.fetch(alert_type, alert_type.to_s)
+    "alert-#{alert_type}"
+  end
+
   def dt_text_area(form, symbol, label_text, default_value = nil, options = nil)
     dt_form_field(form, :text_area, symbol, label_text, default_value, options)
   end
@@ -35,8 +43,6 @@ module ApplicationHelper
   end
 
   def dt_form_field(form, input_method, symbol, label_text, default_value = nil, options = nil)
-    Rails.logger.info "options.inspect = #{options.inspect}"
-  # def dt_form_field(form, input_method, symbol, label_text, default_value = nil)
     options ||= {}
     errors = form.object.errors
     group_classes = errors.present? ? 'control-group error' : 'control-group'
