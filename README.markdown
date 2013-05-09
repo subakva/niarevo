@@ -88,6 +88,7 @@ To resurrect:
 ## Future Features ##
 
   * Dreams
+    * Private Dreams
     * Attach images/files to a dream
     * . Safe html formatting
     * ? Attach disqus comments to dreams
@@ -113,7 +114,6 @@ To resurrect:
     * Add an admin? flag that allows a user to edit anything.
   * Design
     * !! Cross-browser test the design
-      * fix "Describing your dream" boxy in Safari
     * iPhone-friendly stylesheet
   * API
     * Access dream data with an API key
@@ -124,10 +124,8 @@ To resurrect:
     * Receive notifications about new dreams for a search term (person/tag/text)
   * Infrastructure/Performance
     * Page Caching
-    * SSL Enforcement (no ssl on dreamhost...)
+    * SSL Enforcement (needs $$ on heroku...)
     * A/B Testing
     * set up memcached
-    * setup gmail for smtp
     * buy an ssl certificate
-    * setup nginx restart command
 
