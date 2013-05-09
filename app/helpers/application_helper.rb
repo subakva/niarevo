@@ -4,6 +4,18 @@ module ApplicationHelper
 
   include CloudStyleHelpers
 
+  def page_title
+    ['DreamTagger', header_text].join(' - ')
+  end
+
+  def header_text
+    @header_text ||= begin
+      if content_for?(:header_text)
+        content_for(:header_text)
+      end
+    end
+  end
+
   def render_markdown(markdown)
     markdown = RDiscount.new(markdown, :filter_html)
     markdown.to_html.html_safe

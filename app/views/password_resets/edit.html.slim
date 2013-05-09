@@ -1,4 +1,3 @@
-- content_for :title do "Change My Password"; end
 - content_for :header_text do "Change My Password"; end
 
 = form_for @user, url: password_reset_path, method: :put, html: { class: 'form-horizontal' } do |f|

@@ -5,48 +5,48 @@ class DreamsController < ApplicationController
   before_filter :load_dream_for_user, :only => [:edit, :update, :destroy]
 
   def index
-    @page_title = 'dreams'
+    @header_text = 'DreamTagger'
     render_dream_index(Dream.scoped)
   end
 
   def for_user
     if params[:id] == 'anonymous'
-      @page_title = 'anonymous dreams'
+      @header_text = 'Anonymous Dreams'
       render_dream_index(Dream.where(user_id: nil))
     else
-      @page_title = "#{params[:id].downcase} dreams"
+      @header_text = "#{params[:id].capitalize} Dreams"
       render_dream_index(Dream.joins(:user).where(users: { username: params[:id] }))
     end
   end
 
   def for_tag
-    @page_title = "Tagged '#{params[:id]}'"
+    @header_text = "Tagged '#{params[:id]}'"
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
   def for_content_tag
-    @page_title = "With content tagged '#{params[:id]}'"
+    @header_text = "With dream tagged '#{params[:id]}'"
     render_dream_index(Dream.with_content_tag(params[:id]))
   end
 
   def for_context_tag
-    @page_title = "With context tagged '#{params[:id]}'"
+    @header_text = "With dreamer tagged '#{params[:id]}'"
     render_dream_index(Dream.with_context_tag(params[:id]))
   end
 
   def untagged
-    @page_title = "Untagged"
+    @header_text = "Untagged"
     scope = Dream.where('dreams.context_tag_count = 0 OR dreams.content_tag_count = 0')
     render_dream_index(scope)
   end
 
   def untagged_context
-    @page_title = "Without context tags"
+    @header_text = "Without dreamer tags"
     render_dream_index(Dream.where(context_tag_count: 0))
   end
 
   def untagged_content
-    @page_title = "Without content tags"
+    @header_text = "Without dream tags"
     render_dream_index(Dream.where(content_tag_count: 0))
   end
 
@@ -56,7 +56,7 @@ class DreamsController < ApplicationController
     range.apply_month(params[:month])
     range.apply_day(params[:day])
 
-    @page_title = title_for_dates(range)
+    @header_text = title_for_dates(range)
     scope = Dream.created_before(range.max_date)
     scope = scope.created_since(range.min_date)
     render_dream_index(scope)

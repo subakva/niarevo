@@ -1,52 +1,36 @@
 doctype 5
-html
+html lang="en"
   head
-    - page_title = content_for?(:title) ? yield(:title) : 'DreamTagger'
     title = page_title
     - if @link_alternate
       link rel="alternate" type="application/atom+xml" title="#{page_title}" href="#{@link_alternate}"
 
     = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag 'application'
-    = stylesheet_link_tag 'print', media: 'print'
-    /[if lt IE 8]
-      = stylesheet_link_tag 'ie'
 
   body id=(controller.controller_name) class=(controller.action_name)
-    #horizon
-      #wrapper
-        #menu
-          ul.link-list
-            li = link_to "Home", root_path
-            li = link_to "Add", new_dream_path
-            - if current_user
-              li = link_to "Your Dreams", account_path
-              li = link_to "Sign Out", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?"
-            - else
-              li = link_to "Sign In", new_user_session_path
-              li = link_to "Create Account", new_account_path
+    .wrapper.container
+      header.moonset
+        .moon
+      .main
+        header
+          = render partial: 'shared/main_menu'
+          h2 = header_text
+          .clearfix
+        = render partial: 'shared/alerts'
+        .content = yield
 
-        - if flash[:notice] || flash[:error]
-          #messages
-            ul.message-list
-              - if flash[:notice]
-                li.notice-message = flash[:notice]
-              - elsif flash[:error]
-                li.error-message = flash[:error]
-            .clear-message
-              = link_to "Clear Message", '#', :title => 'Remove this message from the page.', :class => 'clearMessage'
-
-        #content = yield
-
-        #footer
-          ul.link-list
-            li = link_to "About", about_path, :title => 'More information about this site'
-            li = link_to "Feeds", feeds_path, :title => 'An explanation of the feeds available for this site.'
-            - if false && current_user
-              li = link_to "Invite", 'new_invite_path', :title => 'Invite your friends to join.'
-            li = link_to "Terms", terms_path, :title => 'The terms and conditions for use of this site.'
-
+        footer
+          ul.inline
+            li = link_to about_path, title: 'About' do
+                i.icon-question-sign
+            li = link_to feeds_path, title: 'Feeds' do
+                i.icon-rss
+            li = link_to terms_path, title: 'Terms' do
+                i.icon-legal
     = javascript_include_tag 'application'
     = yield :script
+    = yield :modals
 
-    = render :partial => 'shared/tracking'
+    = render partial: 'shared/tracking'

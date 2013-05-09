@@ -1,5 +1,3 @@
-- content_for :title do @page_title || 'dreams'; end
-
 - if @dreams.blank?
   p There are no dreams that match that criteria.
 - else
@@ -13,7 +11,3 @@
 
     .results-nav
       = raw paginate @dreams, container: nil
-
-  / = link_to({controller: params[:controller], action: params[:action], format: :atom}, title: 'Subscribe to the feed for this page.', rel: 'alternate') do
-  /   = image_tag('feed.png', alt: 'feed-icon')
-  /   | Subscribe to the feed for this page.
