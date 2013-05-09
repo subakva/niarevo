@@ -85,9 +85,7 @@ class DreamsController < ApplicationController
   end
 
   def preview
-    Rails.logger.info "params[:dream] = #{params[:dream].inspect}"
     @dream = Dream.new(params[:dream])
-    Rails.logger.info "@dream.attributes.inspect = #{@dream.attributes.inspect}"
     render :partial => 'dream', :layout => false, :object => @dream
   end
 
