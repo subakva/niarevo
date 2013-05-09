@@ -10,7 +10,7 @@ describe Notifier do
     end
 
     it "uses the notifier layout" do
-      mail.body.should =~ /Thanks,\nThe DreamTagger Team/
+      mail.body.should =~ /Thanks,<br \/>The DreamTagger Team/
     end
   end
 
