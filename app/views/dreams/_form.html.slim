@@ -1,13 +1,17 @@
-= dt_text_area(form, :description, 'Describe Your Dream', nil, help_href:'#description-help')
-= dt_text_field(form, :content_tag_list, 'In Your Dream', nil, help_href:'#content-tag-list-help')
-= dt_text_field(form, :context_tag_list, 'In Real-Life:', nil, help_href:'#context-tag-list-help')
-
-a.btn title='Preview' href="#{preview_dreams_path}"
-  i.icon-picture
+= dt_text_area(form, :description, label: 'Describe Your Dream') do
+  = dt_help_icon('#description-help')
+  a.btn.btn-help.preview-link title='Preview' href="#{preview_dreams_path}"
+    i.icon-picture
+= dt_text_field(form, :content_tag_list, label: 'In Your Dream') do
+  = dt_help_icon('#content-tag-list-help')
+= dt_text_field(form, :context_tag_list, label: 'In Real-Life:') do
+  = dt_help_icon('#context-tag-list-help')
 
 - unless current_user
-  div.recaptcha
-    = raw recaptcha_tags
+  div.control-group
+    div.controls
+      div.recaptcha
+        = raw recaptcha_tags
 
 - content_for :modals do
   = help_modal('description-help', 'Describing Your Dream') do

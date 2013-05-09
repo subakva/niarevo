@@ -11,5 +11,5 @@
  *= require_self
  *= require bootstrap-override
  *= require font-awesome
- *= require_tree ./new
+ *= require new/style
  */

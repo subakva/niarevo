@@ -2,8 +2,8 @@
 - content_for :header_text do "Sign In"; end
 
 = form_for @user_session, url: user_session_path, html: { class: 'form-horizontal' } do |f|
-  = dt_text_field(f, :username, 'Username')
-  = dt_password_field(f, :password, 'Password')
-  = dt_check_box(f, :remember_me, "Remember me")
+  = dt_text_field(f, :username, value: params[:username])
+  = dt_password_field(f, :password)
+  = dt_check_box(f, :remember_me)
   = dt_submit(f, 'Sign In') do
     = render partial: "shared/session_links"

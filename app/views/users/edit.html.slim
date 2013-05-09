@@ -1,11 +1,11 @@
-- content_for :title do "Edit Account"; end
-- content_for :header_text do "Edit Account"; end
+- content_for :title do 'Edit Account'; end
+- content_for :header_text do 'Edit Account'; end
 
 = form_for @user, url: account_path, html: { class: 'form-horizontal' } do |f|
-  = dt_text_field(f, :username, 'Username')
-  = dt_email_field(f, :email, 'Email Address')
-  = dt_password_field(f, :password, "Change password")
-  = dt_password_field(f, :password_confirmation, "New Password Again")
+  = dt_text_field(f, :username)
+  = dt_email_field(f, :email)
+  = dt_password_field(f, :password)
+  = dt_password_field(f, :password_confirmation, label: 'Confirm password')
   = dt_submit(f, 'Update') do
     ul.unstyled
       li

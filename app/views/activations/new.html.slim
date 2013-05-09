@@ -8,5 +8,5 @@
         ' Enter your <b>username</b> or <b>email address</b> below.
       span.help-block
         ' An email will be sent containing a link to activate your account.
-  = dt_text_field(f, :username_or_email, 'Username or email', params[:username])
+  = dt_text_field(f, :username_or_email, value: params[:username])
   = dt_submit(f, 'Send Activation Email')

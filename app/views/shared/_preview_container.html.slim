@@ -1,3 +1,9 @@
-div#preview style='display:none'
-  div.preview-content
-    = image_tag 'ajax-loader.gif', alt: 'Loading...', class: 'preview-throbber'
+div#preview.modal.hide.fade tabindex=-1 data-toggle='modal' aria-hidden='true'
+  div.modal-header
+    button.close data-dismiss='modal' aria-hidden='true' &times;
+    h3 Preview
+  div.modal-body.preview-content.dream-list
+    div style='text-align:center'
+      i.icon-spinner.icon-spin.icon-4x
+  div.modal-footer
+    a.btn href='#' data-dismiss='modal' Close

@@ -8,5 +8,5 @@
         ' Enter your <b>username</b> or <b>email address</b>.
       span.help-block
         ' An email message will be sent containing a link to change your password.
-  = dt_text_field(f, :username_or_email, 'Username or email', params[:username])
+  = dt_text_field(f, :username_or_email, value: params[:username])
   = dt_submit(f, 'Reset Password')

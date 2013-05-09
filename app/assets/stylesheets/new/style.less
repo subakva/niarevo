@@ -1,12 +1,13 @@
 @import "lesselements.css.less";
+@import "new/variables.less";
 
-html { background: #333; }
+html { background: @bodyBackground; }
 body {
   height: 500px;
-  background: #333;
-  .gradient(#333, #333, #9b1906);
+  background: @bodyBackground;
+  .gradient(@bodyBackground, @bodyBackground, @moonsetBackground);
   background-repeat: no-repeat;
-  color: #EEE;
+  color: @textColor;
 }
 
 .moonset {
@@ -28,7 +29,7 @@ body {
 .main {
   position: relative;
   z-index: 1;
-  background-color: #323232;
+  background-color: @bodyBackground;
   border-radius: 10px;
   padding: 10px 20px;
 
@@ -72,6 +73,12 @@ body {
     padding: 10px;
     border-radius: 5px;
     margin: 0 0 5px;
+    .btn-help {
+      vertical-align: top;
+    }
+    .action-controls {
+      a { margin-right: 4px; float: left;}
+    }
   }
 }
 
@@ -134,9 +141,15 @@ body {
   }
 }
 
+.preview-content {
+  background-color: @bodyBackground;
+  color: @textColor;
+}
+
 .modal {
   color: #333;
 }
+
 .markdown-table {
   width: 100%;
   border-collapse: collapse;
