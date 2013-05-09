@@ -1,3 +1,5 @@
+require 'date_range'
+
 class DreamsController < ApplicationController
 
   before_filter :require_user, :only => [:edit, :update, :destroy]
