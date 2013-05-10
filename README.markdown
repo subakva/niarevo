@@ -1,26 +1,28 @@
-Things to port:
+Next:
 
-* tag clouds / zeitgeist
-* facebook connection
-* multiple asset hosts
-
-Things to set up:
-
+* Spec coverage of features
+* Rails 4
+* better full-page form styling
+* better mobile icon sizing
+* better tag input (https://github.com/maxwells/bootstrap-tags)
+* convert help modals to popovers
+* Private dreams
+* Statistically improbable phrases (tag generation)
+* Detect correlated tags
+* Invitations
+* Facebook integration
+* Multiple asset hosts
+* Caching
 * test data generation
 * travis
 * code climate
-* simplecov
-* cane
+* record who added which tags to dreams
+* delete tags
+* remove recording of last_request_at for all user requests
 * girl friday: http://mperham.github.io/girl_friday/
-
-
-Remove:
-
-* recording last_request_at for all user requests
 
 To resurrect:
 
-* record who added which tags to dreams
 
 ## User Personas ##
 
