@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def deactivate!
+    update_attribute(:active, false)
+  end
+
   def deliver_activation_instructions!
     reset_perishable_token!
     Notifier.activation_instructions(self).deliver

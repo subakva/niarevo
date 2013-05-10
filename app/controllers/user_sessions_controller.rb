@@ -9,17 +9,21 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(params[:user_session])
+    # TODO: Move this into UserSession
     session_saved = @user_session.save
     account_inactive = @user_session.errors && @user_session.errors.full_messages.include?('Your account is not active')
     if session_saved
       redirect_back_or_default account_url
     else
       if account_inactive
-        flash.now[:error] = "Your account has not been activated yet."
+        flash[:error] = "Your account has not been activated yet."
       else
-        flash.now[:error] = "Please enter a correct username and password. Note that both fields are case-sensitive."
+        flash[:error] = %{
+          Please enter a correct username and password.
+          Note that both fields are case-sensitive.
+        }.squish
       end
-      render :action => :new
+      redirect_to new_user_session_path
     end
   end
 
