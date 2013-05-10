@@ -1,9 +1,10 @@
 - content_for :header_text do "Dream Zeitgeist"; end
 
-h3 Today's Popular Tags
-div#zeitgeist-today
-  = render partial: "shared/tag_cloud", object: @cloud_for_today
+div.static-content
+  h3 Today's Popular Tags
+  div#zeitgeist-today
+    = render partial: "shared/tag_cloud", object: @cloud_for_today
 
-h3 Overall Most Popular Tags
-div#zeitgeist-overall
-  = render partial: "shared/tag_cloud", object: @cloud_for_all_time
+  h3 Overall Most Popular Tags
+  div#zeitgeist-overall
+    = render partial: "shared/tag_cloud", object: @cloud_for_all_time

@@ -1,8 +1,4 @@
-require 'cloud_style_helpers'
-
 module ApplicationHelper
-
-  include CloudStyleHelpers
 
   def page_title
     ['DreamTagger', header_text].join(' - ')
