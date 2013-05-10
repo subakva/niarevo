@@ -1,5 +1,9 @@
 module UserSessionsFeatureHelper
 
+  def sign_in_as(user)
+    sign_in(user.username, 'password')
+  end
+
   def sign_in(username, password)
     visit new_user_session_path
 

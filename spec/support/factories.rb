@@ -12,6 +12,10 @@ FactoryGirl.define do
     content_tag_list ['no-pants', 'crocodiles']
     context_tag_list ['school', 'math-class']
 
+    trait :anonymous do
+      user nil
+    end
+
     trait :untagged do
       content_tag_list []
       context_tag_list []
