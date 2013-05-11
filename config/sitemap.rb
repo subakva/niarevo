@@ -11,23 +11,23 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   # Dream Listing Paths
   sitemap.add dreams_path,                  :changefreq => 'daily'
   sitemap.add untagged_dreams_path,         :changefreq => 'daily'
-  sitemap.add untagged_context_dreams_path, :changefreq => 'daily'
-  sitemap.add untagged_content_dreams_path, :changefreq => 'daily'
+  sitemap.add untagged_dreamer_dreams_path, :changefreq => 'daily'
+  sitemap.add untagged_dream_dreams_path,   :changefreq => 'daily'
 
   tag_sql = <<-SQL.squish
-    select t.name, ts.context
-    from taggings ts
-    inner join tags t on t.id = ts.tag_id
-    group by t.name, ts.context
+    SELECT t.name, ts.context
+    FROM taggings ts
+    INNER JOIN tags t ON t.id = ts.tag_id
+    GROUP BY t.name, ts.context
   SQL
 
   ActsAsTaggableOn::Tagging.connection.select_rows(tag_sql).each do |name, context|
     sitemap.add tag_dreams_path(name),  :changefreq => 'weekly'
     case context
-    when 'content_tags'
-      sitemap.add content_tag_dreams_path(name),  :changefreq => 'weekly'
-    when 'context_tags'
-      sitemap.add context_tag_dreams_path(name),  :changefreq => 'weekly'
+    when 'dream_tags'
+      sitemap.add dream_tag_dreams_path(name),  :changefreq => 'weekly'
+    when 'dreamer_tags'
+      sitemap.add dreamer_tag_dreams_path(name),  :changefreq => 'weekly'
     else
       raise "Unknown tag context: #{context}"
     end

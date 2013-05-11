@@ -1,8 +1,6 @@
 /log/*.log
 /tmp
 /coverage
-/rails2
 .env
 .powenv
 /public/sitemap*
-/vendor/assets/components

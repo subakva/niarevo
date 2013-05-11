@@ -19,17 +19,17 @@ article data-dream-id="#{dream.id}"
     div.dream-text
       = render_markdown dream.description
 
-    div.content-tags
-      - if dream.content_tag_list.empty?
-        = link_to 'untagged', untagged_content_dreams_path, class: 'tag-link', title: "Show dreams without content tags"
-      - for tag in dream.content_tag_list
-        =' link_to tag, content_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with content: #{tag}"
+    div.dream-tags
+      - if dream.dream_tag_list.empty?
+        = link_to 'untagged', untagged_dream_dreams_path, class: 'tag-link', title: "Show dreams without dream tags"
+      - for tag in dream.dream_tag_list
+        =' link_to tag, dream_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dream tag: #{tag}"
 
-    div.context-tags
-      - if dream.context_tag_list.empty?
-        = link_to 'untagged', untagged_context_dreams_path, class: 'tag-link', title: "Show dreams without context tags"
-      - for tag in dream.context_tag_list
-        =' link_to tag, context_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with context: #{tag}"
+    div.dreamer-tags
+      - if dream.dreamer_tag_list.empty?
+        = link_to 'untagged', untagged_dreamer_dreams_path, class: 'tag-link', title: "Show dreams without dreamer tags"
+      - for tag in dream.dreamer_tag_list
+        =' link_to tag, dreamer_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dreamer tag: #{tag}"
 
     - if current_user && current_user.id == dream.user_id
       div.dream-actions

@@ -11,20 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091128200125) do
+ActiveRecord::Schema.define(:version => 20130511170654) do
 
   create_table "dreams", :force => true do |t|
     t.text     "description",                      :null => false
     t.integer  "user_id"
-    t.integer  "context_tag_count", :default => 0, :null => false
-    t.integer  "content_tag_count", :default => 0, :null => false
+    t.integer  "dreamer_tag_count", :default => 0, :null => false
+    t.integer  "dream_tag_count",   :default => 0, :null => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end
 
-  add_index "dreams", ["content_tag_count"], :name => "index_dreams_on_content_tag_count"
-  add_index "dreams", ["context_tag_count"], :name => "index_dreams_on_context_tag_count"
   add_index "dreams", ["created_at"], :name => "index_dreams_on_created_at"
+  add_index "dreams", ["dream_tag_count"], :name => "index_dreams_on_dream_tag_count"
+  add_index "dreams", ["dreamer_tag_count"], :name => "index_dreams_on_dreamer_tag_count"
   add_index "dreams", ["updated_at"], :name => "index_dreams_on_updated_at"
   add_index "dreams", ["user_id"], :name => "index_dreams_on_user_id"
 

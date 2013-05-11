@@ -96,17 +96,17 @@ namespace :db do
           user_id: user.id,
           created_at: old_dream.created_at,
           updated_at: old_dream.updated_at,
-          context_tag_list: old_dream.tags.where(kind: 'context_tag').pluck(:name),
-          content_tag_list: old_dream.tags.where(kind: 'content_tag').pluck(:name),
+          dreamer_tag_list: old_dream.tags.where(kind: 'context_tag').pluck(:name),
+          dream_tag_list: old_dream.tags.where(kind: 'content_tag').pluck(:name),
         )
         dream.save!(validate: false)
         dream.save!
 
-        # context_tags = old_dream.tags.where(kind: 'context_tag').pluck(:name)
-        # user.tag(dream, with: context_tags, :on => :contect_tags)
+        # dreamer_tags = old_dream.tags.where(kind: 'context_tag').pluck(:name)
+        # user.tag(dream, with: dreamer_tags, :on => :dreamer_tags)
 
-        # content_tags = old_dream.tags.where(kind: 'content_tag').pluck(:name)
-        # user.tag(dream, with: content_tags, :on => :content_tags)
+        # dream_tags = old_dream.tags.where(kind: 'content_tag').pluck(:name)
+        # user.tag(dream, with: dream_tags, :on => :dream_tags)
       end
     end
   end

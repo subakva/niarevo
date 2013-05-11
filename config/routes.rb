@@ -12,12 +12,19 @@ Niarevo::Application.routes.draw do
   match '/dreams/user/:id' => 'dreams#for_user', as: 'user_dreams'
 
   match '/dreams/tagged/:id' => 'dreams#for_tag', as: 'tag_dreams'
-  match '/dreams/tagged/content/:id' => 'dreams#for_content_tag', as: 'content_tag_dreams'
-  match '/dreams/tagged/context/:id' => 'dreams#for_context_tag', as: 'context_tag_dreams'
-
   match '/dreams/untagged' => 'dreams#untagged', as: 'untagged_dreams'
-  match '/dreams/untagged_content' => 'dreams#untagged_content', as: 'untagged_content_dreams'
-  match '/dreams/untagged_context' => 'dreams#untagged_context', as: 'untagged_context_dreams'
+
+  match '/dreams/tagged/dream/:id' => 'dreams#for_dream_tag', as: 'dream_tag_dreams'
+  match '/dreams/untagged_dream' => 'dreams#untagged_dream', as: 'untagged_dream_dreams'
+
+  match '/dreams/tagged/dreamer/:id' => 'dreams#for_dreamer_tag', as: 'dreamer_tag_dreams'
+  match '/dreams/untagged_dreamer' => 'dreams#untagged_dreamer', as: 'untagged_dreamer_dreams'
+
+  # 301 for name change
+  match '/dreams/tagged/content/:id', to: redirect('/dreams/tagged/dream/%{id}')
+  match '/dreams/tagged/context/:id', to: redirect('/dreams/tagged/dreamer/%{id}')
+  match '/dreams/untagged_content', to: redirect('/dreams/untagged_dream')
+  match '/dreams/untagged_context', to: redirect('/dreams/untagged_dreamer')
 
   match '/dreams/date/:year/:month/:day' => 'dreams#for_date',
     constraints: {:year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/},

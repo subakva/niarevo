@@ -4,8 +4,8 @@
 #
 #  id             :integer          not null, primary key
 #  message        :string(255)
-#  recipient_name :string(32)       not null
-#  email          :string(100)      not null
+#  recipient_name :string(64)       not null
+#  email          :string(255)      not null
 #  user_id        :integer          not null
 #  sent_at        :datetime
 #  created_at     :datetime         not null
@@ -13,7 +13,6 @@
 #
 # Indexes
 #
-#  index_invites_on_created_at         (created_at)
 #  index_invites_on_email              (email)
 #  index_invites_on_email_and_user_id  (email,user_id) UNIQUE
 #  index_invites_on_sent_at            (sent_at)

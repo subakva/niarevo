@@ -3,8 +3,8 @@ require 'spec_helper'
 feature "Anonymous Dreams" do
   let(:dream_attributes) { FactoryGirl.attributes_for(:dream, :anonymous) }
   let(:dream_text)    { dream_attributes[:description] }
-  let(:dream_tags)    { dream_attributes[:content_tag_list] }
-  let(:dreamer_tags)  { dream_attributes[:context_tag_list] }
+  let(:dream_tags)    { dream_attributes[:dream_tag_list] }
+  let(:dreamer_tags)  { dream_attributes[:dreamer_tag_list] }
 
   scenario 'adding a dream' do
     visit new_dream_path

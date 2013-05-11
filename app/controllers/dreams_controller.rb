@@ -26,30 +26,30 @@ class DreamsController < ApplicationController
     render_dream_index(Dream.with_tag(params[:id]))
   end
 
-  def for_content_tag
+  def for_dream_tag
     @header_text = "With dream tagged '#{params[:id]}'"
-    render_dream_index(Dream.with_content_tag(params[:id]))
+    render_dream_index(Dream.with_dream_tag(params[:id]))
   end
 
-  def for_context_tag
+  def for_dreamer_tag
     @header_text = "With dreamer tagged '#{params[:id]}'"
-    render_dream_index(Dream.with_context_tag(params[:id]))
+    render_dream_index(Dream.with_dreamer_tag(params[:id]))
   end
 
   def untagged
     @header_text = "Untagged"
-    scope = Dream.where('dreams.context_tag_count = 0 OR dreams.content_tag_count = 0')
+    scope = Dream.where('dreams.dreamer_tag_count = 0 OR dreams.dream_tag_count = 0')
     render_dream_index(scope)
   end
 
-  def untagged_context
+  def untagged_dreamer
     @header_text = "Without dreamer tags"
-    render_dream_index(Dream.where(context_tag_count: 0))
+    render_dream_index(Dream.where(dreamer_tag_count: 0))
   end
 
-  def untagged_content
+  def untagged_dream
     @header_text = "Without dream tags"
-    render_dream_index(Dream.where(content_tag_count: 0))
+    render_dream_index(Dream.where(dream_tag_count: 0))
   end
 
   def for_date

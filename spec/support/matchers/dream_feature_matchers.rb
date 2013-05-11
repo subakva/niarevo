@@ -6,7 +6,7 @@ RSpec::Matchers.define :display_dream_tags do |expected|
   end
 
   def dream_tags_element
-    page.find('.content-tags')
+    page.find('.dream-tags')
   end
 
   def actual_tags
@@ -30,7 +30,7 @@ RSpec::Matchers.define :display_dreamer_tags do |expected|
   end
 
   def dreamer_tags_element
-    page.find('.context-tags')
+    page.find('.dreamer-tags')
   end
 
   def actual_tags

@@ -9,16 +9,16 @@ FactoryGirl.define do
       removed that make it nonsensical in meaning and not proper Latin.
     }.squish
     user
-    content_tag_list ['no-pants', 'crocodiles']
-    context_tag_list ['school', 'math-class']
+    dream_tag_list ['no-pants', 'crocodiles']
+    dreamer_tag_list ['school', 'math-class']
 
     trait :anonymous do
       user nil
     end
 
     trait :untagged do
-      content_tag_list []
-      context_tag_list []
+      dream_tag_list []
+      dreamer_tag_list []
     end
   end
 end

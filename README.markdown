@@ -14,8 +14,8 @@ Next:
   * zeitgeist
   * static pages
   * unit tests (password_reset_request, activation_request, dream_tagger_control)
+  * sitemap generation
 
-* rename content_tags to dream_tags and context_tags to dreamer_tags
 * Rails 4
 * better full-page form styling
 * better mobile icon sizing

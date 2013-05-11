@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                  :integer          not null, primary key
-#  username            :string(255)      not null
+#  username            :string(32)       not null
 #  email               :string(255)      not null
 #  crypted_password    :string(255)      not null
 #  password_salt       :string(255)      not null
@@ -15,15 +15,14 @@
 #  last_request_at     :datetime
 #  current_login_at    :datetime
 #  last_login_at       :datetime
-#  current_login_ip    :string(255)
-#  last_login_ip       :string(255)
+#  current_login_ip    :string(46)
+#  last_login_ip       :string(46)
+#  active              :boolean          default(FALSE), not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
-#  active              :boolean          default(FALSE), not null
 #
 # Indexes
 #
-#  index_users_on_created_at           (created_at)
 #  index_users_on_email                (email) UNIQUE
 #  index_users_on_perishable_token     (perishable_token) UNIQUE
 #  index_users_on_persistence_token    (persistence_token) UNIQUE

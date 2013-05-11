@@ -2,10 +2,10 @@
   = dt_help_icon('#description-help')
   a.btn.btn-help.preview-link title='Preview' href="#{preview_dreams_path}"
     i.icon-picture
-= dt_text_field(form, :content_tag_list, label: 'Dream Tags') do
-  = dt_help_icon('#content-tag-list-help')
-= dt_text_field(form, :context_tag_list, label: 'Dreamer Tags') do
-  = dt_help_icon('#context-tag-list-help')
+= dt_text_field(form, :dream_tag_list, label: 'Dream Tags') do
+  = dt_help_icon('#dream-tag-list-help')
+= dt_text_field(form, :dreamer_tag_list, label: 'Dreamer Tags') do
+  = dt_help_icon('#dreamer-tag-list-help')
 
 - unless current_user
   div.control-group
@@ -16,8 +16,8 @@
 - content_for :modals do
   = help_modal('description-help', 'Describing Your Dream') do
     = render partial: "dreams/help/description"
-  = help_modal('content-tag-list-help', 'About Dream Tags') do
-    = render partial: "dreams/help/content_tag_list"
-  = help_modal('context-tag-list-help', 'About Dreamer Tags') do
-    = render partial: "dreams/help/context_tag_list"
+  = help_modal('dream-tag-list-help', 'About Dream Tags') do
+    = render partial: "dreams/help/dream_tag_list"
+  = help_modal('dreamer-tag-list-help', 'About Dreamer Tags') do
+    = render partial: "dreams/help/dreamer_tag_list"
   = render partial: "shared/preview_container"

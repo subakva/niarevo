@@ -37,8 +37,8 @@ feature 'Dream Lists' do
   end
 
   scenario 'viewing dreams with a tag' do
-    tagged1       = FactoryGirl.create(:dream, content_tag_list: ['stump'])
-    tagged2       = FactoryGirl.create(:dream, context_tag_list: ['stump'])
+    tagged1       = FactoryGirl.create(:dream, dream_tag_list: ['stump'])
+    tagged2       = FactoryGirl.create(:dream, dreamer_tag_list: ['stump'])
     not_matching  = FactoryGirl.create(:dream)
 
     ensure_on tag_dreams_path('stump')
