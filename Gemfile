@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails', '~>3.2.13'
+gem 'rails', '~>4.0.0.rc1'
+# gem 'rails', '~>3.2.13'
 
 gem 'pg'
 gem 'foreigner'
@@ -15,26 +16,21 @@ gem 'jquery-rails'
 gem 'slim-rails'
 
 gem 'authlogic'
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on' # Using master for Rails 4
 gem 'gravtastic'
-gem 'strong_parameters'
 gem 'rdiscount'
 gem 'kaminari'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sitemap_generator'
 gem 'fog'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'less-rails-bootstrap'
-  gem 'lesselements-rails'
-  gem 'coffee-rails'
-  gem 'font-awesome-rails'
+gem 'less-rails-bootstrap'
+gem 'lesselements-rails'
+gem 'coffee-rails'
+gem 'font-awesome-rails'
 
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier'
-end
+gem 'therubyracer', :platforms => :ruby
+gem 'uglifier'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -43,7 +39,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-email'
   gem 'launchy'
-  gem 'jasminerice'
+  gem 'jasminerice', github: 'bradphelan/jasminerice' # Using master for Rails 4
 
   gem 'simplecov'
   gem 'cane'
@@ -51,6 +47,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'database_cleaner', github: 'bmabey/database_cleaner' # Using master for Rails 4
   gem 'timecop'
 end
 

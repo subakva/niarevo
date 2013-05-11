@@ -21,7 +21,7 @@ feature "Anonymous Dreams" do
       click_on 'Save'
     end
 
-    expect(current_path).to eq(dream_path(Dream.last))
+    expect(current_path).to eq(dream_path(Dream.first))
 
     expect(page).to display_dreamer_name('Anonymous')
     expect(page).to display_dream_text(dream_text)

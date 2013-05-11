@@ -8,7 +8,7 @@ class DreamsController < ApplicationController
 
   def index
     @header_text = 'DreamTagger'
-    render_dream_index(Dream.scoped)
+    render_dream_index(Dream.all)
   end
 
   def for_user
@@ -71,7 +71,7 @@ class DreamsController < ApplicationController
   def create
     # TODO: strong_parameters
     # TODO: handle assigning tags properly
-    @dream = Dream.new(params[:dream])
+    @dream = Dream.new(dream_params)
     @dream.user = current_user
     requires_captcha = current_user.blank?
     captcha_is_valid = !requires_captcha || verify_recaptcha(model: @dream)
@@ -87,7 +87,7 @@ class DreamsController < ApplicationController
   end
 
   def preview
-    @dream = Dream.new(params[:dream])
+    @dream = Dream.new(dream_params)
     render :partial => 'dream', :layout => false, :object => @dream
   end
 
@@ -95,7 +95,7 @@ class DreamsController < ApplicationController
   end
 
   def update
-    if @dream.update_attributes(params[:dream])
+    if @dream.update_attributes(dream_params)
       flash[:notice] = "Your dream has been saved."
       redirect_to dream_url(@dream)
     else
@@ -104,6 +104,11 @@ class DreamsController < ApplicationController
   end
 
   protected
+
+  def dream_params
+    params.require(:dream).permit(:description, :dream_tag_list, :dreamer_tag_list)
+  end
+
   def title_for_dates(range)
     start_string = range.min_date.strftime('%d-%b-%Y')
     end_string = range.max_date.strftime('%d-%b-%Y')

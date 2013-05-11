@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save_without_session_maintenance
       @user.deliver_activation_instructions!
       flash[:notice] = "Thanks! A message has been sent to your email address with a link to activate your account."
@@ -27,11 +27,17 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else
       render :action => :edit
     end
+  end
+
+  protected
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end

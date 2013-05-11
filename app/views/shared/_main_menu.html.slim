@@ -7,7 +7,7 @@ ul.inline.main-menu
     li = link_to account_path, title: 'Your Account' do
       i.icon-user.icon-2x
     li = link_to user_session_path, title: "Sign Out", \
-          method: :delete, confirm: "Sign out?" do
+          method: :delete, data: {confirm: "Sign out?"} do
       i.icon-signout.icon-2x
   - else
     li = link_to new_account_path, title: "Create Account" do

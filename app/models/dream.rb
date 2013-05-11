@@ -25,9 +25,9 @@ class Dream < ActiveRecord::Base
 
   belongs_to :user
 
-  default_scope order: 'dreams.created_at DESC'
+  default_scope -> { order('dreams.created_at DESC') }
 
-  scope :recent, limit: 5
+  scope :recent, -> { limit(5) }
   scope :created_before, ->(max_date) {
     where('dreams.created_at <= ?', max_date.utc)
   }

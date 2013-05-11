@@ -1,3 +1,3 @@
-ActiveSupport::Inflector.inflections do |inflect|
+ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.uncountable 'zeitgeist'
 end

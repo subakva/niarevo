@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'date_range'
 
 describe DateRange do
   before { Timecop.freeze }

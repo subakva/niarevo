@@ -35,11 +35,11 @@ class User < ActiveRecord::Base
   is_gravtastic!
   acts_as_authentic
 
+  scope :active, -> { where(active: true) }
+
   has_many :dreams
   has_many :invites
   validates_exclusion_of :username, in: ['admin', 'user', 'anonymous']
-
-  scope :active, where(active: true)
 
   def activate!
     unless self.active?
