@@ -4,7 +4,7 @@ begin
 
   desc "Run cane to check quality metrics"
   Cane::RakeTask.new(:quality) do |cane|
-    cane.add_threshold 'coverage/covered_percent', :>=, 80
+    cane.add_threshold 'coverage/covered_percent', :>=, 88
 
     cane.no_style      = false # Change to true to skip style checks
     cane.style_measure = 120   # Maximum line length
