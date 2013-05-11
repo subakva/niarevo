@@ -26,14 +26,14 @@ feature "Sign In" do
     scenario 'displays a generic error message with an unknown username' do
       sign_in('nobody', password)
 
-      expect(find('.alert')).to have_content('Please enter a correct username and password')
+      expect(page).to display_alert('Please enter a correct username and password')
       expect(current_path).to eq(new_user_session_path)
     end
 
     scenario 'displays a generic error message with an invalid password' do
       sign_in(@user.username, 'this is not valid')
 
-      expect(find('.alert')).to have_content('Please enter a correct username and password')
+      expect(page).to display_alert('Please enter a correct username and password')
       expect(current_path).to eq(new_user_session_path)
     end
   end
@@ -45,7 +45,8 @@ feature "Sign In" do
 
     scenario 'displays a message about the inactive account' do
       sign_in(@user.username, password)
-      expect(find('.alert')).to have_content('Your account has not been activated yet.')
+
+      expect(page).to display_alert('Your account has not been activated yet.')
       expect(current_path).to eq(new_user_session_path)
     end
   end

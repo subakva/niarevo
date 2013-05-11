@@ -18,6 +18,16 @@ module UserSessionsFeatureHelper
     click 'Sign Out'
   end
 
+  def request_new_password(user)
+    visit new_user_session_path
+    click_link 'Forgot your password?'
+
+    fill_in 'Username or email', with: user.username
+    click_button 'Reset Password'
+
+    user.reload # reload to get the latest auth tokens
+  end
+
 end
 
 RSpec.configure do |config|

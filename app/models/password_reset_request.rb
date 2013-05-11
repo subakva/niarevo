@@ -6,7 +6,7 @@ class PasswordResetRequest
 
   validates :username_or_email, presence: true
   validates_presence_of :user, message: "Sorry, we couldn't find that account."
-  validate :active_user?, message: 'That account is not yet active.'
+  validate :user_is_active
 
   attr_accessor :username_or_email
   attr_reader :user
@@ -33,6 +33,10 @@ class PasswordResetRequest
 
   def inactive_user?
     !active_user?
+  end
+
+  def user_is_active
+    errors.add(:base, 'That account is not yet active.') if inactive_user?
   end
 
   def persisted?

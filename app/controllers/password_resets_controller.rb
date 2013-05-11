@@ -12,16 +12,16 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @reset = PasswordResetRequest.new(params[:password_reset_request].permit(:username_or_email))
+    @reset = PasswordResetRequest.new(password_reset_params)
     if @reset.create
-      flash.now[:notice] = "Instructions to reset your password have been emailed to you."
-      render :new
+      flash[:notice] = "Instructions to reset your password have been emailed to you."
+      redirect_to new_user_session_url
     elsif @reset.user && @reset.inactive_user?
       flash[:notice] = "Your account is not yet active. Do you need us to resend your activation key?"
       redirect_to new_activation_url(username: @reset.user.try(:username))
     else
-      flash.now[:error] = "Sorry, we couldn't find that account. Check for typos and try again."
-      render :new
+      flash[:error] = "Sorry, we couldn't find that account. Check for typos and try again."
+      redirect_to :back
     end
   end
 
@@ -40,6 +40,10 @@ class PasswordResetsController < ApplicationController
   end
 
   protected
+
+  def password_reset_params
+    params.require(:password_reset_request).permit(:username_or_email)
+  end
 
   def load_user_using_perishable_token
     @user = User.find_using_perishable_token(params[:id])
