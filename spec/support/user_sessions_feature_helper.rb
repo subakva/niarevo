@@ -28,6 +28,16 @@ module UserSessionsFeatureHelper
     user.reload # reload to get the latest auth tokens
   end
 
+  def request_new_activation(user)
+    visit new_user_session_path
+    click_link 'Need a new activation email?'
+
+    fill_in 'Username or email', with: user.username
+    click_button 'Send Activation Email'
+
+    user.reload # reload to get the latest auth tokens
+  end
+
 end
 
 RSpec.configure do |config|

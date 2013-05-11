@@ -5,7 +5,6 @@ feature "Password Reset" do
   background do
     clear_emails
     @user = FactoryGirl.create(:user)
-    @user.activate!
   end
 
   after do

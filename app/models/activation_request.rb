@@ -6,7 +6,7 @@ class ActivationRequest
 
   validates :username_or_email, presence: true
   validates_presence_of :user, message: "Sorry, we couldn't find that account."
-  validate :inactive_user?, message: 'That account is already active.'
+  validate :user_is_unactivated
 
   attr_accessor :username_or_email
   attr_reader :user
@@ -33,6 +33,10 @@ class ActivationRequest
 
   def inactive_user?
     !active_user?
+  end
+
+  def user_is_unactivated
+    errors.add(:base, 'That account is already active.') if active_user?
   end
 
   def persisted?

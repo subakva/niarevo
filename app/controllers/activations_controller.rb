@@ -14,14 +14,14 @@ class ActivationsController < ApplicationController
   def create
     @activation = ActivationRequest.new(params[:activation_request].permit(:username_or_email))
     if @activation.create
-      flash.now[:notice] = "An activation key was sent by email. Follow the link in the email to activate your account."
-      render :new
+      flash[:notice] = "An activation key was sent by email. Follow the link in the email to activate your account."
+      redirect_to root_url
     elsif @activation.active_user?
       flash[:notice] = "Your account is already active. Maybe you need to reset your password?"
       redirect_to new_password_reset_url(username: @activation.user.try(:username))
     else
-      flash.now[:error] = "Sorry, we couldn't find that account. Check for typos and try again."
-      render :new
+      flash[:error] = "Sorry, we couldn't find that account. Check for typos and try again."
+      redirect_to :back
     end
   end
 
