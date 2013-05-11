@@ -1,6 +1,21 @@
 Next:
 
 * Spec coverage of features
+  * account management (change email, username, password)
+  * edit own dreams
+  * preview dream formatting
+  * dream help content
+  * list dreams by month
+  * list dreams by day
+  * list dreams by dream tag
+  * list dreams by dreamer tag
+  * list dreams without dream tags
+  * list dreams without dreamer tags
+  * zeitgeist
+  * static pages
+  * unit tests (password_reset_request, activation_request, dream_tagger_control)
+
+* rename content_tags to dream_tags and context_tags to dreamer_tags
 * Rails 4
 * better full-page form styling
 * better mobile icon sizing

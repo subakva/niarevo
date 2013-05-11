@@ -9,12 +9,8 @@ feature 'Dream Lists' do
 
     ensure_on dreams_path(show: 2)
 
-    expect(dream_list).to include_dreams(
-      recent1, recent2
-    )
-    expect(dream_list).to_not include_dreams(
-      not_recent
-    )
+    expect(dream_list).to include_dreams(recent1, recent2)
+    expect(dream_list).to_not include_dreams(not_recent)
   end
 
   scenario 'viewing anonymous dreams' do
@@ -24,12 +20,8 @@ feature 'Dream Lists' do
 
     ensure_on user_dreams_path('anonymous')
 
-    expect(dream_list).to include_dreams(
-      anonymous1, anonymous2
-    )
-    expect(dream_list).to_not include_dreams(
-      not_anonymous
-    )
+    expect(dream_list).to include_dreams(anonymous1, anonymous2)
+    expect(dream_list).to_not include_dreams(not_anonymous)
   end
 
   scenario 'viewing dreams for a user' do
