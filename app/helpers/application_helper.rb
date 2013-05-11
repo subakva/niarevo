@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def page_title
-    ['DreamTagger', header_text].join(' - ')
+    ['DreamTagger', header_text].uniq.join(' - ')
   end
 
   def header_text
