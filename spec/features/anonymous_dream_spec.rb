@@ -11,7 +11,7 @@ feature "Anonymous Dreams" do
 
     expect(page).to include_recaptcha
 
-    within('#new_dream') do
+    within new_dream_form do
       fill_in 'Describe Your Dream',        with: dream_text
       fill_in 'Dream Tags',                 with: dream_tags.join(',')
       fill_in 'Dreamer Tags',               with: dreamer_tags.join(',')
