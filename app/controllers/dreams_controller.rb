@@ -115,7 +115,8 @@ class DreamsController < ApplicationController
   end
 
   def render_dream_index(scope)
-    @dreams = scope.page(params[:page]).per(5)
+    per_page = [10, (params[:show] || 5).to_i].min
+    @dreams = scope.page(params[:page]).per(per_page)
     @link_alternate = "#{request.path}?format=atom"
     respond_to do |format|
       format.html { render :action => :index }
