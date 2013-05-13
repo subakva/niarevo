@@ -1,3 +1,3 @@
-Sitemap: http://content.dreamtagger.com/sitemaps/sitemap_index.xml.gz
+Sitemap: http://content.dreamtagger.com/sitemaps/sitemap.xml.gz
 User-agent: *
 Allow: /

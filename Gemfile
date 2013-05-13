@@ -46,6 +46,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'cane'
   gem 'morecane'
+  gem 'awesome_print'
 end
 
 group :test do
@@ -57,7 +58,6 @@ group :development do
   gem 'quiet_assets'
   gem 'annotate'
   gem 'pry-debugger'
-  gem 'awesome_print'
 
   gem 'guard-rspec'
   gem 'guard-jasmine'

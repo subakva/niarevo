@@ -1,10 +1,14 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.dreamtagger.com"
+# SitemapGenerator::Sitemap.default_host = "http://www.dreamtagger.com"
+SitemapGenerator::Sitemap.default_host = ENV['SITEMAP_HOST'] || 'http://www.dreamtagger.com'
 
-SitemapGenerator::Sitemap.sitemaps_host = "http://s3.amazonaws.com/content.dreamtagger.com/"
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new
+
+unless Rails.env.test?
+  SitemapGenerator::Sitemap.sitemaps_host = "http://s3.amazonaws.com/content.dreamtagger.com/"
+  SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new
+end
 
 SitemapGenerator::Sitemap.add_links do |sitemap|
 
@@ -37,15 +41,16 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     sitemap.add user_dreams_path(user.username),      :changefreq => 'weekly'
   end
 
-  from_date = Dream.find(:first, :order => 'created_at DESC').created_at
   to_date = Time.zone.now
+  from_date = Dream.order('created_at DESC').first.try(:created_at) || to_date
   Range.new(from_date.year, to_date.year).each do |year|
-    dreams_by_year_path(:year => year)
+    sitemap.add dreams_by_year_path(:year => year),      :changefreq => 'weekly'
     Range.new(1, 12).each do |month|
-      dreams_by_month_path(:year => year, :month => month)
-      Range.new(1, ::Time.days_in_month(month, year)).each do |day|
-        dreams_by_day_path(:year => year, :month => month, :day => day)
-      end
+      sitemap.add dreams_by_month_path(:year => year, :month => month),      :changefreq => 'weekly'
+      # TODO: Include day links only for dates with content
+      # Range.new(1, ::Time.days_in_month(month, year)).each do |day|
+      #   sitemap.add dreams_by_day_path(:year => year, :month => month, :day => day),      :changefreq => 'weekly'
+      # end
     end
   end
 
