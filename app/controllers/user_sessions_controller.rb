@@ -1,7 +1,7 @@
 class UserSessionsController < ApplicationController
 
-  before_filter :redirect_to_account_if_logged_in, :only => [:new, :create, :show]
-  before_filter :require_user, :only => [:destroy, :show]
+  before_action :redirect_to_account_if_logged_in, :only => [:new, :create, :show]
+  before_action :require_user, :only => [:destroy, :show]
 
   def new
     @user_session = UserSession.new

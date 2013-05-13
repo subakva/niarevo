@@ -1,5 +1,5 @@
 class FacebookController < ActionController::Base
-  before_filter :check_facebook_signature, :only => [:authorization, :deauthorization]
+  before_action :check_facebook_signature, :only => [:authorization, :deauthorization]
 
   # def registration
   #   # http://wiki.developers.facebook.com/index.php/Connect.registerUsers

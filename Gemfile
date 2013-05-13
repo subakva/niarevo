@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '~>4.0.0.rc1'
-# gem 'rails', '~>3.2.13'
 
 gem 'pg'
 gem 'foreigner'
@@ -15,14 +14,15 @@ gem 'rack-timeout'
 gem 'jquery-rails'
 gem 'slim-rails'
 
-gem 'authlogic'
+# Fixes deprecation warnings for Rails 4
+gem 'authlogic', github: 'christophemaximin/authlogic', branch: 'fix_deprecated_with_scope'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on' # Using master for Rails 4
 gem 'gravtastic'
 gem 'rdiscount'
 gem 'kaminari'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'sitemap_generator'
-gem 'fog'
+gem 'fog' # For pushing sitemaps to S3
 
 gem 'less-rails-bootstrap'
 gem 'lesselements-rails'
@@ -31,6 +31,8 @@ gem 'font-awesome-rails'
 
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier'
+
+gem 'pry' # For console magic.
 
 group :development, :test do
   gem 'rspec-rails'
@@ -66,4 +68,9 @@ end
 group :import do
   gem 'activerecord-mysql-adapter'
   gem 'mysql2'
+end
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
 end

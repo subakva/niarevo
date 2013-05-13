@@ -1,8 +1,5 @@
 class ActivationRequest
-  extend ActiveModel::Naming
-  extend ActiveModel::Translation
-  include ActiveModel::Conversion
-  include ActiveModel::Validations
+  include ActiveModel::Model
 
   validates :username_or_email, presence: true
   validates_presence_of :user, message: "Sorry, we couldn't find that account."
@@ -11,20 +8,13 @@ class ActivationRequest
   attr_accessor :username_or_email
   attr_reader :user
 
-  def initialize(params = {})
-    @params = params
-    @params.each do |attr, value|
-      self.public_send("#{attr}=", value)
-    end if @params
-  end
-
   def create
     return false unless valid?
     user.deliver_activation_instructions!
   end
 
   def user
-    @user ||= User.find_by_username_or_email(@params)
+    @user ||= User.find_by_username_or_email({username_or_email: username_or_email})
   end
 
   def active_user?
@@ -37,9 +27,5 @@ class ActivationRequest
 
   def user_is_unactivated
     errors.add(:base, 'That account is already active.') if active_user?
-  end
-
-  def persisted?
-    false
   end
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :redirect_to_account_if_logged_in, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_action :redirect_to_account_if_logged_in, :only => [:new, :create]
+  before_action :require_user, :only => [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else

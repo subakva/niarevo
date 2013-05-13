@@ -1,7 +1,7 @@
 class ActivationsController < ApplicationController
 
-  before_filter :redirect_to_account_if_logged_in
-  before_filter :load_user_using_perishable_token, only: [:edit, :update]
+  before_action :redirect_to_account_if_logged_in
+  before_action :load_user_using_perishable_token, only: [:edit, :update]
 
   def index
     render :action => :new

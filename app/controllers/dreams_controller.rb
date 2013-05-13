@@ -2,9 +2,9 @@ require 'date_range'
 
 class DreamsController < ApplicationController
 
-  before_filter :require_user, :only => [:edit, :update, :destroy]
-  before_filter :load_dream, :only => [:show]
-  before_filter :load_dream_for_user, :only => [:edit, :update, :destroy]
+  before_action :require_user, :only => [:edit, :update, :destroy]
+  before_action :load_dream, :only => [:show]
+  before_action :load_dream_for_user, :only => [:edit, :update, :destroy]
 
   def index
     @header_text = 'DreamTagger'
@@ -95,7 +95,7 @@ class DreamsController < ApplicationController
   end
 
   def update
-    if @dream.update_attributes(dream_params)
+    if @dream.update(dream_params)
       flash[:notice] = "Your dream has been saved."
       redirect_to dream_url(@dream)
     else
