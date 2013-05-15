@@ -1,4 +1,8 @@
-Next:
+[![Code Climate](https://codeclimate.com/github/subakva/niarevo.png)](https://codeclimate.com/github/subakva/niarevo)
+[![Build Status](https://travis-ci.org/subakva/niarevo.png)](https://travis-ci.org/subakva/niarevo)
+
+Next
+----
 
 * Spec coverage of features
   * account management (change email, username, password)
