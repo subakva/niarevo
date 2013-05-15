@@ -12,6 +12,7 @@ Next
   * unit tests (password_reset_request, activation_request, dream_tagger_control)
   * sitemap generation
 
+* switch to sorcery?
 * better full-page form styling
 * better mobile icon sizing
 * better tag input (https://github.com/maxwells/bootstrap-tags)

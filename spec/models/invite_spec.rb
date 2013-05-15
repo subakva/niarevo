@@ -9,9 +9,9 @@ describe Invite do
   it "does not create an invite for a current user" do
     user = invite.user
     invite = Invite.new(:email => user.email)
-    invite.should_not be_valid
-    invite.should have(1).error_on(:base)
-    invite.errors[:base].should include('An account already exists for that email.')
+    expect(invite).to_not be_valid
+    expect(invite).to have(1).error_on(:base)
+    expect(invite.errors[:base]).to include('An account already exists for that email.')
   end
 
   describe '.deliver_invitation!' do
@@ -20,9 +20,9 @@ describe Invite do
     end
 
     it "sets the sent_at date" do
-      invite.sent_at.should be_nil
+      expect(invite.sent_at).to be_nil
       invite.deliver_invitation!
-      invite.sent_at.should == Time.zone.now
+      expect(invite.sent_at).to eq(Time.zone.now)
     end
 
     it "sends an invitation" do

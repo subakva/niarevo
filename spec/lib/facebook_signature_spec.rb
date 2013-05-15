@@ -24,46 +24,46 @@ describe FacebookSignature do
     end
 
     it "raises an error if the secret is missing" do
-      lambda {
+      expect {
         FacebookSignature.calculate(nil, @params)
-      }.should raise_error(ArgumentError, 'The Facebook secret key is required to verify the signature.')
+      }.to raise_error(ArgumentError, 'The Facebook secret key is required to verify the signature.')
     end
 
     it "calculates the signature for a set of fb_sig_XXXXX params" do
-      FacebookSignature.calculate(@secret, @params).should == '89b043813b5bbb2c65b46e61d84b241f'
+      expect(FacebookSignature.calculate(@secret, @params)).to eq '89b043813b5bbb2c65b46e61d84b241f'
     end
   end
 
   describe '#valid?' do
 
     it "raises an error if the fb_sig param is missing" do
-      lambda {
+      expect {
         FacebookSignature.valid?(@secret, {})
-      }.should raise_error(ArgumentError, 'The fb_sig param is required to verify the signature.')
+      }.to raise_error(ArgumentError, 'The fb_sig param is required to verify the signature.')
     end
 
     it "raises an error if the secret is missing" do
-      lambda {
+      expect {
         FacebookSignature.valid?(nil, @params)
-      }.should raise_error(ArgumentError, 'The Facebook secret key is required to verify the signature.')
+      }.to raise_error(ArgumentError, 'The Facebook secret key is required to verify the signature.')
     end
 
     it "returns true if the params are valid" do
-      FacebookSignature.valid?(@secret, @params).should be_true
+      expect(FacebookSignature.valid?(@secret, @params)).to be_true
     end
 
     it "returns false if the secret is incorrect" do
-      FacebookSignature.valid?('not the secret', @params).should be_false
+      expect(FacebookSignature.valid?('not the secret', @params)).to be_false
     end
 
     it "returns false if one of the sig values has been altered" do
       @params["fb_sig_user"] = '00000000'
-      FacebookSignature.valid?(@secret, @params).should be_false
+      expect(FacebookSignature.valid?(@secret, @params)).to be_false
     end
 
     it "returns false if one of the sig values is missing" do
       @params.delete("fb_sig_user")
-      FacebookSignature.valid?(@secret, @params).should be_false
+      expect(FacebookSignature.valid?(@secret, @params)).to be_false
     end
   end
 

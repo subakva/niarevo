@@ -5,12 +5,12 @@ describe Notifier do
 
   shared_examples_for 'all emails' do
     it "uses the standard setup" do
-      mail.from.should == ['noreply@dreamtagger.com']
-      mail.bcc.should == ['outgoing@dreamtagger.com']
+      expect(mail.from).to eq(['noreply@dreamtagger.com'])
+      expect(mail.bcc).to eq(['outgoing@dreamtagger.com'])
     end
 
     it "uses the notifier layout" do
-      mail.body.should =~ /Thanks,<br \/>The DreamTagger Team/
+      expect(mail.body).to match(/Thanks,<br \/>The DreamTagger Team/)
     end
   end
 
@@ -18,11 +18,11 @@ describe Notifier do
     it_should_behave_like 'all emails'
 
     it "sends the email to the user" do
-      mail.to.should == [user.email]
+      expect(mail.to).to eq([user.email])
     end
 
     it "includes the greeting" do
-      mail.body.should =~ Regexp.new("Hello #{user.username}")
+      expect(mail.body).to match(Regexp.new("Hello #{user.username}"))
     end
   end
 
@@ -32,11 +32,11 @@ describe Notifier do
     it_should_behave_like 'all emails'
 
     it "sends the email to the tester" do
-      mail.to.should == ['test@example.com']
+      expect(mail.to).to eq(['test@example.com'])
     end
 
     it "sets the subject" do
-      mail.subject.should == "Test Message"
+      expect(mail.subject).to eq("Test Message")
     end
   end
 
@@ -47,27 +47,27 @@ describe Notifier do
     it_should_behave_like 'all emails'
 
     it "sends the email to the invitee" do
-      mail.to.should == [invite.email]
+      expect(mail.to).to eq([invite.email])
     end
 
     it "sets the subject" do
-      mail.subject.should == "#{user.username} has invited you to try DreamTagger"
+      expect(mail.subject).to eq("#{user.username} has invited you to try DreamTagger")
     end
 
     it "includes the greeting" do
-      mail.body.should =~ Regexp.new("Hello #{invite.recipient_name}")
+      expect(mail.body).to match(Regexp.new("Hello #{invite.recipient_name}"))
     end
 
     it "includes the message" do
-      mail.body.should =~ Regexp.new(invite.message)
+      expect(mail.body).to match(Regexp.new(invite.message))
     end
 
     it "includes the new account link" do
-      mail.body.should =~ Regexp.new("http://niarevo.dev/account/new")
+      expect(mail.body).to match(Regexp.new("http://niarevo.dev/account/new"))
     end
 
     it "includes the about link" do
-      mail.body.should =~ Regexp.new("http://niarevo.dev/about")
+      expect(mail.body).to match(Regexp.new("http://niarevo.dev/about"))
     end
 
   end
@@ -78,11 +78,13 @@ describe Notifier do
     it_should_behave_like 'an email to a user'
 
     it "sets the subject" do
-      mail.subject.should == 'Activation Instructions'
+      expect(mail.subject).to eq('Activation Instructions')
     end
 
     it "includes the activation link" do
-      mail.body.should =~ Regexp.new("http://niarevo.dev/activations/#{user.perishable_token}/edit")
+      expect(mail.body).to match(
+        Regexp.new("http://niarevo.dev/activations/#{user.perishable_token}/edit")
+      )
     end
   end
 
@@ -92,11 +94,13 @@ describe Notifier do
     it_should_behave_like 'an email to a user'
 
     it "sets the subject" do
-      mail.subject.should == 'Password Reset Instructions'
+      expect(mail.subject).to eq('Password Reset Instructions')
     end
 
     it "includes the password reset link" do
-      mail.body.should =~ Regexp.new("http://niarevo.dev/password_resets/#{user.perishable_token}/edit")
+      expect(mail.body).to match(
+        Regexp.new("http://niarevo.dev/password_resets/#{user.perishable_token}/edit")
+      )
     end
   end
 
@@ -106,7 +110,7 @@ describe Notifier do
     it_should_behave_like 'an email to a user'
 
     it "sets the subject" do
-      mail.subject.should == 'Account Activated!'
+      expect(mail.subject).to eq('Account Activated!')
     end
   end
 end

@@ -12,16 +12,18 @@ describe User do
   describe '#gravatar_url' do
     it "generates a gravatar url" do
       user.email = 'gravatar@example.com'
-      user.gravatar_url.should == 'https://secure.gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4.png?r=PG'
+      expect(user.gravatar_url).to eq(
+        'https://secure.gravatar.com/avatar/0cef130e32e054dd516c99e5181d30c4.png?r=PG'
+      )
     end
   end
 
   describe '.find_by_username_or_email' do
     it "finds an account by username or email" do
-      User.find_by_username_or_email(username: user.username).should == user
-      User.find_by_username_or_email(email: user.email).should == user
-      User.find_by_username_or_email(username_or_email: user.username).should == user
-      User.find_by_username_or_email(username_or_email: user.email).should == user
+      expect(User.find_by_username_or_email(username: user.username)).to eq(user)
+      expect(User.find_by_username_or_email(email: user.email)).to eq(user)
+      expect(User.find_by_username_or_email(username_or_email: user.username)).to eq(user)
+      expect(User.find_by_username_or_email(username_or_email: user.email)).to eq(user)
     end
   end
 
@@ -31,7 +33,7 @@ describe User do
         Notifier.should_receive(:activation_succeeded).with(user).and_return(stub(deliver: true))
         user.activate!
         user.reload
-        user.should be_active
+        expect(user).to be_active
       end
     end
 
@@ -65,7 +67,7 @@ describe User do
 
       user.deliver_activation_instructions!
 
-      user.perishable_token.should_not == original_token
+      expect(user.perishable_token).to_not eq(original_token)
     end
   end
 
@@ -77,7 +79,7 @@ describe User do
 
       user.deliver_password_reset_instructions!
 
-      user.perishable_token.should_not == original_token
+      expect(user.perishable_token).to_not eq(original_token)
     end
   end
 end
