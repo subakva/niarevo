@@ -7,20 +7,20 @@ class DateRange
   end
 
   def apply_year(year)
-    return unless year.present?
-    @min_date = @min_date.change(year: year.to_i).beginning_of_year
-    @max_date = @max_date.change(year: year.to_i).end_of_year
+    apply_range(year, :year, :beginning_of_year, :end_of_year)
   end
 
   def apply_month(month)
-    return unless month.present?
-    @min_date = @min_date.change(month: month.to_i).beginning_of_month
-    @max_date = @max_date.change(month: month.to_i).end_of_month
+    apply_range(month, :month, :beginning_of_month, :end_of_month)
   end
 
   def apply_day(day)
-    return unless day.present?
-    @min_date = @min_date.change(day: day.to_i).beginning_of_day
-    @max_date = @max_date.change(day: day.to_i).end_of_day
+    apply_range(day, :day, :beginning_of_day, :end_of_day)
+  end
+
+  def apply_range(value, field, field_min_method, field_max_method)
+    return unless value.present?
+    @min_date = @min_date.change(field => value.to_i).send(field_min_method)
+    @max_date = @max_date.change(field => value.to_i).send(field_max_method)
   end
 end
