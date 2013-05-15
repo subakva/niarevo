@@ -22,7 +22,6 @@ class DreamTaggerControl
     view.content_tag(:div, class: 'controls') do
       controls_parts = []
       controls_parts << render_input_element
-      controls_parts << render_field_errors(view)
       controls_parts << view.capture(&block) if block_given?
       controls_parts.join('').html_safe
     end
@@ -33,19 +32,23 @@ class DreamTaggerControl
     if errors[symbol]
       errors[symbol].each do |error|
         message = errors.full_message(symbol, error)
-        error_content << view.content_tag(:span, message, class:'help-inline')
+        error_content << view.content_tag(:span, message, class:'error-label')
       end
     end
     error_content.join('').html_safe
   end
 
   def render_label(view)
-    form.label(symbol, options[:label], class: 'control-label')
+    [
+      form.label(symbol, options[:label], class: 'control-label'),
+      render_field_errors(view)
+    ].join('').html_safe
   end
 
   def render_input_element
     input_method_params = [input_method, symbol]
     input_method_params << options.slice(:value) if options[:value].present?
+    input_method_params << options[:options] if options[:options].present?
     form.send(*input_method_params)
   end
 
@@ -54,6 +57,6 @@ class DreamTaggerControl
   end
 
   def group_classes
-    errors.present? ? 'control-group error' : 'control-group'
+    errors[symbol].present? ? 'control-group error' : 'control-group'
   end
 end

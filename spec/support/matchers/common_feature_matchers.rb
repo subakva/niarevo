@@ -12,3 +12,13 @@ RSpec::Matchers.define :have_email_with do |expected|
     "expected that #{user.email} would not have an email with content: #{expected}"
   end
 end
+
+module CommonMatcherMethods
+  def display_form_error(text)
+    have_selector(".error-label", :text => text)
+  end
+end
+
+RSpec.configure do |config|
+  config.include CommonMatcherMethods, type: :feature
+end

@@ -69,8 +69,6 @@ class DreamsController < ApplicationController
   end
 
   def create
-    # TODO: strong_parameters
-    # TODO: handle assigning tags properly
     @dream = Dream.new(dream_params)
     @dream.user = current_user
     requires_captcha = current_user.blank?
@@ -79,7 +77,7 @@ class DreamsController < ApplicationController
       flash[:notice] = "Your dream has been saved."
       redirect_to dream_url(@dream)
     else
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -88,7 +86,8 @@ class DreamsController < ApplicationController
 
   def preview
     @dream = Dream.new(dream_params)
-    render :partial => 'dream', :layout => false, :object => @dream
+    @dream.user = current_user
+    render partial: 'dream', layout: false, object: @dream
   end
 
   def edit
@@ -99,7 +98,7 @@ class DreamsController < ApplicationController
       flash[:notice] = "Your dream has been saved."
       redirect_to dream_url(@dream)
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 

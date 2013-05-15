@@ -21,10 +21,6 @@ class ActivationRequest
     user && user.active?
   end
 
-  def inactive_user?
-    !active_user?
-  end
-
   def user_is_unactivated
     errors.add(:base, 'That account is already active.') if active_user?
   end

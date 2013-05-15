@@ -40,6 +40,7 @@ group :development, :test do
 
   gem 'capybara'
   gem 'capybara-email'
+  gem 'poltergeist'
   gem 'launchy'
   gem 'jasminerice', github: 'bradphelan/jasminerice' # Using master for Rails 4
 
@@ -71,6 +72,5 @@ group :import do
 end
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end

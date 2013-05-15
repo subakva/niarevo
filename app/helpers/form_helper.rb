@@ -1,5 +1,6 @@
 module FormHelper
   def dt_text_area(form, symbol, options = nil, &block)
+    options = { options: {rows: 10} }.merge(options || {})
     DreamTaggerControl.new(form, :text_area, symbol, options).render(self, &block)
   end
 

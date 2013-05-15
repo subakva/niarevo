@@ -29,4 +29,14 @@ feature "Anonymous Dreams" do
     expect(page).to display_dreamer_tags(dreamer_tags)
   end
 
+  scenario 'trying to save a dream with no description' do
+    visit new_dream_path
+
+    within new_dream_form do
+      fill_in 'Describe Your Dream',        with: ''
+      click_on 'Save'
+    end
+    expect(current_path).to eq(dreams_path)
+    expect(page).to display_form_error("Description can't be blank")
+  end
 end
