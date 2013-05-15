@@ -22,7 +22,7 @@ module AuthFeatureHelpers
   end
 
   def sign_out
-    click 'Sign Out'
+    click_on 'Sign Out'
   end
 
   def request_new_password(user)
