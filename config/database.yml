@@ -15,3 +15,12 @@ test:
   username: postgres
   password:
   min_messages: warning
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: niarevo_development
+  pool: 5
+  username: postgres
+  password:
+  min_messages: warning
