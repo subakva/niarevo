@@ -29,6 +29,10 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
     actionmailer (4.0.0.rc1)
       actionpack (= 4.0.0.rc1)
       mail (~> 2.5.3)
@@ -184,6 +188,7 @@ GEM
     net-ssh (2.6.7)
     newrelic_rpm (3.6.2.96)
     nokogiri (1.5.9)
+    open4 (1.3.0)
     parallel (0.6.5)
     pg (0.15.1)
     poltergeist (1.3.0)
@@ -294,6 +299,8 @@ GEM
       raindrops (~> 0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
 
 PLATFORMS
   ruby
@@ -347,3 +354,4 @@ DEPENDENCIES
   timecop
   uglifier
   unicorn
+  yui-compressor
