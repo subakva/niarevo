@@ -20,6 +20,10 @@ module FormHelper
     DreamTaggerControl.new(form, :check_box, symbol, options).render(self, &block)
   end
 
+  def dt_select(form, symbol, options = nil, &block)
+    DreamTaggerControl.new(form, :select, symbol, options).render(self, &block)
+  end
+
   def dt_submit(form, button_text, &block)
     content_tag(:div, class: 'control-group') do
       content_tag(:div, class: 'controls action-controls') do

@@ -4,7 +4,7 @@ begin
 
   desc "Run cane to check quality metrics"
   Cane::RakeTask.new(:quality) do |cane|
-    cane.add_threshold 'coverage/covered_percent', :>=, 93
+    cane.add_threshold 'coverage/covered_percent', :>=, 94
 
     cane.no_style      = false # Change to true to skip style checks
     cane.style_measure = 120   # Maximum line length
@@ -27,7 +27,7 @@ begin
     # Fail the build if anything tries to use the system time zone.
     cane.use Morecane::MustNotMatchCheck,
       must_not_match_glob: "{app,lib,config,spec}/**/*.rb",
-      must_not_match_regexp: /(Time\.now|Time\.parse|Date\.parse|binding\.pry)/
+      must_not_match_regexp: /(Time\.now|Time\.parse|Date\.parse)/
   end
 
 rescue LoadError

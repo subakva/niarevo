@@ -16,6 +16,10 @@ FactoryGirl.define do
       user nil
     end
 
+    trait :private do
+      send(:private, true)
+    end
+
     trait :untagged do
       dream_tag_list []
       dreamer_tag_list []

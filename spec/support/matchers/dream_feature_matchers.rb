@@ -76,11 +76,15 @@ module DreamMatcherMethods
   end
 
   def display_dreamer_name(name)
-    have_selector(".dream-dreamer", :text => name)
+    have_selector(".dream-dreamer", text: name)
   end
 
   def display_dream_text(text)
-    have_selector(".dream-text", :text => text)
+    have_selector(".dream-text", text: text)
+  end
+
+  def display_private_dream
+    have_selector('.dream-private i.icon-lock')
   end
 end
 

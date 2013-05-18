@@ -54,7 +54,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     end
   end
 
-  Dream.find_each do |d|
+  Dream.visible_to(nil).find_each do |d|
     sitemap.add dream_path(d), :lastmod => d.updated_at
   end
 

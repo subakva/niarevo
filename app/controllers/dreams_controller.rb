@@ -2,9 +2,11 @@ require 'date_range'
 
 class DreamsController < ApplicationController
 
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
+
   before_action :require_user, :only => [:edit, :update, :destroy]
   before_action :load_dream, :only => [:show]
-  before_action :load_dream_for_user, :only => [:edit, :update, :destroy]
+  before_action :load_dream_for_edit, :only => [:edit, :update, :destroy]
 
   def index
     @header_text = 'DreamTagger'
@@ -105,7 +107,7 @@ class DreamsController < ApplicationController
   protected
 
   def dream_params
-    params.require(:dream).permit(:description, :dream_tag_list, :dreamer_tag_list)
+    params.require(:dream).permit(:description, :dream_tag_list, :dreamer_tag_list, :private)
   end
 
   def title_for_dates(range)
@@ -119,8 +121,7 @@ class DreamsController < ApplicationController
   end
 
   def render_dream_index(scope)
-    per_page = [10, (params[:show] || 5).to_i].min
-    @dreams = scope.page(params[:page]).per(per_page)
+    @dreams = build_dream_scope(scope)
     @link_alternate = "#{request.path}?format=atom"
     respond_to do |format|
       format.html { render :action => :index }
@@ -128,16 +129,27 @@ class DreamsController < ApplicationController
     end
   end
 
-  def load_dream_for_user
-    @dream = current_user.dreams.where(id: params[:id]).first
+  def build_dream_scope(scope)
+    scope = Dream.visible_to(current_user).merge(scope)
+    per_page = [10, (params[:show] || 5).to_i].min
+    scope.page(params[:page]).per(per_page)
+  end
+
+  def load_dream_for_edit
+    @dream = current_user ? current_user.dreams.where(id: params[:id]).first : nil
     unless @dream
-      flash[:notice] = 'You are not allowed to edit that dream'
-      redirect_to account_url
+      flash[:notice] = 'You are not allowed to edit that dream.'
+      redirect_to root_url
     end
   end
 
   def load_dream
-    @dream = Dream.find(params[:id])
+    @dream = Dream.visible_to(current_user).find(params[:id])
+    raise 'hello' if @dream.nil?
   end
 
+  def handle_not_found
+    flash[:notice] = "Sorry, that page doesn't exist!"
+    redirect_to root_path
+  end
 end

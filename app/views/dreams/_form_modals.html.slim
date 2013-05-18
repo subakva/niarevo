@@ -1,0 +1,11 @@
+- content_for :modals do
+  = help_modal('description-help', 'Describing Your Dream') do
+    = render partial: "dreams/help/description"
+  = help_modal('dream-tag-list-help', 'About Dream Tags') do
+    = render partial: "dreams/help/dream_tag_list"
+  = help_modal('dreamer-tag-list-help', 'About Dreamer Tags') do
+    = render partial: "dreams/help/dreamer_tag_list"
+  = help_modal('private-dream-help', 'Private Dreams') do
+    ' If you make your dream private, it will only be visible to you. Other users
+    ' will not be able to see the dream anywhere on the site.
+  = render partial: "shared/preview_container"

@@ -4,11 +4,17 @@ require 'zlib'
 feature 'Sitemap' do
   let(:sitemap_path) { File.join(Rails.root, 'tmp', 'sitemaps', 'sitemap.xml.gz') }
   let!(:dream) { FactoryGirl.create(:dream) }
+  let!(:private_dream) { FactoryGirl.create(:dream, :private) }
+  let(:doc) do
+    silence_stream(STDOUT) { SitemapGenerator::Interpreter.run }
+    load_sitemap_doc
+  end
+
+  scenario 'excluding private dreams' do
+    expect(doc).to_not have_mapped_url(dream_url(private_dream))
+  end
 
   scenario "generating a sitemap" do
-    silence_stream(STDOUT) { SitemapGenerator::Interpreter.run }
-    doc = load_sitemap_doc
-
     # Generic dream list paths
     expect(doc).to have_mapped_url(dreams_url,                  changefreq: 'daily')
     expect(doc).to have_mapped_url(untagged_dreams_url,         changefreq: 'daily')

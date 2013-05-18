@@ -17,6 +17,10 @@ module CommonMatcherMethods
   def display_form_error(text)
     have_selector(".error-label", :text => text)
   end
+
+  def display_alert(message)
+    have_selector(".alert", :text => message)
+  end
 end
 
 RSpec.configure do |config|

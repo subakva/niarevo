@@ -28,4 +28,12 @@ feature "Dream Editing" do
     expect(page).to display_dreamer_tags(new_dreamer_tags)
   end
 
+  scenario "trying to edit someone else's dream" do
+    sign_in_as FactoryGirl.create(:user)
+
+    visit edit_dream_path(dream)
+
+    expect(current_path).to eq(root_path)
+    expect(page).to display_alert('You are not allowed to edit that dream.')
+  end
 end
