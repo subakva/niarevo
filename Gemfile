@@ -33,6 +33,10 @@ gem 'fog'                                   # For pushing sitemaps to S3
 gem 'awesome_print' # Pretty output while debugging
 gem 'pry'           # Better REPL
 
+# Heroku compatibility
+gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
