@@ -4,35 +4,34 @@ ruby '2.0.0'
 
 gem 'rails', '~>4.0.0.rc1'
 
-gem 'pg'
-gem 'foreigner'
-gem 'newrelic_rpm'
-gem 'airbrake'
-gem 'unicorn'
-gem 'rack-timeout'
+gem 'pg'            # postgresql db adapter
+gem 'foreigner'     # foreign key support
+gem 'newrelic_rpm'  # app monitoring
+gem 'airbrake'      # error reporting
+gem 'unicorn'       # app server
+gem 'rack-timeout'  # kill slow responses
 
-gem 'jquery-rails'
-gem 'slim-rails'
+gem 'jquery-rails'                      # js library
+gem 'slim-rails'                        # template system
+gem 'less-rails-bootstrap'              # bootstrap css/js framework
+gem 'lesselements-rails'                # additional less mixins
+gem 'coffee-rails'                      # adds coffeescript support
+gem 'font-awesome-rails'                # adds additional icons
+gem 'therubyracer', :platforms => :ruby # v8 support for less
+gem 'uglifier'                          # Javascript compressor
 
 # Fixes deprecation warnings for Rails 4
 gem 'authlogic', github: 'christophemaximin/authlogic', branch: 'fix_deprecated_with_scope'
-gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on' # Using master for Rails 4
-gem 'gravtastic'
-gem 'rdiscount'
-gem 'kaminari'
-gem 'recaptcha', require: 'recaptcha/rails'
-gem 'sitemap_generator'
-gem 'fog' # For pushing sitemaps to S3
+gem 'acts-as-taggable-on'
+gem 'gravtastic'                            # user images from gravatar
+gem 'rdiscount'                             # markdown processor
+gem 'kaminari'                              # pagination
+gem 'recaptcha', require: 'recaptcha/rails' # captcha
+gem 'sitemap_generator'                     # generates sitemaps for search engines
+gem 'fog'                                   # For pushing sitemaps to S3
 
-gem 'less-rails-bootstrap'
-gem 'lesselements-rails'
-gem 'coffee-rails'
-gem 'font-awesome-rails'
-
-gem 'therubyracer', :platforms => :ruby
-gem 'uglifier'
-
-gem 'pry' # For console magic.
+gem 'awesome_print' # Pretty output while debugging
+gem 'pry'           # Better REPL
 
 group :development, :test do
   gem 'rspec-rails'
@@ -47,11 +46,10 @@ group :development, :test do
   gem 'simplecov'
   gem 'cane'
   gem 'morecane'
-  gem 'awesome_print'
 end
 
 group :test do
-  gem 'database_cleaner', github: 'bmabey/database_cleaner' # Using master for Rails 4
+  gem 'database_cleaner'
   gem 'timecop'
 end
 
