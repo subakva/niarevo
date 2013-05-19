@@ -16,8 +16,7 @@ gem 'slim-rails'                        # template system
 gem 'less-rails-bootstrap'              # bootstrap css/js framework
 gem 'lesselements-rails'                # additional less mixins
 gem 'coffee-rails'                      # adds coffeescript support
-# gem 'font-awesome-rails'                # adds additional icons
-gem 'font-awesome-rails', github: 'jonnii/font-awesome-rails'# adds additional icons
+gem 'font-awesome-rails' # adds additional icons
 gem 'therubyracer', :platforms => :ruby # v8 support for less
 gem 'uglifier'                          # Javascript compressor
 
