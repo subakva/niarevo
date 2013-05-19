@@ -1,6 +1,12 @@
 [![Code Climate](https://codeclimate.com/github/subakva/niarevo.png)](https://codeclimate.com/github/subakva/niarevo)
 [![Build Status](https://travis-ci.org/subakva/niarevo.png)](https://travis-ci.org/subakva/niarevo)
 
+Deployment
+----
+
+  $ git push production master
+  $ heroku run rake db:migrate
+
 Next
 ----
 
@@ -16,7 +22,6 @@ Next
 * better mobile icon sizing
 * better tag input (https://github.com/maxwells/bootstrap-tags)
 * convert help modals to popovers
-* Private dreams
 * Statistically improbable phrases (tag generation)
 * Detect correlated tags
 * Invitations
