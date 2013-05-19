@@ -173,3 +173,27 @@ body {
 .markdown-table th {background-color: #FED;}
 .markdown-table th,
 .markdown-table td { border: 1px solid #999; }
+
+@media (max-width: 480px) {
+  .main {
+    header {
+      h2 {
+        float:none;
+        text-align: center;
+      }
+      ul.main-menu {
+        float:none;
+        text-align: center;
+      }
+    }
+  }
+  .dream-list {
+    .dream-head { display: none; }
+    .dream-body {
+      margin-left: 0;
+      .dream-time {
+        margin-left: 0;
+      }
+    }
+  }
+}
