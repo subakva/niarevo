@@ -30,7 +30,7 @@ p
       th Image
       td
         code ![Description](/assets/avatar.png)
-      td = render_markdown '![Description](/assets/avatar.png)'
+      td = render_markdown "![Description](#{image_path('avatar.png')})".html_safe
     tr
       th Link
       td
