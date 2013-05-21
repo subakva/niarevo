@@ -19,6 +19,7 @@ gem 'coffee-rails'                      # adds coffeescript support
 gem 'font-awesome-rails' # adds additional icons
 gem 'therubyracer', :platforms => :ruby # v8 support for less
 gem 'uglifier'                          # Javascript compressor
+gem 'yui-compressor'                    # CSS Compressor
 
 # Fixes deprecation warnings for Rails 4
 gem 'authlogic', github: 'christophemaximin/authlogic', branch: 'fix_deprecated_with_scope'
@@ -34,9 +35,10 @@ gem 'awesome_print' # Pretty output while debugging
 gem 'pry'           # Better REPL
 
 # Heroku compatibility
-gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
-gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
-gem 'yui-compressor'
+group :production do
+  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+end
 
 group :development, :test do
   gem 'rspec-rails'
