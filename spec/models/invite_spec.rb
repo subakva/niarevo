@@ -16,7 +16,7 @@ describe Invite do
 
   describe '.deliver_invitation!' do
     before(:each) do
-      Notifier.stub!(:invitation).and_return(stub(deliver: true))
+      Notifier.stub(:invitation).and_return(double(deliver: true))
     end
 
     it "sets the sent_at date" do
@@ -26,7 +26,7 @@ describe Invite do
     end
 
     it "sends an invitation" do
-      Notifier.should_receive(:invitation).with(invite).and_return(stub(deliver: true))
+      Notifier.should_receive(:invitation).with(invite).and_return(double(deliver: true))
       invite.deliver_invitation!
     end
 
@@ -37,7 +37,7 @@ describe Invite do
     end
 
     it "sends an invitation if one was sent more than a week ago" do
-      Notifier.should_receive(:invitation).with(invite).and_return(stub(deliver: true))
+      Notifier.should_receive(:invitation).with(invite).and_return(double(deliver: true))
       old_invite = FactoryGirl.create(:invite, email: invite.email, sent_at: (7.days.ago - 1.minute))
       invite.deliver_invitation!
     end
