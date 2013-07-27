@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails', '~>4.0.0.rc2'
+gem 'rails', '~>4.0.0'
 
 gem 'pg'            # postgresql db adapter
 gem 'foreigner'     # foreign key support
@@ -22,7 +22,8 @@ gem 'uglifier'                          # Javascript compressor
 gem 'yui-compressor'                    # CSS Compressor
 
 # Fixes deprecation warnings for Rails 4
-gem 'authlogic', github: 'christophemaximin/authlogic', branch: 'fix_deprecated_with_scope'
+# gem 'authlogic', github: 'christophemaximin/authlogic', branch: 'fix_deprecated_with_scope'
+gem 'authlogic', github: 'binarylogic/authlogic'
 gem 'acts-as-taggable-on'
 gem 'gravtastic'                            # user images from gravatar
 gem 'rdiscount'                             # markdown processor
