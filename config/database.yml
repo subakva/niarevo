@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: niarevo_development
   pool: 5
-  username: postgres
+  username: jason
   password:
   min_messages: warning
 
@@ -12,7 +12,7 @@ test:
   encoding: unicode
   database: niarevo_test
   pool: 5
-  username: postgres
+  username: jason
   password:
   min_messages: warning
 

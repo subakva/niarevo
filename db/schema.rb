@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.integer  "user_id"
     t.integer  "dreamer_tag_count", default: 0,     null: false
     t.integer  "dream_tag_count",   default: 0,     null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "private",           default: false, null: false
   end
 
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.string   "email",                     null: false
     t.integer  "user_id",                   null: false
     t.datetime "sent_at"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "invites", ["email", "user_id"], name: "index_invites_on_email_and_user_id", unique: true, using: :btree
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.string   "context",       limit: 32
     t.integer  "tagger_id"
     t.string   "tagger_type",   limit: 32
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "taggings", ["tag_id", "context"], name: "idx_taggings_by_tags", using: :btree
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
 
   create_table "tags", force: true do |t|
     t.string   "name",       limit: 64, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "tags", ["name"], name: "idx_tags_by_name", using: :btree
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.string   "current_login_ip",    limit: 46
     t.string   "last_login_ip",       limit: 46
     t.boolean  "active",                         default: false, null: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(version: 20130518182209) do
   add_index "users", ["single_access_token"], name: "index_users_on_single_access_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
-  add_foreign_key "dreams", "users", :name => "dreams_user_id_fk", :dependent => :delete
+  add_foreign_key "dreams", "users", name: "dreams_user_id_fk", dependent: :delete
 
-  add_foreign_key "invites", "users", :name => "invites_user_id_fk", :dependent => :delete
+  add_foreign_key "invites", "users", name: "invites_user_id_fk", dependent: :delete
 
-  add_foreign_key "taggings", "tags", :name => "taggings_tag_id_fk", :dependent => :delete
+  add_foreign_key "taggings", "tags", name: "taggings_tag_id_fk", dependent: :delete
 
 end

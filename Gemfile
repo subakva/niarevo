@@ -13,10 +13,10 @@ gem 'rack-timeout'  # kill slow responses
 
 gem 'jquery-rails'                      # js library
 gem 'slim-rails'                        # template system
-gem 'less-rails-bootstrap'              # bootstrap css/js framework
+gem 'less-rails-bootstrap', '~>2.0'     # bootstrap css/js framework
 gem 'lesselements-rails'                # additional less mixins
 gem 'coffee-rails'                      # adds coffeescript support
-gem 'font-awesome-rails' # adds additional icons
+gem 'font-awesome-rails', '~>3.0'       # adds additional icons
 gem 'therubyracer', :platforms => :ruby # v8 support for less
 gem 'uglifier'                          # Javascript compressor
 gem 'yui-compressor'                    # CSS Compressor
@@ -31,6 +31,7 @@ gem 'kaminari'                              # pagination
 gem 'recaptcha', require: 'recaptcha/rails' # captcha
 gem 'sitemap_generator'                     # generates sitemaps for search engines
 gem 'fog'                                   # For pushing sitemaps to S3
+gem 'unf'                                   # For encoding AWS strings
 
 gem 'awesome_print' # Pretty output while debugging
 gem 'pry'           # Better REPL

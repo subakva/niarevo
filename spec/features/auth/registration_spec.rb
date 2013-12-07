@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "Registration" do
   let(:username) { 'buzzard' }
-  let(:user) { User.find_by_username(username) }
+  let(:user) { User.where(username: username).first! }
 
   background do
     clear_emails

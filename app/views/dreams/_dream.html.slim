@@ -34,7 +34,7 @@ article data-dream-id="#{dream.id}"
       - for tag in dream.dreamer_tag_list
         =' link_to tag, dreamer_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dreamer tag: #{tag}"
 
-    - if current_user && current_user.id == dream.user_id
+    - if current_user && current_user.id == dream.user_id && dream.persisted?
       div.dream-actions
         = link_to "[Edit]", edit_dream_path(dream), title: 'Edit this dream.'
         / = link_to "[Add Tags]", tag_dream_path(dream), class: 'add-tags', title: 'Tag this dream.'
