@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: niarevo_development
   pool: 5
-  username: jason
+  username: <%= ENV['POSTGRES_DEV_USER'] || 'postgres' %>
   password:
   min_messages: warning
 
@@ -12,15 +12,6 @@ test:
   encoding: unicode
   database: niarevo_test
   pool: 5
-  username: jason
-  password:
-  min_messages: warning
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: niarevo_development
-  pool: 5
-  username: postgres
+  username: <%= ENV['POSTGRES_DEV_USER'] || 'postgres' %>
   password:
   min_messages: warning
