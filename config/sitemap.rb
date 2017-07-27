@@ -10,7 +10,7 @@ unless Rails.env.test?
   SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new
 end
 
-SitemapGenerator::Sitemap.add_links do |sitemap|
+SitemapGenerator::Sitemap.create do |sitemap|
 
   # Dream Listing Paths
   sitemap.add dreams_path,                  :changefreq => 'daily'

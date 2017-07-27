@@ -33,7 +33,7 @@ gem 'rdiscount'                             # markdown processor
 gem 'kaminari'                              # pagination
 gem 'recaptcha', require: 'recaptcha/rails' # captcha
 gem 'sitemap_generator'                     # generates sitemaps for search engines
-gem 'fog'                                   # For pushing sitemaps to S3
+gem 'fog-aws'                               # For pushing sitemaps to S3
 gem 'unf'                                   # For encoding AWS strings
 gem 'dotenv-rails'
 
