@@ -23,7 +23,7 @@ RSpec::Matchers.define :have_mapped_url do |loc, options|
     end
   end
 
-  failure_message_for_should do |doc|
+  failure_message do |doc|
     if url_found?(doc, loc)
       "expected url to have options: #{options.inspect}"
     else
@@ -31,7 +31,7 @@ RSpec::Matchers.define :have_mapped_url do |loc, options|
     end
   end
 
-  failure_message_for_should_not do |actual|
+  failure_message_when_negated do |actual|
     "expected sitemap to not include url: #{loc.inspect}"
   end
 end

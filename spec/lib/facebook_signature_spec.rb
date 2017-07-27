@@ -49,21 +49,21 @@ describe FacebookSignature do
     end
 
     it "returns true if the params are valid" do
-      expect(FacebookSignature.valid?(@secret, @params)).to be_true
+      expect(FacebookSignature.valid?(@secret, @params)).to eql(true)
     end
 
     it "returns false if the secret is incorrect" do
-      expect(FacebookSignature.valid?('not the secret', @params)).to be_false
+      expect(FacebookSignature.valid?('not the secret', @params)).to eql(false)
     end
 
     it "returns false if one of the sig values has been altered" do
       @params["fb_sig_user"] = '00000000'
-      expect(FacebookSignature.valid?(@secret, @params)).to be_false
+      expect(FacebookSignature.valid?(@secret, @params)).to eql(false)
     end
 
     it "returns false if one of the sig values is missing" do
       @params.delete("fb_sig_user")
-      expect(FacebookSignature.valid?(@secret, @params)).to be_false
+      expect(FacebookSignature.valid?(@secret, @params)).to eql(false)
     end
   end
 

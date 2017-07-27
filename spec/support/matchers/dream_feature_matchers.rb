@@ -13,11 +13,11 @@ RSpec::Matchers.define :display_dream_tags do |expected|
     dream_tags_element.text.split
   end
 
-  failure_message_for_should do |_|
+  failure_message do |_|
     "expected page to contain dream tags: #{expected.inspect} but had: #{actual_tags.inspect}"
   end
 
-  failure_message_for_should_not do |_|
+  failure_message_when_negated do |_|
     "expected page not to contain dream tags: #{expected.inspect} but had: #{actual_tags.inspect}"
   end
 end
@@ -37,11 +37,11 @@ RSpec::Matchers.define :display_dreamer_tags do |expected|
     dreamer_tags_element.text.split
   end
 
-  failure_message_for_should do |_|
+  failure_message do |_|
     "expected page to contain dreamer tags: #{expected.inspect} but had: #{actual_tags.inspect}"
   end
 
-  failure_message_for_should_not do |_|
+  failure_message_when_negated do |_|
     "expected page not to contain dreamer tags: #{expected.inspect} but had: #{actual_tags.inspect}"
   end
 end
@@ -54,14 +54,14 @@ RSpec::Matchers.define :include_dreams do |expected|
   end
 
   def expected_dream_ids
-    expected.flatten.map { |dream| dream.id }
+    [*expected].flatten.map { |dream| dream.id }
   end
 
-  failure_message_for_should do |_|
+  failure_message do |_|
     "expected dream list to include dreams: #{expected_dream_ids.inspect} but did not."
   end
 
-  failure_message_for_should_not do |_|
+  failure_message_when_negated do |_|
     "expected dream list not to include dreams: #{expected_dream_ids.inspect} but did."
   end
 end
