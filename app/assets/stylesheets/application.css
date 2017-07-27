@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap-override
+ *= require custom_bootstrap/custom_bootstrap
  *= require font-awesome
  *= require style
  */

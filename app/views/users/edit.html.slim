@@ -6,6 +6,6 @@
   = dt_password_field(f, :password)
   = dt_password_field(f, :password_confirmation, label: 'Confirm password')
   = dt_submit(f, 'Update') do
-    ul.unstyled
+    ul.list-unstyled
       li
         = link_to "My Profile", account_path

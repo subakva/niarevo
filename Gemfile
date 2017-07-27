@@ -13,7 +13,7 @@ gem 'rack-timeout'  # kill slow responses
 
 gem 'jquery-rails'                      # js library
 gem 'slim-rails'                        # template system
-gem 'less-rails-bootstrap', '~>2.0'     # bootstrap css/js framework
+gem 'less-rails-bootstrap'              # bootstrap css/js framework
 gem 'coffee-rails'                      # adds coffeescript support
 gem 'font-awesome-rails', '~>3.0'       # adds additional icons
 gem 'therubyracer', :platforms => :ruby # v8 support for less

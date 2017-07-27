@@ -24,8 +24,9 @@ module ApplicationHelper
 
   def alert_class(alert_type)
     alert_type = {
-      alert: 'error',
-      notice: 'info'
+      alert: 'danger',
+      notice: 'info',
+      recaptcha_error: 'warning'
     }.fetch(alert_type, alert_type.to_s)
     "alert-#{alert_type}"
   end

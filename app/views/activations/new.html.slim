@@ -1,8 +1,8 @@
 - content_for :header_text do "Request Activation Key"; end
 
 = form_for @activation, url: activations_path, html: { class: 'form-horizontal' } do |f|
-  .control-group
-    .controls
+  .form-group
+    .col-sm-offset-3.col-sm-9
       span.help-block
         ' Enter your <b>username</b> or <b>email address</b> below.
       span.help-block

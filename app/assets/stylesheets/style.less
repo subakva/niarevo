@@ -1,5 +1,5 @@
 @import "elements.less";
-@import "variables.less";
+@import "custom_bootstrap/variables.less";
 
 html { background: @bodyBackground; }
 body {
@@ -8,6 +8,9 @@ body {
   .gradient(@bodyBackground, @bodyBackground, @moonsetBackground);
   background-repeat: no-repeat;
   color: @bodyTextColor;
+}
+label {
+  font-weight: normal;
 }
 
 .moonset {
@@ -34,7 +37,7 @@ body {
   padding: 10px 20px;
 
   .alert {
-    padding: 4px 35px 4px 14px;
+    padding: 4px 14px;
     margin-bottom: 10px;
   }
 
@@ -43,6 +46,7 @@ body {
       float: right;
       a {
         color: #AAA;
+        &:focus,
         &:hover {
           color: #CCC;
           text-decoration: none;
@@ -64,6 +68,7 @@ body {
     text-align: center;
     ul a {
       color: #AAA;
+      &:focus,
       &:hover { text-decoration: none; }
     }
   }
@@ -86,6 +91,9 @@ body {
       clear: left;
       font-size: 0.9em;
       font-style: italic;
+    }
+    .help-block {
+      margin: 0;
     }
     .action-controls {
       > a { margin-right: 4px; float: left;}
@@ -170,9 +178,10 @@ body {
   border-collapse: collapse;
   font-size: 0.9em;
 }
-.markdown-table th {background-color: #FED;}
+.markdown-table th { text-align: center; background-color: #FED; }
 .markdown-table th,
-.markdown-table td { border: 1px solid #999; }
+.markdown-table td { border: 1px solid #999; padding: 5px; }
+.markdown-table p { margin: 0; }
 
 @media (max-width: 480px) {
   .main {

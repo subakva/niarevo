@@ -4,7 +4,6 @@ class DreamTaggerControl
   def initialize(form, input_method, symbol, options = nil)
     @form, @input_method, @symbol = form, input_method, symbol
     @options = {
-      value: nil,
       label: symbol.to_s.humanize
     }.merge(options || {})
   end
@@ -19,12 +18,14 @@ class DreamTaggerControl
   end
 
   def render_controls_element(view, &block)
-    view.content_tag(:div, class: 'controls') do
-      controls_parts = []
-      controls_parts << render_input_element
-      controls_parts << view.capture(&block) if block_given?
-      controls_parts.join('').html_safe
+    controls_parts = []
+    controls_parts << view.content_tag(:div, class: 'col-sm-4') do
+      render_input_element
     end
+    controls_parts << view.content_tag(:div, class: 'col-sm-3') do
+      view.capture(&block) if block_given?
+    end
+    controls_parts.join('').html_safe
   end
 
   def render_field_errors(view)
@@ -32,7 +33,7 @@ class DreamTaggerControl
     if errors[symbol]
       errors[symbol].each do |error|
         message = errors.full_message(symbol, error)
-        error_content << view.content_tag(:span, message, class:'error-label')
+        error_content << view.content_tag(:span, message, class: 'error-label')
       end
     end
     error_content.join('').html_safe
@@ -40,15 +41,17 @@ class DreamTaggerControl
 
   def render_label(view)
     [
-      form.label(symbol, options[:label], class: 'control-label'),
+      form.label(symbol, options[:label], class: 'col-sm-3 control-label'),
       render_field_errors(view)
     ].join('').html_safe
   end
 
   def render_input_element
     input_method_params = [input_method, symbol]
-    input_method_params << options.slice(:value) if options[:value].present?
-    input_method_params << options[:options] if options[:options].present?
+    input_options = options.slice(:class)
+    input_options[:value] = options[:value] if options.key?(:value)
+    input_options[:rows] = options[:rows] if options.key?(:rows)
+    input_method_params << input_options
     form.send(*input_method_params)
   end
 
@@ -57,6 +60,6 @@ class DreamTaggerControl
   end
 
   def group_classes
-    errors[symbol].present? ? 'control-group error' : 'control-group'
+    errors[symbol].present? ? 'form-group has-error' : 'form-group'
   end
 end

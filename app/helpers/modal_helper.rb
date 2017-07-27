@@ -2,23 +2,27 @@ module ModalHelper
   def help_modal(id, title, &block)
     modal_options = {
       'id' => id,
-      'class' => 'modal hide fade',
+      'class' => 'modal fade',
       'tabindex' => -1,
       'data-toggle' => 'modal',
-      'aria-hidden' => 'true'
+      'role' => 'dialog'
     }
     content_tag(:div, modal_options) do
-      [
-        modal_header(title),
-        modal_body(&block),
-        modal_footer
-      ].join('').html_safe
+      content_tag(:div, class: 'modal-dialog', role: 'document') do
+        content_tag(:div, class: 'modal-content') do
+          [
+            modal_header(title),
+            modal_body(&block),
+            modal_footer
+          ].join('').html_safe
+        end
+      end
     end
   end
 
   def modal_header(title)
     content_tag(:div, class: 'modal-header') do
-      content_tag(:h3, title)
+      content_tag(:h3, title, class: 'modal-title')
     end
   end
 
@@ -30,7 +34,7 @@ module ModalHelper
 
   def modal_footer
     content_tag(:div, class: 'modal-footer') do
-      content_tag(:a, 'Close', href: '#', class: 'btn', 'data-dismiss' => 'modal')
+      content_tag(:a, 'Close', href: '#', class: 'btn btn-default', 'data-dismiss' => 'modal')
     end
   end
 end

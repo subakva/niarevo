@@ -1,6 +1,6 @@
 = dt_text_area(form, :description, label: 'Describe Your Dream') do
   = dt_help_icon('#description-help')
-  a.btn.btn-help.preview-link title='Preview' href="#{preview_dreams_path}" rel="nofollow"
+  a.btn.btn-default.btn-help.preview-link title='Preview' href="#{preview_dreams_path}" rel="nofollow"
     i.icon-picture
 = dt_text_field(form, :dream_tag_list, label: 'Dream Tags') do
   = dt_help_icon('#dream-tag-list-help')
