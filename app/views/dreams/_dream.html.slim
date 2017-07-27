@@ -26,13 +26,13 @@ article data-dream-id="#{dream.id}"
       - if dream.dream_tag_list.empty?
         = link_to 'untagged', untagged_dream_dreams_path, class: 'tag-link', title: "Show dreams without dream tags"
       - for tag in dream.dream_tag_list
-        =' link_to tag, dream_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dream tag: #{tag}"
+        => link_to tag, dream_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dream tag: #{tag}"
 
     div.dreamer-tags
       - if dream.dreamer_tag_list.empty?
         = link_to 'untagged', untagged_dreamer_dreams_path, class: 'tag-link', title: "Show dreams without dreamer tags"
       - for tag in dream.dreamer_tag_list
-        =' link_to tag, dreamer_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dreamer tag: #{tag}"
+        => link_to tag, dreamer_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dreamer tag: #{tag}"
 
     - if current_user && current_user.id == dream.user_id && dream.persisted?
       div.dream-actions
