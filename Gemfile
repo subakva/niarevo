@@ -8,57 +8,51 @@ ruby '2.2.7'
 
 gem 'rails', '~>4.0.0'
 
-gem 'pg'            # postgresql db adapter
+gem 'airbrake'      # error reporting
 gem 'foreigner'     # foreign key support
 gem 'newrelic_rpm'  # app monitoring
-gem 'airbrake'      # error reporting
+gem 'pg'            # postgresql db adapter
 gem 'puma'          # app server
 gem 'rack-timeout'  # kill slow responses
 
-gem 'jquery-rails'                      # js library
-gem 'slim-rails'                        # template system
-gem 'less-rails-bootstrap'              # bootstrap css/js framework
 gem 'coffee-rails'                      # adds coffeescript support
 gem 'font-awesome-rails', '~>3.0'       # adds additional icons
-gem 'therubyracer', :platforms => :ruby # v8 support for less
+gem 'jquery-rails'                      # js library
+gem 'less-rails-bootstrap'              # bootstrap css/js framework
+gem 'slim-rails'                        # template system
+gem 'therubyracer'                      # v8 support for less
 gem 'uglifier'                          # Javascript compressor
 gem 'yui-compressor'                    # CSS Compressor
 
-# Fixes deprecation warnings for Rails 4
-# gem 'authlogic', github: 'christophemaximin/authlogic', branch: 'fix_deprecated_with_scope'
-gem 'authlogic', github: 'binarylogic/authlogic'
 gem 'acts-as-taggable-on'
+gem 'authlogic', github: 'binarylogic/authlogic'
+gem 'dotenv-rails'                          # autoload env variables from .env
+gem 'fog-aws'                               # For pushing sitemaps to S3
 gem 'gravtastic'                            # user images from gravatar
-gem 'rdiscount'                             # markdown processor
 gem 'kaminari'                              # pagination
+gem 'rdiscount'                             # markdown processor
 gem 'recaptcha', require: 'recaptcha/rails' # captcha
 gem 'sitemap_generator'                     # generates sitemaps for search engines
-gem 'fog-aws'                               # For pushing sitemaps to S3
 gem 'unf'                                   # For encoding AWS strings
-gem 'dotenv-rails'
 
 gem 'awesome_print' # Pretty output while debugging
 gem 'pry'           # Better REPL
 
-# Heroku compatibility
 group :production do
-  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
-  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+  gem 'rails_12factor' # heroku logging, assets, etc.
 end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl'
-
+  gem 'cane'
   gem 'capybara'
   gem 'capybara-email'
-  gem 'poltergeist'
-  gem 'launchy'
+  gem 'factory_girl'
   gem 'jasminerice', github: 'bradphelan/jasminerice' # Using master for Rails 4
-
-  gem 'simplecov'
-  gem 'cane'
+  gem 'launchy'
   gem 'morecane'
+  gem 'poltergeist'
+  gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 group :test do
@@ -67,22 +61,10 @@ group :test do
 end
 
 group :development do
-  gem 'quiet_assets'
   gem 'annotate'
-  # gem 'test-unit'
-  # gem 'pry-debugger'
-
-  gem 'guard-rspec'
-  gem 'guard-jasmine'
+  gem 'quiet_assets'
   gem 'rb-fsevent'
-end
 
-# # Gems used for importing data from MySQL
-# group :import do
-#   gem 'activerecord-mysql-adapter'
-#   gem 'mysql2'
-# end
-
-group :doc do
-  gem 'sdoc', require: false
+  gem 'guard-jasmine'
+  gem 'guard-rspec'
 end

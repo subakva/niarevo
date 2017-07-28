@@ -1,0 +1,52 @@
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'db/schema.rb'
+    - 'app/views/**/*.slim'
+  TargetRubyVersion: 2.2
+
+# Metrics Cops
+
+Metrics/LineLength:
+  Max: 100
+Metrics/BlockLength:
+  Exclude:
+    - '**/*.rake'
+    - '**/*.jbuilder'
+    - 'bin/*'
+    - 'spec/**/*'
+    - 'config/environments/*.rb'
+
+# Style Cops
+
+Style/Documentation:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: False
+Style/TrailingCommaInArguments:
+  Enabled: False
+Style/TrailingCommaInLiteral:
+  Enabled: False
+Style/SymbolArray:
+  Enabled: false
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+# Layout Cops
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: false
+
+# Security Cops
+Security/YAMLLoad:
+  Exclude:
+    - 'bin/*'
+
+# Rails Cops
+Rails:
+  Enabled: true
+Rails/TimeZone:
+  EnforcedStyle: strict
