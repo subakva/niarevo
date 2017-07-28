@@ -1,17 +1,17 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
+  pool: <%= ENV["DB_POOL"] || ENV["RAILS_MAX_THREADS"] || 5 %>
+  timeout: <%= ENV["DB_TIMEOUT"] || 5000 %>
+
+development:
+  <<: *default
   database: niarevo_development
-  pool: 5
-  username: <%= ENV['POSTGRES_DEV_USER'] || 'postgres' %>
-  password:
-  min_messages: warning
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: niarevo_test
-  pool: 5
-  username: <%= ENV['POSTGRES_DEV_USER'] || 'postgres' %>
-  password:
-  min_messages: warning
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

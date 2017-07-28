@@ -12,7 +12,7 @@ gem 'pg'            # postgresql db adapter
 gem 'foreigner'     # foreign key support
 gem 'newrelic_rpm'  # app monitoring
 gem 'airbrake'      # error reporting
-gem 'unicorn'       # app server
+gem 'puma'          # app server
 gem 'rack-timeout'  # kill slow responses
 
 gem 'jquery-rails'                      # js library
