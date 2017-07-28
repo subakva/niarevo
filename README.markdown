@@ -26,6 +26,7 @@ Next
 * switch from travis to circle?
 * use dotfile to run .simplecov
 * switch from rdiscount to kramdown
+* switch to rollbar
 
 * set up heroku review apps
  - set up staging with all config vars

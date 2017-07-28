@@ -10,7 +10,7 @@ gem 'rails', '~>4.1.0'
 
 gem 'airbrake'      # error reporting
 gem 'foreigner'     # foreign key support
-gem 'newrelic_rpm'  # app monitoring
+gem 'scout_apm'     # app monitoring
 gem 'pg'            # postgresql db adapter
 gem 'puma'          # app server
 gem 'rack-timeout'  # kill slow responses
