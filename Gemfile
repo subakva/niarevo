@@ -10,11 +10,11 @@ gem 'rails', '~>4.1.0'
 
 gem 'airbrake'      # error reporting
 gem 'foreigner'     # foreign key support
-gem 'scout_apm'     # app monitoring
 gem 'pg'            # postgresql db adapter
 gem 'puma'          # app server
 gem 'rack-timeout'  # kill slow responses
 gem 'redis-rails'   # redis for caching, etc.
+gem 'scout_apm'     # app monitoring
 
 gem 'bootstrap-sass'                    # bootstrap/sass framework
 gem 'coffee-rails'                      # adds coffeescript support

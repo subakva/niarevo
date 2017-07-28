@@ -19,9 +19,9 @@ Next
 * upgrade rails 5.1
 
 * remove FacebookController (what was that for...?)
-* remove jquery
-* remove jquery.form.js
-* remove coffee-rails
+* remove jquery (this would require getting rid of bootstrap)
+* remove jquery.form.js (is it being used?)
+* remove coffee-rails (only used for preview.js)
 * remove unf ?what is this used for?
 * switch from travis to circle?
 * use dotfile to run .simplecov
