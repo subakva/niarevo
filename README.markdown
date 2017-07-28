@@ -9,28 +9,29 @@ Deployment
 Next
 ----
 
-* upgrade rails 4.1
-* upgrade kaminari (4.1+)
-* use dotfile to run .simplecov
-* upgrade/replace authlogic
+* remove vars.rake
 * upgrade/replace airbrake
-* upgrade/replace acts-as-taggable-on (4 -> 5)
-* upgrade rails 4.2
-* upgrade rails 5.0
-* upgrade rails 5.1
-* switch to yarn for js
-* switch to webpacker for assets
+* upgrade/replace authlogic
 * switch to bootstrap-sass / sass (https://github.com/twbs/bootstrap-sass#a-ruby-on-rails)
 * switch from rdiscount to kramdown
+* upgrade rails 4.1
+* upgrade kaminari (4.1+)
+* upgrade rails 4.2
+* upgrade rails 5.0
 * switch from timecop to rails travel_to
-* switch from travis to circle?
-* remove FacebookController (what was that for...?)
+* upgrade/replace acts-as-taggable-on (4 -> 5)
+* switch to yarn for js
+* switch to webpacker for assets
 * remove quiet_assets
-* remove vars.rake
+* upgrade rails 5.1
+
+* remove FacebookController (what was that for...?)
 * remove jquery
 * remove jquery.form.js
 * remove coffee-rails
 * remove unf ?what is this used for?
+* switch from travis to circle?
+* use dotfile to run .simplecov
 
 * switch to sorcery?
 * better tag input (https://github.com/maxwells/bootstrap-tags)

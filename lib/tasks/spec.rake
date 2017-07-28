@@ -3,6 +3,6 @@ namespace :spec do
   task cane: ['spec:enable_coverage', 'spec:coverage', 'quality']
 end
 
-Rake::Task['spec'].enhance(['vars:load_dot_env', 'spec:enable_coverage']) do
+Rake::Task['spec'].enhance(['spec:enable_coverage']) do
   Rake::Task['quality'].invoke
 end
