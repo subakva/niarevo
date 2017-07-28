@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.1.10'
+ruby '2.2.7'
 
 gem 'rails', '~>4.0.0'
 
@@ -77,11 +77,11 @@ group :development do
   gem 'rb-fsevent'
 end
 
-# Gems used for importing data from MySQL
-group :import do
-  gem 'activerecord-mysql-adapter'
-  gem 'mysql2'
-end
+# # Gems used for importing data from MySQL
+# group :import do
+#   gem 'activerecord-mysql-adapter'
+#   gem 'mysql2'
+# end
 
 group :doc do
   gem 'sdoc', require: false
