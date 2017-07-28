@@ -40,10 +40,12 @@ class DreamTaggerControl
   end
 
   def render_label(view)
-    [
-      form.label(symbol, options[:label], class: 'col-sm-3 control-label'),
-      render_field_errors(view)
-    ].join('').html_safe
+    view.content_tag(:div, class: 'col-sm-3') do
+      [
+        form.label(symbol, options[:label], class: 'control-label'),
+        render_field_errors(view)
+      ].join('').html_safe
+    end
   end
 
   def render_input_element

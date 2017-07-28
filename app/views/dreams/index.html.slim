@@ -10,4 +10,7 @@
       = raw page_entries_info @dreams
 
     .results-nav
-      = raw paginate @dreams, container: nil
+      - if paginated?(@dreams)
+        = raw paginate @dreams, container: nil
+      - else
+        nav.pagination

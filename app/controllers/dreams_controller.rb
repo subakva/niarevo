@@ -73,13 +73,16 @@ class DreamsController < ApplicationController
   def create
     @dream = Dream.new(dream_params)
     @dream.user = current_user
-    requires_captcha = current_user.blank?
-    captcha_is_valid = !requires_captcha || verify_recaptcha(model: @dream)
-    if captcha_is_valid && @dream.save
-      flash[:notice] = "Your dream has been saved."
-      redirect_to dream_url(@dream)
+    # requires_captcha = current_user.blank?
+    # dream_valid = @dream.valid?
+    # captcha_is_valid = !requires_captcha || verify_recaptcha(model: @dream, attribute: :captcha)
+    # call @dream.valid? first, so it does not overwrite the captcha error
+    if @dream.valid? && captcha_is_valid(@dream)
+      @dream.save!
+      redirect_to dream_url(@dream), flash: { notice: "Your dream has been saved." }
     else
-      render action: :new
+      flash.now[:warning] = @dream.errors[:captcha].join(', ') if @dream.errors[:captcha]
+      render :new
     end
   end
 
@@ -105,6 +108,11 @@ class DreamsController < ApplicationController
   end
 
   protected
+
+  def captcha_is_valid(model)
+    return true if current_user.present?
+    verify_recaptcha(model: model, attribute: :captcha, env: Rails.env.to_s)
+  end
 
   def dream_params
     params.require(:dream).permit(:description, :dream_tag_list, :dreamer_tag_list, :private)

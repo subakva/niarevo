@@ -1,14 +1,11 @@
 module ApplicationHelper
-
   def page_title
     ['DreamTagger', header_text].uniq.join(' - ')
   end
 
   def header_text
     @header_text ||= begin
-      if content_for?(:header_text)
-        content_for(:header_text)
-      end
+      content_for(:header_text) if content_for?(:header_text)
     end
   end
 
@@ -26,8 +23,12 @@ module ApplicationHelper
     alert_type = {
       alert: 'danger',
       notice: 'info',
-      recaptcha_error: 'warning'
     }.fetch(alert_type, alert_type.to_s)
     "alert-#{alert_type}"
+  end
+
+  def paginated?(array)
+    return false unless array.respond_to?(:next_page)
+    array.next_page.present? || array.prev_page.present?
   end
 end

@@ -5,18 +5,16 @@ Deployment
 ----
 
     $ git push production master
-    $ heroku run rake db:migrate
 
 Next
 ----
 
-* upgrade kaminari
-* upgrade recaptcha
+* upgrade rails 4.1
+* upgrade kaminari (4.1+)
 * use dotfile to run .simplecov
 * upgrade/replace authlogic
 * upgrade/replace airbrake
 * upgrade/replace acts-as-taggable-on (4 -> 5)
-* upgrade rails 4.1
 * upgrade rails 4.2
 * upgrade rails 5.0
 * upgrade rails 5.1

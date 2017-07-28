@@ -1,0 +1,4 @@
+# The actual web server is managed by puma-dev (which also handles SSL).
+# web: and server: just tail the logs for convenience
+web: tail -f log/development.log
+server: tail -f ~/Library/Logs/puma-dev.log

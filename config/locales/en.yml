@@ -1,8 +1,18 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
+  date:
+    formats:
+      default: "%m-%d-%Y"
+      long: "%B %-d, %Y"
+      short: "%b %-d, %Y"
+      tiny: "%-m/%-d/%y"
+  time:
+    formats:
+      default: "%a, %d %b %Y %I:%M:%S %p %Z"
+      long: "%B %-d, %Y at %I:%M %p %Z"
+      short: "%-d %b %I:%M %p"
+      compact: "%Y-%m-%d %I:%M %p %Z"
   recaptcha:
     errors:
-      incorrect-captcha-sol: 'reCaptcha did not match.'
+      verification_failed: 'Sorry, reCAPTCHA verification failed. Please try again.'
+      recaptcha_unreachable: 'Sorry, reCAPTCHA unreachable. Please try again later.'
 

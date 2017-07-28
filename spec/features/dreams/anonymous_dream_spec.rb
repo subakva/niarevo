@@ -16,7 +16,7 @@ feature "Anonymous Dreams" do
       fill_in 'Dream Tags',                 with: dream_tags.join(',')
       fill_in 'Dreamer Tags',               with: dreamer_tags.join(',')
       # We're not actually verifying the recaptcha, but this demonstrates usage.
-      fill_in 'recaptcha_challenge_field',  with: 'fennel cornucopia'
+      # check "I'm not a robot"
 
       click_on 'Save'
     end

@@ -68,7 +68,7 @@ end
 
 module DreamMatcherMethods
   def include_recaptcha
-    have_selector('[name=recaptcha_challenge_field]')
+    have_selector('.g-recaptcha')
   end
 
   def include_dream(dream)
