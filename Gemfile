@@ -47,7 +47,6 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-email'
   gem 'factory_girl'
-  gem 'jasminerice', github: 'bradphelan/jasminerice' # Using master for Rails 4
   gem 'launchy'
   gem 'morecane'
   gem 'poltergeist'
@@ -63,8 +62,4 @@ end
 group :development do
   gem 'annotate'
   gem 'quiet_assets'
-  gem 'rb-fsevent'
-
-  gem 'guard-jasmine'
-  gem 'guard-rspec'
 end
