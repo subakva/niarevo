@@ -45,7 +45,7 @@ module FormHelper
   def dt_help_icon(href)
     return '' if href.blank?
     content_tag(:a, href: href, class: 'btn btn-default btn-help', data: {toggle: 'modal'}) do
-      content_tag(:i, '', class: 'icon-question-sign')
+      content_tag(:i, '', class: 'fa fa-question-circle')
     end
   end
 end

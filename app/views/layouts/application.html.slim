@@ -24,11 +24,11 @@ html lang="en"
         footer
           ul.list-inline
             li = link_to about_path, title: 'About' do
-                i.icon-question-sign
+                i.fa.fa-question-circle
             li = link_to feeds_path, title: 'Feeds' do
-                i.icon-rss
+                i.fa.fa-rss
             li = link_to terms_path, title: 'Terms' do
-                i.icon-legal
+                i.fa.fa-gavel
     = javascript_include_tag 'application'
     = yield :script
     = yield :modals

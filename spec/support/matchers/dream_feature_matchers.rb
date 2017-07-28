@@ -84,7 +84,7 @@ module DreamMatcherMethods
   end
 
   def display_private_dream
-    have_selector('.dream-private i.icon-lock')
+    have_selector('.dream-private i.fa.fa-lock')
   end
 end
 

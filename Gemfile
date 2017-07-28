@@ -16,7 +16,7 @@ gem 'puma'          # app server
 gem 'rack-timeout'  # kill slow responses
 
 gem 'coffee-rails'                      # adds coffeescript support
-gem 'font-awesome-rails', '~>3.0'       # adds additional icons
+gem 'font-awesome-rails'                # adds additional icons
 gem 'jquery-rails'                      # js library
 gem 'less-rails-bootstrap'              # bootstrap css/js framework
 gem 'slim-rails'                        # template system

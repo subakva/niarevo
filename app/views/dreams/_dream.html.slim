@@ -8,7 +8,7 @@ article data-dream-id="#{dream.id}"
     div.who-when
       - if dream.private?
         div.dream-private
-          i.icon-lock title='This is a private dream.'
+          i.fa.fa-lock title='This is a private dream.'
       div.dream-dreamer
         - if dream.user
           = link_to("#{dream.user.username}", user_dreams_path(dream.user.username), title: 'Show recent dreams from this user.')

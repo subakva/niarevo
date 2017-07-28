@@ -10,13 +10,12 @@ Deployment
 Next
 ----
 
-* upgrade font-awesome-rails
 * upgrade kaminari
 * upgrade recaptcha
 * use dotfile to run .simplecov
 * upgrade/replace authlogic
 * upgrade/replace airbrake
-* upgrade/replace acts-as-taggable-on
+* upgrade/replace acts-as-taggable-on (4 -> 5)
 * upgrade rails 4.1
 * upgrade rails 4.2
 * upgrade rails 5.0
