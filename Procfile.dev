@@ -3,3 +3,4 @@
 web: tail -f log/development.log
 server: tail -f ~/Library/Logs/puma-dev.log
 smtp: mailhog
+redis: redis-server /usr/local/etc/redis.conf

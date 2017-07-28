@@ -187,6 +187,23 @@ GEM
     rdiscount (2.2.0.1)
     recaptcha (4.3.1)
       json
+    redis (3.3.3)
+    redis-actionpack (5.0.1)
+      actionpack (>= 4.0, < 6)
+      redis-rack (>= 1, < 3)
+      redis-store (>= 1.1.0, < 1.4.0)
+    redis-activesupport (5.0.3)
+      activesupport (>= 3, < 6)
+      redis-store (~> 1.3.0)
+    redis-rack (2.0.2)
+      rack (>= 1.5, < 3)
+      redis-store (>= 1.2, < 1.4)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.3.0)
+      redis (>= 2.2)
     request_store (1.3.2)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
@@ -297,6 +314,7 @@ DEPENDENCIES
   rails_12factor
   rdiscount
   recaptcha
+  redis-rails
   rspec-rails
   sass-rails
   scout_apm
