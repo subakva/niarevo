@@ -24,8 +24,8 @@ gem 'therubyracer'                      # v8 support for less
 gem 'uglifier'                          # Javascript compressor
 gem 'yui-compressor'                    # CSS Compressor
 
-gem 'acts-as-taggable-on'
-gem 'authlogic', github: 'binarylogic/authlogic'
+gem 'acts-as-taggable-on'                   # tagging system
+gem 'authlogic'                             # user auth, activation, etc.
 gem 'dotenv-rails'                          # autoload env variables from .env
 gem 'fog-aws'                               # For pushing sitemaps to S3
 gem 'gravtastic'                            # user images from gravatar

@@ -9,9 +9,7 @@ Deployment
 Next
 ----
 
-* upgrade/replace authlogic
 * switch to bootstrap-sass / sass (https://github.com/twbs/bootstrap-sass#a-ruby-on-rails)
-* switch from rdiscount to kramdown
 * upgrade rails 4.1
 * upgrade kaminari (4.1+)
 * upgrade rails 4.2
@@ -30,6 +28,7 @@ Next
 * remove unf ?what is this used for?
 * switch from travis to circle?
 * use dotfile to run .simplecov
+* switch from rdiscount to kramdown
 
 * switch to sorcery?
 * better tag input (https://github.com/maxwells/bootstrap-tags)
