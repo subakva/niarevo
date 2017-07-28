@@ -9,8 +9,6 @@ Deployment
 Next
 ----
 
-* remove vars.rake
-* upgrade/replace airbrake
 * upgrade/replace authlogic
 * switch to bootstrap-sass / sass (https://github.com/twbs/bootstrap-sass#a-ruby-on-rails)
 * switch from rdiscount to kramdown
