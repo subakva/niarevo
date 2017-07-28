@@ -15,14 +15,13 @@ gem 'pg'            # postgresql db adapter
 gem 'puma'          # app server
 gem 'rack-timeout'  # kill slow responses
 
+gem 'bootstrap-sass'                    # bootstrap/sass framework
 gem 'coffee-rails'                      # adds coffeescript support
-gem 'font-awesome-rails'                # adds additional icons
+gem 'font-awesome-sass'                 # adds additional icons
 gem 'jquery-rails'                      # js library
-gem 'less-rails-bootstrap'              # bootstrap css/js framework
+gem 'sass-rails'                        # scss stylesheet preprocessor
 gem 'slim-rails'                        # template system
-gem 'therubyracer'                      # v8 support for less
 gem 'uglifier'                          # Javascript compressor
-gem 'yui-compressor'                    # CSS Compressor
 
 gem 'acts-as-taggable-on'                   # tagging system
 gem 'authlogic'                             # user auth, activation, etc.

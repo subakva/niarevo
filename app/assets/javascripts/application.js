@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.form
-//= require twitter/bootstrap/modal
-//= require twitter/bootstrap/alert
+//= require bootstrap/alert
+//= require bootstrap/modal
 //= require_tree .

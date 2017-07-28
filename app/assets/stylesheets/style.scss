@@ -1,13 +1,10 @@
-@import "elements.less";
-@import "custom_bootstrap/variables.less";
-
-html { background: @bodyBackground; }
+html { background: $bodyBackground; }
 body {
   height: 500px;
-  background: @bodyBackground;
-  .gradient(@bodyBackground, @bodyBackground, @moonsetBackground);
+  background: $bodyBackground;
+  @include gradient-vertical($moonsetBackground, $bodyBackground);
   background-repeat: no-repeat;
-  color: @bodyTextColor;
+  color: $bodyTextColor;
 }
 label {
   font-weight: normal;
@@ -32,7 +29,7 @@ label {
 .main {
   position: relative;
   z-index: 1;
-  background-color: @bodyBackground;
+  background-color: $bodyBackground;
   border-radius: 10px;
   padding: 10px 20px;
 
@@ -72,7 +69,7 @@ label {
       &:hover { text-decoration: none; }
     }
   }
-  form {
+  form.form-horizontal {
     background-color: #DDD;
     color: #333;
     padding: 10px;
@@ -82,8 +79,13 @@ label {
       margin-left: 5px;
       vertical-align: top;
     }
+    .error-label,
+    .control-label {
+      display: block;
+      text-align: right;
+    }
     .error-label {
-      color: @errorText;
+      color: $errorText;
       clear: left;
       font-size: 0.9em;
       font-style: italic;
@@ -161,8 +163,8 @@ label {
 }
 
 .preview-content {
-  background-color: @bodyBackground;
-  color: @bodyTextColor;
+  background-color: $bodyBackground;
+  color: $bodyTextColor;
 }
 
 .modal {

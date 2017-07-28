@@ -9,7 +9,6 @@ Deployment
 Next
 ----
 
-* switch to bootstrap-sass / sass (https://github.com/twbs/bootstrap-sass#a-ruby-on-rails)
 * upgrade rails 4.1
 * upgrade kaminari (4.1+)
 * upgrade rails 4.2
