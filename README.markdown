@@ -10,6 +10,31 @@ Deployment
 Next
 ----
 
+* upgrade font-awesome-rails
+* upgrade kaminari
+* upgrade recaptcha
+* use dotfile to run .simplecov
+* upgrade/replace authlogic
+* upgrade/replace airbrake
+* upgrade/replace acts-as-taggable-on
+* upgrade rails 4.1
+* upgrade rails 4.2
+* upgrade rails 5.0
+* upgrade rails 5.1
+* switch to yarn for js
+* switch to webpacker for assets
+* switch to bootstrap-sass / sass (https://github.com/twbs/bootstrap-sass#a-ruby-on-rails)
+* switch from rdiscount to kramdown
+* switch from timecop to rails travel_to
+* switch from travis to circle?
+* remove FacebookController (what was that for...?)
+* remove quiet_assets
+* remove vars.rake
+* remove jquery
+* remove jquery.form.js
+* remove coffee-rails
+* remove unf ?what is this used for?
+
 * switch to sorcery?
 * better tag input (https://github.com/maxwells/bootstrap-tags)
 * convert help modals to popovers

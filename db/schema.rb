@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130518182209) do
+ActiveRecord::Schema.define(version: 20170728015704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.integer  "user_id"
     t.integer  "dreamer_tag_count", default: 0,     null: false
     t.integer  "dream_tag_count",   default: 0,     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.boolean  "private",           default: false, null: false
   end
 
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.string   "email",                     null: false
     t.integer  "user_id",                   null: false
     t.datetime "sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "invites", ["email", "user_id"], name: "index_invites_on_email_and_user_id", unique: true, using: :btree
@@ -54,21 +54,30 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.string   "context",       limit: 32
     t.integer  "tagger_id"
     t.string   "tagger_type",   limit: 32
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
+  add_index "taggings", ["context"], name: "index_taggings_on_context", using: :btree
   add_index "taggings", ["tag_id", "context"], name: "idx_taggings_by_tags", using: :btree
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "idx_taggings_by_taggable", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
+  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
+  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
   add_index "taggings", ["tagger_id", "tagger_type", "context"], name: "idx_taggings_by_tagger", using: :btree
+  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
+  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
 
   create_table "tags", force: true do |t|
-    t.string   "name",       limit: 64, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",           limit: 64,             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "taggings_count",            default: 0
   end
 
-  add_index "tags", ["name"], name: "idx_tags_by_name", using: :btree
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",            limit: 32,                 null: false
@@ -86,8 +95,8 @@ ActiveRecord::Schema.define(version: 20130518182209) do
     t.string   "current_login_ip",    limit: 46
     t.string   "last_login_ip",       limit: 46
     t.boolean  "active",                         default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

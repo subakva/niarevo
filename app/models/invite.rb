@@ -11,13 +11,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-# Indexes
-#
-#  index_invites_on_email              (email)
-#  index_invites_on_email_and_user_id  (email,user_id) UNIQUE
-#  index_invites_on_sent_at            (sent_at)
-#  index_invites_on_user_id            (user_id)
-#
 
 class Invite < ActiveRecord::Base
   belongs_to :user

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: dreams
+#
+#  id                :integer          not null, primary key
+#  description       :text             not null
+#  user_id           :integer
+#  dreamer_tag_count :integer          default(0), not null
+#  dream_tag_count   :integer          default(0), not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  private           :boolean          default(FALSE), not null
+#
+
 require 'spec_helper'
 
 describe Dream do

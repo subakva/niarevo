@@ -11,14 +11,6 @@
 #  updated_at        :datetime         not null
 #  private           :boolean          default(FALSE), not null
 #
-# Indexes
-#
-#  index_dreams_on_created_at           (created_at)
-#  index_dreams_on_dream_tag_count      (dream_tag_count)
-#  index_dreams_on_dreamer_tag_count    (dreamer_tag_count)
-#  index_dreams_on_updated_at           (updated_at)
-#  index_dreams_on_user_id_and_private  (user_id,private)
-#
 
 class Dream < ActiveRecord::Base
   acts_as_taggable
