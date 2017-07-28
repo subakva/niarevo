@@ -9,8 +9,6 @@ Deployment
 Next
 ----
 
-* upgrade rails 4.1
-* upgrade kaminari (4.1+)
 * upgrade rails 4.2
 * upgrade rails 5.0
 * switch from timecop to rails travel_to
@@ -28,6 +26,12 @@ Next
 * switch from travis to circle?
 * use dotfile to run .simplecov
 * switch from rdiscount to kramdown
+
+* set up heroku review apps
+ - set up staging with all config vars
+ - use staging as the parent for review apps so it can inherit config vars
+ - generate app.json from staging
+ - etc.
 
 * switch to sorcery?
 * better tag input (https://github.com/maxwells/bootstrap-tags)

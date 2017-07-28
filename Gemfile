@@ -6,7 +6,7 @@ end
 
 ruby '2.2.7'
 
-gem 'rails', '~>4.0.0'
+gem 'rails', '~>4.1.0'
 
 gem 'airbrake'      # error reporting
 gem 'foreigner'     # foreign key support
@@ -59,6 +59,8 @@ group :test do
 end
 
 group :development do
+  gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'annotate'
   gem 'quiet_assets'
 end

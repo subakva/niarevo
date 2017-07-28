@@ -29,7 +29,7 @@ class Dream < ActiveRecord::Base
     where('dreams.created_at >= ?', min_date.utc)
   }
 
-  scope :public, -> { where(private: false) }
+  scope :not_private, -> { where(private: false) }
   scope :visible_to, ->(user) {
     if user.nil?
       where(private: false)

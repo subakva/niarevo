@@ -4,7 +4,7 @@ class ActivationsController < ApplicationController
   before_action :load_user_using_perishable_token, only: [:edit, :update]
 
   def index
-    render :action => :new
+    render :new
   end
 
   def new

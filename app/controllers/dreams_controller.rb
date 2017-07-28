@@ -103,7 +103,7 @@ class DreamsController < ApplicationController
       flash[:notice] = "Your dream has been saved."
       redirect_to dream_url(@dream)
     else
-      render action: :edit
+      render :edit
     end
   end
 
@@ -132,8 +132,8 @@ class DreamsController < ApplicationController
     @dreams = build_dream_scope(scope)
     @link_alternate = "#{request.path}?format=atom"
     respond_to do |format|
-      format.html { render :action => :index }
-      format.atom { render :action => :index }
+      format.html { render :index }
+      format.atom { render :index }
     end
   end
 

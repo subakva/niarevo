@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Thanks! A message has been sent to your email address with a link to activate your account."
       redirect_back_or_default new_user_session_url
     else
-      render :action => :new
+      render :new
     end
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else
-      render :action => :edit
+      render :edit
     end
   end
 

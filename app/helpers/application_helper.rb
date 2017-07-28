@@ -23,7 +23,7 @@ module ApplicationHelper
     alert_type = {
       alert: 'danger',
       notice: 'info',
-    }.fetch(alert_type, alert_type.to_s)
+    }.fetch(alert_type.to_sym, alert_type.to_s)
     "alert-#{alert_type}"
   end
 

@@ -1,4 +1,4 @@
-Niarevo::Application.routes.draw do
+Rails.application.routes.draw do
   root :to => 'dreams#index'
 
   resource :user_session, only: [:show, :new, :create, :destroy]

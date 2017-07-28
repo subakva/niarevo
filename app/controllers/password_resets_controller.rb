@@ -4,7 +4,7 @@ class PasswordResetsController < ApplicationController
   before_action :load_user_using_perishable_token, only: [:edit, :update]
 
   def index
-    render :action => :new
+    render :new
   end
 
   def new
@@ -35,7 +35,7 @@ class PasswordResetsController < ApplicationController
       flash[:notice] = "Your password has been updated."
       redirect_to account_url
     else
-      render action: :edit
+      render :edit
     end
   end
 
