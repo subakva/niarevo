@@ -10,3 +10,7 @@ cache:
   - yarn
 before_script:
   - psql -c 'create database niarevo_test;' -U postgres
+script:
+  - RAILS_ENV=test bundle exec rake db:schema:load
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
