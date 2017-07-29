@@ -1,5 +1,12 @@
-language: ruby
 dist: trusty
 sudo: false
-cache: bundler
-cache: yarn
+language: ruby
+addons:
+  postgresql: "9.6"
+services:
+  - postgresql
+cache:
+  - bundler
+  - yarn
+before_script:
+  - psql -c 'create database niarevo_test;' -U postgres
