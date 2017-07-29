@@ -1,12 +1,16 @@
 require 'spec_helper'
 
 feature "Registration" do
+  include ActiveJob::TestHelper
+
   let(:username) { 'buzzard' }
   let(:user) { User.where(username: username).first! }
 
   background do
     clear_emails
-    register_account(username)
+    perform_enqueued_jobs do
+      register_account(username)
+    end
   end
 
   after do

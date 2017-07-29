@@ -22,7 +22,7 @@
 #  updated_at          :datetime         not null
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Gravtastic
   is_gravtastic!
   acts_as_authentic

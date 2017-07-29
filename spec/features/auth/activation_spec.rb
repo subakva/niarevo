@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 feature 'Activation' do
+  include ActiveJob::TestHelper
+
   let(:user) { FactoryGirl.create(:user, :inactive) }
 
   background do
@@ -13,7 +15,9 @@ feature 'Activation' do
 
   context 'with an unactivated user' do
     background do
-      request_new_activation(user)
+      perform_enqueued_jobs do
+        request_new_activation(user)
+      end
     end
 
     scenario 'requesting an activation' do

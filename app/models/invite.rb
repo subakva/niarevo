@@ -12,8 +12,8 @@
 #  updated_at     :datetime         not null
 #
 
-class Invite < ActiveRecord::Base
-  belongs_to :user
+class Invite < ApplicationRecord
+  belongs_to :user, optional: true
 
   scope :sent_after, ->(min_date) {
     where('sent_at >= ?', min_date)
@@ -38,6 +38,7 @@ class Invite < ActiveRecord::Base
   end
 
   protected
+
   def user_does_not_exist
     if self.email && User.where(email: self.email).exists?
       self.errors.add(:base, 'An account already exists for that email.')

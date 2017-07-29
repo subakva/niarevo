@@ -9,7 +9,6 @@ Deployment
 Next
 ----
 
-* upgrade rails 5.0
 * switch from timecop to rails travel_to
 * upgrade/replace acts-as-taggable-on (4 -> 5)
 * switch to yarn for js

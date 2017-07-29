@@ -12,7 +12,7 @@
 #  private           :boolean          default(FALSE), not null
 #
 
-class Dream < ActiveRecord::Base
+class Dream < ApplicationRecord
   acts_as_taggable
   acts_as_taggable_on :dream_tags, :dreamer_tags
 
@@ -42,14 +42,14 @@ class Dream < ActiveRecord::Base
   scope :with_dream_tag, ->(tag_name) { tagged_with(tag_name, on: :dream_tags) }
   scope :with_dreamer_tag, ->(tag_name) { tagged_with(tag_name, on: :dreamer_tags) }
 
-  validates_presence_of :description
+  validates :description, presence: true
 
   before_save :update_tag_counts
 
   protected
 
   def update_tag_counts
-    self.dream_tag_count = self.dream_tag_list.size
-    self.dreamer_tag_count = self.dreamer_tag_list.size
+    self.dream_tag_count = dream_tag_list.size
+    self.dreamer_tag_count = dreamer_tag_list.size
   end
 end

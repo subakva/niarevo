@@ -2,11 +2,11 @@ require 'spec_helper'
 require 'zlib'
 
 feature 'Sitemap' do
-  let(:sitemap_path) { File.join(Rails.root, 'tmp', 'sitemaps', 'sitemap.xml.gz') }
+  let(:sitemap_path) { Rails.root.join('tmp', 'sitemaps', 'sitemap.xml.gz') }
   let!(:dream) { FactoryGirl.create(:dream) }
   let!(:private_dream) { FactoryGirl.create(:dream, :private) }
   let(:doc) do
-    silence_stream(STDOUT) { SitemapGenerator::Interpreter.run }
+    suppress_stdout { SitemapGenerator::Interpreter.run }
     load_sitemap_doc
   end
 
@@ -65,5 +65,13 @@ feature 'Sitemap' do
     sitemap = ""
     Zlib::GzipReader.open(sitemap_path) { |f| sitemap << f.read }
     Nokogiri::XML::Document.parse(sitemap)
+  end
+
+  def suppress_stdout
+    original_stdout = $stdout.clone
+    $stdout.reopen(File.new('/dev/null', 'w'))
+    return yield
+  ensure
+    $stdout.reopen(original_stdout)
   end
 end

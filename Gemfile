@@ -6,7 +6,7 @@ end
 
 ruby '2.3.4'
 
-gem 'rails', '~>4.2.0'
+gem 'rails', '~>5.0.0'
 
 gem 'airbrake'      # error reporting
 gem 'pg'            # postgresql db adapter
@@ -56,6 +56,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'fuubar'
   gem 'shoulda-matchers'
   gem 'timecop'
 end

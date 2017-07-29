@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 feature 'Password Reset' do
+  include ActiveJob::TestHelper
+
   let(:user) { FactoryGirl.create(:user) }
 
   background do
@@ -13,7 +15,9 @@ feature 'Password Reset' do
 
   context 'with an activated user' do
     background do
-      request_new_password(user)
+      perform_enqueued_jobs do
+        request_new_password(user)
+      end
     end
 
     scenario 'requesting a password reset' do
