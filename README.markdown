@@ -14,10 +14,9 @@ Next
 * upgrade/replace acts-as-taggable-on (4 -> 5)
 * switch to yarn for js
 * switch to webpacker for assets
-* remove quiet_assets
 * upgrade rails 5.1
-* update rspec setup (spec_helper/rails_helper)
 
+* update rspec setup (spec_helper/rails_helper)
 * remove FacebookController (what was that for...?)
 * remove jquery (this would require getting rid of bootstrap)
 * remove jquery.form.js (is it being used?)
@@ -29,10 +28,10 @@ Next
 * switch to rollbar
 
 * set up heroku review apps
- - set up staging with all config vars
- - use staging as the parent for review apps so it can inherit config vars
- - generate app.json from staging
- - etc.
+  - set up staging with all config vars
+  - use staging as the parent for review apps so it can inherit config vars
+  - generate app.json from staging
+  - etc.
 
 * switch to sorcery?
 * better tag input (https://github.com/maxwells/bootstrap-tags)
