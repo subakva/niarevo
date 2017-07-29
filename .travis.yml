@@ -6,8 +6,12 @@ addons:
 services:
   - postgresql
 cache:
-  - bundler
-  - yarn
+  bundler: true
+  yarn: true
+  directories:
+    - node_modules
+install:
+  - bin/yarn
 before_script:
   - psql -c 'create database niarevo_test;' -U postgres
 script:
