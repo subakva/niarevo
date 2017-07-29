@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   helper :all
-  protect_from_forgery
+  protect_from_forgery with: :exception
 
   helper_method :current_user_session, :current_user
 

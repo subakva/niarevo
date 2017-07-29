@@ -6,7 +6,7 @@ end
 
 ruby '2.3.4'
 
-gem 'rails', '~>5.0.0'
+gem 'rails', '~>5.1.0'
 
 gem 'airbrake'      # error reporting
 gem 'pg'            # postgresql db adapter
@@ -18,7 +18,6 @@ gem 'scout_apm'     # app monitoring
 gem 'bootstrap-sass'                    # bootstrap/sass framework
 gem 'coffee-rails'                      # adds coffeescript support
 gem 'font-awesome-sass'                 # adds additional icons
-gem 'jquery-rails'                      # js library
 gem 'sass-rails'                        # scss stylesheet preprocessor
 gem 'slim-rails'                        # template system
 gem 'uglifier'                          # Javascript compressor
@@ -63,8 +62,10 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'listen'
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen'
   gem 'web-console'
 end

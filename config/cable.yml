@@ -7,3 +7,4 @@ test:
 production:
   adapter: redis
   url: <%= ENV['DATABASE_URL'] %>
+  channel_prefix: niarevo_production

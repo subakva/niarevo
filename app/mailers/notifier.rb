@@ -1,4 +1,4 @@
-class Notifier < ActionMailer::Base
+class Notifier < ApplicationMailer
   layout 'email'
 
   default(

@@ -10,11 +10,12 @@ Next
 ----
 
 * switch from timecop to rails travel_to
-* upgrade/replace acts-as-taggable-on (4 -> 5)
+* upgrade/replace acts-as-taggable-on
 * switch to yarn for js
 * switch to webpacker for assets
-* upgrade rails 5.1
 
+* bootsnap
+* change activejob adapter?
 * update rspec setup (spec_helper/rails_helper)
 * remove FacebookController (what was that for...?)
 * remove jquery (this would require getting rid of bootstrap)
