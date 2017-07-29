@@ -31,12 +31,12 @@ class User < ActiveRecord::Base
 
   has_many :dreams
   has_many :invites
-  validates_exclusion_of :username, in: ['admin', 'user', 'anonymous']
+  validates :username, exclusion: %w[admin user anonymous]
 
   def activate!
     unless self.active?
       self.update_attribute(:active, true)
-      Notifier.activation_succeeded(self).deliver
+      Notifier.activation_succeeded(self).deliver_later
     end
   end
 
@@ -46,12 +46,12 @@ class User < ActiveRecord::Base
 
   def deliver_activation_instructions!
     reset_perishable_token!
-    Notifier.activation_instructions(self).deliver
+    Notifier.activation_instructions(self).deliver_later
   end
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
-    Notifier.password_reset_instructions(self).deliver
+    Notifier.password_reset_instructions(self).deliver_later
   end
 
   class << self

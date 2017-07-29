@@ -1,29 +1,31 @@
-class UserSessionsController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :redirect_to_account_if_logged_in, :only => [:new, :create, :show]
-  before_action :require_user, :only => [:destroy, :show]
+class UserSessionsController < ApplicationController
+  before_action :redirect_to_account_if_logged_in, only: [:new, :create, :show]
+  before_action :require_user, only: [:destroy, :show]
 
   def new
     @user_session = UserSession.new
   end
 
   def create
-    @user_session = UserSession.new(params[:user_session])
+    @user_session = UserSession.new(user_session_params)
     # TODO: Move this into UserSession
     session_saved = @user_session.save
-    account_inactive = @user_session.errors && @user_session.errors.full_messages.include?('Your account is not active')
-    if session_saved
+    account_inactive = @user_session.account_inactive?
+    if account_inactive
+      redirect_to new_user_session_path, flash: {
+        error: "Your account has not been activated yet."
+      }
+    elsif session_saved
       redirect_back_or_default account_url
     else
-      if account_inactive
-        flash[:error] = "Your account has not been activated yet."
-      else
-        flash[:error] = %{
+      redirect_to new_user_session_path, flash: {
+        error: %(
           Please enter a correct username and password.
           Note that both fields are case-sensitive.
-        }.squish
-      end
-      redirect_to new_user_session_path
+        ).squish
+      }
     end
   end
 
@@ -31,5 +33,11 @@ class UserSessionsController < ApplicationController
     current_user_session.destroy
     flash[:notice] = "You have been logged out."
     redirect_back_or_default root_url
+  end
+
+  protected
+
+  def user_session_params
+    params.require(:user_session).permit(:username, :password, :remember_me)
   end
 end

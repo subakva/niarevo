@@ -12,7 +12,6 @@ feature "Sign In" do
 
     scenario 'entering valid credentials' do
       sign_in(user.username, password)
-
       expect(current_path).to eq(account_path)
     end
 

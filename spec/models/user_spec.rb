@@ -24,14 +24,16 @@
 
 require 'spec_helper'
 
-describe User do
-  let(:user) { FactoryGirl.create(:user, :inactive) }
+describe User, type: :model do
+  subject(:user) { FactoryGirl.create(:user, :inactive) }
 
   before do
-    allow(Notifier).to receive(:activation_succeeded).and_return(double(deliver: true))
-    allow(Notifier).to receive(:activation_instructions).and_return(double(deliver: true))
-    allow(Notifier).to receive(:password_reset_instructions).and_return(double(deliver: true))
+    allow(Notifier).to receive(:activation_succeeded).and_return(double(deliver_later: true))
+    allow(Notifier).to receive(:activation_instructions).and_return(double(deliver_later: true))
+    allow(Notifier).to receive(:password_reset_instructions).and_return(double(deliver_later: true))
   end
+
+  it { should validate_exclusion_of(:username).in_array(%w[admin user anonymous]) }
 
   describe '#gravatar_url' do
     it "generates a gravatar url" do
@@ -54,7 +56,7 @@ describe User do
   describe '#activate!' do
     context 'for an unactivated user' do
       it "sets the active flag to true and sends an email" do
-        expect(Notifier).to receive(:activation_succeeded).with(user).and_return(double(deliver: true))
+        expect(Notifier).to receive(:activation_succeeded).with(user).and_return(double(deliver_later: true))
         user.activate!
         user.reload
         expect(user).to be_active
@@ -87,7 +89,7 @@ describe User do
     let!(:original_token) { user.perishable_token }
 
     it "resets the token and sends an email" do
-      expect(Notifier).to receive(:activation_instructions).with(user).and_return(double(deliver: true))
+      expect(Notifier).to receive(:activation_instructions).with(user).and_return(double(deliver_later: true))
 
       user.deliver_activation_instructions!
 
@@ -99,7 +101,7 @@ describe User do
     let!(:original_token) { user.perishable_token }
 
     it "resets the token and sends an email" do
-      expect(Notifier).to receive(:password_reset_instructions).with(user).and_return(double(deliver: true))
+      expect(Notifier).to receive(:password_reset_instructions).with(user).and_return(double(deliver_later: true))
 
       user.deliver_password_reset_instructions!
 

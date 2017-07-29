@@ -13,21 +13,8 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              ENV['SMTP_HOST'],
-    port:                 ENV['SMTP_PORT'],
-    authentication:       ENV.fetch('SMTP_AUTHENTICATION', :plain).to_sym,
-    user_name:            ENV['SMTP_USERNAME'],
-    password:             ENV['SMTP_PASSWORD'],
-    domain:               ENV['SMTP_DOMAIN'],
-    enable_starttls_auto: true,
-  }
-
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  # Set up default url options for mailer
-  config.action_mailer.default_url_options = { host: ENV['NOTIFIER_URL_HOST'] }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -40,6 +27,13 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  # Skip logging asset requests in development
+  config.assets.quiet = true
+
+  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+  # yet still be able to expire them through the digest params.
+  config.assets.digest = true
+
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
@@ -47,4 +41,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   config.action_view.raise_on_missing_translations = true
+
+  # Set up default url options for mailer
+  config.action_mailer.default_url_options = { host: ENV['NOTIFIER_URL_HOST'] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV['SMTP_HOST'],
+    port:                 ENV['SMTP_PORT'],
+    authentication:       ENV.fetch('SMTP_AUTHENTICATION', :plain).to_sym,
+    user_name:            ENV['SMTP_USERNAME'],
+    password:             ENV['SMTP_PASSWORD'],
+    domain:               ENV['SMTP_DOMAIN'],
+    enable_starttls_auto: true,
+  }
 end

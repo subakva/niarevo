@@ -9,7 +9,6 @@ Deployment
 Next
 ----
 
-* upgrade rails 4.2
 * upgrade rails 5.0
 * switch from timecop to rails travel_to
 * upgrade/replace acts-as-taggable-on (4 -> 5)
@@ -17,6 +16,7 @@ Next
 * switch to webpacker for assets
 * remove quiet_assets
 * upgrade rails 5.1
+* update rspec setup (spec_helper/rails_helper)
 
 * remove FacebookController (what was that for...?)
 * remove jquery (this would require getting rid of bootstrap)

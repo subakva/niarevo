@@ -14,6 +14,7 @@ module Niarevo
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+    # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'UTC'
 
     config.cache_store = :redis_store, ENV['REDIS_URL'], { expires_in: 90.minutes }
@@ -22,9 +23,7 @@ module Niarevo
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    console do
-      require 'pry'
-      config.console = Pry
-    end
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

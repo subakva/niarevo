@@ -6,10 +6,9 @@ end
 
 ruby '2.2.7'
 
-gem 'rails', '~>4.1.0'
+gem 'rails', '~>4.2.0'
 
 gem 'airbrake'      # error reporting
-gem 'foreigner'     # foreign key support
 gem 'pg'            # postgresql db adapter
 gem 'puma'          # app server
 gem 'rack-timeout'  # kill slow responses
@@ -24,7 +23,7 @@ gem 'sass-rails'                        # scss stylesheet preprocessor
 gem 'slim-rails'                        # template system
 gem 'uglifier'                          # Javascript compressor
 
-gem 'acts-as-taggable-on'                   # tagging system
+gem 'acts-as-taggable-on', '~>4.0'          # tagging system
 gem 'authlogic'                             # user auth, activation, etc.
 gem 'dotenv-rails'                          # autoload env variables from .env
 gem 'fog-aws'                               # For pushing sitemaps to S3
@@ -36,7 +35,6 @@ gem 'sitemap_generator'                     # generates sitemaps for search engi
 gem 'unf'                                   # For encoding AWS strings
 
 gem 'awesome_print' # Pretty output while debugging
-gem 'pry'           # Better REPL
 
 group :production do
   gem 'rails_12factor' # heroku logging, assets, etc.
@@ -50,18 +48,22 @@ group :development, :test do
   gem 'launchy'
   gem 'morecane'
   gem 'poltergeist'
+  gem 'pry-byebug'
+  gem 'pry-remote'
   gem 'rspec-rails'
   gem 'simplecov'
 end
 
 group :test do
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
   gem 'timecop'
 end
 
 group :development do
+  gem 'annotate'
+  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'annotate'
-  gem 'quiet_assets'
+  gem 'web-console'
 end

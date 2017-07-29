@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170728015704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dreams", force: true do |t|
+  create_table "dreams", force: :cascade do |t|
     t.text     "description",                       null: false
     t.integer  "user_id"
     t.integer  "dreamer_tag_count", default: 0,     null: false
@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 20170728015704) do
   add_index "dreams", ["updated_at"], name: "index_dreams_on_updated_at", using: :btree
   add_index "dreams", ["user_id", "private"], name: "index_dreams_on_user_id_and_private", using: :btree
 
-  create_table "invites", force: true do |t|
-    t.string   "message"
-    t.string   "recipient_name", limit: 64, null: false
-    t.string   "email",                     null: false
-    t.integer  "user_id",                   null: false
+  create_table "invites", force: :cascade do |t|
+    t.string   "message",        limit: 255
+    t.string   "recipient_name", limit: 64,  null: false
+    t.string   "email",          limit: 255, null: false
+    t.integer  "user_id",                    null: false
     t.datetime "sent_at"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "invites", ["email", "user_id"], name: "index_invites_on_email_and_user_id", unique: true, using: :btree
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170728015704) do
   add_index "invites", ["sent_at"], name: "index_invites_on_sent_at", using: :btree
   add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",                   null: false
     t.integer  "taggable_id",              null: false
     t.string   "taggable_type", limit: 32, null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170728015704) do
   add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
   add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string   "name",           limit: 64,             null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
@@ -79,24 +79,24 @@ ActiveRecord::Schema.define(version: 20170728015704) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "username",            limit: 32,                 null: false
-    t.string   "email",                                          null: false
-    t.string   "crypted_password",                               null: false
-    t.string   "password_salt",                                  null: false
-    t.string   "persistence_token",                              null: false
-    t.string   "single_access_token",                            null: false
-    t.string   "perishable_token",                               null: false
-    t.integer  "login_count",                    default: 0,     null: false
-    t.integer  "failed_login_count",             default: 0,     null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "username",            limit: 32,                  null: false
+    t.string   "email",               limit: 255,                 null: false
+    t.string   "crypted_password",    limit: 255,                 null: false
+    t.string   "password_salt",       limit: 255,                 null: false
+    t.string   "persistence_token",   limit: 255,                 null: false
+    t.string   "single_access_token", limit: 255,                 null: false
+    t.string   "perishable_token",    limit: 255,                 null: false
+    t.integer  "login_count",                     default: 0,     null: false
+    t.integer  "failed_login_count",              default: 0,     null: false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip",    limit: 46
     t.string   "last_login_ip",       limit: 46
-    t.boolean  "active",                         default: false, null: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.boolean  "active",                          default: false, null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -105,10 +105,7 @@ ActiveRecord::Schema.define(version: 20170728015704) do
   add_index "users", ["single_access_token"], name: "index_users_on_single_access_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
-  add_foreign_key "dreams", "users", name: "dreams_user_id_fk", dependent: :delete
-
-  add_foreign_key "invites", "users", name: "invites_user_id_fk", dependent: :delete
-
-  add_foreign_key "taggings", "tags", name: "taggings_tag_id_fk", dependent: :delete
-
+  add_foreign_key "dreams", "users", name: "dreams_user_id_fk", on_delete: :cascade
+  add_foreign_key "invites", "users", name: "invites_user_id_fk", on_delete: :cascade
+  add_foreign_key "taggings", "tags", name: "taggings_tag_id_fk", on_delete: :cascade
 end
