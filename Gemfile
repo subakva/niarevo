@@ -21,6 +21,7 @@ gem 'font-awesome-sass'                 # adds additional icons
 gem 'sass-rails'                        # scss stylesheet preprocessor
 gem 'slim-rails'                        # template system
 gem 'uglifier'                          # Javascript compressor
+gem 'webpacker'                         # Trigger yarn on heroku
 
 gem 'authlogic'                             # user auth, activation, etc.
 gem 'dotenv-rails'                          # autoload env variables from .env
