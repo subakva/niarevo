@@ -12,7 +12,7 @@ Next
 * drop taggings and tags tables
 * switch from timecop to rails travel_to
 * switch to webpacker for assets
-
+* upgrade postgres to 9.6
 * bootsnap
 * change activejob adapter?
 * update rspec setup (spec_helper/rails_helper)
