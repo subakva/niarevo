@@ -1,4 +1,4 @@
-class EnsureNonNullTimestamps < ActiveRecord::Migration
+class EnsureNonNullTimestamps < ActiveRecord::Migration[4.2]
   def change
     [
       :dreams,

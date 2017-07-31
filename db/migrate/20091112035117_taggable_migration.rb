@@ -1,4 +1,4 @@
-class TaggableMigration < ActiveRecord::Migration
+class TaggableMigration < ActiveRecord::Migration[4.2]
   def self.up
     create_table :tags do |t|
       t.string :name, null: false, limit: 64

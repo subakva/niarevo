@@ -1,4 +1,4 @@
-class ChangeTagNames < ActiveRecord::Migration
+class ChangeTagNames < ActiveRecord::Migration[4.2]
   def up
     rename_column :dreams, :context_tag_count, :dreamer_tag_count
     rename_column :dreams, :content_tag_count, :dream_tag_count

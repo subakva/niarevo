@@ -1,4 +1,4 @@
-class CreateDreams < ActiveRecord::Migration
+class CreateDreams < ActiveRecord::Migration[4.2]
   def self.up
     create_table :dreams do |t|
       t.text :description,  null: false

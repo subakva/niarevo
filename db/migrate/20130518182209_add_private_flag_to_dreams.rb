@@ -1,4 +1,4 @@
-class AddPrivateFlagToDreams < ActiveRecord::Migration
+class AddPrivateFlagToDreams < ActiveRecord::Migration[4.2]
   def up
     add_column :dreams, :private, :boolean, null: false, default: false
     add_index :dreams, [:user_id, :private]
