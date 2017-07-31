@@ -22,7 +22,6 @@ gem 'sass-rails'                        # scss stylesheet preprocessor
 gem 'slim-rails'                        # template system
 gem 'uglifier'                          # Javascript compressor
 
-gem 'acts-as-taggable-on', '~>4.0'          # tagging system
 gem 'authlogic'                             # user auth, activation, etc.
 gem 'dotenv-rails'                          # autoload env variables from .env
 gem 'fog-aws'                               # For pushing sitemaps to S3

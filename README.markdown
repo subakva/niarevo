@@ -9,9 +9,8 @@ Deployment
 Next
 ----
 
+* drop taggings and tags tables
 * switch from timecop to rails travel_to
-* upgrade/replace acts-as-taggable-on
-* switch to yarn for js
 * switch to webpacker for assets
 
 * bootsnap

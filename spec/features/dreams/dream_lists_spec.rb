@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 feature 'Dream Lists' do
-
   scenario 'viewing all recent dreams' do
     recent1    = FactoryGirl.create(:dream,             created_at: 1.month.ago)
     recent2    = FactoryGirl.create(:dream, :untagged,  created_at: 2.months.ago)
@@ -37,8 +36,8 @@ feature 'Dream Lists' do
   end
 
   scenario 'viewing dreams with a tag' do
-    tagged1       = FactoryGirl.create(:dream, dream_tag_list: ['stump'])
-    tagged2       = FactoryGirl.create(:dream, dreamer_tag_list: ['stump'])
+    tagged1       = FactoryGirl.create(:dream, dream_tags: ['stump'])
+    tagged2       = FactoryGirl.create(:dream, dreamer_tags: ['stump'])
     not_matching  = FactoryGirl.create(:dream)
 
     ensure_on tag_dreams_path('stump')
@@ -48,9 +47,9 @@ feature 'Dream Lists' do
   end
 
   scenario 'viewing dreams with a dream tag' do
-    tagged1       = FactoryGirl.create(:dream, dream_tag_list: ['stump'])
-    tagged2       = FactoryGirl.create(:dream, dream_tag_list: ['stump'])
-    not_matching  = FactoryGirl.create(:dream, dreamer_tag_list: ['stump'])
+    tagged1       = FactoryGirl.create(:dream, dream_tags: ['stump'])
+    tagged2       = FactoryGirl.create(:dream, dream_tags: ['stump'])
+    not_matching  = FactoryGirl.create(:dream, dreamer_tags: ['stump'])
 
     ensure_on dream_tag_dreams_path('stump')
 
@@ -59,9 +58,9 @@ feature 'Dream Lists' do
   end
 
   scenario 'viewing dreams with a dreamer tag' do
-    tagged1       = FactoryGirl.create(:dream, dreamer_tag_list: ['stump'])
-    tagged2       = FactoryGirl.create(:dream, dreamer_tag_list: ['stump'])
-    not_matching  = FactoryGirl.create(:dream, dream_tag_list: ['stump'])
+    tagged1       = FactoryGirl.create(:dream, dreamer_tags: ['stump'])
+    tagged2       = FactoryGirl.create(:dream, dreamer_tags: ['stump'])
+    not_matching  = FactoryGirl.create(:dream, dreamer_tags: [], dream_tags: ['stump'])
 
     ensure_on dreamer_tag_dreams_path('stump')
 
@@ -80,9 +79,9 @@ feature 'Dream Lists' do
   end
 
   scenario 'viewing dreams without dream tags' do
-    untagged1 = FactoryGirl.create(:dream, dream_tag_list: [])
-    untagged2 = FactoryGirl.create(:dream, dream_tag_list: [])
-    tagged    = FactoryGirl.create(:dream, dream_tag_list: ['stump'], dreamer_tag_list: [])
+    untagged1 = FactoryGirl.create(:dream, dream_tags: [])
+    untagged2 = FactoryGirl.create(:dream, dream_tags: [])
+    tagged    = FactoryGirl.create(:dream, dream_tags: ['stump'], dreamer_tags: [])
     ensure_on untagged_dream_dreams_path
 
     expect(dream_list).to include_dreams(untagged1, untagged2)
@@ -90,9 +89,9 @@ feature 'Dream Lists' do
   end
 
   scenario 'viewing dreams without dreamer tags' do
-    untagged1 = FactoryGirl.create(:dream, dreamer_tag_list: [])
-    untagged2 = FactoryGirl.create(:dream, dreamer_tag_list: [])
-    tagged    = FactoryGirl.create(:dream, dreamer_tag_list: ['stump'], dream_tag_list: [])
+    untagged1 = FactoryGirl.create(:dream, dreamer_tags: [])
+    untagged2 = FactoryGirl.create(:dream, dreamer_tags: [])
+    tagged    = FactoryGirl.create(:dream, dreamer_tags: ['stump'], dream_tags: [])
     ensure_on untagged_dreamer_dreams_path
 
     expect(dream_list).to include_dreams(untagged1, untagged2)

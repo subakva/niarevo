@@ -21,6 +21,14 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_email                (email) UNIQUE
+#  index_users_on_perishable_token     (perishable_token) UNIQUE
+#  index_users_on_persistence_token    (persistence_token) UNIQUE
+#  index_users_on_single_access_token  (single_access_token) UNIQUE
+#  index_users_on_username             (username) UNIQUE
+#
 
 class User < ApplicationRecord
   include Gravtastic

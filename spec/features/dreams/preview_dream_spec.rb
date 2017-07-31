@@ -5,8 +5,8 @@ feature "Dream Preview", js: true do
 
   let(:dream_attributes) { FactoryGirl.attributes_for(:dream, :anonymous) }
   let(:dream_text)    { dream_attributes[:description] }
-  let(:dream_tags)    { dream_attributes[:dream_tag_list] }
-  let(:dreamer_tags)  { dream_attributes[:dreamer_tag_list] }
+  let(:dream_tags)    { dream_attributes[:dream_tags] }
+  let(:dreamer_tags)  { dream_attributes[:dreamer_tags] }
 
   scenario 'previewing a dream' do
     sign_in_as user

@@ -115,7 +115,7 @@ class DreamsController < ApplicationController
   end
 
   def dream_params
-    params.require(:dream).permit(:description, :dream_tag_list, :dreamer_tag_list, :private)
+    params.require(:dream).permit(:description, :joined_dream_tags, :joined_dreamer_tags, :private)
   end
 
   def title_for_dates(range)

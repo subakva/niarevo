@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: dreams
-#
-#  id                :integer          not null, primary key
-#  description       :text             not null
-#  user_id           :integer
-#  dreamer_tag_count :integer          default(0), not null
-#  dream_tag_count   :integer          default(0), not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  private           :boolean          default(FALSE), not null
-#
-
 require 'spec_helper'
 
 describe Dream do
@@ -19,7 +5,9 @@ describe Dream do
   let(:dream) { FactoryGirl.create(:dream, :untagged, description: 'my public dream') }
 
   describe '.visible_to' do
-    let(:private_dream) { FactoryGirl.create(:dream, :private, user: dreamer, description: 'my private dream') }
+    let(:private_dream) do
+      FactoryGirl.create(:dream, :private, user: dreamer, description: 'my private dream')
+    end
     let(:public_dream) { FactoryGirl.create(:dream, description: 'other public dream') }
     let(:hidden_dream) { FactoryGirl.create(:dream, :private, description: 'other private dream') }
 
@@ -63,15 +51,15 @@ describe Dream do
 
   describe 'tagging' do
     before do
-      dream.dream_tag_list = ['one', 'two']
-      dream.dreamer_tag_list = ['one', 'two', 'three']
+      dream.joined_dream_tags = ' ONE, two , two'
+      dream.joined_dreamer_tags = 'one, two by two, three'
       dream.save!
       dream.reload
     end
 
     it 'saves tags' do
-      expect(dream.dream_tag_list.sort).to eq(['one', 'two'].sort)
-      expect(dream.dreamer_tag_list.sort).to eq(['one', 'two', 'three'].sort)
+      expect(dream.dream_tags).to eq(%w[one two].sort)
+      expect(dream.dreamer_tags).to eq(%w[one two-by-two three].sort)
     end
 
     it 'updates the tag counts' do

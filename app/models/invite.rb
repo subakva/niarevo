@@ -11,9 +11,20 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+# Indexes
+#
+#  index_invites_on_email              (email)
+#  index_invites_on_email_and_user_id  (email,user_id) UNIQUE
+#  index_invites_on_sent_at            (sent_at)
+#  index_invites_on_user_id            (user_id)
+#
+# Foreign Keys
+#
+#  invites_user_id_fk  (user_id => users.id) ON DELETE => cascade
+#
 
 class Invite < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
 
   scope :sent_after, ->(min_date) {
     where('sent_at >= ?', min_date)

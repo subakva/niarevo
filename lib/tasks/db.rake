@@ -1,7 +1,7 @@
 namespace :db do
   desc 'Annotates model files'
   task :annotate do
-    system("annotate -i -e tests,fixtures --force")
+    system("annotate -i -k -e tests,fixtures")
   end
 end
 

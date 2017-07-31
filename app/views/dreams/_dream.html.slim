@@ -23,15 +23,15 @@ article data-dream-id="#{dream.id}"
       = render_markdown dream.description
 
     div.dream-tags
-      - if dream.dream_tag_list.empty?
+      - if dream.dream_tags.empty?
         = link_to 'untagged', untagged_dream_dreams_path, class: 'tag-link', title: "Show dreams without dream tags"
-      - for tag in dream.dream_tag_list
+      - for tag in dream.dream_tags
         => link_to tag, dream_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dream tag: #{tag}"
 
     div.dreamer-tags
-      - if dream.dreamer_tag_list.empty?
+      - if dream.dreamer_tags.empty?
         = link_to 'untagged', untagged_dreamer_dreams_path, class: 'tag-link', title: "Show dreams without dreamer tags"
-      - for tag in dream.dreamer_tag_list
+      - for tag in dream.dreamer_tags
         => link_to tag, dreamer_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dreamer tag: #{tag}"
 
     - if current_user && current_user.id == dream.user_id && dream.persisted?

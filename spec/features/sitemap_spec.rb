@@ -53,10 +53,10 @@ feature 'Sitemap' do
 
     # Dream and tag-specific URLs
     expect(doc).to have_mapped_url(dream_url(dream), lastmod: dream.updated_at)
-    dream.dream_tag_list.each do |name|
+    dream.dream_tags.each do |name|
       expect(doc).to have_mapped_url(dream_tag_dreams_url(name), changefreq: 'weekly')
     end
-    dream.dreamer_tag_list.each do |name|
+    dream.dreamer_tags.each do |name|
       expect(doc).to have_mapped_url(dreamer_tag_dreams_url(name), changefreq: 'weekly')
     end
   end
