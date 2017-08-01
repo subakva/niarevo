@@ -18,9 +18,17 @@ RSpec.feature "Dream Editing" do
 
     expect(page).to_not include_recaptcha
     within('.edit-dream') do
-      fill_in 'Describe Your Dream',        with: new_dream_text
-      fill_in 'Dream Tags',                 with: new_dream_tags.join(',')
-      fill_in 'Dreamer Tags',               with: new_dreamer_tags.join(',')
+      fill_in 'Describe Your Dream', with: ''
+      fill_in 'Dream Tags',          with: ''
+      fill_in 'Dreamer Tags',        with: ''
+      click_on 'Save'
+    end
+    expect(page).to have_content("Description can't be blank")
+
+    within('.edit-dream') do
+      fill_in 'Describe Your Dream', with: new_dream_text
+      fill_in 'Dream Tags',          with: new_dream_tags.join(',')
+      fill_in 'Dreamer Tags',        with: new_dreamer_tags.join(',')
       click_on 'Save'
     end
 
