@@ -4,6 +4,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'db/schema.rb'
     - 'app/views/**/*.slim'
+    - 'vendor/**/*'
   TargetRubyVersion: 2.3
   DisplayCopNames: true
 
