@@ -19,6 +19,8 @@ RSpec.feature "Registration" do
     user.destroy
   end
 
+  pending 'failed registration'
+
   scenario "successful registration" do
     expect(page).to display_alert(
       "Thanks! A message has been sent to your email address with a link to activate your account."

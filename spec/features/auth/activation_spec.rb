@@ -15,6 +15,10 @@ RSpec.feature 'Activation' do
     user.destroy
   end
 
+  pending 'with an unknown username'
+  pending 'accessing via index'
+  pending 'with an unknown token'
+
   context 'with an unactivated user' do
     background do
       perform_enqueued_jobs do

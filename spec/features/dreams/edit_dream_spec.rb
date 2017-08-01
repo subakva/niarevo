@@ -23,7 +23,7 @@ RSpec.feature "Dream Editing" do
       fill_in 'Dreamer Tags',        with: ''
       click_on 'Save'
     end
-    expect(page).to have_content("Description can't be blank")
+    expect(page).to display_form_error("Description can't be blank")
 
     within('.edit-dream') do
       fill_in 'Describe Your Dream', with: new_dream_text

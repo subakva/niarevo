@@ -15,6 +15,10 @@ RSpec.feature 'Password Reset' do
     user.destroy
   end
 
+  pending 'with an unknown username'
+  pending 'accessing via index'
+  pending 'with an unknown token'
+
   context 'with an activated user' do
     background do
       perform_enqueued_jobs do
@@ -45,6 +49,8 @@ RSpec.feature 'Password Reset' do
 
       expect(page).to display_alert('Your password has been updated.')
     end
+
+    pending 'setting an invalid password'
   end
 
   context 'with an unactivated user' do
