@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature "Sign In" do
+require 'rails_helper'
+
+RSpec.feature "Sign In" do
   let(:password) { 'password' }
   let(:user) { FactoryGirl.create(:user, password: password) }
 
@@ -9,6 +11,19 @@ feature "Sign In" do
 
   describe 'an activated user' do
     before { user.activate! }
+
+    scenario 'redirecting after sign-in' do
+      visit edit_account_path(user)
+      expect(current_path).to eq(new_user_session_path)
+      sign_in(user.username, password)
+      expect(current_path).to eq(edit_account_path(user))
+    end
+
+    scenario 'already logged in' do
+      sign_in(user.username, password)
+      visit new_user_session_path
+      expect(current_path).to eq(account_path)
+    end
 
     scenario 'entering valid credentials' do
       sign_in(user.username, password)

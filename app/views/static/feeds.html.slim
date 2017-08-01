@@ -1,19 +1,25 @@
-- content_for :header_text do "Available Feeds"; end
+- content_for(:header_text) { "Available Feeds" }
 
 .static-content
   ul
     li
-      = link_to "Recent Dreams", dreams_url(format: :atom), title: 'Subscribe to the recent dreams feed.'
+      = link_to "Recent Dreams", dreams_url(format: :atom),
+        title: 'Subscribe to the recent dreams feed.'
       ' - the 10 most recent dreams from all users
     li
-      = link_to "Anonymous Dreams", user_dreams_path('anonymous', format: :atom), title: 'Subscribe to the recent anonymous dreams feed.'
+      = link_to "Anonymous Dreams", user_dreams_path('anonymous', format: :atom),
+        title: 'Subscribe to the recent anonymous dreams feed.'
       ' - the 10 most recent anonymous dreams
     li
-      = link_to "Dreams by a User", user_dreams_path('sundaykofax', format: :atom), title: 'Subscribe to the recent dreams feed for sundaykofax.'
+      = link_to "Dreams by a User", user_dreams_path('sundaykofax', format: :atom),
+        title: 'Subscribe to the recent dreams feed for sundaykofax.'
       ' - the 10 most recent dreams from a single user
     li
-      = link_to 'Dreams tagged "shark"', tag_dreams_path('shark', format: :atom), title: 'Subscribe to the feed of dreams tagged "shark".'
+      = link_to 'Dreams tagged "shark"', tag_dreams_path('shark', format: :atom),
+        title: 'Subscribe to the feed of dreams tagged "shark".'
       ' - the 10 most recent dreams from a single tag
     li
-      = link_to "Dreams on Christmas Eve", dreams_by_day_path(year: 2008, month: 12, day: 25, format: :atom), title: 'Subscribe to the feed of dreams on December 25, 2008'
+      = link_to "Dreams on Christmas Eve",
+        dreams_by_day_path(year: 2008, month: 12, day: 25, format: :atom),
+        title: 'Subscribe to the feed of dreams on December 25, 2008'
       ' - the 10 most recent dreams for a specific date

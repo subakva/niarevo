@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery with: :exception
@@ -17,20 +19,16 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless current_user
-      store_location
-      flash[:notice] = "You must be logged in to access this page"
-      redirect_to new_user_session_url
-      return false
-    end
+    return if current_user
+    store_location
+    flash[:notice] = "You must be logged in to access this page"
+    redirect_to new_user_session_url
   end
 
   def redirect_to_account_if_logged_in
-    if current_user
-      flash[:notice] = 'You are already logged in.'
-      redirect_to account_url
-      return false
-    end
+    return unless current_user
+    flash[:notice] = 'You are already logged in.'
+    redirect_to account_url
   end
 
   def store_location

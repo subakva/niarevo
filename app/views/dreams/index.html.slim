@@ -2,15 +2,15 @@
   p There are no dreams that match that criteria.
 - else
   section.dream-list
-    - for dream in @dreams
+    - @dreams.each do |dream|
       = render dream
       .clearfix
 
     .results-meta
-      = raw page_entries_info @dreams
+      = page_entries_info @dreams
 
     .results-nav
       - if paginated?(@dreams)
-        = raw paginate @dreams, container: nil
+        = paginate @dreams, container: nil
       - else
         nav.pagination

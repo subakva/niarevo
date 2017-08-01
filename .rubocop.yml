@@ -4,7 +4,8 @@ AllCops:
     - 'node_modules/**/*'
     - 'db/schema.rb'
     - 'app/views/**/*.slim'
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
 
 # Metrics Cops
 
@@ -17,6 +18,14 @@ Metrics/BlockLength:
     - 'bin/*'
     - 'spec/**/*'
     - 'config/environments/*.rb'
+    - 'config/routes.rb'
+    - 'config/sitemap.rb'
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.rb'
 
 # Style Cops
 
@@ -32,6 +41,12 @@ Style/SymbolArray:
   Enabled: false
 Style/BlockDelimiters:
   Exclude:
+    - 'spec/**/*_spec.rb'
+Style/FormatStringToken:
+  Enabled: false
+Style/PredicateName:
+  Exclude:
+    - 'spec/**/*_matchers.rb'
     - 'spec/**/*_spec.rb'
 
 # Layout Cops

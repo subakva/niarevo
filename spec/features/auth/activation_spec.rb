@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature 'Activation' do
+require 'rails_helper'
+
+RSpec.feature 'Activation' do
   include ActiveJob::TestHelper
 
   let(:user) { FactoryGirl.create(:user, :inactive) }
@@ -23,10 +25,10 @@ feature 'Activation' do
     scenario 'requesting an activation' do
       expect(current_path).to eq(root_path)
 
-      expect(page).to display_alert(%{
+      expect(page).to display_alert(%(
         An activation key was sent by email.
         Follow the link in the email to activate your account.
-      }.squish)
+      ).squish)
 
       expect(user).to have_email_with(
         activation_path(user.perishable_token)
@@ -55,5 +57,4 @@ feature 'Activation' do
       expect(current_url).to eq(new_password_reset_url(username: user.username))
     end
   end
-
 end

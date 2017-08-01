@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-describe Notifier do
+require 'rails_helper'
+
+RSpec.describe Notifier do
   let(:user) { FactoryGirl.create(:user) }
 
   shared_examples_for 'all emails' do
@@ -10,7 +12,7 @@ describe Notifier do
     end
 
     it "uses the notifier layout" do
-      expect(mail.body).to match(/Thanks,<br \/>The DreamTagger Team/)
+      expect(mail.body).to match(%r{Thanks,<br \/>The DreamTagger Team})
     end
   end
 
@@ -69,7 +71,6 @@ describe Notifier do
     it "includes the about link" do
       expect(mail.body).to match(Regexp.new("http://niarevo.dev/about"))
     end
-
   end
 
   describe 'activation_instructions' do

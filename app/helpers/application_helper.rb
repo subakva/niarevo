@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def page_title
     ['DreamTagger', header_text].uniq.join(' - ')
@@ -11,7 +13,7 @@ module ApplicationHelper
 
   def render_markdown(markdown)
     markdown = RDiscount.new(markdown, :filter_html)
-    markdown.to_html.html_safe
+    markdown.to_html.html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def strip_markdown(markdown)

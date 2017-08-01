@@ -1,4 +1,4 @@
-article data-dream-id="#{dream.id}"
+article data-dream-id=dream.id
   div.dream-head
     - if dream.user
       = image_tag dream.user.gravatar_url(size: 80), alt: 'gravatar'
@@ -11,7 +11,8 @@ article data-dream-id="#{dream.id}"
           i.fa.fa-lock title='This is a private dream.'
       div.dream-dreamer
         - if dream.user
-          = link_to("#{dream.user.username}", user_dreams_path(dream.user.username), title: 'Show recent dreams from this user.')
+          = link_to dream.user.username, user_dreams_path(dream.user.username),
+            title: 'Show recent dreams from this user.'
         - else
           | Anonymous
       - if dream.created_at
@@ -24,18 +25,25 @@ article data-dream-id="#{dream.id}"
 
     div.dream-tags
       - if dream.dream_tags.empty?
-        = link_to 'untagged', untagged_dream_dreams_path, class: 'tag-link', title: "Show dreams without dream tags"
-      - for tag in dream.dream_tags
-        => link_to tag, dream_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dream tag: #{tag}"
+        = link_to 'untagged', untagged_dream_dreams_path,
+          class: 'tag-link',
+          title: "Show dreams without dream tags"
+      - dream.dream_tags.each do |tag|
+        => link_to tag, dream_tag_dreams_path(tag),
+          class: 'tag-link',
+            title: "Show recent dreams with dream tag: #{tag}"
 
     div.dreamer-tags
       - if dream.dreamer_tags.empty?
-        = link_to 'untagged', untagged_dreamer_dreams_path, class: 'tag-link', title: "Show dreams without dreamer tags"
-      - for tag in dream.dreamer_tags
-        => link_to tag, dreamer_tag_dreams_path(tag), class: 'tag-link', title: "Show recent dreams with dreamer tag: #{tag}"
+        = link_to 'untagged', untagged_dreamer_dreams_path,
+          class: 'tag-link',
+          title: "Show dreams without dreamer tags"
+      - dream.dreamer_tags.each do |tag|
+        => link_to tag, dreamer_tag_dreams_path(tag),
+          class: 'tag-link',
+          title: "Show recent dreams with dreamer tag: #{tag}"
 
     - if current_user && current_user.id == dream.user_id && dream.persisted?
       div.dream-actions
         = link_to "[Edit]", edit_dream_path(dream), title: 'Edit this dream.'
-        / = link_to "[Add Tags]", tag_dream_path(dream), class: 'add-tags', title: 'Tag this dream.'
 

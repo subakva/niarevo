@@ -6,9 +6,12 @@ ul.list-inline.main-menu
   - if current_user
     li = link_to account_path, title: 'Your Account' do
       i.fa.fa-user.fa-2x
-    li = link_to user_session_path, title: "Sign Out", \
-          method: :delete, data: {confirm: "Sign out?"} do
-      i.fa.fa-sign-out.fa-2x
+    li
+      = link_to user_session_path,
+        title: "Sign Out",
+        method: :delete,
+        data: { confirm: "Sign out?" } do
+        i.fa.fa-sign-out.fa-2x
   - else
     li = link_to new_account_path, title: "Create Account" do
       i.fa.fa-asterisk.fa-2x

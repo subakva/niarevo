@@ -1,8 +1,11 @@
-- content_for :header_text do "Edit Your Dream"; end
+- content_for(:header_text) { "Edit Your Dream" }
 
 = form_for @dream, html: { class: 'edit-dream form-horizontal' } do |f|
   = render partial: "form", object: f
   = dt_submit(f, 'Save') do
     = link_to 'Cancel', dreams_path, title: 'Cancel', class: 'btn btn-default'
-    = link_to 'Preview', preview_dreams_path, title: 'Preview', class: 'btn btn-default preview-link', rel: 'nofollow'
+    = link_to 'Preview', preview_dreams_path,
+      title: 'Preview',
+      class: 'btn btn-default preview-link',
+        rel: 'nofollow'
 

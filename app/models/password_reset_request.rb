@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class PasswordResetRequest
   include ActiveModel::Model
 
   validates :username_or_email, presence: true
-  validates_presence_of :user, message: "Sorry, we couldn't find that account."
+  validates :user, presence: { message: "Sorry, we couldn't find that account." }
   validate :user_is_active
 
   attr_accessor :username_or_email
@@ -14,7 +16,7 @@ class PasswordResetRequest
   end
 
   def user
-    @user ||= User.find_by_username_or_email({username_or_email: username_or_email})
+    @user ||= User.with_username_or_email(username_or_email).first
   end
 
   def active_user?

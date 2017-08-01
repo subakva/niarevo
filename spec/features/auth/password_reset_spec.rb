@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature 'Password Reset' do
+require 'rails_helper'
+
+RSpec.feature 'Password Reset' do
   include ActiveJob::TestHelper
 
   let(:user) { FactoryGirl.create(:user) }
@@ -60,5 +62,4 @@ feature 'Password Reset' do
       expect(current_url).to eq(new_activation_url(username: user.username))
     end
   end
-
 end

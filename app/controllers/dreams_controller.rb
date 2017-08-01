@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 require 'date_range'
 
-class DreamsController < ApplicationController
-
+class DreamsController < ApplicationController # rubocop:disable Metrics/ClassLength
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
-  before_action :require_user, :only => [:edit, :update, :destroy]
-  before_action :load_dream, :only => [:show]
-  before_action :load_dream_for_edit, :only => [:edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :load_dream, only: [:show]
+  before_action :load_dream_for_edit, only: [:edit, :update, :destroy]
 
   def index
     @header_text = 'DreamTagger'
@@ -54,6 +55,7 @@ class DreamsController < ApplicationController
     render_dream_index(Dream.where(dream_tag_count: 0))
   end
 
+  # rubocop:disable Metrics/AbcSize
   def for_date
     range = DateRange.new
     range.apply_year(params[:year])
@@ -65,11 +67,13 @@ class DreamsController < ApplicationController
     scope = scope.created_since(range.min_date)
     render_dream_index(scope)
   end
+  # rubocop:enable Metrics/AbcSize
 
   def new
     @dream = Dream.new
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def create
     @dream = Dream.new(dream_params)
     @dream.user = current_user
@@ -85,9 +89,9 @@ class DreamsController < ApplicationController
       render :new
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
-  def show
-  end
+  def show; end
 
   def preview
     @dream = Dream.new(dream_params)
@@ -95,8 +99,7 @@ class DreamsController < ApplicationController
     render partial: 'dream', layout: false, object: @dream
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @dream.update(dream_params)
@@ -145,15 +148,14 @@ class DreamsController < ApplicationController
 
   def load_dream_for_edit
     @dream = current_user ? current_user.dreams.where(id: params[:id]).first : nil
-    unless @dream
-      flash[:notice] = 'You are not allowed to edit that dream.'
-      redirect_to root_url
-    end
+    return @dream if @dream
+
+    flash[:notice] = 'You are not allowed to edit that dream.'
+    redirect_to root_url
   end
 
   def load_dream
     @dream = Dream.visible_to(current_user).find(params[:id])
-    raise 'hello' if @dream.nil?
   end
 
   def handle_not_found

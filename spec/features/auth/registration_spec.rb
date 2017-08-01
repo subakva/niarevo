@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature "Registration" do
+require 'rails_helper'
+
+RSpec.feature "Registration" do
   include ActiveJob::TestHelper
 
   let(:username) { 'buzzard' }

@@ -1,20 +1,8 @@
-# == Schema Information
-#
-# Table name: invites
-#
-#  id             :integer          not null, primary key
-#  message        :string(255)
-#  recipient_name :string(64)       not null
-#  email          :string(255)      not null
-#  user_id        :integer          not null
-#  sent_at        :datetime
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#
+# frozen_string_literal: true
 
-require 'spec_helper'
+require 'rails_helper'
 
-describe Invite do
+RSpec.describe Invite do
   before { Timecop.freeze }
   after { Timecop.return }
 
@@ -22,7 +10,7 @@ describe Invite do
 
   it "does not create an invite for a current user" do
     user = invite.user
-    invite = Invite.new(:email => user.email)
+    invite = Invite.new(email: user.email)
     expect(invite).to_not be_valid
     expect(invite.errors[:base].size).to eq(1)
     expect(invite.errors[:base]).to include('An account already exists for that email.')
@@ -46,13 +34,19 @@ describe Invite do
 
     it "does not send an invitation if one was sent in the last week" do
       expect(Notifier).to_not receive(:invitation)
-      recent_invite = FactoryGirl.create(:invite, email: invite.email, sent_at: (7.days.ago + 1.minute))
+      FactoryGirl.create(:invite,
+        email: invite.email,
+        sent_at: (7.days.ago + 1.minute)
+      )
       invite.deliver_invitation!
     end
 
     it "sends an invitation if one was sent more than a week ago" do
       expect(Notifier).to receive(:invitation).with(invite).and_return(double(deliver: true))
-      old_invite = FactoryGirl.create(:invite, email: invite.email, sent_at: (7.days.ago - 1.minute))
+      FactoryGirl.create(:invite,
+        email: invite.email,
+        sent_at: (7.days.ago - 1.minute)
+      )
       invite.deliver_invitation!
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Set the host name for URL creation
 # SitemapGenerator::Sitemap.default_host = "http://www.dreamtagger.com"
 SitemapGenerator::Sitemap.default_host = ENV['SITEMAP_HOST'] || 'http://www.dreamtagger.com'

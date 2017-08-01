@@ -1,11 +1,13 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature "Dream Editing" do
+require 'rails_helper'
+
+RSpec.feature "Dream Editing" do
   let(:user) { FactoryGirl.create(:user) }
   let!(:dream) { FactoryGirl.create(:dream, user: user) }
   let(:new_dream_text) { 'Simply sanitizing the sullen snooge is sufficient.' }
-  let(:new_dream_tags) { %w{sausage blitzkrieg} }
-  let(:new_dreamer_tags) { %w{mines jupiter} }
+  let(:new_dream_tags) { %w[sausage blitzkrieg] }
+  let(:new_dreamer_tags) { %w[mines jupiter] }
 
   scenario 'editing a dream' do
     sign_in_as user

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AuthFeatureHelpers
   def registration_form
     find('#new_user')
@@ -55,7 +57,6 @@ module AuthFeatureHelpers
       click_button "Create Account"
     end
   end
-
 end
 
 RSpec.configure do |config|

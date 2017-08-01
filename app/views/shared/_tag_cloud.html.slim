@@ -1,10 +1,8 @@
 p.tag-cloud
-  - if !tag_cloud.blank?
-    - tag_counts = tag_cloud.map { |_, count| count }
-    - max_count = tag_counts.max
-    - min_count = tag_counts.min
-    - for (tag, count) in tag_cloud.to_a.shuffle
-      = link_to tag, tag_dreams_path(tag), class: 'tag-link', \
+  - if tag_cloud.present?
+    - tag_cloud.each do |(tag, _count)|
+      = link_to tag, tag_dreams_path(tag),
+        class: 'tag-link',
         title: "Show recent dreams with tag: #{tag}"
   - else
     = link_to 'untagged', untagged_dreams_path, class: 'tag-link', title: "Show dreams without tags"

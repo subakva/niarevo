@@ -1,7 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature "Private Dreams" do
+require 'rails_helper'
 
+RSpec.feature "Private Dreams" do
   context 'an anonymous user' do
     let(:private_dream) { FactoryGirl.create(:dream, :private) }
 

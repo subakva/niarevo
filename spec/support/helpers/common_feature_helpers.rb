@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommonFeatureHelpers
   def ensure_on(path)
     visit(path) unless current_path == path

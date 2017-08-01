@@ -9,20 +9,21 @@ Deployment
 Next
 ----
 
+* Spec coverage
+  * account management (change email, username, password)
+  * dream help content
+  * unit tests (password_reset_request, activation_request, dream_tagger_control)
 * drop taggings and tags tables
 * switch from timecop to rails travel_to
 * switch to webpacker for assets
 * upgrade postgres to 9.6
 * bootsnap
 * change activejob adapter?
-* update rspec setup (spec_helper/rails_helper)
-* remove FacebookController (what was that for...?)
 * remove jquery (this would require getting rid of bootstrap)
-* remove jquery.form.js (is it being used?)
+* remove jquery.form.js
 * remove coffee-rails (only used for preview.js)
 * remove unf ?what is this used for?
 * switch from travis to circle?
-* use dotfile to run .simplecov
 * switch from rdiscount to kramdown
 * switch to rollbar
 
@@ -38,7 +39,6 @@ Next
 * Statistically improbable phrases (tag generation)
 * Detect correlated tags
 * Invitations
-* Facebook integration
 * test data generation
 * record who added which tags to dreams
 * delete tags
@@ -94,12 +94,6 @@ Next
     * buy an ssl certificate
     * SSL Enforcement (needs $$ on heroku...)
     * A/B Testing
-  * Spec coverage
-    * account management (change email, username, password)
-    * dream help content
-    * zeitgeist
-    * static pages
-    * unit tests (password_reset_request, activation_request, dream_tagger_control)
 
 ## Completed Features ##
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Airbrake is an online tool that provides robust exception tracking in your Rails
 # applications. In doing so, it allows you to easily review errors, tie an error
 # to an individual piece of code, and trace the cause back to recent
@@ -12,7 +14,7 @@ Airbrake.configure do |c|
   # project_key navigate to your project's General Settings and copy the values
   # from the right sidebar.
   # https://github.com/airbrake/airbrake-ruby#project_id--project_key
-  c.project_id = 88421
+  c.project_id = 88421 # rubocop:disable Style/NumericLiterals
   c.project_key = 'd9fe02d0c90cb8de5d0834e5aa971cdf'
 
   # Configures the root directory of your project. Expects a String or a
@@ -39,7 +41,7 @@ Airbrake.configure do |c|
   # unwanted environments such as :test.
   # NOTE: This option *does not* work if you don't set the 'environment' option.
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
-  c.ignore_environments = %w(development test)
+  c.ignore_environments = %w[development test]
 
   # A list of parameters that should be filtered out of what is sent to
   # Airbrake. By default, all "password" attributes will have their contents

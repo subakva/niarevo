@@ -1,10 +1,10 @@
-- content_for :header_text do "Dashboard"; end
+- content_for(:header_text) { "Dashboard" }
 
 .dashboard
   h3 Recent Dreams
   ul
-    - if !@user.dreams.recent.blank?
-      - for dream in @user.dreams
+    - if @user.dreams.recent.exists?
+      - @user.dreams.recent.each do |dream|
         li
           = link_to truncate(dream.description), dream_path(dream), title: 'View this dream'
     - else

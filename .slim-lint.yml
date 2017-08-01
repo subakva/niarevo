@@ -1,0 +1,12 @@
+linters:
+  LineLength:
+    max: 100
+  RedundantDiv:
+    enabled: false
+  RuboCop:
+    ignored_cops:
+      - Layout/AlignParameters
+      - Layout/IndentationWidth
+      - Layout/TrailingBlankLines
+      - Style/FileName
+      - Style/FrozenStringLiteralComment

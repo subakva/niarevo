@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 RSpec::Matchers.define :have_mapped_url do |loc, options|
   match do |doc|
     url_found?(doc, loc) && options_match?(doc, loc, options)
   end
 
   def url_element(doc, loc)
-    @url_element = doc.xpath(%{//xmlns:url[xmlns:loc="#{loc}"]})
+    @url_element = doc.xpath(%(//xmlns:url[xmlns:loc="#{loc}"]))
   end
 
   def url_found?(doc, loc)
@@ -16,7 +18,7 @@ RSpec::Matchers.define :have_mapped_url do |loc, options|
       actual_text = url_element(doc, loc).xpath("xmlns:#{name}").try(:text)
       case name
       when :lastmod
-        actual_text[0,19] == expected.iso8601[0,19]
+        actual_text[0, 19] == expected.iso8601[0, 19]
       else
         actual_text == expected.to_s
       end
@@ -31,7 +33,7 @@ RSpec::Matchers.define :have_mapped_url do |loc, options|
     end
   end
 
-  failure_message_when_negated do |actual|
+  failure_message_when_negated do |_actual|
     "expected sitemap to not include url: #{loc.inspect}"
   end
 end

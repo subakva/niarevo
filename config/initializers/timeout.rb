@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rack-timeout'
 
 Rack::Timeout.timeout = Integer(ENV['WEB_TIMEOUT'] || 15) # seconds

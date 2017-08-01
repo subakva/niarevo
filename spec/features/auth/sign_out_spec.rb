@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature "Sign Out" do
+require 'rails_helper'
+
+RSpec.feature "Sign Out" do
   let(:user) { FactoryGirl.create(:user) }
 
   scenario 'signing out to the home page' do

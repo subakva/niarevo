@@ -1,4 +1,4 @@
-- content_for :header_text do "Sign In"; end
+- content_for(:header_text) { "Sign In" }
 
 = form_for @user_session, url: user_session_path, html: { class: 'form-horizontal' } do |f|
   = dt_text_field(f, :username, value: params[:username])

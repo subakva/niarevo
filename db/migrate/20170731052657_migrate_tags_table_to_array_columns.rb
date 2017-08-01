@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MigrateTagsTableToArrayColumns < ActiveRecord::Migration[5.1]
   def up
     select_rows(%(
@@ -19,6 +21,5 @@ class MigrateTagsTableToArrayColumns < ActiveRecord::Migration[5.1]
     end
   end
 
-  def down
-  end
+  def down; end
 end

@@ -1,2 +1,4 @@
+--require simplecov
+--require spec_helper
 --format Fuubar
 --color

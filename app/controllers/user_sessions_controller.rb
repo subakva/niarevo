@@ -8,6 +8,11 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
   end
 
+  def show
+    redirect_to account_path(current_user)
+  end
+
+  # rubocop:disable Metrics/MethodLength
   def create
     @user_session = UserSession.new(user_session_params)
     # TODO: Move this into UserSession
@@ -28,6 +33,7 @@ class UserSessionsController < ApplicationController
       }
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def destroy
     current_user_session.destroy

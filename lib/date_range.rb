@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DateRange
   attr_reader :min_date, :max_date
 
@@ -19,7 +21,7 @@ class DateRange
   end
 
   def apply_range(value, field, field_min_method, field_max_method)
-    return unless value.present?
+    return if value.blank?
     @min_date = @min_date.change(field => value.to_i).send(field_min_method)
     @max_date = @max_date.change(field => value.to_i).send(field_max_method)
   end

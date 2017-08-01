@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature "Dream Preview", js: true do
+require 'rails_helper'
+
+RSpec.feature "Dream Preview", js: true do
   let(:user) { FactoryGirl.create(:user) }
 
   let(:dream_attributes) { FactoryGirl.attributes_for(:dream, :anonymous) }
@@ -29,5 +31,4 @@ feature "Dream Preview", js: true do
       expect(page).to display_dreamer_tags(dreamer_tags)
     end
   end
-
 end

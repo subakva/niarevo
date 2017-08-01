@@ -1,4 +1,4 @@
-- content_for :header_text do truncate(strip_markdown(@dream.description), length: 40); end
+- content_for(:header_text) { truncate(strip_markdown(@dream.description), length: 40) }
 
 section.dream-list
   = render partial: "dream", object: @dream

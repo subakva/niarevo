@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature "Authenticated Dreams" do
+require 'rails_helper'
+
+RSpec.feature "Authenticated Dreams" do
   let(:user) { FactoryGirl.create(:user) }
 
   let(:dream_attributes) { FactoryGirl.attributes_for(:dream, :anonymous) }
@@ -29,5 +31,4 @@ feature "Authenticated Dreams" do
     expect(page).to display_dream_tags(dream_tags)
     expect(page).to display_dreamer_tags(dreamer_tags)
   end
-
 end

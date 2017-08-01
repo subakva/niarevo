@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'date_range'
 
-describe DateRange do
+RSpec.describe DateRange do
   before { Timecop.freeze }
   after { Timecop.return }
 

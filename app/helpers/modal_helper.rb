@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module ModalHelper
+  # rubocop:disable Metrics/MethodLength
   def help_modal(id, title, &block)
     modal_options = {
       'id' => id,
@@ -10,15 +13,19 @@ module ModalHelper
     content_tag(:div, modal_options) do
       content_tag(:div, class: 'modal-dialog', role: 'document') do
         content_tag(:div, class: 'modal-content') do
-          [
-            modal_header(title),
-            modal_body(&block),
-            modal_footer
-          ].join('').html_safe
+          safe_join(
+            [
+              modal_header(title),
+              modal_body(&block),
+              modal_footer
+            ],
+            ''
+          )
         end
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def modal_header(title)
     content_tag(:div, class: 'modal-header') do

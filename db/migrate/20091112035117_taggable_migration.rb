@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TaggableMigration < ActiveRecord::Migration[4.2]
   def self.up
     create_table :tags do |t|

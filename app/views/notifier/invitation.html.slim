@@ -7,7 +7,7 @@ p
   b network of dreams
   ' based on what they are about.
 
-- unless @invite.message.blank?
+- if @invite.message.present?
   p #{@invite.user.username} sent the following message:
   blockquote = @invite.message
 

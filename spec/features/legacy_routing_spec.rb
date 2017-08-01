@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature 'Legacy Routing' do
+require 'rails_helper'
+
+RSpec.feature 'Legacy Routing' do
   scenario 'redirecting untagged context' do
     visit '/dreams/untagged_context'
     expect(current_path).to eq(untagged_dreamer_dreams_path)

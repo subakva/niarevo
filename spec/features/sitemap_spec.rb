@@ -1,7 +1,9 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 require 'zlib'
 
-feature 'Sitemap' do
+RSpec.feature 'Sitemap' do
   let(:sitemap_path) { Rails.root.join('tmp', 'sitemaps', 'sitemap.xml.gz') }
   let!(:dream) { FactoryGirl.create(:dream) }
   let!(:private_dream) { FactoryGirl.create(:dream, :private) }
@@ -62,7 +64,7 @@ feature 'Sitemap' do
   end
 
   def load_sitemap_doc
-    sitemap = ""
+    sitemap = String.new
     Zlib::GzipReader.open(sitemap_path) { |f| sitemap << f.read }
     Nokogiri::XML::Document.parse(sitemap)
   end

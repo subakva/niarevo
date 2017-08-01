@@ -1,8 +1,8 @@
-= render partial: "dreams/shared_fields", locals: {form: form}
+= render "dreams/shared_fields", form: form
 
 - if current_user
-  = render partial: "dreams/auth_fields", locals: {form: form}
+  = render "dreams/auth_fields", form: form
 - else
-  = render partial: "dreams/anon_fields", locals: {form: form}
+  = render "dreams/anon_fields", form: form
 
-= render partial: "dreams/form_modals"
+= render "dreams/form_modals"

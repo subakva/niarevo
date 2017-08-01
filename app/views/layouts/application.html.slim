@@ -3,13 +3,18 @@ html lang="en"
   head
     title = page_title
     - if @link_alternate
-      link rel="alternate" type="application/atom+xml" title="#{page_title}" href="#{@link_alternate}"
+      link{
+        rel="alternate"
+        type="application/atom+xml"
+        title="#{page_title}"
+        href="#{@link_alternate}"
+      }
 
     = csrf_meta_tags
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag 'application'
 
-  body id=(params[:controller].parameterize) class=(params[:action].parameterize)
+  body id=params[:controller].parameterize class=params[:action].parameterize
     .wrapper.container
       header.moonset
         .moon
@@ -24,11 +29,11 @@ html lang="en"
         footer
           ul.list-inline
             li = link_to about_path, title: 'About' do
-                i.fa.fa-question-circle
+              i.fa.fa-question-circle
             li = link_to feeds_path, title: 'Feeds' do
-                i.fa.fa-rss
+              i.fa.fa-rss
             li = link_to terms_path, title: 'Terms' do
-                i.fa.fa-gavel
+              i.fa.fa-gavel
     = javascript_include_tag 'application'
     = yield :script
     = yield :modals

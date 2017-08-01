@@ -1,4 +1,4 @@
-- content_for :header_text do "Create an Account"; end
+- content_for(:header_text) { "Create an Account" }
 
 = form_for @user, url: account_path, html: { class: 'form-horizontal' } do |f|
   = dt_text_field(f, :username)

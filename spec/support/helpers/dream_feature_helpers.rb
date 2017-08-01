@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DreamFeatureHelpers
   def new_dream_form
     find('#new_dream')
@@ -8,7 +10,7 @@ module DreamFeatureHelpers
   end
 
   def dream_item(dream)
-    find(%{[data-dream-id="#{dream.id}"]})
+    find(%([data-dream-id="#{dream.id}"]))
   end
 end
 

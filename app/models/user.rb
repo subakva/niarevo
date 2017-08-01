@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -36,20 +38,22 @@ class User < ApplicationRecord
   acts_as_authentic
 
   scope :active, -> { where(active: true) }
+  scope :with_username_or_email, (lambda do |value|
+    where(username: value).or(where(email: value))
+  end)
 
   has_many :dreams
   has_many :invites
   validates :username, exclusion: %w[admin user anonymous]
 
   def activate!
-    unless self.active?
-      self.update_attribute(:active, true)
-      Notifier.activation_succeeded(self).deliver_later
-    end
+    return if active?
+    update_attributes!(active: true)
+    Notifier.activation_succeeded(self).deliver_later
   end
 
   def deactivate!
-    update_attribute(:active, false)
+    update_attributes(active: false)
   end
 
   def deliver_activation_instructions!
@@ -62,20 +66,9 @@ class User < ApplicationRecord
     Notifier.password_reset_instructions(self).deliver_later
   end
 
-  class << self
-    def find_by_username_or_email(params)
-      user = nil
-      if params[:username]
-        user = User.where(username: params[:username]).first
-      end
-      if params[:email]
-        user ||= User.where(email: params[:email]).first
-      end
-      if params[:username_or_email]
-        user ||= User.where(username: params[:username_or_email]).first
-        user ||= User.where(email: params[:username_or_email]).first
-      end
-      user
-    end
-  end
+  # class << self
+  #   def find_by_username_or_email(value)
+  #     User.where(username: value).or(User.where(email: value)).first
+  #   end
+  # end
 end

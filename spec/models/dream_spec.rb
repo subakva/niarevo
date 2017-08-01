@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-describe Dream do
+require 'rails_helper'
+
+RSpec.describe Dream do
   let(:dreamer) { dream.user }
   let(:dream) { FactoryGirl.create(:dream, :untagged, description: 'my public dream') }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec::Matchers.define :display_dream_tags do |expected|
   match do |_|
     expected.each do |tag|
@@ -46,15 +48,15 @@ RSpec::Matchers.define :display_dreamer_tags do |expected|
   end
 end
 
-RSpec::Matchers.define :include_dreams do |expected|
+RSpec::Matchers.define :include_dreams do |_expected|
   match do |_|
     expected_dream_ids.all? do |dream_id|
-      dream_list.all(%{[data-dream-id="#{dream_id}"]}).first
+      dream_list.all(%([data-dream-id="#{dream_id}"])).first
     end
   end
 
   def expected_dream_ids
-    [*expected].flatten.map { |dream| dream.id }
+    [*expected].flatten.map(&:id)
   end
 
   failure_message do |_|
@@ -72,7 +74,7 @@ module DreamMatcherMethods
   end
 
   def include_dream(dream)
-    have_selector(%{[data-dream-id="#{dream.id}"]})
+    have_selector(%([data-dream-id="#{dream.id}"]))
   end
 
   def display_dreamer_name(name)
@@ -85,6 +87,10 @@ module DreamMatcherMethods
 
   def display_private_dream
     have_selector('.dream-private i.fa.fa-lock')
+  end
+
+  def have_tag_link(tag)
+    have_link(tag, href: tag_dreams_path(tag))
   end
 end
 

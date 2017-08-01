@@ -1,6 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-feature 'Dream Lists' do
+require 'rails_helper'
+
+RSpec.feature 'Dream Lists' do
   scenario 'viewing all recent dreams' do
     recent1    = FactoryGirl.create(:dream,             created_at: 1.month.ago)
     recent2    = FactoryGirl.create(:dream, :untagged,  created_at: 2.months.ago)

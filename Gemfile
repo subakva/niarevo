@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -50,7 +52,9 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-remote'
   gem 'rspec-rails'
-  gem 'simplecov'
+  gem 'rubocop'
+  gem 'simplecov', require: false
+  gem 'slim_lint'
 end
 
 group :test do

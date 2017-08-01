@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 class DreamTaggerControl
   attr_reader :form, :input_method, :symbol, :options
 
   def initialize(form, input_method, symbol, options = nil)
-    @form, @input_method, @symbol = form, input_method, symbol
+    @form = form
+    @input_method = input_method
+    @symbol = symbol
     @options = {
       label: symbol.to_s.humanize
     }.merge(options || {})
@@ -10,10 +14,13 @@ class DreamTaggerControl
 
   def render(view, &block)
     view.content_tag(:div, class: group_classes) do
-      [
-        render_label(view),
-        render_controls_element(view, &block)
-      ].join('').html_safe
+      view.safe_join(
+        [
+          render_label(view),
+          render_controls_element(view, &block)
+        ],
+        ''
+      )
     end
   end
 
@@ -25,29 +32,31 @@ class DreamTaggerControl
     controls_parts << view.content_tag(:div, class: 'col-sm-3') do
       view.capture(&block) if block_given?
     end
-    controls_parts.join('').html_safe
+    view.safe_join(controls_parts, '')
   end
 
   def render_field_errors(view)
     error_content = []
-    if errors[symbol]
-      errors[symbol].each do |error|
-        message = errors.full_message(symbol, error)
-        error_content << view.content_tag(:span, message, class: 'error-label')
-      end
+    errors[symbol]&.each do |error|
+      message = errors.full_message(symbol, error)
+      error_content << view.content_tag(:span, message, class: 'error-label')
     end
-    error_content.join('').html_safe
+    view.safe_join(error_content, '')
   end
 
   def render_label(view)
     view.content_tag(:div, class: 'col-sm-3') do
-      [
-        form.label(symbol, options[:label], class: 'control-label'),
-        render_field_errors(view)
-      ].join('').html_safe
+      view.safe_join(
+        [
+          form.label(symbol, options[:label], class: 'control-label'),
+          render_field_errors(view)
+        ],
+        ''
+      )
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def render_input_element
     input_method_params = [input_method, symbol]
     input_options = options.slice(:class)
@@ -56,6 +65,7 @@ class DreamTaggerControl
     input_method_params << input_options
     form.send(*input_method_params)
   end
+  # rubocop:enable Metrics/AbcSize
 
   def errors
     @errors ||= form.object.errors
