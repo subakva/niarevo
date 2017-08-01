@@ -6,7 +6,7 @@ begin
 
   desc "Run cane to check quality metrics"
   Cane::RakeTask.new(:cane) do |cane|
-    cane.add_threshold 'coverage/covered_percent', :>=, 94
+    cane.add_threshold 'tmp/coverage/.last_run.json', :>=, 95
     cane.no_style = true
     cane.no_doc = true # Change to false to enable documentation checks
     cane.abc_max = 15 # Fail the build if complexity is too high.
