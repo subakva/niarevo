@@ -1,10 +1,20 @@
 # frozen_string_literal: true
 
-require 'slim_lint/rake_task'
-SlimLint::RakeTask.new
+begin
+  require 'slim_lint/rake_task'
+  SlimLint::RakeTask.new
+rescue LoadError
+  warn "slim_lint not available, task not provided."
+  task :slim_lint
+end
 
-require 'rubocop/rake_task'
-RuboCop::RakeTask.new
+begin
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
+rescue LoadError
+  warn "rubocop not available, task not provided."
+  task :rubocop
+end
 
 namespace :spec do
   desc 'Runs specs with coverage and cane checks'

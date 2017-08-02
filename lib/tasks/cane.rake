@@ -24,5 +24,6 @@ begin
       must_not_match_regexp: /(Time\.now|Time\.parse|Date\.parse)/
   end
 rescue LoadError
-  warn "cane not available, quality task not provided."
+  warn "cane not available, task not provided."
+  task :cane
 end
