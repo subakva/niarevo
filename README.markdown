@@ -10,11 +10,10 @@ Next
 ----
 
 * Spec coverage
-  * account management (change email, username, password)
+  * account management (change: email, username, password)
   * dream help content
   * unit tests (password_reset_request, activation_request, dream_tagger_control)
 * drop taggings and tags tables
-* switch from timecop to rails travel_to
 * switch to webpacker for assets
 * upgrade postgres to 9.6
 * bootsnap

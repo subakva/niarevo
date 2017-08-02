@@ -15,9 +15,27 @@ RSpec.feature 'Password Reset' do
     user.destroy
   end
 
-  pending 'with an unknown username'
-  pending 'accessing via index'
-  pending 'with an unknown token'
+  scenario 'with an unknown username' do
+    visit new_password_reset_path
+    expect(page).to have_title('DreamTagger - Forgot Password')
+    within 'form' do
+      fill_in 'Username or email', with: 'tarnation'
+      click_button 'Reset Password'
+    end
+    expect(page).to have_title('DreamTagger - Forgot Password')
+    expect(page).to display_alert('Sorry, we couldn\'t find that account.')
+  end
+
+  scenario 'accessing via index' do
+    visit password_resets_path
+    expect(page).to have_title('DreamTagger - Forgot Password')
+  end
+
+  scenario 'with an unknown token' do
+    visit edit_password_reset_path('junk-of-a-token')
+    expect(page).to have_title('DreamTagger - Sign In')
+    expect(page).to display_alert('Sorry, we couldn\'t find that account.')
+  end
 
   context 'with an activated user' do
     background do
@@ -42,6 +60,14 @@ RSpec.feature 'Password Reset' do
       visit edit_password_reset_path(user.perishable_token)
 
       fill_in 'Password', with: 'drowssap'
+      fill_in 'Confirm password', with: ''
+      click_button 'Save new password'
+
+      expect(page).to display_form_error(
+        "Password confirmation doesn't match Password"
+      )
+
+      fill_in 'Password', with: 'drowssap'
       fill_in 'Confirm password', with: 'drowssap'
       click_button 'Save new password'
 
@@ -49,8 +75,6 @@ RSpec.feature 'Password Reset' do
 
       expect(page).to display_alert('Your password has been updated.')
     end
-
-    pending 'setting an invalid password'
   end
 
   context 'with an unactivated user' do

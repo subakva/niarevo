@@ -2,10 +2,13 @@
 
 require 'spec_helper'
 require 'date_range'
+require 'active_support/testing/time_helpers'
 
 RSpec.describe DateRange do
-  before { Timecop.freeze }
-  after { Timecop.return }
+  include ActiveSupport::Testing::TimeHelpers
+
+  before { travel_to(Time.zone.now) }
+  after { travel_back }
 
   let(:min_date) { Time.utc('2009') }
   let(:max_date) { Time.zone.now }

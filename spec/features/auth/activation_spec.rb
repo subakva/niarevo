@@ -15,9 +15,27 @@ RSpec.feature 'Activation' do
     user.destroy
   end
 
-  pending 'with an unknown username'
-  pending 'accessing via index'
-  pending 'with an unknown token'
+  scenario 'with an unknown username' do
+    visit new_activation_path
+    expect(page).to have_title('DreamTagger - Request Activation Key')
+    within 'form' do
+      fill_in 'Username or email', with: 'tarnation'
+      click_button 'Send Activation Email'
+    end
+    expect(page).to have_title('DreamTagger - Request Activation Key')
+    expect(page).to display_alert('Sorry, we couldn\'t find that account.')
+  end
+
+  scenario 'accessing via index' do
+    visit activations_path
+    expect(page).to have_title('DreamTagger - Request Activation Key')
+  end
+
+  scenario 'with an unknown token' do
+    visit edit_activation_path('junk-of-a-token')
+    expect(page).to have_title('DreamTagger - Sign In')
+    expect(page).to display_alert('Sorry, we couldn\'t find that account.')
+  end
 
   context 'with an unactivated user' do
     background do

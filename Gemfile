@@ -61,7 +61,6 @@ group :test do
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'shoulda-matchers'
-  gem 'timecop'
 end
 
 group :development do

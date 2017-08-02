@@ -3,8 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Invite do
-  before { Timecop.freeze }
-  after { Timecop.return }
+  include ActiveSupport::Testing::TimeHelpers
+
+  before { travel_to(Time.zone.now) }
+  after { travel_back }
 
   let(:invite) { FactoryGirl.create(:invite, :unsent) }
 

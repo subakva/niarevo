@@ -19,7 +19,18 @@ RSpec.feature "Registration" do
     user.destroy
   end
 
-  pending 'failed registration'
+  scenario 'failed registration' do
+    ensure_on new_user_path
+    within registration_form do
+      fill_in "Username", with: username
+      fill_in "Email",    with: ""
+      fill_in "Password", with: "password"
+      fill_in "Confirm password", with: ""
+      click_button "Create Account"
+    end
+    expect(page).to display_form_error("Email should look like an email address.")
+    expect(page).to display_form_error("Password confirmation doesn't match Password")
+  end
 
   scenario "successful registration" do
     expect(page).to display_alert(
