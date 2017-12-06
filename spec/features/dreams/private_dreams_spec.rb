@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature "Private Dreams" do
   context 'an anonymous user' do
-    let(:private_dream) { FactoryGirl.create(:dream, :private) }
+    let(:private_dream) { FactoryBot.create(:dream, :private) }
 
     scenario 'creating a dream' do
       ensure_on new_dream_path
@@ -27,10 +27,10 @@ RSpec.feature "Private Dreams" do
   end
 
   context 'an authenticated user' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
     let(:dream_text) { 'I attended an eel hat party on the Thames.' }
-    let(:public_dream) { FactoryGirl.create(:dream, user: user) }
-    let(:private_dream) { FactoryGirl.create(:dream, :private, description: 'privata', user: user) }
+    let(:public_dream) { FactoryBot.create(:dream, user: user) }
+    let(:private_dream) { FactoryBot.create(:dream, :private, description: 'privata', user: user) }
 
     background do
       sign_in_as user
@@ -70,9 +70,9 @@ RSpec.feature "Private Dreams" do
     end
 
     context "with another person's private dream" do
-      let(:other_user) { FactoryGirl.create(:user) }
+      let(:other_user) { FactoryBot.create(:user) }
       let!(:private_dream) do
-        FactoryGirl.create(:dream, :private, description: 'privates here!', user: other_user)
+        FactoryBot.create(:dream, :private, description: 'privates here!', user: other_user)
       end
 
       scenario 'viewing the dream page' do

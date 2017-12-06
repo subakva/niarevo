@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.feature "Anonymous Dreams" do
-  let(:dream_attributes) { FactoryGirl.attributes_for(:dream, :anonymous) }
+  let(:dream_attributes) { FactoryBot.attributes_for(:dream, :anonymous) }
   let(:dream_text)    { dream_attributes[:description] }
   let(:dream_tags)    { dream_attributes[:dream_tags] }
   let(:dreamer_tags)  { dream_attributes[:dreamer_tags] }

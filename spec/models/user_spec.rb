@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { FactoryGirl.create(:user, :inactive) }
+  subject(:user) { FactoryBot.create(:user, :inactive) }
 
   before do
     allow(Notifier).to receive(:activation_succeeded).and_return(double(deliver_later: true))

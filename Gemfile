@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.3.4'
+ruby '2.3.5'
 
 gem 'rails', '~>5.1.0'
 
@@ -45,7 +45,7 @@ group :development, :test do
   gem 'cane'
   gem 'capybara'
   gem 'capybara-email'
-  gem 'factory_girl'
+  gem 'factory_bot'
   gem 'launchy'
   gem 'morecane'
   gem 'poltergeist'

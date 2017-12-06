@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Password Reset' do
   include ActiveJob::TestHelper
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   background do
     clear_emails

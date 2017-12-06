@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :invite do
     user
     sequence(:recipient_name) { |n| "Muppet #{n}" }

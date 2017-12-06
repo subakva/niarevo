@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.feature "Sign Out" do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   scenario 'signing out to the home page' do
     sign_in_as(user)

@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.feature "Dream Editing" do
-  let(:user) { FactoryGirl.create(:user) }
-  let!(:dream) { FactoryGirl.create(:dream, user: user) }
+  let(:user) { FactoryBot.create(:user) }
+  let!(:dream) { FactoryBot.create(:dream, user: user) }
   let(:new_dream_text) { 'Simply sanitizing the sullen snooge is sufficient.' }
   let(:new_dream_tags) { %w[sausage blitzkrieg] }
   let(:new_dreamer_tags) { %w[mines jupiter] }
@@ -39,7 +39,7 @@ RSpec.feature "Dream Editing" do
   end
 
   scenario "trying to edit someone else's dream" do
-    sign_in_as FactoryGirl.create(:user)
+    sign_in_as FactoryBot.create(:user)
 
     visit edit_dream_path(dream)
 

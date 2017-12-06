@@ -42,8 +42,8 @@ class User < ApplicationRecord
     where(username: value).or(where(email: value))
   end)
 
-  has_many :dreams
-  has_many :invites
+  has_many :dreams, dependent: :destroy
+  has_many :invites, dependent: :destroy
   validates :username, exclusion: %w[admin user anonymous]
 
   def activate!

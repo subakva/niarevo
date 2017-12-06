@@ -8,7 +8,6 @@ class PasswordResetRequest
   validate :user_is_active
 
   attr_accessor :username_or_email
-  attr_reader :user
 
   def create
     return false unless valid?

@@ -4,14 +4,14 @@ require 'rails_helper'
 
 RSpec.describe Dream do
   let(:dreamer) { dream.user }
-  let(:dream) { FactoryGirl.create(:dream, :untagged, description: 'my public dream') }
+  let(:dream) { FactoryBot.create(:dream, :untagged, description: 'my public dream') }
 
   describe '.visible_to' do
     let(:private_dream) do
-      FactoryGirl.create(:dream, :private, user: dreamer, description: 'my private dream')
+      FactoryBot.create(:dream, :private, user: dreamer, description: 'my private dream')
     end
-    let(:public_dream) { FactoryGirl.create(:dream, description: 'other public dream') }
-    let(:hidden_dream) { FactoryGirl.create(:dream, :private, description: 'other private dream') }
+    let(:public_dream) { FactoryBot.create(:dream, description: 'other public dream') }
+    let(:hidden_dream) { FactoryBot.create(:dream, :private, description: 'other private dream') }
 
     let!(:visible_dreams) { [dream, public_dream, private_dream] }
     let!(:hidden_dreams) { [hidden_dream] }

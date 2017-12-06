@@ -45,7 +45,11 @@ Style/BlockDelimiters:
     - 'spec/**/*_spec.rb'
 Style/FormatStringToken:
   Enabled: false
-Style/PredicateName:
+Style/SafeNavigation:
+  Enabled: false
+
+# Naming Cops
+Naming/PredicateName:
   Exclude:
     - 'spec/**/*_matchers.rb'
     - 'spec/**/*_spec.rb'

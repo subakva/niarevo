@@ -19,7 +19,7 @@ RSpec.feature 'Zeitgeist' do
 
   context 'with tagged dreams' do
     let!(:yesterday1) do
-      FactoryGirl.create(:dream,
+      FactoryBot.create(:dream,
         dream_tags: %w[yesterday-dream common-dream],
         dreamer_tags: %w[yesterday-dreamer common-dreamer],
         created_at: 25.hours.ago
@@ -27,7 +27,7 @@ RSpec.feature 'Zeitgeist' do
     end
 
     let!(:yesterday2) do
-      FactoryGirl.create(:dream,
+      FactoryBot.create(:dream,
         dream_tags: %w[yesterday-dream common-dream],
         dreamer_tags: %w[yesterday-dreamer common-dreamer],
         created_at: 25.hours.ago
@@ -35,7 +35,7 @@ RSpec.feature 'Zeitgeist' do
     end
 
     let!(:today1) do
-      FactoryGirl.create(:dream,
+      FactoryBot.create(:dream,
         dream_tags: %w[b-obscure-dream today1-dream today-shared-dream common-dream],
         dreamer_tags: %w[b-obscure-dreamer today1-dreamer today-shared-dreamer common-dreamer],
         created_at: 1.hour.ago
@@ -43,7 +43,7 @@ RSpec.feature 'Zeitgeist' do
     end
 
     let!(:today2) do
-      FactoryGirl.create(:dream,
+      FactoryBot.create(:dream,
         dream_tags: %w[a-obscure-dream today2-dream today-shared-dream common-dream],
         dreamer_tags: %w[a-obscure-dreamer today2-dreamer today-shared-dreamer common-dreamer],
         created_at: 1.hour.ago

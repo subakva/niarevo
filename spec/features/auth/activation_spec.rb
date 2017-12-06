@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Activation' do
   include ActiveJob::TestHelper
 
-  let(:user) { FactoryGirl.create(:user, :inactive) }
+  let(:user) { FactoryBot.create(:user, :inactive) }
 
   background do
     clear_emails

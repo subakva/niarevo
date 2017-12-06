@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Notifier do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   shared_examples_for 'all emails' do
     it "uses the standard setup" do
@@ -43,7 +43,7 @@ RSpec.describe Notifier do
   end
 
   describe 'invitation' do
-    let(:invite) { FactoryGirl.create(:invite, user: user) }
+    let(:invite) { FactoryBot.create(:invite, user: user) }
     let(:mail) { Notifier.invitation(invite) }
 
     it_should_behave_like 'all emails'

@@ -8,7 +8,7 @@ RSpec.describe Invite do
   before { travel_to(Time.zone.now) }
   after { travel_back }
 
-  let(:invite) { FactoryGirl.create(:invite, :unsent) }
+  let(:invite) { FactoryBot.create(:invite, :unsent) }
 
   it "does not create an invite for a current user" do
     user = invite.user
@@ -36,7 +36,7 @@ RSpec.describe Invite do
 
     it "does not send an invitation if one was sent in the last week" do
       expect(Notifier).to_not receive(:invitation)
-      FactoryGirl.create(:invite,
+      FactoryBot.create(:invite,
         email: invite.email,
         sent_at: (7.days.ago + 1.minute)
       )
@@ -45,7 +45,7 @@ RSpec.describe Invite do
 
     it "sends an invitation if one was sent more than a week ago" do
       expect(Notifier).to receive(:invitation).with(invite).and_return(double(deliver: true))
-      FactoryGirl.create(:invite,
+      FactoryBot.create(:invite,
         email: invite.email,
         sent_at: (7.days.ago - 1.minute)
       )

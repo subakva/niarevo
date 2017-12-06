@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature "Sign In" do
   let(:password) { 'password' }
-  let(:user) { FactoryGirl.create(:user, password: password) }
+  let(:user) { FactoryBot.create(:user, password: password) }
 
   before { User.destroy_all }
   after { user.destroy }

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.feature "Update Profile" do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   scenario 'updating account details' do
     sign_in_as user

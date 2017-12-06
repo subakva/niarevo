@@ -5,8 +5,8 @@ require 'zlib'
 
 RSpec.feature 'Sitemap' do
   let(:sitemap_path) { Rails.root.join('tmp', 'sitemaps', 'sitemap.xml.gz') }
-  let!(:dream) { FactoryGirl.create(:dream) }
-  let!(:private_dream) { FactoryGirl.create(:dream, :private) }
+  let!(:dream) { FactoryBot.create(:dream) }
+  let!(:private_dream) { FactoryBot.create(:dream, :private) }
   let(:doc) do
     suppress_stdout { SitemapGenerator::Interpreter.run }
     load_sitemap_doc
@@ -64,7 +64,7 @@ RSpec.feature 'Sitemap' do
   end
 
   def load_sitemap_doc
-    sitemap = String.new
+    sitemap = +''
     Zlib::GzipReader.open(sitemap_path) { |f| sitemap << f.read }
     Nokogiri::XML::Document.parse(sitemap)
   end
