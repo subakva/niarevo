@@ -10,12 +10,13 @@ ruby '2.7.2'
 
 gem 'rails', '~>5.1.0'
 
+gem 'scout_apm'     # app monitoring (must be before airbrake: https://github.com/elastic/apm-agent-ruby/issues/753)
+
 gem 'airbrake'      # error reporting
 gem 'pg'            # postgresql db adapter
 gem 'puma'          # app server
 gem 'rack-timeout', require: "rack/timeout/base" # kill slow responses
 gem 'redis-rails'   # redis for caching, etc.
-gem 'scout_apm'     # app monitoring
 
 gem 'bootstrap-sass'                    # bootstrap/sass framework
 gem 'coffee-rails'                      # adds coffeescript support
