@@ -13,8 +13,8 @@ FactoryBot.define do
       }.squish
     end
     user
-    dream_tags { ['no-pants', 'crocodiles'] }
-    dreamer_tags { ['school', 'math-class'] }
+    dream_tags { %w[no-pants crocodiles] }
+    dreamer_tags { %w[school math-class] }
 
     trait :anonymous do
       user { nil }

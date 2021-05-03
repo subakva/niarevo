@@ -11,6 +11,7 @@ class ActivationRequest
 
   def create
     return false unless valid?
+
     user.deliver_activation_instructions!
   end
 

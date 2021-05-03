@@ -11,6 +11,7 @@ class PasswordResetRequest
 
   def create
     return false unless valid?
+
     user.deliver_password_reset_instructions!
   end
 

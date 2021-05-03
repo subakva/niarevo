@@ -112,6 +112,7 @@ class DreamsController < ApplicationController # rubocop:disable Metrics/ClassLe
 
   def validate_captcha(model)
     return true if current_user.present?
+
     verify_recaptcha(model: model, attribute: :captcha, env: Rails.env.to_s)
   end
 

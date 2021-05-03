@@ -76,5 +76,7 @@ Security/YAMLLoad:
 # Rails Cops
 Rails:
   Enabled: true
+Rails/ContentTag:
+  Enabled: false
 Rails/TimeZone:
   EnforcedStyle: strict

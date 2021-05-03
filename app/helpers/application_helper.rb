@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def header_text
-    @header_text ||= begin
+    @header_text ||= begin # rubocop:disable Style/RedundantBegin
       content_for(:header_text) if content_for?(:header_text)
     end
   end

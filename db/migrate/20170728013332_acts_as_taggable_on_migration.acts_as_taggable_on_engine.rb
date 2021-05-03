@@ -4,7 +4,7 @@ class ActsAsTaggableOnMigration < ActiveRecord::Migration[4.2]
   def change
     add_column :tags, :taggings_count, :integer, default: 0
 
-    remove_index :tags, name: 'idx_tags_by_name'
+    remove_index :tags, :name, name: 'idx_tags_by_name'
     add_index :tags, :name, unique: true
 
     add_index :taggings, :tag_id

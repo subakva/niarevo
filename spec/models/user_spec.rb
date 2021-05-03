@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'for an activated user' do
-      before { user.update_attributes(active: true) }
+      before { user.update(active: true) }
 
       it "does not send an email if the account is already active" do
         expect(Notifier).to_not receive(:activation_succeeded)
@@ -54,7 +54,7 @@ RSpec.describe User, type: :model do
 
   describe '#deactivate!' do
     context 'for an activated user' do
-      before { user.update_attributes(active: true) }
+      before { user.update(active: true) }
 
       it "changes the active flag to false" do
         expect {

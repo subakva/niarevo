@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class Notifier < ApplicationMailer
+class Notifier < ApplicationMailer  # rubocop:disable Rails/MailerName
   layout 'email'
 
   default(
     from: ENV['NOTIFIER_DEFAULT_FROM'],
-    bcc:  ENV['NOTIFIER_AUTO_CC']
+    bcc: ENV['NOTIFIER_AUTO_CC']
   )
 
   def test(email)

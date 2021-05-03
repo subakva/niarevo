@@ -12,7 +12,7 @@ RSpec.describe Notifier do
     end
 
     it "uses the notifier layout" do
-      expect(mail.body).to match(%r{Thanks,<br \/>The DreamTagger Team})
+      expect(mail.body).to match(%r{Thanks,<br />The DreamTagger Team})
     end
   end
 
