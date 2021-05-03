@@ -30,26 +30,26 @@ Rails.application.routes.draw do
   get '/dreams/untagged_context', to: redirect('/dreams/untagged_dreamer')
 
   get '/dreams/date/:year/:month/:day',
-    to: 'dreams#for_date',
-    constraints: {
-      year: /\d{4}/,
-      month: /\d{1,2}/,
-      day: /\d{1,2}/
-    },
-    as: 'dreams_by_day'
+      to: 'dreams#for_date',
+      constraints: {
+        year: /\d{4}/,
+        month: /\d{1,2}/,
+        day: /\d{1,2}/
+      },
+      as: 'dreams_by_day'
   get '/dreams/date/:year/:month',
-    to: 'dreams#for_date',
-    constraints: {
-      year: /\d{4}/,
-      month: /\d{1,2}/
-    },
-    as: 'dreams_by_month'
+      to: 'dreams#for_date',
+      constraints: {
+        year: /\d{4}/,
+        month: /\d{1,2}/
+      },
+      as: 'dreams_by_month'
   get '/dreams/date/:year',
-    to: 'dreams#for_date',
-    constraints: {
-      year: /\d{4}/
-    },
-    as: 'dreams_by_year'
+      to: 'dreams#for_date',
+      constraints: {
+        year: /\d{4}/
+      },
+      as: 'dreams_by_year'
 
   # The routes defined first take priority, so the resource should be last.
   resources :dreams do

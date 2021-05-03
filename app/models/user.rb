@@ -48,12 +48,13 @@ class User < ApplicationRecord
 
   def activate!
     return if active?
-    update_attributes!(active: true)
+
+    update!(active: true)
     Notifier.activation_succeeded(self).deliver_later
   end
 
   def deactivate!
-    update_attributes(active: false)
+    update(active: false)
   end
 
   def deliver_activation_instructions!
@@ -65,10 +66,4 @@ class User < ApplicationRecord
     reset_perishable_token!
     Notifier.password_reset_instructions(self).deliver_later
   end
-
-  # class << self
-  #   def find_by_username_or_email(value)
-  #     User.where(username: value).or(User.where(email: value)).first
-  #   end
-  # end
 end

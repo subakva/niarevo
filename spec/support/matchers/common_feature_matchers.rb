@@ -2,7 +2,7 @@
 
 RSpec::Matchers.define :have_email_with do |expected|
   match do |user|
-    expect(open_email(user.email)).to_not be_nil
+    expect(open_email(user.email)).not_to be_nil
     expect(current_email).to have_content(expected)
   end
 

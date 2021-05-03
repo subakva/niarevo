@@ -2,27 +2,27 @@
 
 require 'rails_helper'
 
-RSpec.feature "Private Dreams" do
+RSpec.describe "Private Dreams" do
   context 'an anonymous user' do
     let(:private_dream) { FactoryBot.create(:dream, :private) }
 
-    scenario 'creating a dream' do
+    it 'creating a dream' do
       ensure_on new_dream_path
 
-      expect(page).to_not have_text('Private?')
+      expect(page).not_to have_text('Private?')
     end
 
-    scenario 'viewing the dream page' do
+    it 'viewing the dream page' do
       ensure_on dream_path(private_dream)
 
-      expect(current_path).to eq(root_path)
+      expect(page).to have_current_path(root_path, ignore_query: true)
       expect(page).to display_alert("Sorry, that page doesn't exist!")
     end
 
-    scenario 'viewing recent dreams' do
+    it 'viewing recent dreams' do
       ensure_on root_path
 
-      expect(page).to_not display_dream_text(private_dream.description)
+      expect(page).not_to display_dream_text(private_dream.description)
     end
   end
 
@@ -32,11 +32,11 @@ RSpec.feature "Private Dreams" do
     let(:public_dream) { FactoryBot.create(:dream, user: user) }
     let(:private_dream) { FactoryBot.create(:dream, :private, description: 'privata', user: user) }
 
-    background do
+    before do
       sign_in_as user
     end
 
-    scenario 'creating a private dream' do
+    it 'creating a private dream' do
       ensure_on new_dream_path
 
       within('#new_dream') do
@@ -45,12 +45,12 @@ RSpec.feature "Private Dreams" do
         click_on 'Save'
       end
 
-      expect(current_path).to eq(dream_path(Dream.last))
+      expect(page).to have_current_path(dream_path(Dream.last), ignore_query: true)
       expect(page).to display_dream_text(dream_text)
       expect(page).to display_private_dream
     end
 
-    scenario 'changing a public dream to a private dream' do
+    it 'changing a public dream to a private dream' do
       ensure_on edit_dream_path(public_dream)
 
       within('.edit-dream') do
@@ -58,11 +58,11 @@ RSpec.feature "Private Dreams" do
         click_on 'Save'
       end
 
-      expect(current_path).to eq(dream_path(public_dream))
+      expect(page).to have_current_path(dream_path(public_dream), ignore_query: true)
       expect(page).to display_private_dream
     end
 
-    scenario 'viewing own private dream in the recent dreams list' do
+    it 'viewing own private dream in the recent dreams list' do
       private_dream
       ensure_on root_path
       expect(page).to display_dream_text(private_dream.description)
@@ -75,17 +75,17 @@ RSpec.feature "Private Dreams" do
         FactoryBot.create(:dream, :private, description: 'privates here!', user: other_user)
       end
 
-      scenario 'viewing the dream page' do
+      it 'viewing the dream page' do
         ensure_on dream_path(private_dream)
 
-        expect(current_path).to eq(root_path)
+        expect(page).to have_current_path(root_path, ignore_query: true)
         expect(page).to display_alert("Sorry, that page doesn't exist!")
       end
 
-      scenario 'viewing recent dreams' do
+      it 'viewing recent dreams' do
         ensure_on root_path
 
-        expect(page).to_not display_dream_text(private_dream.description)
+        expect(page).not_to display_dream_text(private_dream.description)
       end
     end
   end

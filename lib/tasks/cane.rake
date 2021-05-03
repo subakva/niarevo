@@ -15,13 +15,13 @@ begin
     # )
     # Fail the build if the code includes debugging statements
     cane.use Morecane::MustNotMatchCheck,
-      must_not_match_glob: "{app,lib,config,spec}/**/*.rb",
-      must_not_match_regexp: /binding\.pry|binding\.remote_pry|debugger|byebug/
+             must_not_match_glob: "{app,lib,config,spec}/**/*.rb",
+             must_not_match_regexp: /binding\.pry|binding\.remote_pry|debugger|byebug/
 
     # Fail the build if anything tries to use the system time zone.
     cane.use Morecane::MustNotMatchCheck,
-      must_not_match_glob: "{app,lib,config,spec}/**/*.rb",
-      must_not_match_regexp: /(Time\.now|Time\.parse|Date\.parse)/
+             must_not_match_glob: "{app,lib,config,spec}/**/*.rb",
+             must_not_match_regexp: /(Time\.now|Time\.parse|Date\.parse)/
   end
 rescue LoadError
   warn "cane not available, task not provided."

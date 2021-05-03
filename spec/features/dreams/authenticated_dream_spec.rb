@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature "Authenticated Dreams" do
+RSpec.describe "Authenticated Dreams" do
   let(:user) { FactoryBot.create(:user) }
 
   let(:dream_attributes) { FactoryBot.attributes_for(:dream, :anonymous) }
@@ -10,12 +10,12 @@ RSpec.feature "Authenticated Dreams" do
   let(:dream_tags)    { dream_attributes[:dream_tags] }
   let(:dreamer_tags)  { dream_attributes[:dreamer_tags] }
 
-  scenario 'adding a dream' do
+  it 'adding a dream' do
     sign_in_as user
 
     visit new_dream_path
 
-    expect(page).to_not include_recaptcha
+    expect(page).not_to include_recaptcha
 
     within('#new_dream') do
       fill_in 'Describe Your Dream',        with: dream_text
@@ -24,7 +24,7 @@ RSpec.feature "Authenticated Dreams" do
       click_on 'Save'
     end
 
-    expect(current_path).to eq(dream_path(Dream.first))
+    expect(page).to have_current_path(dream_path(Dream.first), ignore_query: true)
 
     expect(page).to display_dreamer_name(user.username)
     expect(page).to display_dream_text(dream_text)

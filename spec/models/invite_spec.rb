@@ -6,6 +6,7 @@ RSpec.describe Invite do
   include ActiveSupport::Testing::TimeHelpers
 
   before { travel_to(Time.zone.now) }
+
   after { travel_back }
 
   let(:invite) { FactoryBot.create(:invite, :unsent) }
@@ -13,13 +14,13 @@ RSpec.describe Invite do
   it "does not create an invite for a current user" do
     user = invite.user
     invite = Invite.new(email: user.email)
-    expect(invite).to_not be_valid
+    expect(invite).not_to be_valid
     expect(invite.errors[:base].size).to eq(1)
     expect(invite.errors[:base]).to include('An account already exists for that email.')
   end
 
   describe '.deliver_invitation!' do
-    before(:each) do
+    before do
       allow(Notifier).to receive(:invitation).and_return(double(deliver: true))
     end
 
@@ -35,20 +36,20 @@ RSpec.describe Invite do
     end
 
     it "does not send an invitation if one was sent in the last week" do
-      expect(Notifier).to_not receive(:invitation)
+      expect(Notifier).not_to receive(:invitation)
       FactoryBot.create(:invite,
-        email: invite.email,
-        sent_at: (7.days.ago + 1.minute)
-      )
+                        email: invite.email,
+                        sent_at: (7.days.ago + 1.minute)
+                       )
       invite.deliver_invitation!
     end
 
     it "sends an invitation if one was sent more than a week ago" do
       expect(Notifier).to receive(:invitation).with(invite).and_return(double(deliver: true))
       FactoryBot.create(:invite,
-        email: invite.email,
-        sent_at: (7.days.ago - 1.minute)
-      )
+                        email: invite.email,
+                        sent_at: (7.days.ago - 1.minute)
+                       )
       invite.deliver_invitation!
     end
   end

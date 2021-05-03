@@ -10,9 +10,9 @@ module ModalHelper
       'data-toggle' => 'modal',
       'role' => 'dialog'
     }
-    content_tag(:div, modal_options) do
-      content_tag(:div, class: 'modal-dialog', role: 'document') do
-        content_tag(:div, class: 'modal-content') do
+    tag.div(modal_options) do
+      tag.div(class: 'modal-dialog', role: 'document') do
+        tag.div(class: 'modal-content') do
           safe_join(
             [
               modal_header(title),
@@ -28,20 +28,20 @@ module ModalHelper
   # rubocop:enable Metrics/MethodLength
 
   def modal_header(title)
-    content_tag(:div, class: 'modal-header') do
-      content_tag(:h3, title, class: 'modal-title')
+    tag.div(class: 'modal-header') do
+      tag.h3(title, class: 'modal-title')
     end
   end
 
   def modal_body(&block)
-    content_tag(:div, class: 'modal-body') do
+    tag.div(class: 'modal-body') do
       capture(&block) if block_given?
     end
   end
 
   def modal_footer
-    content_tag(:div, class: 'modal-footer') do
-      content_tag(:a, 'Close', href: '#', class: 'btn btn-default', 'data-dismiss' => 'modal')
+    tag.div(class: 'modal-footer') do
+      tag.a('Close', href: '#', class: 'btn btn-default', 'data-dismiss' => 'modal')
     end
   end
 end

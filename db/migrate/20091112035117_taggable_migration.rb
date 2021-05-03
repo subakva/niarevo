@@ -22,11 +22,11 @@ class TaggableMigration < ActiveRecord::Migration[4.2]
     end
 
     add_index :taggings, [:taggable_id, :taggable_type, :context],
-      name: 'idx_taggings_by_taggable'
+              name: 'idx_taggings_by_taggable'
     add_index :taggings, [:tagger_id, :tagger_type, :context],
-      name: 'idx_taggings_by_tagger'
+              name: 'idx_taggings_by_tagger'
     add_index :taggings, [:tag_id, :context],
-      name: 'idx_taggings_by_tags'
+              name: 'idx_taggings_by_tags'
 
     add_foreign_key :taggings, :tags, dependent: :delete
   end

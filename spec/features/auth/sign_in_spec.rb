@@ -2,57 +2,58 @@
 
 require 'rails_helper'
 
-RSpec.feature "Sign In" do
+RSpec.describe "Sign In" do
   let(:password) { 'password' }
   let(:user) { FactoryBot.create(:user, password: password) }
 
   before { User.destroy_all }
+
   after { user.destroy }
 
   describe 'an activated user' do
     before { user.activate! }
 
-    scenario 'redirecting after sign-in' do
+    it 'redirecting after sign-in' do
       visit edit_account_path(user)
-      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_current_path(new_user_session_path, ignore_query: true)
       sign_in(user.username, password)
-      expect(current_path).to eq(edit_account_path(user))
+      expect(page).to have_current_path(edit_account_path(user), ignore_query: true)
     end
 
-    scenario 'already logged in' do
+    it 'already logged in' do
       sign_in(user.username, password)
       visit new_user_session_path
-      expect(current_path).to eq(account_path)
+      expect(page).to have_current_path(account_path, ignore_query: true)
     end
 
-    scenario 'entering valid credentials' do
+    it 'entering valid credentials' do
       sign_in(user.username, password)
-      expect(current_path).to eq(account_path)
+      expect(page).to have_current_path(account_path, ignore_query: true)
     end
 
-    scenario 'entering an unknown username' do
+    it 'entering an unknown username' do
       sign_in('nobody', password)
 
       expect(page).to display_alert('Please enter a correct username and password')
-      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_current_path(new_user_session_path, ignore_query: true)
     end
 
-    scenario 'entering an invalid password' do
+    it 'entering an invalid password' do
       sign_in(user.username, 'this is not valid')
 
       expect(page).to display_alert('Please enter a correct username and password')
-      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_current_path(new_user_session_path, ignore_query: true)
     end
   end
 
   describe 'an inactive user' do
     before { user.deactivate! }
 
-    scenario 'displaying a message about the inactive account' do
+    it 'displaying a message about the inactive account' do
       sign_in(user.username, password)
 
       expect(page).to display_alert('Your account has not been activated yet.')
-      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_current_path(new_user_session_path, ignore_query: true)
     end
   end
 end

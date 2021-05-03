@@ -2,12 +2,12 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Password Reset' do
+RSpec.describe 'Password Reset' do
   include ActiveJob::TestHelper
 
   let(:user) { FactoryBot.create(:user) }
 
-  background do
+  before do
     clear_emails
   end
 
@@ -15,7 +15,7 @@ RSpec.feature 'Password Reset' do
     user.destroy
   end
 
-  scenario 'with an unknown username' do
+  it 'with an unknown username' do
     visit new_password_reset_path
     expect(page).to have_title('DreamTagger - Forgot Password')
     within 'form' do
@@ -26,26 +26,26 @@ RSpec.feature 'Password Reset' do
     expect(page).to display_alert('Sorry, we couldn\'t find that account.')
   end
 
-  scenario 'accessing via index' do
+  it 'accessing via index' do
     visit password_resets_path
     expect(page).to have_title('DreamTagger - Forgot Password')
   end
 
-  scenario 'with an unknown token' do
+  it 'with an unknown token' do
     visit edit_password_reset_path('junk-of-a-token')
     expect(page).to have_title('DreamTagger - Sign In')
     expect(page).to display_alert('Sorry, we couldn\'t find that account.')
   end
 
   context 'with an activated user' do
-    background do
+    before do
       perform_enqueued_jobs do
         request_new_password(user)
       end
     end
 
-    scenario 'requesting a password reset' do
-      expect(current_path).to eq(new_user_session_path)
+    it 'requesting a password reset' do
+      expect(page).to have_current_path(new_user_session_path, ignore_query: true)
 
       expect(page).to display_alert(
         'Instructions to reset your password have been emailed to you.'
@@ -56,7 +56,7 @@ RSpec.feature 'Password Reset' do
       )
     end
 
-    scenario "setting a new password" do
+    it "setting a new password" do
       visit edit_password_reset_path(user.perishable_token)
 
       fill_in 'Password', with: 'drowssap'
@@ -71,19 +71,19 @@ RSpec.feature 'Password Reset' do
       fill_in 'Confirm password', with: 'drowssap'
       click_button 'Save new password'
 
-      expect(current_path).to eq(account_path)
+      expect(page).to have_current_path(account_path, ignore_query: true)
 
       expect(page).to display_alert('Your password has been updated.')
     end
   end
 
   context 'with an unactivated user' do
-    background do
+    before do
       user.deactivate!
       request_new_password(user)
     end
 
-    scenario 'redirecting to the activation page' do
+    it 'redirecting to the activation page' do
       expect(open_email(user.email)).to be_nil
 
       expect(page).to display_alert(

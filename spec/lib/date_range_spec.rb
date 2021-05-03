@@ -7,12 +7,14 @@ require 'active_support/testing/time_helpers'
 RSpec.describe DateRange do
   include ActiveSupport::Testing::TimeHelpers
 
+  subject(:date_range) { DateRange.new(min_date, max_date) }
+
   before { travel_to(Time.zone.now) }
+
   after { travel_back }
 
   let(:min_date) { Time.utc('2009') }
   let(:max_date) { Time.zone.now }
-  subject(:date_range) { DateRange.new(min_date, max_date) }
 
   context 'with no min or max date' do
     let(:min_date) { nil }
@@ -45,6 +47,7 @@ RSpec.describe DateRange do
     let(:max_date) { Time.zone.parse('2010-05-16') }
 
     let(:new_year) { '2007' }
+
     before { date_range.apply_year(new_year) }
 
     it 'sets the min_date to the beginning of the year' do
@@ -72,6 +75,7 @@ RSpec.describe DateRange do
     let(:min_date) { Time.zone.parse('1979-02-07') }
     let(:max_date) { Time.zone.parse('2010-05-16') }
     let(:new_month) { '6' }
+
     before { date_range.apply_month(new_month) }
 
     it 'sets the min_date to the beginning of the month' do
@@ -99,6 +103,7 @@ RSpec.describe DateRange do
     let(:min_date) { Time.zone.parse('1979-02-07') }
     let(:max_date) { Time.zone.parse('2010-05-16') }
     let(:new_day) { '19' }
+
     before { date_range.apply_day(new_day) }
 
     it 'sets the min_date to the beginning of the day' do

@@ -7,9 +7,9 @@ linters:
     enabled: false
   RuboCop:
     ignored_cops:
-      - Layout/AlignParameters
+      - Layout/ArgumentAlignment
       - Layout/IndentationWidth
-      - Layout/TrailingBlankLines
+      - Layout/TrailingEmptyLines
       - Lint/Void
       - Style/FileName
       - Style/FrozenStringLiteralComment

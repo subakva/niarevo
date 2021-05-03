@@ -2,12 +2,12 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Activation' do
+RSpec.describe 'Activation' do
   include ActiveJob::TestHelper
 
   let(:user) { FactoryBot.create(:user, :inactive) }
 
-  background do
+  before do
     clear_emails
   end
 
@@ -15,7 +15,7 @@ RSpec.feature 'Activation' do
     user.destroy
   end
 
-  scenario 'with an unknown username' do
+  it 'with an unknown username' do
     visit new_activation_path
     expect(page).to have_title('DreamTagger - Request Activation Key')
     within 'form' do
@@ -26,26 +26,26 @@ RSpec.feature 'Activation' do
     expect(page).to display_alert('Sorry, we couldn\'t find that account.')
   end
 
-  scenario 'accessing via index' do
+  it 'accessing via index' do
     visit activations_path
     expect(page).to have_title('DreamTagger - Request Activation Key')
   end
 
-  scenario 'with an unknown token' do
+  it 'with an unknown token' do
     visit edit_activation_path('junk-of-a-token')
     expect(page).to have_title('DreamTagger - Sign In')
     expect(page).to display_alert('Sorry, we couldn\'t find that account.')
   end
 
   context 'with an unactivated user' do
-    background do
+    before do
       perform_enqueued_jobs do
         request_new_activation(user)
       end
     end
 
-    scenario 'requesting an activation' do
-      expect(current_path).to eq(root_path)
+    it 'requesting an activation' do
+      expect(page).to have_current_path(root_path, ignore_query: true)
 
       expect(page).to display_alert(%(
         An activation key was sent by email.
@@ -57,22 +57,22 @@ RSpec.feature 'Activation' do
       )
     end
 
-    scenario 'activating the account' do
+    it 'activating the account' do
       visit edit_activation_path(user.perishable_token)
 
-      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_current_path(new_user_session_path, ignore_query: true)
 
       expect(page).to have_content('Your account is now activated! Please sign in.')
     end
   end
 
   context 'with an activated user' do
-    background do
+    before do
       user.activate!
       request_new_activation(user)
     end
 
-    scenario 'redirecting to the password reset page' do
+    it 'redirecting to the password reset page' do
       expect(page).to display_alert(
         'Your account is already active. Maybe you need to reset your password?'
       )

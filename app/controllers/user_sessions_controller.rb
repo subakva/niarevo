@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
 
   # rubocop:disable Metrics/MethodLength
   def create
-    @user_session = UserSession.new(user_session_params)
+    @user_session = UserSession.new(user_session_params.to_h)
     # TODO: Move this into UserSession
     session_saved = @user_session.save
     account_inactive = @user_session.account_inactive?

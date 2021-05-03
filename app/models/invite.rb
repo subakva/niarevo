@@ -54,13 +54,13 @@ class Invite < ApplicationRecord
     return if invited_recently
 
     Notifier.invitation(self).deliver
-    update_attributes(sent_at: Time.zone.now)
+    update(sent_at: Time.zone.now)
   end
 
   protected
 
   def user_does_not_exist
-    return unless email && User.where(email: email).exists?
+    return unless email && User.exists?(email: email)
 
     errors.add(:base, 'An account already exists for that email.')
   end
