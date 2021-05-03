@@ -2,7 +2,7 @@
 
 namespace :db do
   desc 'Annotates model files'
-  task :annotate do
+  task :annotate do # rubocop:disable Rails/RakeEnvironment
     system("annotate -i -k -e tests,fixtures")
   end
 end

@@ -1,3 +1,6 @@
+require:
+  - rubocop-rails
+
 AllCops:
   Exclude:
     - 'tmp/**/*'
@@ -5,13 +8,12 @@ AllCops:
     - 'db/schema.rb'
     - 'app/views/**/*.slim'
     - 'vendor/**/*'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.7
   DisplayCopNames: true
+  NewCops: enable
 
 # Metrics Cops
 
-Metrics/LineLength:
-  Max: 100
 Metrics/BlockLength:
   Exclude:
     - '**/*.rake'
@@ -36,7 +38,9 @@ Style/StringLiterals:
   Enabled: False
 Style/TrailingCommaInArguments:
   Enabled: False
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: False
+Style/TrailingCommaInHashLiteral:
   Enabled: False
 Style/SymbolArray:
   Enabled: false
@@ -55,8 +59,12 @@ Naming/PredicateName:
     - 'spec/**/*_spec.rb'
 
 # Layout Cops
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/LineLength:
+  Max: 100
 Layout/MultilineMethodCallBraceLayout:
   Enabled: false
 
@@ -68,5 +76,7 @@ Security/YAMLLoad:
 # Rails Cops
 Rails:
   Enabled: true
+Rails/ContentTag:
+  Enabled: false
 Rails/TimeZone:
   EnforcedStyle: strict

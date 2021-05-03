@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def header_text
-    @header_text ||= begin
+    @header_text ||= begin # rubocop:disable Style/RedundantBegin
       content_for(:header_text) if content_for?(:header_text)
     end
   end
@@ -31,6 +31,7 @@ module ApplicationHelper
 
   def paginated?(array)
     return false unless array.respond_to?(:next_page)
+
     array.next_page.present? || array.prev_page.present?
   end
 end

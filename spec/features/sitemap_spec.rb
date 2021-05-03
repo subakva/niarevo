@@ -4,7 +4,7 @@ require 'rails_helper'
 require 'zlib'
 
 RSpec.feature 'Sitemap' do
-  let(:sitemap_path) { Rails.root.join('tmp', 'sitemaps', 'sitemap.xml.gz') }
+  let(:sitemap_path) { Rails.root.join('tmp/sitemaps/sitemap.xml.gz') }
   let!(:dream) { FactoryBot.create(:dream) }
   let!(:private_dream) { FactoryBot.create(:dream, :private) }
   let(:doc) do
@@ -72,7 +72,7 @@ RSpec.feature 'Sitemap' do
   def suppress_stdout
     original_stdout = $stdout.clone
     $stdout.reopen(File.new('/dev/null', 'w'))
-    return yield
+    yield
   ensure
     $stdout.reopen(original_stdout)
   end
