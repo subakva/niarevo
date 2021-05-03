@@ -5,9 +5,9 @@ require 'date_range'
 class DreamsController < ApplicationController # rubocop:disable Metrics/ClassLength
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
-  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update]
   before_action :load_dream, only: [:show]
-  before_action :load_dream_for_edit, only: [:edit, :update, :destroy]
+  before_action :load_dream_for_edit, only: [:edit, :update]
 
   def index
     @header_text = 'DreamTagger'
@@ -55,7 +55,6 @@ class DreamsController < ApplicationController # rubocop:disable Metrics/ClassLe
     render_dream_index(Dream.where(dream_tag_count: 0))
   end
 
-  # rubocop:disable Metrics/AbcSize
   def for_date
     range = DateRange.new
     range.apply_year(params[:year])
@@ -67,7 +66,6 @@ class DreamsController < ApplicationController # rubocop:disable Metrics/ClassLe
     scope = scope.created_since(range.min_date)
     render_dream_index(scope)
   end
-  # rubocop:enable Metrics/AbcSize
 
   def new
     @dream = Dream.new

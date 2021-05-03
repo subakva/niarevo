@@ -31,6 +31,7 @@ module ApplicationHelper
 
   def paginated?(array)
     return false unless array.respond_to?(:next_page)
+
     array.next_page.present? || array.prev_page.present?
   end
 end

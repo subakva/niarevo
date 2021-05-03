@@ -6,14 +6,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.3.5'
+ruby '2.7.2'
 
 gem 'rails', '~>5.1.0'
 
 gem 'airbrake'      # error reporting
 gem 'pg'            # postgresql db adapter
 gem 'puma'          # app server
-gem 'rack-timeout'  # kill slow responses
+gem 'rack-timeout', require: "rack/timeout/base" # kill slow responses
 gem 'redis-rails'   # redis for caching, etc.
 gem 'scout_apm'     # app monitoring
 
@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'rubocop-rails', require: false
   gem 'simplecov', require: false
   gem 'slim_lint'
 end

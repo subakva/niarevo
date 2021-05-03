@@ -4,12 +4,12 @@ FactoryBot.define do
   factory :user do
     sequence(:username) { |n| "dreamer-#{n}" }
     email { "#{username}@example.com" }
-    password 'password'
+    password { 'password' }
     password_confirmation { password }
-    active true
+    active { true }
 
     trait :inactive do
-      active false
+      active { false }
     end
   end
 end
