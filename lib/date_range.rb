@@ -22,6 +22,7 @@ class DateRange
 
   def apply_range(value, field, field_min_method, field_max_method)
     return if value.blank?
+
     @min_date = @min_date.change(field => value.to_i).send(field_min_method)
     @max_date = @max_date.change(field => value.to_i).send(field_max_method)
   end

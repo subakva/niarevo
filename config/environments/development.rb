@@ -15,7 +15,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
 
     # config.cache_store = :memory_store # application.rb specifies redis
@@ -58,12 +58,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['NOTIFIER_URL_HOST'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              ENV['SMTP_HOST'],
-    port:                 ENV['SMTP_PORT'],
-    authentication:       ENV.fetch('SMTP_AUTHENTICATION', :plain).to_sym,
-    user_name:            ENV['SMTP_USERNAME'],
-    password:             ENV['SMTP_PASSWORD'],
-    domain:               ENV['SMTP_DOMAIN'],
+    address: ENV['SMTP_HOST'],
+    port: ENV['SMTP_PORT'],
+    authentication: ENV.fetch('SMTP_AUTHENTICATION', :plain).to_sym,
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD'],
+    domain: ENV['SMTP_DOMAIN'],
     enable_starttls_auto: true,
   }
 end

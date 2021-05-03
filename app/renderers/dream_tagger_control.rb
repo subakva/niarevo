@@ -13,7 +13,7 @@ class DreamTaggerControl
   end
 
   def render(view, &block)
-    view.content_tag(:div, class: group_classes) do
+    view.tag.div(class: group_classes) do
       view.safe_join(
         [
           render_label(view),
@@ -26,10 +26,10 @@ class DreamTaggerControl
 
   def render_controls_element(view, &block)
     controls_parts = []
-    controls_parts << view.content_tag(:div, class: 'col-sm-4') do
+    controls_parts << view.tag.div(class: 'col-sm-4') do
       render_input_element
     end
-    controls_parts << view.content_tag(:div, class: 'col-sm-3') do
+    controls_parts << view.tag.div(class: 'col-sm-3') do
       view.capture(&block) if block_given?
     end
     view.safe_join(controls_parts, '')
@@ -39,13 +39,13 @@ class DreamTaggerControl
     error_content = []
     errors[symbol]&.each do |error|
       message = errors.full_message(symbol, error)
-      error_content << view.content_tag(:span, message, class: 'error-label')
+      error_content << view.tag.span(message, class: 'error-label')
     end
     view.safe_join(error_content, '')
   end
 
   def render_label(view)
-    view.content_tag(:div, class: 'col-sm-3') do
+    view.tag.div(class: 'col-sm-3') do
       view.safe_join(
         [
           form.label(symbol, options[:label], class: 'control-label'),

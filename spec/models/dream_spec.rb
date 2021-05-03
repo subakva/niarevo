@@ -32,7 +32,7 @@ RSpec.describe Dream do
       end
 
       it "filters out other's private dreams" do
-        expect(scope).to_not include(hidden_dream)
+        expect(scope).not_to include(hidden_dream)
       end
     end
 
@@ -45,8 +45,8 @@ RSpec.describe Dream do
       end
 
       it 'filters out all private dreams' do
-        expect(scope).to_not include(hidden_dream)
-        expect(scope).to_not include(private_dream)
+        expect(scope).not_to include(hidden_dream)
+        expect(scope).not_to include(private_dream)
       end
     end
   end

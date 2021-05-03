@@ -52,6 +52,7 @@ class PasswordResetsController < ApplicationController
   def load_user_using_perishable_token
     @user = User.find_using_perishable_token(params[:id])
     return @user if @user
+
     flash[:warning] = "Sorry, we couldn't find that account." \
                       "If you are having issues try copying and pasting the URL " \
                       "from your email into your browser or restarting the " \

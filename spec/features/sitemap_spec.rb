@@ -3,8 +3,8 @@
 require 'rails_helper'
 require 'zlib'
 
-RSpec.feature 'Sitemap' do
-  let(:sitemap_path) { Rails.root.join('tmp', 'sitemaps', 'sitemap.xml.gz') }
+RSpec.describe 'Sitemap' do
+  let(:sitemap_path) { Rails.root.join('tmp/sitemaps/sitemap.xml.gz') }
   let!(:dream) { FactoryBot.create(:dream) }
   let!(:private_dream) { FactoryBot.create(:dream, :private) }
   let(:doc) do
@@ -12,11 +12,11 @@ RSpec.feature 'Sitemap' do
     load_sitemap_doc
   end
 
-  scenario 'excluding private dreams' do
-    expect(doc).to_not have_mapped_url(dream_url(private_dream))
+  it 'excluding private dreams' do
+    expect(doc).not_to have_mapped_url(dream_url(private_dream))
   end
 
-  scenario "generating a sitemap" do
+  it "generating a sitemap" do
     # Generic dream list paths
     expect(doc).to have_mapped_url(dreams_url,                  changefreq: 'daily')
     expect(doc).to have_mapped_url(untagged_dreams_url,         changefreq: 'daily')
@@ -48,7 +48,7 @@ RSpec.feature 'Sitemap' do
       changefreq: 'weekly'
     )
     # TODO: Include day links only for dates with content
-    expect(doc).to_not have_mapped_url(
+    expect(doc).not_to have_mapped_url(
       dreams_by_day_url(year: dream_date.year, month: dream_date.month, day: dream_date.day),
       changefreq: 'weekly'
     )
@@ -72,7 +72,7 @@ RSpec.feature 'Sitemap' do
   def suppress_stdout
     original_stdout = $stdout.clone
     $stdout.reopen(File.new('/dev/null', 'w'))
-    return yield
+    yield
   ensure
     $stdout.reopen(original_stdout)
   end

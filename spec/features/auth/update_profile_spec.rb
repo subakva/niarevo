@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.feature "Update Profile" do
+RSpec.describe "Update Profile" do
   let(:user) { FactoryBot.create(:user) }
 
-  scenario 'updating account details' do
+  it 'updating account details' do
     sign_in_as user
     visit edit_account_path(user)
     within 'form' do

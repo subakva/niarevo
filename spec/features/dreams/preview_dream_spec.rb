@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature "Dream Preview", js: true do
+RSpec.describe "Dream Preview", js: true do
   let(:user) { FactoryBot.create(:user) }
 
   let(:dream_attributes) { FactoryBot.attributes_for(:dream, :anonymous) }
@@ -10,7 +10,7 @@ RSpec.feature "Dream Preview", js: true do
   let(:dream_tags)    { dream_attributes[:dream_tags] }
   let(:dreamer_tags)  { dream_attributes[:dreamer_tags] }
 
-  scenario 'previewing a dream' do
+  it 'previewing a dream' do
     sign_in_as user
     ensure_on new_dream_path
 
@@ -22,7 +22,7 @@ RSpec.feature "Dream Preview", js: true do
       first(:link, 'Preview').click
     end
 
-    expect(current_path).to eq(new_dream_path)
+    expect(page).to have_current_path(new_dream_path, ignore_query: true)
 
     within('.preview-content article') do
       expect(page).to display_dreamer_name(user.username)

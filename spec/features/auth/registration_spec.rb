@@ -2,13 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.feature "Registration" do
+RSpec.describe "Registration" do
   include ActiveJob::TestHelper
 
   let(:username) { 'buzzard' }
   let(:user) { User.where(username: username).first! }
 
-  background do
+  before do
     clear_emails
     perform_enqueued_jobs do
       register_account(username)
@@ -19,7 +19,7 @@ RSpec.feature "Registration" do
     user.destroy
   end
 
-  scenario 'failed registration' do
+  it 'failed registration' do
     ensure_on new_user_path
     within registration_form do
       fill_in "Username", with: username
@@ -32,11 +32,11 @@ RSpec.feature "Registration" do
     expect(page).to display_form_error("Password confirmation doesn't match Password")
   end
 
-  scenario "successful registration" do
+  it "successful registration" do
     expect(page).to display_alert(
       "Thanks! A message has been sent to your email address with a link to activate your account."
     )
-    expect(user).to_not be_nil
+    expect(user).not_to be_nil
     expect(user).to have_email_with(
       edit_activation_path(user.perishable_token)
     )

@@ -12,12 +12,12 @@ RSpec.describe Notifier do
     end
 
     it "uses the notifier layout" do
-      expect(mail.body).to match(%r{Thanks,<br \/>The DreamTagger Team})
+      expect(mail.body).to match(%r{Thanks,<br />The DreamTagger Team})
     end
   end
 
   shared_examples_for 'an email to a user' do
-    it_should_behave_like 'all emails'
+    it_behaves_like 'all emails'
 
     it "sends the email to the user" do
       expect(mail.to).to eq([user.email])
@@ -31,7 +31,7 @@ RSpec.describe Notifier do
   describe 'test' do
     let(:mail) { Notifier.test('test@example.com') }
 
-    it_should_behave_like 'all emails'
+    it_behaves_like 'all emails'
 
     it "sends the email to the tester" do
       expect(mail.to).to eq(['test@example.com'])
@@ -46,7 +46,7 @@ RSpec.describe Notifier do
     let(:invite) { FactoryBot.create(:invite, user: user) }
     let(:mail) { Notifier.invitation(invite) }
 
-    it_should_behave_like 'all emails'
+    it_behaves_like 'all emails'
 
     it "sends the email to the invitee" do
       expect(mail.to).to eq([invite.email])
@@ -76,7 +76,7 @@ RSpec.describe Notifier do
   describe 'activation_instructions' do
     let(:mail) { Notifier.activation_instructions(user) }
 
-    it_should_behave_like 'an email to a user'
+    it_behaves_like 'an email to a user'
 
     it "sets the subject" do
       expect(mail.subject).to eq('Activation Instructions')
@@ -92,7 +92,7 @@ RSpec.describe Notifier do
   describe 'password_reset_instructions' do
     let(:mail) { Notifier.password_reset_instructions(user) }
 
-    it_should_behave_like 'an email to a user'
+    it_behaves_like 'an email to a user'
 
     it "sets the subject" do
       expect(mail.subject).to eq('Password Reset Instructions')
@@ -108,7 +108,7 @@ RSpec.describe Notifier do
   describe 'activation_succeeded' do
     let(:mail) { Notifier.activation_succeeded(user) }
 
-    it_should_behave_like 'an email to a user'
+    it_behaves_like 'an email to a user'
 
     it "sets the subject" do
       expect(mail.subject).to eq('Account Activated!')
