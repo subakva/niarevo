@@ -5,7 +5,7 @@ AllCops:
     - 'db/schema.rb'
     - 'app/views/**/*.slim'
     - 'vendor/**/*'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.7
   DisplayCopNames: true
 
 # Metrics Cops
