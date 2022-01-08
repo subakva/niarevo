@@ -16,3 +16,5 @@
 spec/examples.txt
 /public/packs
 /node_modules
+Brewfile.lock.json
+
