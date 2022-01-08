@@ -128,7 +128,7 @@ GEM
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
-    json (2.1.0)
+    json (2.6.1)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -275,6 +275,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.15.1)
       parser (>= 3.0.1.1)
+    rubocop-rails (2.13.0)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
     ruby_dep (1.5.0)
     sass (3.5.3)
@@ -393,6 +397,7 @@ DEPENDENCIES
   redis-rails
   rspec-rails
   rubocop
+  rubocop-rails
   sass-rails
   scout_apm
   shoulda-matchers

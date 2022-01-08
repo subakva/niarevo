@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'simplecov', require: false
   gem 'slim_lint'
 end
